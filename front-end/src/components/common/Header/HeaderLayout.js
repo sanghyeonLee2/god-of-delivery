@@ -17,6 +17,3 @@ export const HeaderInnerLayout = styled.header`
 `
 
 
-export const Logo = styled.h1`
-  float: left;
-  margin-top: 25px`
