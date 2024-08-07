@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {GlobalStyle} from "./assets/styles/GlobalStyle";
 import {Header} from "./components/common/Header/Header";
+import Footer from "./components/common/Footer/Footer";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
             <GlobalStyle/>
             <Header/>
             <Outlet/>
+            <Footer/>
         </div>
     );
 }
