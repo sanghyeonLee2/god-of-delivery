@@ -5,3 +5,8 @@ export const flexLayout = (justify = 'flex-start', align = 'stretch') => css`
   justify-content: ${justify};
   align-items: ${align};
 `
+
+export const elementSize = (width = "auto", height = "auto") => css`
+  width: ${width};
+  height: ${height};
+`
