@@ -6,12 +6,14 @@ import Footer from "./components/common/Footer/Footer";
 
 function App() {
     return (
-        <div className="App">
-            <GlobalStyle/>
-            <Header/>
-            <Outlet/>
+        <>
+            <div className="App">
+                <GlobalStyle/>
+                <Header/>
+                <Outlet/>
+            </div>
             <Footer/>
-        </div>
+        </>
     );
 }
 
