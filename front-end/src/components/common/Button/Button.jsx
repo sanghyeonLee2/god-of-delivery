@@ -1,8 +1,8 @@
 import React from 'react';
 import {ButtonLayout} from "./ButtonLayout";
 
-export function Button(props) {
+export function Button({type, text}) {
     return (
-        <ButtonLayout type={"button"}>로그인</ButtonLayout>
+        <ButtonLayout type={type}>{text}</ButtonLayout>
     );
 }
