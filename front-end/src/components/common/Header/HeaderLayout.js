@@ -59,7 +59,7 @@ export const SearchInputWrapper = styled.div`
 `
 
 export const HeaderInner = styled.header`
-  max-width: 1020px;
+  max-width: 60%;
   margin: 0 auto;
   height: 100%;
 
@@ -70,6 +70,8 @@ export const HeaderInner = styled.header`
   }
 `
 export const SearchInput = styled.input`
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   ${elementSize("86%", "100%")};
 `
 export const SearchForm = styled.form`
@@ -78,6 +80,8 @@ export const SearchForm = styled.form`
   width: 87%;
 
   button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     ${elementSize("14%", "100%")};
   }
 `
