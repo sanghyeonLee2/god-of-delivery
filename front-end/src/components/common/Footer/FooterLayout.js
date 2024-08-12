@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../assets/styles/Mixin,js";
+import {flexLayout} from "../../../assets/styles/Mixin";
 
 
 export const FooterWrapper = styled.footer`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 200px;
+  position: relative;
+  transform: translateY(-100%);
 `
 export const FooterMenuOuter = styled.div`
   ${flexLayout("center")}
@@ -33,7 +32,7 @@ export const FooterInfoOuter = styled.div`
   ${flexLayout("center")}`
 
 export const FooterInfoInner = styled.div`
-  width: 50%;
+  width: 60%;
   ${flexLayout("space-between")}
 `
 export const FooterAsideInfo = styled.div`
