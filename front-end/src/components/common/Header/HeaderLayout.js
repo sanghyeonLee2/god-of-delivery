@@ -3,14 +3,10 @@ import styled from "styled-components";
 
 export const HeaderOuter = styled.header`
   background-color: #FFEB00;
-  height: 23%;
-`
-export const HeaderWrapper = styled.header`
-  height: 400px;
-
+  height: 92px;
 `
 
-export const HeaderInner = styled.header`
+export const HeaderInner = styled.div`
   max-width: 60%;
   margin: 0 auto;
   height: 100%;
