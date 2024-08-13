@@ -3,7 +3,7 @@ import {flexLayout} from "../../../assets/styles/Mixin";
 
 
 export const FooterWrapper = styled.footer`
-  height: 200px;
+  height: 180px;
   position: relative;
   transform: translateY(-100%);
 `
