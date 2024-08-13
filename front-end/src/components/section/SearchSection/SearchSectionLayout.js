@@ -3,7 +3,7 @@ import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 import searchBoxBackground from "../../../assets/img/search-box-background.jpg";
 
 export const SearchBoxOuter = styled.div`
-  height: 77%;
+  height: 308px;
   background-image: url(${searchBoxBackground});
   background-size: cover; /* 또는 contain */
   background-position: center;
@@ -52,16 +52,18 @@ export const SearchForm = styled.form`
   ${flexLayout};
   width: 87%;
 
+  input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border: 0;
+    ${elementSize("86%", "100%")};
+  }
+
   button {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     ${elementSize("14%", "100%")};
   }
-`
-export const SearchInput = styled.input`
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  ${elementSize("86%", "100%")};
 `
 
 export const ResetIcon = styled.img`
