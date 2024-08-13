@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import {flexLayout} from "../../assets/styles/Mixin";
 
-export const SignUpOuter = styled.div`
-  height: 800px;
+export const AuthPageOuter = styled.div`
   ${flexLayout("center")}
 `
 
-export const SignUpInner = styled.div`
-  margin-top: 70px;
+export const AuthPageInner = styled.div`
+  margin-top: 50px;
 
   h1 {
     text-align: center;
