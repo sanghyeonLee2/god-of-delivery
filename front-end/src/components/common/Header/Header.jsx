@@ -15,7 +15,7 @@ export function Header(props) {
                         <Logo>배달의 신</Logo>
                     </Link>
                     <Button type={"button"} text={"회원가입"} onClick={() => navigate("sign-up")}/>
-                    <Button type={"button"} text={"로그인"}/>
+                    <Button type={"button"} text={"로그인"} onClick={() => navigate("sign-in")}/>
                 </HeaderInner>
             </HeaderOuter>
             {window.location.pathname === "/" && <SearchSection/>}
