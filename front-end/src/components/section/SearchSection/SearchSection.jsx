@@ -10,12 +10,12 @@ import {
     SearchBoxOuter,
     SearchBoxTextOuter,
     SearchForm,
-    SearchInput,
     SearchInputWrapper
 } from "./SearchSectionLayout";
 import locationIcon from "../../../assets/img/my_location.png";
 import resetIcon from "../../../assets/img/reset.png";
 import {Button} from "../../common/Button/Button";
+import Input from "../../common/Input/Input";
 
 function SearchSection(props) {
     return (
@@ -36,7 +36,7 @@ function SearchSection(props) {
                         <LocationBtnIcon src={locationIcon} alt="구글 아이콘"/>
                     </LocationBtn>
                     <SearchForm>
-                        <SearchInput/>
+                        <Input type={"text"}/>
                         <ResetIcon src={resetIcon} alt="구글 아이콘"/>
                         <Button type={"submit"} text={"검색"}/>
                     </SearchForm>
