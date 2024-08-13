@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import SignUp from "./pages/SignUpPage/SignUp";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
     path: "/",
-    element: <App/>
+    element: <App/>,
+    children: [
+        {
+            path: "sign-up",
+            element: <SignUp/>
+        }]
 }])
 
 root.render(
