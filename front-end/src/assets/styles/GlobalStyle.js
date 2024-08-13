@@ -17,7 +17,6 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     padding: 0;
-    border: 0;
     border-radius: 4px;
   }
 
@@ -40,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  p, li, h1, strong, span {
+  p, li, h1, strong, span, label {
     font-family: ${FONT_FAMILY}, sans-serif;
   }
 
@@ -51,7 +50,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .App {
     min-height: 100%;
-    padding-bottom: 200px;
+    padding-bottom: 180px;
   }
 
   #root {
