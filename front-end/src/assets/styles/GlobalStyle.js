@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 
   li {
     list-style: none;
+    cursor: pointer;
   }
 
   ul {
@@ -43,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${FONT_FAMILY}, sans-serif;
   }
 
-  span {
+  .common-text {
     color: white;
     font-size: 15px
   }
