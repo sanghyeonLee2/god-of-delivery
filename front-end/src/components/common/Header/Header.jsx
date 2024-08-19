@@ -2,11 +2,12 @@ import React from 'react';
 import {HeaderInner, HeaderOuter} from "./HeaderLayout";
 import {Button} from "../Button/Button";
 import {Logo} from "../../../assets/styles/CommonStyle";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import SearchSection from "../../section/SearchSection/SearchSection";
+import {useMove} from "../../../hooks/useMove";
 
 export function Header(props) {
-    const navigate = useNavigate()
+    const navigate = useMove()
     return (
         <>
             <HeaderOuter>
@@ -18,7 +19,8 @@ export function Header(props) {
                     <Button type={"button"} text={"로그인"} onClick={() => navigate("sign-in")}/>
                 </HeaderInner>
             </HeaderOuter>
-            {window.location.pathname === "/" && <SearchSection/>}
+            {(window.location.pathname === "/" || window.location.pathname.startsWith("/category-info")) &&
+                <SearchSection/>}
         </>
     );
 }
