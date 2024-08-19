@@ -4,7 +4,7 @@ import App from "./App";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import SignUpPage from "./pages/AuthPage/SignUpPage";
 import SignInPage from "./pages/AuthPage/SIgnInPage";
-import HomePage from "./pages/HomePageLayout.js/HomePage";
+import HomePage from "./pages/HomePage.js/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
