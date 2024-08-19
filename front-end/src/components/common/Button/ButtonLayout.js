@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import {elementSize} from "../../../assets/styles/Mixin";
 
 export const ButtonLayout = styled.button`
-  height: 45px;
-  width: 130px;
+  ${elementSize("130px", "45px")}
 `
