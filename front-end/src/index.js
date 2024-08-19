@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import SignUpPage from "./pages/AuthPage/SignUpPage";
 import SignInPage from "./pages/AuthPage/SIgnInPage";
 import HomePage from "./pages/HomePage.js/HomePage";
+import CategoryInfo from "./pages/CategoryInfoPage/CategoryInfo";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
@@ -21,6 +22,9 @@ const router = createBrowserRouter([{
         }, {
             path: "sign-in",
             element: <SignInPage/>
+        }, {
+            path: "category-info/:id",
+            element: <CategoryInfo/>
         }]
 }])
 
