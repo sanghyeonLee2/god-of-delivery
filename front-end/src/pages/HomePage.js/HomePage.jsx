@@ -10,7 +10,8 @@ function HomePage(props) {
         <CategoryOuter>
             <CategoryInner>
                 {categoryDummy.map((ele) =>
-                    <CategoryBox key={ele.id} onClick={() => navigate(`category-info/${ele.id}`)}>
+                    <CategoryBox key={ele.id}
+                                 onClick={() => navigate(`category-info/${ele.id}`, {state: {categoryId: ele.id}})}>
                         <CategoryText>{ele.text}</CategoryText>
                         <CategoryImg src={testImg} alt={"img"} width={160}/>
                     </CategoryBox>)}
