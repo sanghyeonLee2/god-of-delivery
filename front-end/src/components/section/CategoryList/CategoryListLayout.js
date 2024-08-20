@@ -6,7 +6,7 @@ export const CategoryListOuter = styled.div`
   border-bottom: 1px solid #d9d9d9;`
 
 export const CategoryListInner = styled.div`
-  ${elementSize("60%", "100%")}
+  ${elementSize("55%", "100%")}
   margin: 0 auto;`
 
 export const CategoryListUl = styled.ul`
@@ -15,7 +15,11 @@ export const CategoryListUl = styled.ul`
 export const CategoryListLi = styled.li`
   ${elementSize("7.3%", "100%")};
   ${flexLayout("center", "center")};
+  background-color: ${(props) => props.id === props.clicked && "#333333"};
 
+  span {
+    color: ${(props) => props.id === props.clicked && "white"}
+  }
 
   &:hover {
     background-color: #333333;
