@@ -7,7 +7,7 @@ export const HeaderOuter = styled.header`
 `
 
 export const HeaderInner = styled.div`
-  max-width: 60%;
+  max-width: 55%;
   margin: 0 auto;
   height: 100%;
 
