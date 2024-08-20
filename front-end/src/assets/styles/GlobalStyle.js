@@ -17,12 +17,12 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     padding: 0;
-    border: 0;
     border-radius: 4px;
   }
 
   li {
     list-style: none;
+    cursor: pointer;
   }
 
   ul {
@@ -40,18 +40,18 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  p, li, h1, strong, span {
+  p, li, h1, strong, span, label {
     font-family: ${FONT_FAMILY}, sans-serif;
   }
 
-  span {
+  .common-text {
     color: white;
     font-size: 15px
   }
 
   .App {
     min-height: 100%;
-    padding-bottom: 200px;
+    padding-bottom: 180px;
   }
 
   #root {

@@ -10,6 +10,7 @@ import {
     FooterWrapper
 } from "./FooterLayout";
 import {Logo} from "../../../assets/styles/CommonStyle";
+import {Link} from "react-router-dom";
 
 function Footer(props) {
     return (
@@ -42,9 +43,11 @@ function Footer(props) {
             </FooterMenuOuter>
             <FooterInfoOuter>
                 <FooterInfoInner>
-                    <Logo>
-                        배달의 신
-                    </Logo>
+                    <Link to={"/"}>
+                        <Logo>
+                            배달의 신
+                        </Logo>
+                    </Link>
                     <FooterAsideInfo>
                         <strong>주식회사 DN</strong>
                         <p>부산시 사상구 주례로 47 대표이사 이상현, 신유성</p>
