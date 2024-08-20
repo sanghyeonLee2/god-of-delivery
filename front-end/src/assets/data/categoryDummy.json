@@ -4,51 +4,51 @@
     "text": "전체보기"
   },
   {
-    "id": 1,
+    "id": "one",
     "text": "1인분 주문"
   },
   {
-    "id": 2,
+    "id": "franchise",
     "text": "프랜차이즈"
   },
   {
-    "id": 3,
+    "id": "chicken",
     "text": "치킨"
   },
   {
-    "id": 4,
+    "id": "pizza",
     "text": "피자/양식"
   },
   {
-    "id": 5,
+    "id": "chinese",
     "text": "중국집"
   },
   {
-    "id": 6,
+    "id": "korean",
     "text": "한식"
   },
   {
-    "id": 7,
+    "id": "japanese",
     "text": "일식/돈까스"
   },
   {
-    "id": 8,
+    "id": "meat",
     "text": "족발/보쌈"
   },
   {
-    "id": 9,
+    "id": "midnight",
     "text": "야식"
   },
   {
-    "id": 10,
+    "id": "school",
     "text": "분식"
   },
   {
-    "id": 11,
+    "id": "cafe",
     "text": "카페/디저트"
   },
   {
-    "id": 12,
+    "id": "market",
     "text": "편의점/마트"
   }
 ]
