@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "title": "우불식당",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "one"
+  },
+  {
+    "id": 1,
+    "title": "밥버거",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "franchise"
+  },
+  {
+    "id": 2,
+    "title": "네네치킨",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "chicken"
+  },
+  {
+    "id": 3,
+    "title": "dn식당",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "pizza"
+  },
+  {
+    "id": 4,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "chinese"
+  },
+  {
+    "id": 5,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "japanese"
+  },
+  {
+    "id": 6,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "meat"
+  },
+  {
+    "id": 7,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "midnight"
+  },
+  {
+    "id": 8,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "school"
+  },
+  {
+    "id": 9,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "cafe"
+  },
+  {
+    "id": 10,
+    "title": "dn파스타",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "market"
+  },
+  {
+    "id": 11,
+    "title": "피파한식",
+    "rating": 3.4,
+    "review": 344,
+    "bossReview": 500,
+    "minPrice": 1000,
+    "averTime": "31~51분",
+    "category": "korean"
+  }
+]
