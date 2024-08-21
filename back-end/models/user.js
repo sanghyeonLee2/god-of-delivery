@@ -26,7 +26,7 @@ class User extends Sequelize.Model {
                 allowNull: false,
             },
             role:{
-                type: Sequelize.ENUM('회원', '관리자', '점주', '배달기사'),
+                type: Sequelize.STRING(100),
                 defaultValue : '회원',
                 allowNull: false,
             },
@@ -43,7 +43,7 @@ class User extends Sequelize.Model {
                 allowNull: false,
             },
             status:{
-                type: Sequelize.ENUM('일반'),
+                type: Sequelize.STRING,
                 defaultValue:'일반',
                 allowNull: false,
             }
