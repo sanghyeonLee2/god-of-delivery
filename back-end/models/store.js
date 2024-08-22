@@ -6,15 +6,17 @@ class Store extends Sequelize.Model {
             storeId:{
                 type: Sequelize.BIGINT,
                 allowNull: false,
+                primaryKey:true,
+                autoIncrement: true,
             },
             name:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
             type:{
-                type: Sequelize.ENUM('배달' ,'배민1','포장'),
+                type: Sequelize.INTEGER,
                 allowNull: false,
-                defaultValue:'배달'
+                defaultValue:0
             },
             category:{
                 type: Sequelize.STRING(20),
@@ -36,18 +38,24 @@ class Store extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: true,
             },
+            minDeliveryPrice:{
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
             deliveryTip:{
-                type: Sequelize.INTEGER(11),
+                type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue:0
             },
-            minDeliveryPrice:{
-                type: Sequelize.INTEGER(11),
+            minDeliveryTime:{
+                type: Sequelize.INTEGER,
                 allowNull: true,
+                defaultValue:null
             },
-            maxDeliveryPrice:{
-                type: Sequelize.INTEGER(11),
+            maxDeliveryTime:{
+                type: Sequelize.INTEGER,
                 allowNull: true,
+                defaultValue:null
             },
             rating:{
                 type: Sequelize.DECIMAL(2,1),
@@ -55,9 +63,14 @@ class Store extends Sequelize.Model {
                 defaultValue:0
             },
             dibsCount:{
-                type:Sequelize.INTEGER(11),
+                type:Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue:0
+            },
+            reviewCount:{
+              type:Sequelize.INTEGER,
+              allowNull:false,
+              defaultValue:0
             },
             operationHours:{
                 type:Sequelize.STRING,
@@ -80,14 +93,14 @@ class Store extends Sequelize.Model {
                 allowNull: false,
             },
             status:{
-                type: Sequelize.ENUM('일반'),
+                type: Sequelize.STRING,
                 defaultValue:'일반',
                 allowNull: false,
             }
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'Store',
             tableName: 'stores',
             paranoid: false,
