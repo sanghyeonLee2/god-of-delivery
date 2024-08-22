@@ -4,7 +4,7 @@ class Dib extends Sequelize.Model {
     static initate(sequelize) {
         Dib.init({
             userId: {
-                type: Sequelize.BIGINT,
+                type: Sequelize.STRING,
                 allowNull: false,
                 references: {
                     model: 'users', // User 모델 참조
@@ -39,6 +39,7 @@ class Dib extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
+            underscored:true,
             modelName: 'Dib',
             tableName: 'dibs',
             paranoid: false,
