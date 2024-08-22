@@ -1,11 +1,12 @@
 import React from 'react';
-import {AuthFormWrapper, FormElementDiv, SignInBottom, SignInBottomLeft, SignInBottomRight} from "./AuthPageFormLayout";
+import {AuthForm, FormElementDiv, SignInBottom, SignInBottomLeft, SignInBottomRight} from "./AuthPageFormLayout";
 import Label from "../../common/Label/Label";
 import Input from "../../common/Input/Input";
 
 function SignInForm(props) {
+
     return (
-        <AuthFormWrapper>
+        <AuthForm>
             <FormElementDiv>
                 <Label text={"아이디"} htmlFor={"user_name"}/>
                 <Input type={"text"} id={"user_name"}/>
@@ -24,7 +25,7 @@ function SignInForm(props) {
                 </SignInBottomRight>
             </SignInBottom>
             <Input id={"sign-up-btn"} type={"submit"}/>
-        </AuthFormWrapper>
+        </AuthForm>
     );
 }
 
