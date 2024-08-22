@@ -4,7 +4,7 @@ class User extends Sequelize.Model {
     static initate(sequelize) {
         User.init({
             userId:{
-                type: Sequelize.BIGINT,
+                type: Sequelize.STRING,
                 allowNull: false,
                 primaryKey: true,
             },
@@ -50,7 +50,7 @@ class User extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'User',
             tableName: 'users',
             paranoid: false,
