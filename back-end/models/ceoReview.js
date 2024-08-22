@@ -33,7 +33,7 @@ class CeoReview extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'CeoReview',
             tableName: 'ceoreviews',
             paranoid: false,
