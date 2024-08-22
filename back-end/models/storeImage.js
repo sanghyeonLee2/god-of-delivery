@@ -7,6 +7,7 @@ class StoreImage extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             storePictureUrl:{
                 type: Sequelize.TEXT,
@@ -28,9 +29,9 @@ class StoreImage extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'StoreImage',
-            tableName: 'storeimage',
+            tableName: 'storeimages',
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
