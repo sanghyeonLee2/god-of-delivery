@@ -5,9 +5,26 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 
+const {sequelize} = require('./models');
+
 dotenv.config();
+/* === Routes Require === */
+const signUpRoutes = require('./controllers/sign-up')
+const signInRoutes = require('./controllers/sign-in')
+const categoryRoutes = require('./controllers/category-info')
+
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+sequelize.sync({force:false})
+    .then(()=>{
+        console.log('DB 연결 성공')
+    })
+    .catch((err)=>{
+        console.error(err);
+    })
 
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -29,6 +46,11 @@ app.use(session({
 app.get('/', (req, res) => {
     res.send("접속 성공");
 })
+/* === Routes use === */
+app.use('/sign-up', signUpRoutes);
+app.use('/sign-in', signInRoutes);
+app.use('/category-info', categoryRoutes)
+
 
 app.use((req,res,next)=>{
     const err = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
