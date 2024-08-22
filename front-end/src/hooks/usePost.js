@@ -1,11 +1,11 @@
 import {useMutation} from "react-query"
-import {instance} from "../apis/utils/instance";
 import {useNavigate} from "react-router-dom";
+import {postUserApi} from "../apis/api/user";
 
 export const usePost = (url) => {
     const navigate = useNavigate()
     return useMutation(
-        () => instance.post(url), {
+        () => postUserApi(url), {
             onSuccess: () => {
                 console.log("성공")
                 switch (url) {
