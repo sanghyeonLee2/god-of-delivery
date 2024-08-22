@@ -21,15 +21,15 @@ router.get('/:type',async (req, res) => {
             })
         }
         if(stores == null){
-            res.status(200).send({
-                status: 200,
-                data: stores
-            });
-        }
-        else{
             res.status(401).send({
                 status: 401,
                 message: "Not Found"
+            });
+        }
+        else{
+            res.status(200).send({
+                status: 200,
+                data: stores
             })
         }
 
