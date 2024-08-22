@@ -7,6 +7,7 @@ class MenuOption extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             option:{
                 type: Sequelize.STRING,
@@ -36,12 +37,12 @@ class MenuOption extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
             modelName: 'MenuOption',
-            tableName: 'menuoption',
+            tableName: 'menuoptions',
         })
     }
     static associate(db){
