@@ -7,6 +7,7 @@ class Review extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             rating:{
                 type: Sequelize.INTEGER(1),
@@ -29,14 +30,14 @@ class Review extends Sequelize.Model {
                 allowNull: false,
             },
             status:{
-                type: Sequelize.ENUM('일반'),
+                type: Sequelize.STRING,
                 defaultValue:'일반',
                 allowNull: false,
             }
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'Review',
             tableName: 'reviews',
             paranoid: false,
@@ -48,7 +49,7 @@ class Review extends Sequelize.Model {
         db.Review.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Review.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
         db.Review.belongsTo(db.Menu,{foreignKey:'menuId', targetKey:'menuId'})
-        db.Review.hasOne(db.Review, {foreignKey: 'reviewId', sourceKey:'reviewId'})
+        db.Review.hasOne(db.CeoReview, {foreignKey: 'reviewId', sourceKey:'reviewId'})
     }
 }
 
