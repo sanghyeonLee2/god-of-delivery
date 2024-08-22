@@ -7,6 +7,7 @@ class Cart extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             quantity: {
                 type: Sequelize.INTEGER(11),
@@ -29,6 +30,7 @@ class Cart extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
+            underscored:true,
             modelName: "Cart",
             tableName: 'carts',
             paranoid: false,

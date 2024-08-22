@@ -7,6 +7,7 @@ class Order extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             paymentMethod: {
                 type: Sequelize.STRING,
@@ -36,7 +37,7 @@ class Order extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',

@@ -7,6 +7,7 @@ class Address extends Sequelize.Model {
               type: Sequelize.BIGINT,
               allowNull: false,
               primaryKey: true,
+                autoIncrement:true
             },
             address:{
                 type: Sequelize.STRING,
@@ -27,6 +28,7 @@ class Address extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
+            underscored:true,
             modelName: "Address",
             tableName: 'address',
             paranoid: false,

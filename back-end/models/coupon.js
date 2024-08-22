@@ -7,6 +7,7 @@ class Coupon extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement:true
             },
             name:{
                 type: Sequelize.STRING,
@@ -45,7 +46,7 @@ class Coupon extends Sequelize.Model {
         },{
             sequelize,
             timestamps: false,
-            underscored: false,
+            underscored: true,
             modelName: 'Coupon',
             tableName: 'coupons',
             paranoid: false,
