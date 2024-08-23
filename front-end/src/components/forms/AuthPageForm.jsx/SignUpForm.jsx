@@ -4,22 +4,24 @@ import {AuthForm, ErrorMsg, FormElementDiv} from "./AuthPageFormLayout";
 import Label from "../../common/Label/Label";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {userAuthValid} from "../../../validation/userSchema";
+import {signUpValid} from "../../../validation/userSchema";
 import {usePost} from "../../../hooks/usePost";
-import {Button} from "../../common/Button/Button";
-import useGet from "../../../hooks/useGet";
+import {DevTool} from "@hookform/devtools";
 
 function SignUpForm(props) {
-    const [getData, getIsError, refetch, status] = useGet(`/duplication`)
     const {
         register,
         handleSubmit,
-        getValues,
+        control,
         formState: {
             errors
         }
-    } = useForm({resolver: yupResolver(userAuthValid), context: {status}})
-
+    } = useForm({
+        mode: "onBlur",
+        reValidateMode: "onBlur",
+        resolver: yupResolver(signUpValid),
+    })
+    ///${watch("userId")}
     const {mutate: onSignUp} = usePost("/signup")
     return (
         <AuthForm onSubmit={handleSubmit((data) => onSignUp(data))}>
@@ -36,11 +38,6 @@ function SignUpForm(props) {
             <FormElementDiv>
                 <Label text={"아이디"} htmlFor={"user_id"}/>
                 <Input type={"text"} id={"user_id"} register={register("userId")}/>
-                <Button type={"button"} text={"중복확인"} onClick={() => {
-                    refetch()
-                    console.log(getData, ",", getIsError)
-                    //getValues().userId
-                }}/>
                 <ErrorMsg>{errors.userId?.message}</ErrorMsg>
             </FormElementDiv>
             <FormElementDiv>
@@ -54,6 +51,7 @@ function SignUpForm(props) {
                 <ErrorMsg>{errors.passwordCheck?.message}</ErrorMsg>
             </FormElementDiv>
             <Input id={"sign-up-btn"} type={"submit"}/>
+            <DevTool control={control}/>
         </AuthForm>
     );
 }
