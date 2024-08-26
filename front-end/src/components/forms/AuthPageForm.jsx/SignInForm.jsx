@@ -1,5 +1,12 @@
 import React from 'react';
-import {AuthForm, FormElementDiv, SignInBottom, SignInBottomLeft, SignInBottomRight} from "./AuthPageFormLayout";
+import {
+    AuthForm,
+    ErrorMsg,
+    FormElementDiv,
+    SignInBottom,
+    SignInBottomLeft,
+    SignInBottomRight
+} from "./AuthPageFormLayout";
 import Label from "../../common/Label/Label";
 import Input from "../../common/Input/Input";
 import {useForm} from "react-hook-form";
@@ -17,16 +24,18 @@ function SignInForm(props) {
     } = useForm({
         resolver: yupResolver(signInValid),
     })
-    const {mutate: onSignIn} = usePost("/sign-in")
+    const {mutate: onSignIn} = usePost("auth/sign-in")
     return (
         <AuthForm onSubmit={handleSubmit((data) => onSignIn(data))}>
             <FormElementDiv>
                 <Label text={"아이디"} htmlFor={"user_name"}/>
                 <Input type={"text"} id={"user_name"} register={register("userId")}/>
+                <ErrorMsg>{errors.userId?.message}</ErrorMsg>
             </FormElementDiv>
             <FormElementDiv>
                 <Label text={"비밀번호"} htmlFor={"user_phone_num"}/>
                 <Input type={"password"} id={"user_phone_num"} register={register("password")}/>
+                <ErrorMsg>{errors.password?.message}</ErrorMsg>
             </FormElementDiv>
             <SignInBottom>
                 <SignInBottomLeft>
