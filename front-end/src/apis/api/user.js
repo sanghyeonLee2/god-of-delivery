@@ -1,13 +1,10 @@
 import {authInstance, instance} from "../utils/instance";
 
 export const getUserApi = async (url) => {
-    console.log(url)
     try {
-        console.log("Asd")
         const res = await instance.get(url)
-        console.log(res)
-        if (res.data.status === 200) {
-            console.log(res.data)
+        if (res.status === 200) {
+            return res.data.available
         }
     } catch (err) {
         console.log(err)
@@ -15,8 +12,9 @@ export const getUserApi = async (url) => {
 }
 
 export const postUserApi = async (url) => {
+    console.log("ASDf")
     try {
-        return await authInstance.post(url)
+        return await instance.post(url)
     } catch (err) {
         console.log(err)
     }
@@ -24,7 +22,12 @@ export const postUserApi = async (url) => {
 
 export const postReissue = async (url) => {
     try {
-        return await authInstance.post(url)
+        return await authInstance.post(url, {}, {
+            headers: {
+                //Authorization: `Bearer ${localStorage.getItem("refresh-token")}`
+                Authorization: `Bearer refresh-token`
+            }
+        })
     } catch (err) {
         console.log(err)
     }
