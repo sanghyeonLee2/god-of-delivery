@@ -2,24 +2,26 @@ import {useMutation} from "react-query"
 import {useNavigate} from "react-router-dom";
 import {postUserApi} from "../apis/api/user";
 import {useSetRecoilState} from "recoil";
-import {isSigInState} from "../recoil/user/atoms";
+import {isSignInState, userInfoState} from "../recoil/user/atoms";
 
 export const usePost = (url) => {
-    const setSignIn = useSetRecoilState(isSigInState)
+
+    const setSignIn = useSetRecoilState(isSignInState)
+    const setUserInfo = useSetRecoilState(userInfoState)
     const navigate = useNavigate()
     return useMutation(
         () => postUserApi(url), {
-            onSuccess: (key, value) => {
-                console.log("성공")
+            onSuccess: (key) => {
                 switch (url) {
-                    case "/signup":
+                    case "auth/sign-up":
                         navigate("/sign-in")
                         alert("회원가입 성공")
                         break
-                    case "/sign-in":
+                    case "auth/sign-in":
                         setSignIn(true)
-                        localStorage.setItem("access-token", value)
-                        localStorage.setItem("refresh-token", value)
+                        setUserInfo(key.data.userInfo)
+                        localStorage.setItem("access-token", key.data.accessToken)
+                        localStorage.setItem("refresh-token", key.data.refreshToken)
                         navigate("/")
                         break
                     default:
