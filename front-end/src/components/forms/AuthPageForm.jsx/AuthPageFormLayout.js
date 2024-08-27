@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
-export const AuthFormWrapper = styled.form`
+export const AuthForm = styled.form`
   padding-top: 28px;
 
   input {
@@ -35,3 +35,5 @@ export const SignInBottomRight = styled.div`
   float: right`
 export const FormElementDiv = styled.div`
   margin-top: 10px`
+export const ErrorMsg = styled.small`
+  color: red`

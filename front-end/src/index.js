@@ -6,7 +6,10 @@ import SignUpPage from "./pages/AuthPage/SignUpPage";
 import SignInPage from "./pages/AuthPage/SIgnInPage";
 import HomePage from "./pages/HomePage.js/HomePage";
 import CategoryInfo from "./pages/CategoryInfoPage/CategoryInfo";
+import {QueryClient, QueryClientProvider} from "react-query"
+import {RecoilRoot} from "recoil";
 
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
     path: "/",
@@ -30,7 +33,11 @@ const router = createBrowserRouter([{
 
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router}/>
+        <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+                <RouterProvider router={router}/>
+            </QueryClientProvider>
+        </RecoilRoot>
     </React.StrictMode>
 );
 
