@@ -12,7 +12,6 @@ export const getUserApi = async (url) => {
 }
 
 export const postUserApi = async (url) => {
-    console.log("ASDf")
     try {
         return await instance.post(url)
     } catch (err) {
@@ -24,11 +23,10 @@ export const postReissue = async (url) => {
     try {
         return await authInstance.post(url, {}, {
             headers: {
-                //Authorization: `Bearer ${localStorage.getItem("refresh-token")}`
-                Authorization: `Bearer refresh-token`
+                Authorization: `Bearer ${localStorage.getItem("refresh-token")}`
             }
         })
     } catch (err) {
-        console.log(err)
+        console.log(err, "여기")
     }
 }
