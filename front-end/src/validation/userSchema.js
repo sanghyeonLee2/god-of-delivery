@@ -7,13 +7,13 @@ export const signUpValid = yup.object({
         .min(6, "6자 이상 입력해주세요.")
         .max(15, "15자 이하 입력해주세요."),
     userId: yup.string()
-        .required("아이디을 입력해주세요.")
+        .required("아이디를 입력해주세요.")
         .min(2, "2자 이상 입력해주세요.")
         .max(8, "8자 이하 입력해주세요.")
         .test("requiredCheck", "아이디가 이미 존재합니다",
             ((value) => {
                 if (value) {
-                    return getUserApi(`/auth/sign-up/check-id/123`)
+                    return getUserApi(`/auth/sign-up/check-id/${value}`)
                 }
             }))
     ,
