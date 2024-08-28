@@ -16,22 +16,22 @@ function RestaurantBox({restaurantList}) {
             <RestaurantInner>
                 <RestaurantLogo></RestaurantLogo>
                 <RestaurantInfoWrapper>
-                    <RestaurantTitle>{restaurantList?.title}</RestaurantTitle>
+                    <RestaurantTitle>{restaurantList?.storeName}</RestaurantTitle>
                     <RestaurantInfoUl>
                         <li><RestaurantAboutText name={"rating"}>{restaurantList?.rating}</RestaurantAboutText></li>
                         &nbsp;|&nbsp;
-                        <li><RestaurantAboutText>리뷰 {restaurantList?.review}</RestaurantAboutText></li>
+                        <li><RestaurantAboutText>찜 {restaurantList?.dipsCnt}</RestaurantAboutText></li>
                         &nbsp;|&nbsp;
-                        <li><RestaurantAboutText>사장님 리뷰 {restaurantList?.bossReview}</RestaurantAboutText></li>
+                        <li><RestaurantAboutText>리뷰 {restaurantList?.reviewCnt}</RestaurantAboutText></li>
                     </RestaurantInfoUl>
                     <RestaurantInfoUl>
                         <li><RestaurantAboutText name={"pass"}>배달패스</RestaurantAboutText></li>
                         &nbsp;|&nbsp;
-                        <li><RestaurantAboutText name={"minimum"}>{restaurantList?.minPrice}원 이상
+                        <li><RestaurantAboutText name={"minimum"}>{restaurantList?.minDeliveryPrice}원 이상
                             배달</RestaurantAboutText></li>
                         <AverageTimeLi>
                             <small>
-                                {restaurantList?.averTime}
+                                {restaurantList?.operationHours}
                             </small>
                         </AverageTimeLi>
                     </RestaurantInfoUl>
