@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage.js/HomePage";
 import CategoryInfo from "./pages/CategoryInfoPage/CategoryInfo";
 import {QueryClient, QueryClientProvider} from "react-query"
 import {RecoilRoot} from "recoil";
+import Loading from "./components/common/Loading/Loading";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,7 +29,12 @@ const router = createBrowserRouter([{
         }, {
             path: "category-info/:id",
             element: <CategoryInfo/>
-        }]
+        },
+        {
+            path: "loading",
+            element: <Loading/>
+        }
+    ]
 }])
 
 root.render(
