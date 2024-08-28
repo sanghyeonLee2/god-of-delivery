@@ -11,6 +11,14 @@ export const getUserApi = async (url) => {
     }
 }
 
+export const getApi = async (url) => {
+    try {
+        return await instance.get(url)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export const postUserApi = async (url) => {
     try {
         return await instance.post(url)
