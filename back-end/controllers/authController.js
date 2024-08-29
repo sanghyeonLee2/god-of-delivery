@@ -56,6 +56,7 @@ exports.postSignUp = async (req, res) => {
         const user = await User.findOne({
             where: {
                 userId: req.body.userId,
+
             },
             attributes: ['userId', 'password', 'name', 'phone', 'currentAddress', 'grade', 'role'],
         })
@@ -158,7 +159,7 @@ exports.getRefreshReissued = async (req, res) => {
     } else {
         res.status(403).send({
             status: 403,
-            message: "Access, Refresh Token이 Header에 없습니다."
+            message: "Access, Refresh Token이 Header에 없음."
         })
     }
 }
