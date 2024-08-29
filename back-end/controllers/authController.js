@@ -159,7 +159,7 @@ exports.getRefreshReissued = async (req, res) => {
     } else {
         res.status(403).send({
             status: 403,
-            message: "Access, Refresh Token이 Header에 없음."
+            message: "Access, Refresh Token이 Header에 없습니다."
         })
     }
 }
