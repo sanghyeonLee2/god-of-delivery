@@ -5,7 +5,7 @@ exports.verifyToken = (req, res, next) => {
     console.log(req.headers);
     if(req.headers.authorization) {
         const token = req.headers.authorization.split('Bearer ')[1];
-        const result = jwtUtil.verifyToken.access(token)
+        const result = jwtUtil.verifyToken().access(token)
         if(result.verified){
             req.userId = result.userId
             next()
