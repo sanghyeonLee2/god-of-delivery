@@ -15,6 +15,7 @@ dotenv.config();
 const indexRoutes = require('./routes/indexRoutes')
 const authRoutes = require('./routes/authRoutes');
 const storeRoutes = require('./routes/storeRoutes');
+const dibRoutes = require('./routes/dibRoutes');
 
 /* === Express App 속성 설정 === */
 const app = express();
@@ -52,6 +53,7 @@ app.use(session({
 app.use('/', indexRoutes)
 app.use('/auth', authRoutes)
 app.use('/stores', storeRoutes)
+app.use('/dib', dibRoutes)
 
 /* === 404 에러 처리 미들웨어 === */
 app.use(notFound)
