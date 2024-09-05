@@ -11,6 +11,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.2",
+    "react-kakao-maps-sdk": "^1.1.27",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
@@ -44,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.5",
     "@hookform/devtools": "^4.3.1"
   }
 }
