@@ -2,20 +2,12 @@ import React from 'react';
 import {
     HeaderMainText,
     HeaderTextWrapper,
-    LocationBtn,
-    LocationBtnIcon,
-    ResetIcon,
     SearchBoxInner,
     SearchBoxMainText,
     SearchBoxOuter,
-    SearchBoxTextOuter,
-    SearchForm,
-    SearchInputWrapper
+    SearchBoxTextOuter
 } from "./SearchSectionLayout";
-import locationIcon from "../../../assets/img/my_location.png";
-import resetIcon from "../../../assets/img/reset.png";
-import {Button} from "../../common/Button/Button";
-import Input from "../../common/Input/Input";
+import SearchForm from "../../forms/SearchForm/SearchForm";
 
 function SearchSection(props) {
     return (
@@ -31,16 +23,8 @@ function SearchSection(props) {
                         </SearchBoxMainText>
                     </HeaderTextWrapper>
                 </SearchBoxTextOuter>
-                <SearchInputWrapper>
-                    <LocationBtn type={"button"}>
-                        <LocationBtnIcon src={locationIcon} alt="구글 아이콘"/>
-                    </LocationBtn>
-                    <SearchForm>
-                        <Input type={"text"}/>
-                        <ResetIcon src={resetIcon} alt="구글 아이콘"/>
-                        <Button type={"submit"} text={"검색"}/>
-                    </SearchForm>
-                </SearchInputWrapper>
+                <SearchForm/>
+                
             </SearchBoxInner>
         </SearchBoxOuter>
     );
