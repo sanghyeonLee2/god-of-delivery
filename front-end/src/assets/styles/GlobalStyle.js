@@ -30,13 +30,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    height: 100%;
+    height: 900px;
   }
 
   button {
-    background-color: #FF4F6D;
-    border-style: none;
-    border-radius: 4px;
     cursor: pointer;
   }
 
@@ -52,9 +49,5 @@ export const GlobalStyle = createGlobalStyle`
   .App {
     min-height: 100%;
     padding-bottom: 180px;
-  }
-
-  #root {
-    height: 900px;
   }
 `
