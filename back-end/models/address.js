@@ -24,6 +24,24 @@ class Address extends Sequelize.Model {
                 type: Sequelize.ENUM('일반'),
                 defaultValue:'일반',
                 allowNull: false,
+            },
+            betterAddress:{
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            category:{
+                type: Sequelize.STRING,
+                allowNull: false,
+                defaultValue:'우리집'
+            },
+            content:{
+                type: Sequelize.STRING,
+                allowNull: true,
+            },
+            toRider:{
+                type: Sequelize.STRING,
+                allowNull: false,
+                defaultValue:'문 앞에 두고 벨 눌러주세요'
             }
         },{
             sequelize,
