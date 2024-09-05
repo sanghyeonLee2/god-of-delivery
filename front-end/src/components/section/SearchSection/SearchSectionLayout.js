@@ -28,48 +28,7 @@ export const SearchBoxMainText = styled.p`
   color: white;
 `
 
-
 export const HeaderTextWrapper = styled.section`
   text-align: center;
   margin-top: 12px;
-`
-export const SearchInputWrapper = styled.div`
-  margin-top: 33px;
-  height: 50px;
-  ${flexLayout("space-between")}
-`
-
-export const LocationBtn = styled.button`
-  background-color: white;
-  width: 11%;
-`
-
-export const LocationBtnIcon = styled.img`
-  ${elementSize("33px", "33px")}
-`
-export const SearchForm = styled.form`
-  position: relative;
-  ${flexLayout};
-  width: 87%;
-
-  input {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border: 0;
-    ${elementSize("86%", "100%")};
-  }
-
-  button {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    ${elementSize("14%", "100%")};
-  }
-`
-
-export const ResetIcon = styled.img`
-  position: absolute;
-  left: 390px;
-  top: 10px;
-  cursor: pointer;
-  ${elementSize("31px", "31px")}
 `
