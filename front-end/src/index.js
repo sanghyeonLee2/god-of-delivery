@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -9,6 +9,7 @@ import CategoryInfo from "./pages/CategoryInfoPage/CategoryInfo";
 import {QueryClient, QueryClientProvider} from "react-query"
 import {RecoilRoot} from "recoil";
 import Loading from "./components/common/Loading/Loading";
+import SelectAddress from "./pages/SelectAddressPage/SelectAddress";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,6 +30,9 @@ const router = createBrowserRouter([{
         }, {
             path: "category-info/:id",
             element: <CategoryInfo/>
+        }, {
+            path: "select-address",
+            element: <SelectAddress/>,
         },
         {
             path: "loading",
@@ -41,7 +45,9 @@ root.render(
     <React.StrictMode>
         <RecoilRoot>
             <QueryClientProvider client={queryClient}>
-                <RouterProvider router={router}/>
+                <Suspense fallback={<Loading/>}>
+                    <RouterProvider router={router}/>
+                </Suspense>
             </QueryClientProvider>
         </RecoilRoot>
     </React.StrictMode>
