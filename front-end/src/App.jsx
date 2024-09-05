@@ -1,20 +1,18 @@
-import {Outlet} from "react-router-dom";
+import React from "react";
 import {GlobalStyle} from "./assets/styles/GlobalStyle";
 import {Header} from "./components/common/Header/Header";
+import {Outlet} from "react-router-dom";
 import Footer from "./components/common/Footer/Footer";
-import React from "react";
-import {ReactQueryDevtools} from "react-query/devtools"
 
 function App() {
     return (
         <>
             <div className="App">
-                <GlobalStyle/>
                 <Header/>
+                <GlobalStyle/>
                 <Outlet/>
             </div>
             <Footer/>
-            <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </>
     );
 }
