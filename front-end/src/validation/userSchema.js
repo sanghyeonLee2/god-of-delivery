@@ -39,3 +39,9 @@ export const signInValid = yup.object({
             .max(20, "20자 이하 입력해주세요."),
     }
 )
+export const addressValid = yup.object({
+        detailAddress: yup.string()
+            .required("상세주소를 입력해주세요.")
+            .max(20, "20자 이하 입력해주세요."),
+    }
+)
