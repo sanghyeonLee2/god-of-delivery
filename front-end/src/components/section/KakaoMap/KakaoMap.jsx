@@ -6,11 +6,10 @@ import {addressState, coordsState} from "../../../recoil/map/atoms";
 function KakaoMap() {
     const address = useRecoilValue(addressState)
     const [coords, setCoords] = useRecoilState(coordsState)
-    console.log(address)
     return (
         <Map
             center={coords.center}
-            style={{width: '80%', height: '60%', margin: "0 auto"}}
+            style={{width: '80%', height: '40%', margin: "0 auto"}}
             level={3}
             onClick={(_, e) => {
                 const latLng = e.latLng
