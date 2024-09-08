@@ -3,7 +3,7 @@ import {flexLayout} from "../../../assets/styles/Mixin";
 
 export const ModalOuter = styled.div`
   width: 720px;
-  height: 650px;
+  max-height: 900px;
   background-color: bisque;
   position: fixed;
   top: 0;
@@ -16,10 +16,10 @@ export const ModalOuter = styled.div`
 export const ModalTop = styled.div`
   margin: 0 auto;
   width: 580px;
-  height: 12%;`
+  height: 7%;`
 
-export const MapAddressWrapper = styled.div`
-  height: 22%;
+export const MapAddressForm = styled.form`
+  height: 47%;
   width: 80%;
   margin: 0 auto;
   flex-direction: column;
