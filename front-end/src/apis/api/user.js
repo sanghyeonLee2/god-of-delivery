@@ -27,6 +27,15 @@ export const postUserApi = async (url) => {
     }
 }
 
+export const postAuthUserApi = async (url) => {
+    try {
+        return await authInstance.post(url)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
 export const postReissue = async (url) => {
     try {
         return await authInstance.post(url, {}, {
