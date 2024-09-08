@@ -28,7 +28,7 @@ export const SearchInputForm = styled.form`
   }
 `
 export const SearchInputWrapper = styled.div`
-  margin-top: 33px;
+  margin-top: 25px;
   height: 50px;
   ${flexLayout("space-between")}
 `
