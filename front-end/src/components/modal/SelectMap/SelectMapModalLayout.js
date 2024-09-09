@@ -29,8 +29,3 @@ export const MapAddressForm = styled.form`
     width: 100%;
   }
 `
-export const RoadAddressWrapper = styled.strong`
-`
-
-export const AddressWrapper = styled.p`
-`
