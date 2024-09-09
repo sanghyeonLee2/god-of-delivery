@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {postAuthUserApi, postUserApi} from "../apis/api/user";
 import {useSetRecoilState} from "recoil";
 import {isSignInState, userInfoState} from "../recoil/user/atoms";
+import {isModalOpenState} from "../recoil/flag/atoms";
 
 export const usePost = (url) => {
 
@@ -42,12 +43,14 @@ export const usePost = (url) => {
 }
 
 export const useAuthPost = (url) => {
+    const setIsModalOpen = useSetRecoilState(isModalOpenState)
     return useMutation(
         () => postAuthUserApi(url), {
             onSuccess: (key) => {
                 switch (url) {
                     case "customer/address":
                         alert("성공")
+                        setIsModalOpen(false)
                         break
                     default:
                         alert("알 수 없는 오류")
