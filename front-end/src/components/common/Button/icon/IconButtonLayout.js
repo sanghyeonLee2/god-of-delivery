@@ -7,5 +7,4 @@ export const IconButtonWrapper = styled.button`
   padding: 3px;
   margin: 3px 8px;
   background-color: transparent;
-  float: right;
 `
