@@ -20,7 +20,7 @@ export const usePost = (url) => {
                         break
                     case "auth/sign-in":
                         setSignIn(true)
-                        setUserInfo(key.data.userInfo)
+                        setUserInfo(key.data.data)
                         localStorage.setItem("access-token", key.data.accessToken)
                         localStorage.setItem("refresh-token", key.data.refreshToken)
                         navigate("/")
