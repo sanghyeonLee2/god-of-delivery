@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {flexLayout} from "../../../assets/styles/Mixin";
 
 
 export const HeaderOuter = styled.header`
@@ -7,14 +8,10 @@ export const HeaderOuter = styled.header`
 `
 
 export const HeaderInner = styled.div`
-  max-width: 55%;
+  ${flexLayout("space-between", "center")};
+  max-width: 1100px;
   margin: 0 auto;
   height: 100%;
-
-  button {
-    float: right;
-    margin-top: 27px;
-    margin-left: 11px;
-  }
 `
-
+export const HeaderAddress = styled.div`
+`
