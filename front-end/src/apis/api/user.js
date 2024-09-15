@@ -18,6 +18,14 @@ export const getApi = async (url) => {
         console.log(err)
     }
 }
+export const getAuthApi = async (url) => {
+    try {
+        return await authInstance.get(url)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 
 export const postUserApi = async (url) => {
     try {
