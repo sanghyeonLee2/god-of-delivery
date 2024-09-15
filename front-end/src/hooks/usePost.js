@@ -2,13 +2,13 @@ import {useMutation} from "react-query"
 import {useNavigate} from "react-router-dom";
 import {postAuthUserApi, postUserApi} from "../apis/api/user";
 import {useSetRecoilState} from "recoil";
-import {isSignInState, userInfoState} from "../recoil/user/atoms";
+import {isSignInState} from "../recoil/user/atoms";
 import {isModalOpenState} from "../recoil/flag/atoms";
 
 export const usePost = (url) => {
 
     const setSignIn = useSetRecoilState(isSignInState)
-    const setUserInfo = useSetRecoilState(userInfoState)
+
     const navigate = useNavigate()
     return useMutation(
         () => postUserApi(url), {
@@ -20,7 +20,6 @@ export const usePost = (url) => {
                         break
                     case "auth/sign-in":
                         setSignIn(true)
-                        setUserInfo(key.data.data)
                         localStorage.setItem("access-token", key.data.accessToken)
                         localStorage.setItem("refresh-token", key.data.refreshToken)
                         navigate("/")
