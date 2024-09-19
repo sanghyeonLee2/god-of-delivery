@@ -14,12 +14,13 @@ export const usePost = (url) => {
         () => postUserApi(url), {
             onSuccess: (key) => {
                 switch (url) {
-                    case "auth/sign-up":
+                    case "signUp":
                         navigate("/sign-in")
                         alert("회원가입 성공")
                         break
-                    case "auth/sign-in":
+                    case "signIn":
                         setSignIn(true)
+                        console.log(key)
                         localStorage.setItem("access-token", key.data.accessToken)
                         localStorage.setItem("refresh-token", key.data.refreshToken)
                         navigate("/")
@@ -28,6 +29,7 @@ export const usePost = (url) => {
                         alert("성공")
                         break
                     default:
+                        console.log(url)
                         alert("알 수 없는 오류")
                         break
                 }
