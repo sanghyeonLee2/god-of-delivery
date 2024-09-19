@@ -14,7 +14,7 @@ function RestaurantBox({restaurantList}) {
     return (
         <RestaurantOuter>
             <RestaurantInner>
-                <RestaurantLogo></RestaurantLogo>
+                <RestaurantLogo/>
                 <RestaurantInfoWrapper>
                     <RestaurantTitle>{restaurantList?.storeName}</RestaurantTitle>
                     <RestaurantInfoUl>
