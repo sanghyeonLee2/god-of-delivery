@@ -2,7 +2,8 @@ import axios from "axios";
 import {postReissue} from "../api/user";
 
 //const API_KEY = process.env.REACT_APP_API
-const API_KEY = process.env.REACT_APP_POSTMAN_MOCK// 테스트 용
+//const API_KEY = process.env.REACT_APP_POSTMAN_MOCK// postman
+const API_KEY = process.env.REACT_APP_JSON_SERVER// 테스트 용
 
 
 export const instance = axios.create({
