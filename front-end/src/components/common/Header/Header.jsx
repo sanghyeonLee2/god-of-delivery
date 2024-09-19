@@ -1,5 +1,5 @@
 import React from 'react';
-import {HeaderInner, HeaderOuter} from "./HeaderLayout";
+import {AuthBtnWrap, HeaderInner, HeaderOuter} from "./HeaderLayout";
 import {MainButton} from "../Button/main/MainButton";
 
 import {Link} from "react-router-dom";
@@ -28,10 +28,10 @@ export function Header({currentAddress}) {
                                 setIsSignIn(false)
                             }
                         }/> :
-                        <div>
+                        <AuthBtnWrap>
                             <MainButton type={"button"} text={"회원가입"} onClick={() => navigate("sign-up")}/>
                             <MainButton type={"button"} text={"로그인"} onClick={() => navigate("sign-in")}/>
-                        </div>}
+                        </AuthBtnWrap>}
                 </HeaderInner>
             </HeaderOuter>
             <SearchSection/>
