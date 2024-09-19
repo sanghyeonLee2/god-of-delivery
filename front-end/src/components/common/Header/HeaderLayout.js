@@ -15,3 +15,10 @@ export const HeaderInner = styled.div`
 `
 export const HeaderAddress = styled.div`
 `
+export const AuthBtnWrap = styled.section`
+  width: 270px;
+
+  button {
+    margin-left: 5px;
+  }
+`
