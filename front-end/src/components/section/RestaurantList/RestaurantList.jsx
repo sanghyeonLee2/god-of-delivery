@@ -9,7 +9,6 @@ import {sortingState} from "../../../recoil/search/atoms";
 function RestaurantList({listType, categoryId}) {
     const [data, isError, status, isLoading] = useGet("stores/busan/sasang-gu/one-serve")
     const sorting = useRecoilValue(sortingState)
-    console.log("zvc")
     if (isLoading)
         return <Loading/>
     return (
