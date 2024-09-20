@@ -6,17 +6,17 @@ import {postReissue} from "../api/user";
 const API_KEY = process.env.REACT_APP_JSON_SERVER// 테스트 용
 
 class BaseApi {
-    constructor() {
-        this.axiosOption = {
-            baseURL: API_KEY,
-            headers: {
-                "Content-Type": "application/json",
-            }
+    //ES2022부터 constructor 불필요
+    axiosOption = {
+        baseURL: API_KEY,
+        headers: {
+            "Content-Type": "application/json",
         }
-        this.instance = axios.create(
-            this.axiosOption
-        )
     }
+    instance = axios.create(
+        this.axiosOption
+    )
+
 
     getInstance() {
         return this.instance
