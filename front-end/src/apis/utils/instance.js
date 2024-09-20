@@ -1,5 +1,5 @@
 import axios from "axios";
-import {postReissue} from "../api/user";
+import {reissueApi} from "../api/user";
 
 //const API_KEY = process.env.REACT_APP_API
 //const API_KEY = process.env.REACT_APP_POSTMAN_MOCK// postman
@@ -24,27 +24,25 @@ class BaseApi {
 
 
     getAuthInstance() {
-        console.log(this.axiosOption)
         this.axiosOption.headers.Authorization = this.appendToken()
-        console.log(this.instance)
         this.authInterceptor()
         return this.instance
     }
 
     appendToken() {
-        const tmpToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkZiIsImlhdCI6MTcyNDY3Njc4OCwiZXhwIjoxNzI0Njc4NTg4fQ.oGqFkk5loQ9s7a48p6D5c-UiYspLuj6OLQMxTvpM01I"
-        return `Bearer ${tmpToken}`
+        const tmpAccess = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkZiIsImlhdCI6MTcyNDY3Njc4OCwiZXhwIjoxNzI0Njc4NTg4fQ.oGqFkk5loQ9s7a48p6D5c-UiYspLuj6OLQMxTvpM01I"
+        return `Bearer ${tmpAccess}`
     }
 
     authInterceptor() {
         return this.instance.interceptors.response.use(
             async (response) => {
-                if (response.data.status === 200 || response.data.status === 201) {
+                if (response.status === 200) {
                     return response
                 }
             }, async (err) => {
                 if (err.response.status === 401) {
-                    const result = await postReissue("/auth/sign-in/reissue")
+                    const result = await reissueApi("/auth/sign-in/reissue")
                     /*localStorage.setItem("access-token", result.data.accessToken)
                       localStorage.setItem("refresh-token", result.data.refreshToken)*/
                     /*         err.response.accessToken = result.data.accessToken
@@ -65,7 +63,10 @@ export const authInstance = () => {
 }
 
 export const instance = () => {
-    return new BaseApi().getInstance()
+    console.log("aFDDAS")
+    const q = new BaseApi().getInstance()
+    console.log(q)
+    return q
 }
 
 
