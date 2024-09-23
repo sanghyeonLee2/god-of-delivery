@@ -7,7 +7,7 @@ import {useRecoilValue} from "recoil";
 import {sortingState} from "../../../recoil/search/atoms";
 
 function RestaurantList({listType, categoryId}) {
-    const [data, isError, status, isLoading] = useGet("stores/busan/sasang-gu/one-serve")
+    const [data, isError, status, isLoading] = useGet("stores")
     const sorting = useRecoilValue(sortingState)
     if (isLoading)
         return <Loading/>
