@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
-function Input({type, id, register}) {
+const Input = forwardRef(({type, id, placeholder, onClick, register}, ref) => {
     return (
-        <input type={type} id={id} {...register}/>
+        <input type={type}
+               id={id}
+               placeholder={placeholder}
+               onClick={onClick}
+               ref={ref}
+               {...register}
+        />
     );
-}
+})
 
 export default Input;
