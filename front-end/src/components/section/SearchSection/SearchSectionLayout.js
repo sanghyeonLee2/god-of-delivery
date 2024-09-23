@@ -25,10 +25,11 @@ export const HeaderMainText = styled.p`
 export const SearchBoxMainText = styled.p`
   font-size: larger;
   padding-top: 10px;
+  margin-bottom: 20px;
   color: white;
 `
 
-export const HeaderTextWrapper = styled.section`
+export const HeaderTextWrap = styled.section`
   text-align: center;
   margin-top: 12px;
 `
