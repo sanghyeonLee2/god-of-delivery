@@ -1,5 +1,5 @@
 import React from 'react';
-import {MapAddressForm, ModalOuter, ModalTop} from "./SelectMapModalLayout";
+import {MapAddressForm, ModalInner, ModalOuter} from "./SelectMapModalLayout";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import IconButton from "../../common/Button/icon/IconButton";
@@ -10,7 +10,7 @@ import AdditionalAddress from "../../section/AdditionalAddressInfo/AdditionalAdd
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {addressValid} from "../../../validation/userSchema";
-import {useAuthPost} from "../../../hooks/usePost";
+import {usePost} from "../../../hooks/usePost";
 import AddressInfo from "../../section/AddressInfo/AddressInfo";
 
 function SelectMapModal(props) {
@@ -19,21 +19,23 @@ function SelectMapModal(props) {
         mode: "onBlur",
         resolver: yupResolver(addressValid),
     });
-    const {mutate: onAddressRegister} = useAuthPost("customer/address")
+    const {mutate: onAddressRegister} = usePost("address", true)
     return (
         <ModalOuter>
-            <IconButton type={"button"} onClick={() => setIsModalOpen(false)}/>
-            <ModalTop>
+            <ModalInner>
+                <IconButton type={"button"} onClick={() => setIsModalOpen(false)}/>
                 <SearchForm/>
-            </ModalTop>
-            <KakaoMap/>
-            <FormProvider {...methods}>
-                <MapAddressForm onSubmit={methods.handleSubmit((data) => onAddressRegister(data))}>
-                    <AddressInfo/>
-                    <AdditionalAddress/>
-                    <MainButton type={"submit"} text={"등록"}/>
-                </MapAddressForm>
-            </FormProvider>
+                <KakaoMap/>
+                <FormProvider {...methods}>
+                    <MapAddressForm onSubmit={methods.handleSubmit((data) =>
+                        onAddressRegister(data)
+                    )}>
+                        <AddressInfo/>
+                        <AdditionalAddress/>
+                        <MainButton type={"submit"} text={"등록"}/>
+                    </MapAddressForm>
+                </FormProvider>
+            </ModalInner>
         </ModalOuter>
     );
 }
