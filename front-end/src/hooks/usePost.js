@@ -39,8 +39,5 @@ export const usePost = (url, isAuth = false) => {
             onError: () => {
                 console.log("실패")
             },
-            onSettled: () => {
-                console.log("결과에 상관없이 실행")
-            }
         })
 }
