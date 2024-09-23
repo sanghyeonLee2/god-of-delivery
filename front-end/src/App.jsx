@@ -12,15 +12,13 @@ function App() {
     const isSignIn = useRecoilValue(isSignInState)
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     useEffect(() => {
-        if (!isSignIn) {
-            return
-        }
         const fetchData = async () => {
             const {data} = await authGetApi("me")
             setUserInfo(data)
         }
         fetchData()
-    }, []);
+    }, [isSignIn, setUserInfo]);
+
     return (
         <>
             <div className="App">
