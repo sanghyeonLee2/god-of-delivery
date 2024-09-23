@@ -6,19 +6,19 @@ import RadioGroup from "../../common/RadioGroup/RadioGroup";
 import {useFormContext} from "react-hook-form";
 import {useRecoilValue} from "recoil";
 import {addressState} from "../../../recoil/map/atoms";
-import {AddressWrapper, RoadAddressWrapper} from "./AddresInfoLayout";
+import {AddressInfoWrap, AddressP, RoadAddressStrong} from "./AddresInfoLayout";
 
 function AddressInfo(props) {
     const {formState: {errors}} = useFormContext()
     const addressValue = useRecoilValue(addressState);
     return (
-        <>
-            <RoadAddressWrapper>
-                {addressValue?.roadAddress}
-            </RoadAddressWrapper>
-            <AddressWrapper>
-                {addressValue?.addressName}
-            </AddressWrapper>
+        <AddressInfoWrap>
+            <RoadAddressStrong>
+                {addressValue?.roadInfo}
+            </RoadAddressStrong>
+            <AddressP>
+                {addressValue?.detailAddress}
+            </AddressP>
             <MainInput type={"text"} placeholder={"상세주소를 입력해 주세요."} reigterName={"detailAddress"}/>
             <ErrorMsg>{errors.detailAddress?.message}</ErrorMsg>
             <RadioGroup>
@@ -32,7 +32,7 @@ function AddressInfo(props) {
                     직접 입력
                 </Radio>
             </RadioGroup>
-        </>
+        </AddressInfoWrap>
     );
 }
 
