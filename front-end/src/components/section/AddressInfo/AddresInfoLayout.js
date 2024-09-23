@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-export const RoadAddressWrapper = styled.strong`
+export const RoadAddressStrong = styled.strong`
 `
 
-export const AddressWrapper = styled.p`
+export const AddressP = styled.p`
 `
+
+export const AddressInfoWrap = styled.div`
+  margin-top: 20px`
