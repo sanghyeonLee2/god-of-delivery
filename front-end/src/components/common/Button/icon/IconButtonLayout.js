@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const IconButtonWrapper = styled.button`
-  width: 40px;
-  height: 40px;
+export const IconBtnWrap = styled.button`
+  width: 28px;
+  height: 28px;
   border: 0;
-  padding: 3px;
-  margin: 3px 8px;
   background-color: transparent;
+  padding: 0;
+  margin: 4px 0 0 5px;
 `
