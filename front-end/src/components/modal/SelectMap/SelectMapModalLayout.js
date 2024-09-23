@@ -1,31 +1,33 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+
 
 export const ModalOuter = styled.div`
-  width: 720px;
-  max-height: 900px;
-  background-color: bisque;
+  padding-top: 10px;
+  ${flexLayout("center")}
+  ${elementSize("100vw", "100vh")}
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  margin: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 100;
 `
-
-export const ModalTop = styled.div`
-  margin: 0 auto;
-  width: 580px;
-  height: 7%;`
-
+export const ModalInner = styled.div`
+  width: 720px;
+  max-height: 800px;
+  border-radius: 10px;
+  background-color: white;
+  @media (max-height: 780px ) {
+    height: 570px;
+  }
+`
 export const MapAddressForm = styled.form`
-  height: 47%;
+  height: 48%;
   width: 80%;
   margin: 0 auto;
-  flex-direction: column;
 
-  ${flexLayout("space-evenly", "center")}
   button {
+    margin-top: 3px;
     width: 100%;
   }
 `
