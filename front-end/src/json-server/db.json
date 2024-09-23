@@ -1,19 +1,57 @@
 {
+  "check-id": {},
   "signIn": {},
-  "signUp": {},
+  "signUp": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    }
+  ],
   "me": {
     "userId": "sdf",
-    "currentAddress": null,
+    "currentAddress": "주례로 47",
     "grade": "고마운분",
     "role": "회원"
   },
-  "address": {
-    "userId": "sdf",
-    "detailAddress": "qwe",
-    "addressType": "home",
-    "forRider": "asdf",
-    "roadInfo": "XZCVZ"
-  },
+  "address": [
+    {
+      "id": 0,
+      "detailAddress": "qwe",
+      "addressType": "home",
+      "forRider": "asdf",
+      "roadInfo": "XZCVZ"
+    },
+    {
+      "id": 1,
+      "detailAddress": "qwe",
+      "addressType": "qwef",
+      "forRider": "asdf",
+      "roadInfo": "XZCVZ"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    }
+  ],
   "stores": [
     {
       "storeId": 0,
