@@ -1,5 +1,5 @@
 import * as yup from "yup"
-import {getUserApi} from "../apis/api/user";
+import {getApi} from "../apis/api/user";
 
 export const signUpValid = yup.object({
     nickname: yup.string()
@@ -13,7 +13,8 @@ export const signUpValid = yup.object({
         .test("requiredCheck", "아이디가 이미 존재합니다",
             ((value) => {
                 if (value) {
-                    return getUserApi(`/auth/sign-up/check-id/${value}`)
+                    //return getApi(`/auth/sign-up/check-id/${value}`)
+                    return getApi("check-id")
                 }
             }))
     ,
