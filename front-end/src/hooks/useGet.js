@@ -1,7 +1,5 @@
 import {useQuery} from "react-query";
-import {getApi, getAuthApi} from "../apis/api/user";
-import {useRecoilValue} from "recoil";
-import {isSignInState} from "../recoil/user/atoms";
+import {getApi} from "../apis/api/user";
 
 export const useGet = (url) => {
     const {data, isError, status, isLoading} = useQuery(
@@ -12,6 +10,7 @@ export const useGet = (url) => {
 }
 export default useGet
 
+/*
 export const useAuthGet = (url) => {
     const isSignIn = useRecoilValue(isSignInState)
     const {data, isError, status, isLoading} = useQuery(
@@ -22,3 +21,4 @@ export const useAuthGet = (url) => {
     console.log(isSignIn)
     return [data, isError, status, isLoading];
 }
+*/
