@@ -63,10 +63,7 @@ export const authInstance = () => {
 }
 
 export const instance = () => {
-    console.log("aFDDAS")
-    const q = new BaseApi().getInstance()
-    console.log(q)
-    return q
+    return new BaseApi().getInstance()
 }
 
 
