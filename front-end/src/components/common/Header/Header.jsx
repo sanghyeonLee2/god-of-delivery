@@ -18,9 +18,9 @@ export function Header({currentAddress}) {
                     <Link to={"/"}>
                         <h1>배달의 신</h1>
                     </Link>
-                    <div>
-                        {currentAddress}asd
-                    </div>
+                    <Link to={"/select-address"}>
+                        <p>{currentAddress}</p>
+                    </Link>
                     {isSignIn ? <MainButton type={"button"} text={"로그아웃"} onClick={
                             () => {
                                 localStorage.removeItem("access-token")
