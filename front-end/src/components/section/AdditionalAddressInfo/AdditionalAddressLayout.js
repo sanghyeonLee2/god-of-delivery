@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize} from "../../../assets/styles/Mixin";
 
-export const AdditionalAddressWrapper = styled.div`
-  ${flexLayout("space-evenly")};
-  flex-direction: column;
-  ${elementSize("100%", "150px")};
+export const AddAddressWrap = styled.div`
+  ${elementSize("100%", "140px")};
+`
 
+export const AddAddressSection = styled.section`
+  margin-bottom: 10px;
 `
