@@ -5,9 +5,6 @@ import {recoilPersist} from "recoil-persist";
 export const {persistAtom: signInPersist} = recoilPersist({
     key: "is-sign-in",
 })
-export const {persistAtom: userInfoPersist} = recoilPersist({
-    key: "user-info",
-})
 export const isSignInState = atom({
     key: 'isSignIn',
     default: false,
@@ -21,5 +18,4 @@ export const userInfoState = atom({
         grade: "",
         role: ""
     },
-    effects_UNSTABLE: [userInfoPersist]
 })
