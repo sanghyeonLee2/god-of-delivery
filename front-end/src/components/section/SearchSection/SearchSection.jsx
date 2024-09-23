@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     HeaderMainText,
-    HeaderTextWrapper,
+    HeaderTextWrap,
     SearchBoxInner,
     SearchBoxMainText,
     SearchBoxOuter,
@@ -14,17 +14,16 @@ function SearchSection(props) {
         <SearchBoxOuter>
             <SearchBoxInner>
                 <SearchBoxTextOuter>
-                    <HeaderTextWrapper>
+                    <HeaderTextWrap>
                         <HeaderMainText>
                             헤더 메인 텍스트 입니다
                         </HeaderMainText>
                         <SearchBoxMainText>
                             배달 받으실 위치를 입력해 주세요
                         </SearchBoxMainText>
-                    </HeaderTextWrapper>
+                    </HeaderTextWrap>
                 </SearchBoxTextOuter>
                 <SearchForm/>
-                
             </SearchBoxInner>
         </SearchBoxOuter>
     );
