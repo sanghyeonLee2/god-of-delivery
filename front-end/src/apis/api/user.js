@@ -1,63 +1,64 @@
-import {axiosApi, axiosAuthApi} from "../utils/instance";
+import {authInstance, instance} from "../utils/instance";
 
-export const getUserApi = async (url) => {
-    try {
-        const res = await axiosApi.get(url)
-        if (res.status === 200) {
-            return res.data.available
-        }
-    } catch (err) {
-        console.log(err)
+
+class UserApi {
+    constructor(isAuth) {
+        this.instance = isAuth ? authInstance() : instance()
     }
-}
 
-export const getApi = async (url) => {
-    try {
-        return await axiosAuthApi.get(url)
-    } catch (err) {
-        console.log(err)
-    }
-}
-export const getAuthApi = async (url) => {
-    try {
-        /*   const fullUrl = `${axiosAuthApi.defaults.baseURL}${url}`; // 전체 URL 생성
-           console.log('Request URL:', fullUrl); // 요청 URL 로그 출력
-           console.log(axiosAuthApi); // 요청 URL 로그 출력*/
-
-        const res = await axiosApi().get(url);
-        console.log('Response:', res.data); // 응답 로그 출력
-        return res;
-    } catch (err) {
-        console.log('Error fetching data:', err);
-    }
-}
-
-
-export const postUserApi = async (url) => {
-    try {
-        return await axiosApi.post(url)
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-export const postAuthUserApi = async (url) => {
-    try {
-        return await axiosAuthApi.post(url)
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-
-export const postReissue = async (url) => {
-    try {
-        return await axiosAuthApi.post(url, {}, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("refresh-token")}`
-            }
+    requestMethod(method, url) {
+        return this.instance({
+            method,
+            url,
         })
-    } catch (err) {
-        console.log(err, "여기")
     }
+
+    async request(method, url) {
+        try {
+            return await this.requestMethod(method, url)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async reissue(url) {
+        try {
+            const tmpRefresh = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkZiIsImlhdCI6MTcyNDY3Njc4OCwiZXhwIjoxNzI0Njc4NTg4fQ.oGqFkk5loQ9s7a48p6D5c-UiYspLuj6OLQMxTvpM01I"
+            return await instance.post(url, {}, {
+                headers: {
+                    Authorization: `Bearer ${tmpRefresh}`
+                }
+            })
+        } catch (err) {
+            console.log(err, "여기")
+        }
+    }
+
 }
+
+
+export const authGetApi = (url) => {
+    const api = new UserApi(true)
+    return api.request("GET", url)
+}
+
+export const authPostApi = (url) => {
+    const api = new UserApi(true)
+    return api.request("POST", url)
+}
+
+export const getApi = (url) => {
+    const api = new UserApi(false)
+    return api.request("GET", url)
+}
+
+export const postApi = (url) => {
+    const api = new UserApi(false)
+    return api.request("POST", url)
+}
+
+export const reissueApi = async (url) => {
+    const api = new UserApi(false)
+    return api.reissue(url)
+}
+
