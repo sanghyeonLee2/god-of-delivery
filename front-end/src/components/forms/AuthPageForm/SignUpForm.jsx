@@ -22,7 +22,7 @@ function SignUpForm(props) {
         resolver: yupResolver(signUpValid),
     })
     ///${watch("userId")}
-    const {mutate: onSignUp} = usePost("/signup")
+    const {mutate: onSignUp} = usePost("signUp")
     return (
         <AuthForm onSubmit={handleSubmit((data) => onSignUp(data))}>
             <FormElementDiv>

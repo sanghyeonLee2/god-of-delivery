@@ -1,17 +1,24 @@
 import {useQuery} from "react-query";
-import {getUserApi} from "../apis/api/user";
+import {getApi} from "../apis/api/user";
 
-const useGet = (url) => {
-
-    const {data, isError, refetch, status} = useQuery(
+export const useGet = (url) => {
+    const {data, isError, status, isLoading} = useQuery(
         ["getData", url],  // 쿼리 키를 고유하게 만들기 위해 url 포함
-        () => getUserApi(url), // queryFn
-        {
-            enabled: false,
-            staleTime: 0,    // 데이터를 항상 신선하다고 간주하지 않음
-            cacheTime: 0,    // 캐시된 데이터를 유지하지 않음
-        }
+        () => getApi(url), // queryFn
     );
-    return [data, isError, refetch, status];
+    return [data, isError, status, isLoading];
 }
 export default useGet
+
+/*
+export const useAuthGet = (url) => {
+    const isSignIn = useRecoilValue(isSignInState)
+    const {data, isError, status, isLoading} = useQuery(
+        ["getData", url],  // 쿼리 키를 고유하게 만들기 위해 url 포함
+        () => getAuthApi(url), // queryFn
+        {enabled: isSignIn}
+    );
+    console.log(isSignIn)
+    return [data, isError, status, isLoading];
+}
+*/

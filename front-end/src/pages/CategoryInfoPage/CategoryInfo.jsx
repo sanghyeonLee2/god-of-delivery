@@ -17,7 +17,7 @@ function CategoryInfo(props) {
             <SortingSection/>
             <RestaurantsWrapper>
                 <RestaurantList listType={"추천 맛집"} categoryId={categoryId}/>
-                <RestaurantList listType={"등록 음식점"} categoryId={categoryId}/>
+                {/*<RestaurantList listType={"등록 음식점"} categoryId={categoryId}/>*/}
             </RestaurantsWrapper>
         </>
     );

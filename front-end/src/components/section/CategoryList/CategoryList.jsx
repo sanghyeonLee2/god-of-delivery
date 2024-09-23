@@ -24,7 +24,7 @@ function CategoryList({categoryId}) {
                         <CategoryListLi key={e.id} id={e.id} clicked={categoryId}
                                         onClick={() => navigate(`/category-info/${e.id}`, {state: {categoryId: e.id}})}>
                             {/*key 는 접근할 수 없는 속성*/}
-                            <span>{e.text}</span>
+                            <span>{e.id}</span>
                         </CategoryListLi>)}
                 </CategoryListUl>
             </CategoryListInner>

@@ -12,7 +12,7 @@ function HomePage(props) {
                 {categoryDummy.map((ele) =>
                     <CategoryBox key={ele.id}
                                  onClick={() => navigate(`category-info/${ele.id}`, {state: {categoryId: ele.id}})}>
-                        <CategoryText>{ele.text}</CategoryText>
+                        <CategoryText>{ele.id}</CategoryText>
                         <CategoryImg src={testImg} alt={"img"} width={160}/>
                     </CategoryBox>)}
             </CategoryInner>

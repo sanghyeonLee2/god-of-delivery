@@ -9,7 +9,6 @@ import {
     FooterMenuRightUl,
     FooterWrapper
 } from "./FooterLayout";
-import {Logo} from "../../../assets/styles/CommonStyle";
 import {Link} from "react-router-dom";
 
 function Footer(props) {
@@ -44,9 +43,9 @@ function Footer(props) {
             <FooterInfoOuter>
                 <FooterInfoInner>
                     <Link to={"/"}>
-                        <Logo>
+                        <h1>
                             배달의 신
-                        </Logo>
+                        </h1>
                     </Link>
                     <FooterAsideInfo>
                         <strong>주식회사 DN</strong>

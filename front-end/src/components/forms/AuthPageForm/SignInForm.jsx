@@ -24,7 +24,7 @@ function SignInForm(props) {
     } = useForm({
         resolver: yupResolver(signInValid),
     })
-    const {mutate: onSignIn} = usePost("auth/sign-in")
+    const {mutate: onSignIn} = usePost("signIn")
     return (
         <AuthForm onSubmit={handleSubmit((data) => onSignIn(data))}>
             <FormElementDiv>

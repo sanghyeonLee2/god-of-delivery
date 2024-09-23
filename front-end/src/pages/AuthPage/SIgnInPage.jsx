@@ -1,6 +1,6 @@
 import React from 'react';
 import {AuthPageInner, AuthPageOuter} from "./AuthPageLayout";
-import SignInForm from "../../components/forms/AuthPageForm.jsx/SignInForm";
+import SignInForm from "../../components/forms/AuthPageForm/SignInForm";
 
 function SignInPage(props) {
     return (
