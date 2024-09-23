@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   input {
     padding: 0;
     border-radius: 4px;
+    box-sizing: border-box;
   }
 
   li {
