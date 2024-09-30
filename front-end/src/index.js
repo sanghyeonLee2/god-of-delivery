@@ -10,6 +10,7 @@ import {QueryClient, QueryClientProvider} from "react-query"
 import {RecoilRoot} from "recoil";
 import Loading from "./components/common/Loading/Loading";
 import SelectAddress from "./pages/SelectAddressPage/SelectAddress";
+import StorePage from "./pages/StorePage/StorePage";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,6 +34,9 @@ const router = createBrowserRouter([{
         }, {
             path: "select-address",
             element: <SelectAddress/>,
+        }, {
+            path: "store/:id",
+            element: <StorePage/>
         },
         {
             path: "loading",
