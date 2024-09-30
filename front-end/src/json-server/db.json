@@ -52,6 +52,101 @@
       "id": 4
     }
   ],
+  "store": {
+    "tradeName": "네네",
+    "notice": "물가상승으로 인해 모든 메뉴 1000원 상승",
+    "storeIntroduction": "안녕하세요 네네치킨입니다.",
+    "hours": "평일 - 오후 12:00 : 11:00",
+    "dayOff": "매주 일요일",
+    "phoneNumber": "050-1234-2323",
+    "area": "개금동, 가야동",
+    "tips": "10000원 이상 무료",
+    "ownerName": "심현섭",
+    "businessAddress": "가야대로 344번길 60",
+    "businessNum": "296-77-1234",
+    "origin": "밥:국내산, 김치:중국산",
+    "isCesco": false,
+    "isSafety": false,
+    "coupon": [
+      {
+        "couponContent": "1000원",
+        "couponTerm": 12000,
+        "orderType": "배달"
+      }
+    ],
+    "recommend": [
+      {
+        "menuName": "양꼬치",
+        "description": "카레+양고기",
+        "price": 24000,
+        "isOwnerRecommend": true,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      },
+      {
+        "menuName": "닭가슴살",
+        "description": "불고기+닭고기",
+        "price": 2000,
+        "isOwnerRecommend": false,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      }
+    ],
+    "menu": [
+      {
+        "menuName": "콘소세지",
+        "description": "카레+양고기",
+        "price": 20000,
+        "isOwnerRecommend": true,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      },
+      {
+        "menuName": "스프카레",
+        "description": "불고기+닭고기",
+        "price": 20200,
+        "isOwnerRecommend": false,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      }
+    ],
+    "side": [
+      {
+        "menuName": "치즈스틱",
+        "description": "",
+        "price": 2000,
+        "isOwnerRecommend": true,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      },
+      {
+        "menuName": "감자튀김",
+        "description": "체다소스",
+        "price": 1000,
+        "isOwnerRecommend": false,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      }
+    ],
+    "drink": [
+      {
+        "menuName": "코카콜라",
+        "description": "",
+        "price": 2000,
+        "isOwnerRecommend": true,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      },
+      {
+        "menuName": "사이다",
+        "description": "체다소스",
+        "price": 1000,
+        "isOwnerRecommend": false,
+        "menuReviewCnt": 11,
+        "isPopular": false
+      }
+    ]
+  },
   "stores": [
     {
       "storeId": 0,
