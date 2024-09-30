@@ -10,10 +10,11 @@ export const SortingOuter = styled.div`
 export const SortingInner = styled.div`
   margin: 0 auto;
   padding: 12px 1px;
-  ${elementSize("55%", "100%")}
+  max-width: 1100px;
+  height: 100%;
 `
 
 export const SortingSelect = styled.select`
   float: right;
-  ${elementSize("35%", "60%")}
+  ${elementSize("32%", "60%")}
 `
