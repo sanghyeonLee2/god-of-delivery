@@ -6,7 +6,8 @@ export const CategoryListOuter = styled.div`
   border-bottom: 1px solid #d9d9d9;`
 
 export const CategoryListInner = styled.div`
-  ${elementSize("55%", "100%")}
+  max-width: 1100px;
+  height: 100%;
   margin: 0 auto;`
 
 export const CategoryListUl = styled.ul`
