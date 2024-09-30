@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {flexLayout} from "../../../assets/styles/Mixin";
 
 export const RecommendedOuter = styled.div`
   margin: 0 auto;
   padding-bottom: 30px;
-  ${elementSize("55%", "100%")}
+  max-width: 1100px;
+  height: 100%;
 `
 export const RecommendTitle = styled.span`
   height: 100%;
