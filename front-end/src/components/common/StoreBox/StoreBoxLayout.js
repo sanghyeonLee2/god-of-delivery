@@ -1,31 +1,31 @@
 import styled from "styled-components";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
-export const RestaurantOuter = styled.li`
+export const StoreOuter = styled.li`
   border: lightgray 1px solid;
   position: relative;
   margin-top: 14px;
   ${flexLayout("center", "center")}
   ${elementSize("49%", "120px")}
 `
-export const RestaurantInner = styled.div`
+export const StoreInner = styled.div`
   ${flexLayout}
   ${elementSize("95%", "75%")}
 `
-export const RestaurantLogo = styled.div`
+export const StoreLogo = styled.div`
   background-color: brown;
   ${elementSize("22%", "100%")}`
-export const RestaurantTitle = styled.p`
+export const StoreTitle = styled.p`
   font-size: x-large;
 `
-export const RestaurantInfoWrapper = styled.div`
+export const StoreInfoWrapper = styled.div`
   padding: 12px 20px;
   width: 100%;
 `
-export const RestaurantInfoUl = styled.ul`
+export const StoreInfoUl = styled.ul`
   ${flexLayout}
 `
-export const RestaurantAboutText = styled.small`
+export const StoreAboutText = styled.small`
   font-weight: bold;
   color: ${(props) => {
     switch (props?.name) {
