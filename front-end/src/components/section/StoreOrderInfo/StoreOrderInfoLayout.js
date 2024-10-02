@@ -14,7 +14,7 @@ export const OrderToggleWrap = styled.ul`
     ${elementSize("50%", "30px")}
   }
 `
-export const OtherToggleSpan = styled.span`
+export const OtherToggleDiv = styled.div`
   margin-bottom: 3px;
   border-bottom: ${(props) => props.value && "black 5px solid"};
   height: 100%;
