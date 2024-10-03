@@ -53,7 +53,7 @@ app.use(session({
 app.use('/', indexRoutes)
 app.use('/auth', authRoutes)
 app.use('/stores', storeRoutes)
-app.use('/dib', dibRoutes)
+app.use('/dibs', dibRoutes)
 
 /* === 404 에러 처리 미들웨어 === */
 app.use(notFound)
