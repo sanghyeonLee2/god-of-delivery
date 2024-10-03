@@ -38,3 +38,39 @@ exports.getStores = async (req, res) => {
         })
     }
 }
+
+exports.postCreateStore = async (req, res) => {
+    const date = new Date();
+    try {
+        const store = await Store.create({
+            storeId: req.body.storeId,
+            name:req.body.name,
+            type:req.body.type,
+            category:req.body.category,
+            address:req.body.address,
+            storePictureUrl:req.body.storePictureUrl,
+            phone:req.body.phone,
+            content:req.body.content,
+            minDeliveryPrice:req.body.minDeliveryPrice,
+            deliveryTip:req.body.deliveryTip,
+            minDeliveryTime:req.body.minDeliveryTime,
+            maxDeliveryTime:req.body.maxDeliveryTime,
+            operationHours:req.body.operationHours,
+            closedDays:req.body.closedDays,
+            deliveryAddress:req.body.deliveryAddress,
+            createdDate:date,
+            modifiedDate:date,
+        })
+        res.status(201).send({
+            status: 201,
+            data: store
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status: 500,
+            message: err.message
+        })
+    }
+}
+
