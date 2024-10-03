@@ -88,8 +88,11 @@ exports.postSignIn = async (req, res) => {
         const refreshToken = generateToken().refresh(user.userId)
 
         if(await verifyToken().refresh(refreshToken, user.userId)){
-            await Token.update({
-                token: refreshToken,
+            await Token.update(
+                {
+                token: refreshToken
+                },
+                {
                 where:{userId:user.userId}
             })
         }
@@ -99,13 +102,11 @@ exports.postSignIn = async (req, res) => {
                 token: refreshToken,
             })
         }
-
         res.status(200).send({
             status: 200,
             message: "로그인되었습니다.",
             accessToken: accessToken,
             refreshToken: refreshToken,
-            data: user
         })
     } else {
         res.status(403).send({
