@@ -1,9 +1,9 @@
-import React, {forwardRef} from 'react';
-import {InfoBox, MenuWrap, RecommendWrap} from "./StoreMenuLayout";
+import React from 'react';
+import {InfoBox, RecommendWrap} from "./StoreMenuLayout";
 
-const StoreMenu = forwardRef((props, ref) => {
+function StoreMenu() {
     return (
-        <MenuWrap ref={ref}>
+        <div>
             <InfoBox>
                 <div>
                     <span>가게 안내</span>
@@ -12,8 +12,8 @@ const StoreMenu = forwardRef((props, ref) => {
             <RecommendWrap> {/*컴포넌트로 만들고 재사용*/}
                 <li>매뉴 객체</li>
             </RecommendWrap>
-        </MenuWrap>
+        </div>
     );
-})
+}
 
 export default StoreMenu;
