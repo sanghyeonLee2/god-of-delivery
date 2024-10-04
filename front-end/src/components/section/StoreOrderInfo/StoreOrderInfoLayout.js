@@ -16,7 +16,7 @@ export const OrderToggleWrap = styled.ul`
 `
 export const OtherToggleDiv = styled.div`
   margin-bottom: 3px;
-  border-bottom: ${(props) => props.value && "black 5px solid"};
+  border-bottom: ${(props) => props.value ? "black 5px solid" : "transparent 5px solid"};
   height: 100%;
 `
 export const OrderInfoWrap = styled.div`
