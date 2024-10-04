@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
-export const MenuWrap = styled.div`
-`
 
 export const InfoBox = styled.div`
-  padding: 20px 10px;
 
   div {
     border-radius: 5px;
@@ -14,4 +11,5 @@ export const InfoBox = styled.div`
   }
 `
 export const RecommendWrap = styled.ul`
+  margin-top: 30px;
 `
