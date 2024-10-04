@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 
-export const StoreInfoOuter = styled.div`
-  margin-top: 20px;
-  padding: 20px 10px;
-`
-export const StoreInfoInner = styled.div`
+export const StoreInfoWrap = styled.div`
+
   ul {
     padding-bottom: 30px;
   }
