@@ -18,9 +18,9 @@
 
 ## 기술 스택
 
-- **프론트엔드**: React, React Router, Axios, Redux
-- **백엔드**: Node.js, Express, MongoDB
-- **배포**: AWS, Docker
+- **프론트엔드**: React, React Router, Axios, Recoil, React-hook-form, React-Query 
+- **백엔드**: Node.js, Express, MySQL
+- **배포**: 
 - **버전 관리**: Git, GitHub
 
 ## 설치 및 실행 방법
@@ -28,16 +28,5 @@
 ### Prerequisites
 
 - Node.js 및 npm 설치가 필요합니다.
-- MongoDB가 로컬에 설치되어 있거나 클라우드 데이터베이스 URI가 필요합니다.
 
 ### 설치
-
-```bash
-# 프로젝트 클론
-git clone https://github.com/username/delivery-god.git
-cd delivery-god
-
-# 서버 및 클라이언트 패키지 설치
-npm install
-cd client && npm install
-cd ..
