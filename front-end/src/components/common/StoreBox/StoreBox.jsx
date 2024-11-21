@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-    AverageTimeLi,
-    StoreAboutText,
-    StoreInfoUl,
-    StoreInfoWrapper,
-    StoreInner,
-    StoreLogo,
-    StoreOuter,
-    StoreTitle
-} from "./StoreBoxLayout";
+import {AverageTimeWrap, StoreInfoWrap, StoreInner, StoreLogo, StoreOuter} from "./StoreBoxLayout";
 import {useNavigate} from "react-router-dom";
+import {FlexOnly, MiddleSizeTitleFont, SmallSizeFont} from "../../../assets/styles/CommonStyle";
 
 function StoreBox({storeInfo}) {
     const navigate = useNavigate()
@@ -17,27 +9,29 @@ function StoreBox({storeInfo}) {
         <StoreOuter onClick={() => navigate(`/store/${storeInfo?.storeId}`)}>
             <StoreInner>
                 <StoreLogo/>
-                <StoreInfoWrapper>
-                    <StoreTitle>{storeInfo?.storeName}</StoreTitle>
-                    <StoreInfoUl>
-                        <li><StoreAboutText name={"rating"}>{storeInfo?.rating}</StoreAboutText></li>
+                <StoreInfoWrap>
+                    <MiddleSizeTitleFont>
+                        {storeInfo?.storeName}
+                    </MiddleSizeTitleFont>
+                    <FlexOnly element={"ul"}>
+                        <li><SmallSizeFont color={"#FFA800"}>{storeInfo?.rating}</SmallSizeFont></li>
                         &nbsp;|&nbsp;
-                        <li><StoreAboutText>찜 {storeInfo?.dipsCnt}</StoreAboutText></li>
+                        <li><SmallSizeFont>찜 {storeInfo?.dipsCnt}</SmallSizeFont></li>
                         &nbsp;|&nbsp;
-                        <li><StoreAboutText>리뷰 {storeInfo?.reviewCnt}</StoreAboutText></li>
-                    </StoreInfoUl>
-                    <StoreInfoUl>
-                        <li><StoreAboutText name={"pass"}>배달패스</StoreAboutText></li>
+                        <li><SmallSizeFont>리뷰 {storeInfo?.reviewCnt}</SmallSizeFont></li>
+                    </FlexOnly>
+                    <FlexOnly element={"ul"}>
+                        <li><SmallSizeFont color={"red"}>배달패스</SmallSizeFont></li>
                         &nbsp;|&nbsp;
-                        <li><StoreAboutText name={"minimum"}>{storeInfo?.minDeliveryPrice}원 이상
-                            배달</StoreAboutText></li>
-                        <AverageTimeLi>
-                            <small>
+                        <li><SmallSizeFont color={"gray"}>{storeInfo?.minDeliveryPrice}원 이상
+                            배달</SmallSizeFont></li>
+                        <AverageTimeWrap>
+                            <SmallSizeFont color={"gray"}>
                                 {storeInfo?.operationHours}
-                            </small>
-                        </AverageTimeLi>
-                    </StoreInfoUl>
-                </StoreInfoWrapper>
+                            </SmallSizeFont>
+                        </AverageTimeWrap>
+                    </FlexOnly>
+                </StoreInfoWrap>
             </StoreInner>
         </StoreOuter>
     );
