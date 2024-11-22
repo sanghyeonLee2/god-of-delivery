@@ -1,6 +1,6 @@
 import React from 'react';
-import {AuthBtnWrap, HeaderInner, HeaderOuter} from "./HeaderLayout";
-import {MainButton} from "../Button/main/MainButton";
+import {HeaderInner, HeaderOuter} from "./HeaderLayout";
+import {MainBtn} from "../Button/main/MainButton";
 
 import {Link} from "react-router-dom";
 import {useMove} from "../../../hooks/useMove";
@@ -21,17 +21,14 @@ export function Header({currentAddress}) {
                     <Link to={"/select-address"}>
                         <p>{currentAddress}</p>
                     </Link>
-                    {isSignIn ? <MainButton type={"button"} text={"로그아웃"} onClick={
+                    {isSignIn ? <MainBtn type={"button"} text={"로그아웃"} onClick={
                             () => {
                                 localStorage.removeItem("access-token")
                                 localStorage.removeItem("refresh-token")
                                 setIsSignIn(false)
                             }
                         }/> :
-                        <AuthBtnWrap>
-                            <MainButton type={"button"} text={"회원가입"} onClick={() => navigate("sign-up")}/>
-                            <MainButton type={"button"} text={"로그인"} onClick={() => navigate("sign-in")}/>
-                        </AuthBtnWrap>}
+                        <MainBtn type={"button"} text={"회원가입/로그인"} onClick={() => navigate("sign-up")}/>}
                 </HeaderInner>
             </HeaderOuter>
             <SearchSection/>
