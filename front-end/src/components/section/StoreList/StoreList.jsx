@@ -1,36 +1,31 @@
 import React from 'react';
-import {RecommendedInner, RecommendedOuter, RecommendTitle, RecommendTitleWrapper} from "./StoreListLayout";
+import {RecommendedOuter, RecommendedWrap} from "./StoreListLayout";
 import StoreBox from "../../common/StoreBox/StoreBox";
 import useGet from "../../../hooks/useGet";
 import Loading from "../../common/Loading/Loading";
 import {useRecoilValue} from "recoil";
 import {sortingState} from "../../../recoil/search/atoms";
+import {MiddleSizeTitleFont} from "../../../assets/styles/CommonStyle";
 
 function StoreList({listType, categoryId}) {
     const [data, isError, status, isLoading] = useGet("stores")
     const sorting = useRecoilValue(sortingState)
+
     if (isLoading)
         return <Loading/>
     return (
         <RecommendedOuter>
-            <RecommendTitleWrapper>
-                <RecommendTitle>
+            <MiddleSizeTitleFont>
+                <p>
                     {listType}
-                </RecommendTitle>
-            </RecommendTitleWrapper>
-            <RecommendedInner>
-                <RecommendedInner>
-                    {data.data.sort((a, b) =>
-                        b[sorting] - a[sorting]
-                    ).map((e) => (e.storeCategory === categoryId || categoryId === "전체보기") &&
-                        <StoreBox storeInfo={e} key={e.storeId}/>)}
-                    {/* {listType === "추천 맛집" ?
-                        data.data.map((e) => (e.storeCategory === categoryId || categoryId === "전체보기") &&
-                            <StoreBox restaurantList={e} key={e.storeId}/>) :
-                        restaurantDummy.map((e) => (e.category === categoryId || categoryId === "전체보기") &&
-                            <StoreBox restaurantList={e} key={e.id}/>)}*/}
-                </RecommendedInner>
-            </RecommendedInner>
+                </p>
+            </MiddleSizeTitleFont>
+            <RecommendedWrap>
+                {data.data.sort((a, b) =>
+                    b[sorting] - a[sorting]
+                ).map((e) => (e.storeCategory === categoryId || categoryId === "전체보기") &&
+                    <StoreBox storeInfo={e} key={e.storeId}/>)}
+            </RecommendedWrap>
         </RecommendedOuter>
     );
 }
