@@ -43,13 +43,13 @@ class BaseApi {
             }, async (err) => {
                 if (err.response.status === 401) {
                     const result = await reissueApi("/auth/sign-in/reissue")
-                    /*localStorage.setItem("access-token", result.data.accessToken)
-                      localStorage.setItem("refresh-token", result.data.refreshToken)*/
-                    /*         err.response.accessToken = result.data.accessToken
-                             err.response.refreshToken = result.data.refreshToken*/
-                    return Promise.resolve(
-                        {"accessToken": result.data.accessToken, "refreshToken": result.data.refreshToken}
-                    )
+                    const newAccessToken = result.data.accessToken;
+
+                    // 기존 요청의 Authorization 헤더를 갱신
+                    err.config.headers.Authorization = `Bearer ${newAccessToken}`;
+
+                    // 기존 요청을 다시 전송
+                    return axios.request(err.config);
                 } else {
                     localStorage.clear()
                     alert("토큰 만료 인해 로그아웃 되었습니다.")
