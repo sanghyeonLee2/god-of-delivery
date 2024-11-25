@@ -1,15 +1,13 @@
 import styled from "styled-components";
+import {innerPadding} from "../../../assets/styles/CommonStyle";
 
 
 export const InfoBox = styled.div`
-
-  div {
+    ${innerPadding()}
     border-radius: 5px;
-    padding: 10px 5px;
     min-height: 35px;
-    background-color: lightgray;
-  }
+    background-color: #F6F6F6;
 `
-export const RecommendWrap = styled.ul`
-  margin-top: 30px;
+export const MenuWrap = styled.ul`
+    min-height: 1000px;
 `
