@@ -1,8 +1,9 @@
 import React from 'react';
-import {OrderInfoWrap, OrderMethodWrap, OrderToggleWrap, OtherToggleDiv} from "./StoreOrderInfoLayout";
+import {OrderTabWrap, OrderTypeText} from "./StoreOrderInfoLayout";
 import useTab from "../../../hooks/useTab";
+import OrderInfo from "../OrderInfo/OrderInfo";
 
-function StoreOrderInfo() {
+function StoreOrderInfo({deliveryMethod}) {
     const content = [
         {
             key: 0,
@@ -12,43 +13,21 @@ function StoreOrderInfo() {
         {
             key: 1,
             tab: "포장/방문주문",
-            content: ["최소 주문금액", "결제방법", "배달시간", "배달팁", "결제방법"]
+            content: ["최소 주문금액", "이용방법", "픽업시간", "위치안내", "결제방법"]
         }
     ];
     const {currentItem, setCurrentItem} = useTab(0, content)
     return (
-        <OrderMethodWrap>
-            <OrderToggleWrap>
-                {content.map((ele, idx) => {
-                    return <li key={ele.key}>
-                        <OtherToggleDiv value={currentItem.key === ele.key}
-                                        onClick={() => setCurrentItem(idx)}
-                        >
-                            <span>{ele.tab}</span>
-                        </OtherToggleDiv>
+        <div>
+            <OrderTabWrap>
+                {content.map((ele, idx) =>
+                    <li key={ele.key} onClick={() => setCurrentItem(idx)}>
+                        <OrderTypeText value={currentItem.key === ele.key}>{ele.tab}</OrderTypeText>
                     </li>
-                })}
-            </OrderToggleWrap>
-            <OrderInfoWrap>
-                <ul>
-                    <li>
-                        {currentItem.content[0]}
-                    </li>
-                    <li>
-                        {currentItem.content[1]}
-                    </li>
-                    <li>
-                        {currentItem.content[2]}
-                    </li>
-                    <li>
-                        {currentItem.content[3]}
-                    </li>
-                    {currentItem?.content[4] && <li>
-                        결제방법
-                    </li>}
-                </ul>
-            </OrderInfoWrap>
-        </OrderMethodWrap>
+                )}
+            </OrderTabWrap>
+            <OrderInfo currentItem={currentItem} deliveryMethod={deliveryMethod}/>
+        </div>
     );
 }
 

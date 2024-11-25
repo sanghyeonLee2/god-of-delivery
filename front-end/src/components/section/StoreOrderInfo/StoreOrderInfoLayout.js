@@ -1,29 +1,21 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize} from "../../../assets/styles/Mixin";
 
 
-export const OrderMethodWrap = styled.div`
+export const OrderTabWrap = styled.ul`
+    display: flex;
+    border-bottom: lightgray 1px solid;
+    margin-top: 20px;
+
+    li {
+        text-align: center;
+        ${elementSize("50%", "40px")}
+    }
 `
-export const OrderToggleWrap = styled.ul`
-  display: flex;
-  border-bottom: grey 1px solid;
-  margin-top: 20px;
 
-  li {
-    ${flexLayout("center", "center")};
-    ${elementSize("50%", "30px")}
-  }
-`
-export const OtherToggleDiv = styled.div`
-  margin-bottom: 3px;
-  border-bottom: ${(props) => props.value ? "black 5px solid" : "transparent 5px solid"};
-  height: 100%;
-`
-export const OrderInfoWrap = styled.div`
-  padding: 20px 10px;
-  border-bottom: grey 1px solid;
-
-  li {
-    margin-bottom: 4px;
-  }
+export const OrderTypeText = styled.span`
+    display: inline-block;
+    border-bottom: ${(props) => props.value ? "black 5px solid" : "transparent 5px solid"};
+    box-sizing: border-box;
+    height: 100%;
 `
