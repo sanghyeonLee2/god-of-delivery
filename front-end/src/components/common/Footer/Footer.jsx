@@ -9,21 +9,21 @@ function Footer(props) {
             <FooterMenuOuter>
                 <FooterMenuLeft>
                     <li>
-                        <SmallSizeFont>공지사항</SmallSizeFont>
+                        <SmallSizeFont color={"gray"}>공지사항</SmallSizeFont>
                     </li>
                     <li>
-                        <SmallSizeFont>FAQ</SmallSizeFont>
+                        <SmallSizeFont color={"gray"}>FAQ</SmallSizeFont>
                     </li>
                     <li>
-                        <SmallSizeFont>개인정보처리방침</SmallSizeFont>
+                        <SmallSizeFont color={"gray"}>개인정보처리방침</SmallSizeFont>
                     </li>
                 </FooterMenuLeft>
                 <FooterMenuRight>
                     <li>
-                        <SmallSizeFont>깃허브</SmallSizeFont>
+                        <SmallSizeFont color={"gray"}>깃허브</SmallSizeFont>
                     </li>
                     <li>
-                        <SmallSizeFont>블로그</SmallSizeFont>
+                        <SmallSizeFont color={"gray"}>블로그</SmallSizeFont>
                     </li>
                 </FooterMenuRight>
             </FooterMenuOuter>
@@ -34,9 +34,9 @@ function Footer(props) {
                     </h1>
                 </Link>
                 <div>
-                    <SmallSizeFont>주식회사 DN</SmallSizeFont>
+                    <SmallSizeFont color={"gray"}>주식회사 DN</SmallSizeFont>
                     <br/>
-                    <SmallSizeFont>부산시 사상구 주례로 47 대표이사 이상현, 신유성</SmallSizeFont>
+                    <SmallSizeFont color={"gray"}>부산시 사상구 주례로 47 대표이사 이상현, 신유성</SmallSizeFont>
                 </div>
             </FooterInfoInner>
         </FooterWrapper>

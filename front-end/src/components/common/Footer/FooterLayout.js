@@ -14,14 +14,13 @@ export const FooterMenuOuter = styled.div`
 `
 export const FooterMenuLeft = styled.ul`
     padding: 13px 10px;
-    width: 70%;
-    margin-right: 150px;
+    width: 40%;
     ${flexLayout("space-between")}
 `
 
 export const FooterMenuRight = styled.ul`
-    padding: 15px 20px;
-    width: 30%;
+    padding: 15px 10px;
+    width: 18%;
     ${flexLayout("space-between")}
 `
 
