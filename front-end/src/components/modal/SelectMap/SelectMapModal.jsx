@@ -5,7 +5,7 @@ import {isModalOpenState} from "../../../recoil/flag/atoms";
 import IconButton from "../../common/Button/icon/IconButton";
 import SearchForm from "../../forms/SearchForm/SearchForm"
 import KakaoMap from "../../section/KakaoMap/KakaoMap";
-import {MainButton} from "../../common/Button/main/MainButton";
+import {MainBtn} from "../../common/Button/main/MainButton";
 import AdditionalAddress from "../../section/AdditionalAddressInfo/AdditionalAddress";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -32,7 +32,7 @@ function SelectMapModal(props) {
                     )}>
                         <AddressInfo/>
                         <AdditionalAddress/>
-                        <MainButton type={"submit"} text={"등록"}/>
+                        <MainBtn type={"submit"} text={"등록"}/>
                     </MapAddressForm>
                 </FormProvider>
             </ModalInner>
