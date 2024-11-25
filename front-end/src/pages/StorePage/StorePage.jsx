@@ -1,5 +1,5 @@
 import React from 'react';
-import {MenuInfoTapInner, MenuToggleDiv, MenuToggleWrap, StoreOuter} from "./StorePageLayout";
+import {MenuInfoTapWrap, MenuTab, MenuTabWrap, StoreOuter} from "./StorePageLayout";
 import {VerticalSpace} from "../../assets/styles/CommonStyle";
 import StoreInfo from "../../components/section/StoreInfo/StoreInfo";
 import StoreReview from "../../components/section/StoreReview/StoreReview";
@@ -9,6 +9,8 @@ import StoreCoupon from "../../components/section/StoreCoupon/StoreCoupon";
 import StoreOrderInfo from "../../components/section/StoreOrderInfo/StoreOrderInfo";
 import StoreMenu from "../../components/section/StoreMenu/StoreMenu";
 import useTab from "../../hooks/useTab";
+import useGet from "../../hooks/useGet";
+import Loading from "../../components/common/Loading/Loading";
 
 function StorePage(props) {
     const content = [
@@ -18,7 +20,7 @@ function StorePage(props) {
         },
         {
             key: 1,
-            tab: "정보원산지",
+            tab: "정보·원산지",
         },
         {
             key: 2,
@@ -26,30 +28,32 @@ function StorePage(props) {
         }
     ];
     const {currentItem, setCurrentItem} = useTab(0, content)
-//·
+    const [data, isError, status, isLoading] = useGet("store")
+    if (isLoading) {
+        return <Loading/>
+    }
     return (
         <StoreOuter>
-            <StoreHeader/>
-            <UserActions/>
-            <StoreCoupon/>
-            <StoreOrderInfo/>
+            <StoreHeader haaderData={data?.data.storeHeader}/>
+            <UserActions dips={data?.data.storeInfo.dips}/>
+            <StoreCoupon coupons={data?.data.coupons}/>
+            <StoreOrderInfo deliveryMethod={data?.data.deliveryMethod}/>
             <VerticalSpace/>
-            <MenuToggleWrap>
-                {content.map((ele, idx) => {
-                    return <li key={ele.key}>
-                        <MenuToggleDiv value={currentItem.key === ele.key}
-                                       onClick={() => setCurrentItem(idx)}
-                        >
+            <MenuTabWrap>
+                {content.map((ele, idx) =>
+                    <li key={ele.key}>
+                        <MenuTab value={currentItem.key === ele.key}
+                                 onClick={() => setCurrentItem(idx)}>
                             <span> {ele.tab}</span>
-                        </MenuToggleDiv>
+                        </MenuTab>
                     </li>
-                })}
-            </MenuToggleWrap>
-            <MenuInfoTapInner>
-                {currentItem.key === 0 && <StoreMenu/>}
-                {currentItem.key === 1 && <StoreInfo/>}
+                )}
+            </MenuTabWrap>
+            <MenuInfoTapWrap>
+                {currentItem.key === 0 && <StoreMenu notice={data?.data.notice} menuInfo={data?.data.menu}/>}
+                {currentItem.key === 1 && <StoreInfo storeInfo={data?.data.storeInfo}/>}
                 {currentItem.key === 2 && <StoreReview/>}
-            </MenuInfoTapInner>
+            </MenuInfoTapWrap>
         </StoreOuter>
     );
 }
