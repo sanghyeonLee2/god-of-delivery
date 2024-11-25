@@ -13,7 +13,7 @@ function HomePage(props) {
                                   onClick={() => navigate(`category-info/${ele.id}`, {state: {categoryId: ele.id}})}>
                     <CategoryBoxInner>
                         <CategoryText>{ele.id}</CategoryText>
-                        <CategoryImg src={testImg} alt={"img"} width={120}/>
+                        <CategoryImg src={testImg} alt={"img"} width={110}/>
                     </CategoryBoxInner>
                 </CategoryBoxOuter>)}
         </CategoryWrap>

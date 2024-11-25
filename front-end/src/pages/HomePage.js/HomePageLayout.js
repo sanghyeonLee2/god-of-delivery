@@ -3,31 +3,31 @@ import {elementSize, flexLayout} from "../../assets/styles/Mixin";
 
 
 export const CategoryWrap = styled.div`
-    min-height: 1075px;
+    min-height: 1000px;
     max-width: 1180px;
     margin: 0 auto;
-    height: 100%;
     ${flexLayout("space-between")};
     flex-wrap: wrap;
-    padding: 10px 0
+    padding: 10px 0;
 `
 export const CategoryBoxOuter = styled.div`
-    ${elementSize("285px", "255px")};
+    ${elementSize("25%", "255px")};
 
     @media (max-width: 1200px) {
-        width: 32.8%;
+        width: 33.3%;
     }
     @media (max-width: 1100px) {
-        width: 49.1%;
+        width: 50%;
     }
-    position: relative;
-    padding: 4px 2px;
+
+    padding: 5px 5px;
     cursor: pointer;
+    box-sizing: border-box;
 `
 export const CategoryBoxInner = styled.div`
     border: lightgray 1px solid;
     height: 100%;
-
+    position: relative;
     cursor: pointer;
 `
 export const CategoryText = styled.p`
@@ -36,6 +36,6 @@ export const CategoryText = styled.p`
 `
 export const CategoryImg = styled.img`
     position: absolute;
-    left: 106px;
+    left: 90px;
     top: 108px;
 `
