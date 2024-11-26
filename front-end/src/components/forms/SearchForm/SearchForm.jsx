@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from "../../common/Input/Input";
-import resetIcon from "../../../assets/img/reset.png";
-import {MainButton} from "../../common/Button/main/MainButton";
+import {SubBtn} from "../../common/Button/main/MainButton";
 import {SearchInputForm} from "./SearchFormLayout";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
@@ -22,8 +21,7 @@ function SearchForm() {
                    ref={onClick}
                    placeholder={location.pathname === "/" ? "배고프니까 일단 검색" : "주소 검색"}
             />
-            <img src={resetIcon} alt="구글 리셋 아이콘"/>
-            <MainButton type={"submit"} text={"검색"}/>
+            <SubBtn type={"submit"} text={"검색"}/>
         </SearchInputForm>
     );
 }

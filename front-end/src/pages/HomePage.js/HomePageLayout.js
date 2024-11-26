@@ -1,30 +1,41 @@
 import styled from "styled-components";
 import {elementSize, flexLayout} from "../../assets/styles/Mixin";
 
-export const CategoryOuter = styled.main`
-  margin-top: 18px;
-  min-height: 1190px;
+
+export const CategoryWrap = styled.div`
+    min-height: 1000px;
+    max-width: 1180px;
+    margin: 0 auto;
+    ${flexLayout("space-between")};
+    flex-wrap: wrap;
+    padding: 10px 0;
 `
-export const CategoryInner = styled.div`
-  margin: 0 auto;
-  max-width: 1180px;
-  height: 100%;
-  ${flexLayout("space-between")};
-  flex-wrap: wrap;
+export const CategoryBoxOuter = styled.div`
+    ${elementSize("25%", "255px")};
+
+    @media (max-width: 1200px) {
+        width: 33.3%;
+    }
+    @media (max-width: 1100px) {
+        width: 50%;
+    }
+
+    padding: 5px 5px;
+    cursor: pointer;
+    box-sizing: border-box;
 `
-export const CategoryBox = styled.div`
-  ${elementSize("280px", "280px")}
-  border: lightgray 1px solid;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 18px;
+export const CategoryBoxInner = styled.div`
+    border: lightgray 1px solid;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
 `
 export const CategoryText = styled.p`
-  margin-top: 25px;
-  margin-left: 25px;
+    margin-top: 25px;
+    margin-left: 25px;
 `
 export const CategoryImg = styled.img`
-  position: absolute;
-  left: 106px;
-  top: 108px;
+    position: absolute;
+    left: 90px;
+    top: 108px;
 `

@@ -3,38 +3,30 @@ import {flexLayout} from "../../../assets/styles/Mixin";
 
 
 export const FooterWrapper = styled.footer`
-  height: 180px;
-  position: relative;
-  transform: translateY(-100%);
+    position: relative;
+    transform: translateY(-100%);
+    border-top: 1px solid #d9d9d9;
 `
 export const FooterMenuOuter = styled.div`
-  ${flexLayout("center")}
-  border-bottom: 1px solid #d9d9d9;
-  border-top: 1px solid #d9d9d9;
+    max-width: 1100px;
+    margin: 0 auto;
+    ${flexLayout("space-between")};
 `
-export const FooterMenuInner = styled.div`
-  ${flexLayout("center")}
-  width: 60%;
-`
-export const FooterMenuLeftUl = styled.ul`
-  padding: 15px 20px;
-  width: 70%;
-  margin-right: 150px;
-  ${flexLayout("space-between")}
+export const FooterMenuLeft = styled.ul`
+    padding: 13px 10px;
+    width: 40%;
+    ${flexLayout("space-between")}
 `
 
-export const FooterMenuRightUl = styled.ul`
-  padding: 15px 20px;
-  width: 20%;
-  ${flexLayout("space-between")}
+export const FooterMenuRight = styled.ul`
+    padding: 15px 10px;
+    width: 18%;
+    ${flexLayout("space-between")}
 `
-export const FooterInfoOuter = styled.div`
-  ${flexLayout("center")}`
 
 export const FooterInfoInner = styled.div`
-  width: 60%;
-  ${flexLayout("space-between")}
-`
-export const FooterAsideInfo = styled.div`
-  margin-top: 20px;
+    max-width: 1100px;
+    ${flexLayout("space-between")}
+    margin: 0 auto;
+    padding: 13px 10px;
 `

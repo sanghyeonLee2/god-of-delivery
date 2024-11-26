@@ -1,24 +1,20 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {COLORS} from "../../../assets/styles/colors";
 
 
-export const HeaderOuter = styled.header`
-  background-color: #FFEB00;
-  height: 92px;
+export const HeaderWrap = styled.div`
+    ${flexLayout("space-between", "center")};
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 92px;
+    padding: 0 10px;
 `
 
-export const HeaderInner = styled.div`
-  ${flexLayout("space-between", "center")};
-  max-width: 1100px;
-  margin: 0 auto;
-  height: 100%;
-`
-export const HeaderAddress = styled.div`
-`
-export const AuthBtnWrap = styled.section`
-  width: 270px;
-
-  button {
-    margin-left: 5px;
-  }
+export const CartWrap = styled.div`
+    position: absolute;
+    background-color: ${COLORS.BTN.SUB};
+    border-radius: 35px;
+    ${elementSize("80px", "80px")};
+    ${flexLayout("center", "center")};
 `
