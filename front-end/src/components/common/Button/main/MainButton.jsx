@@ -1,11 +1,11 @@
 import React from 'react';
 import {MainButtonLayout, SubButtonLayout, TransButtonLayout} from "./MainButtonLayout";
-import {MiddleSizeFont} from "../../../../assets/styles/CommonStyle";
+import {Font} from "../../../../assets/styles/CommonStyle";
 
 export function MainBtn({type, text, onClick}) {
     return (
         <MainButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont> {text}</MiddleSizeFont>
+            <Font>{text}</Font>
         </MainButtonLayout>
     );
 }
@@ -13,7 +13,7 @@ export function MainBtn({type, text, onClick}) {
 export function SubBtn({type, text, onClick}) {
     return (
         <SubButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont color={"white"}> {text}</MiddleSizeFont>
+            <Font color={"white"}>{text}</Font>
         </SubButtonLayout>
     );
 }
@@ -21,7 +21,7 @@ export function SubBtn({type, text, onClick}) {
 export function TransBtn({type, text, onClick}) {
     return (
         <TransButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont> {text}</MiddleSizeFont>
+            <Font>{text}</Font>
         </TransButtonLayout>
     );
 }

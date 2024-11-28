@@ -13,18 +13,17 @@ import {
     PaymentBox,
     PriceWrap
 } from "./CartLayout";
-import {MiddleSizeFont, SmallSizeFont} from "../../assets/styles/CommonStyle";
+import {FlexOnly, Font} from "../../assets/styles/CommonStyle";
 import {MainBtn, SubBtn, TransBtn} from "../../components/common/Button/main/MainButton";
 import {OrderBtnWrap} from "../../components/common/Button/main/MainButtonLayout";
-import TitleText from "../../components/common/TitleText/TitleText";
 
 function Cart(props) {
     return (
         <CartWrap>
             <CartHeader>
                 <MinStoreInfoWrap>
-                    <TitleText text={"네네치킨"}/>
-                    <SmallSizeFont color={"gray"}>15~20분 후 도착</SmallSizeFont>
+                    <Font size={"x-large"}>네네치킨</Font>
+                    <Font size={"small"} color={"gray"}>15~20분 후 도착</Font>
                     {/*쿠폰 컴포넌트 추가*/}
                 </MinStoreInfoWrap>
             </CartHeader>
@@ -32,14 +31,14 @@ function Cart(props) {
                 <MenuOptionWrap>
                     <ul>
                         <li>
-                            <MiddleSizeFont>후라이드 치킨</MiddleSizeFont>
+                            <Font>후라이드 치킨</Font>
                         </li>
 
                         <li>
-                            <SmallSizeFont color={"gray"}>치킨무 주세요 치킨 양념 주세요</SmallSizeFont>
+                            <Font size={"small"} color={"gray"}>치킨무 주세요 치킨 양념 주세요</Font>
                         </li>
                         <li>
-                            <MiddleSizeFont>3000원</MiddleSizeFont>
+                            <Font>3000원</Font>
                         </li>
                     </ul>
                     <MenuOptionImg/>
@@ -54,46 +53,46 @@ function Cart(props) {
             <MenuAddBtnWrap>
                 <TransBtn text={"메뉴 추가"}/>
             </MenuAddBtnWrap>
-            <TitleText text={"수령방법을 선택해주세요"}/>
+            <Font size={"large"}>수령방법을 선택해주세요</Font>
             <ul>
                 <MethodReceiptBox>
-                    <div>
-                        <MiddleSizeFont>
+                    <FlexOnly>
+                        <Font>
                             배달
-                        </MiddleSizeFont>
+                        </Font>
                         &nbsp;
-                        <SmallSizeFont color={"gray"}>10분~20분</SmallSizeFont>
-                    </div>
-                    <MiddleSizeFont>
+                        <Font size={"small"} color={"gray"}>10분~20분</Font>
+                    </FlexOnly>
+                    <Font>
                         2000원
-                    </MiddleSizeFont>
+                    </Font>
                 </MethodReceiptBox>
                 <MethodReceiptBox>
-                    <div>
-                        <MiddleSizeFont>
+                    <FlexOnly>
+                        <Font>
                             포장
-                        </MiddleSizeFont>
+                        </Font>
                         &nbsp;
-                        <SmallSizeFont color={"gray"}>10분~20분</SmallSizeFont>
-                    </div>
-                    <MiddleSizeFont>
+                        <Font size={"small"} color={"gray"}>10분~20분</Font>
+                    </FlexOnly>
+                    <Font>
                         2000원
-                    </MiddleSizeFont>
+                    </Font>
                 </MethodReceiptBox>
             </ul>
-            <TitleText text={"결제금액을 확인해주세요"}/>
+            <Font size={"large"}>결제금액을 확인해주세요</Font>
             <PaymentBox>
                 <PriceWrap>
-                    <MiddleSizeFont>주문금액</MiddleSizeFont>
-                    <MiddleSizeFont>10000원</MiddleSizeFont>
+                    <Font>주문금액</Font>
+                    <Font>10000원</Font>
                 </PriceWrap>
                 <PriceWrap>
-                    <MiddleSizeFont>배달팁</MiddleSizeFont>
-                    <MiddleSizeFont>10000원</MiddleSizeFont>
+                    <Font>배달팁</Font>
+                    <Font>10000원</Font>
                 </PriceWrap>
                 <PriceWrap>
-                    <TitleText text={"결제 예정 금액"}/>
-                    <TitleText text={"10000원"}/>
+                    <Font size={"x-large"}>결제 예정 금액</Font>
+                    <Font size={"x-large"}>10000원</Font>
                 </PriceWrap>
             </PaymentBox>
             <OrderBtnWrap>

@@ -7,10 +7,10 @@ import {
     MiddleInner,
     RoadAddress
 } from "./AddressBoxLayout";
-import {P} from "../../../assets/styles/CommonStyle";
 import addressLocation from "../../../assets/img/address_location.png"
 import check from "../../../assets/img/check.png"
 import {usePost} from "../../../hooks/usePost";
+import {Font} from "../../../assets/styles/CommonStyle";
 
 //import addressHome from "../../../assets/img/home.png"
 
@@ -26,11 +26,11 @@ function AddressBox({addressInfo}) {
             <AddressBoxMiddle>
                 <MiddleInner>
                     <RoadAddress>
-                        <P size={"large"}>{addressInfo.roadInfo}</P>
+                        <Font size={"large"}>{addressInfo.roadInfo}</Font>
                     </RoadAddress>
-                    <P size={"medium"}>{addressInfo.detailAddress}</P>
-                    <P size={"small"}>{addressInfo.addressType}</P>
-                    <P size={"x-small"}>{addressInfo.forRider}</P>
+                    <Font>{addressInfo.detailAddress}</Font>
+                    <Font size={"small"}>{addressInfo.addressType}</Font>
+                    <Font size={"small"}>{addressInfo.forRider}</Font>
                 </MiddleInner>
             </AddressBoxMiddle>
             <AddressBoxRight>

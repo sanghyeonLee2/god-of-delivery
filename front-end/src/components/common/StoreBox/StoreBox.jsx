@@ -1,7 +1,7 @@
 import React from 'react';
 import {AverageTimeWrap, StoreInfoWrap, StoreInner, StoreLogo, StoreOuter} from "./StoreBoxLayout";
 import {useNavigate} from "react-router-dom";
-import {FlexOnly, MiddleSizeTitleFont, SmallSizeFont} from "../../../assets/styles/CommonStyle";
+import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 
 function StoreBox({storeInfo}) {
     const navigate = useNavigate()
@@ -10,25 +10,25 @@ function StoreBox({storeInfo}) {
             <StoreInner>
                 <StoreLogo/>
                 <StoreInfoWrap>
-                    <MiddleSizeTitleFont>
+                    <Font size={"large"}>
                         {storeInfo?.storeName}
-                    </MiddleSizeTitleFont>
+                    </Font>
                     <FlexOnly element={"ul"}>
-                        <li><SmallSizeFont color={"#FFA800"}>{storeInfo?.rating}</SmallSizeFont></li>
+                        <li><Font size={"small"} color={"#FFA800"}>{storeInfo?.rating}</Font></li>
                         &nbsp;|&nbsp;
-                        <li><SmallSizeFont>찜 {storeInfo?.dipsCnt}</SmallSizeFont></li>
+                        <li><Font size={"small"}>찜 {storeInfo?.dipsCnt}</Font></li>
                         &nbsp;|&nbsp;
-                        <li><SmallSizeFont>리뷰 {storeInfo?.reviewCnt}</SmallSizeFont></li>
+                        <li><Font size={"small"}>리뷰 {storeInfo?.reviewCnt}</Font></li>
                     </FlexOnly>
                     <FlexOnly element={"ul"}>
-                        <li><SmallSizeFont color={"red"}>배달패스</SmallSizeFont></li>
+                        <li><Font size={"small"} color={"red"}>배달패스</Font></li>
                         &nbsp;|&nbsp;
-                        <li><SmallSizeFont color={"gray"}>{storeInfo?.minDeliveryPrice}원 이상
-                            배달</SmallSizeFont></li>
+                        <li><Font size={"small"} color={"gray"}>{storeInfo?.minDeliveryPrice}원 이상
+                            배달</Font></li>
                         <AverageTimeWrap>
-                            <SmallSizeFont color={"gray"}>
+                            <Font size={"small"} color={"gray"}>
                                 {storeInfo?.operationHours}
-                            </SmallSizeFont>
+                            </Font>
                         </AverageTimeWrap>
                     </FlexOnly>
                 </StoreInfoWrap>

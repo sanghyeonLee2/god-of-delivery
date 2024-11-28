@@ -19,13 +19,7 @@ import {
     UserReviewInfoWrap,
     UserReviewWrap
 } from "./StoreReviewLayout";
-import {
-    MiddleSizeFont,
-    MiddleSizeTitleFont,
-    SmallSizeFont,
-    SmallSizeTitleFont,
-    VerticalSpace
-} from "../../../assets/styles/CommonStyle";
+import {Font, VerticalSpace} from "../../../assets/styles/CommonStyle";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import {BarChart} from "../Chart/BarChart";
 import {LineChart} from "../Chart/LineChart";
@@ -35,12 +29,12 @@ function StoreReview(props) {
     return (
         <StoreReviewWrap>
             <CeoNoticeTitleWrap>
-                <SmallSizeTitleFont>
-                    <p>사장님 공지</p>
-                </SmallSizeTitleFont>
-                <SmallSizeFont color={"lightgray"}>
+                <Font size={"large"}>
+                    사장님 공지
+                </Font>
+                <Font size={"small"} color={"lightgray"}>
                     2024년 5월 17일
-                </SmallSizeFont>
+                </Font>
             </CeoNoticeTitleWrap>
             <ul>
                 <li>
@@ -74,14 +68,12 @@ function StoreReview(props) {
             </ul>
             <VerticalSpace/>
             <CurrentReviewWrap>
-                <MiddleSizeTitleFont>
-                    <p>
-                        최근 리뷰 35개
-                    </p>
-                </MiddleSizeTitleFont>
-                <MiddleSizeFont>
+                <Font>
+                    최근 리뷰 35개
+                </Font>
+                <Font>
                     사장님 댓글 0
-                </MiddleSizeFont>
+                </Font>
                 <ReviewSortingWrap>
                     <SortBtn>
                         <span>최신순</span>
@@ -95,26 +87,27 @@ function StoreReview(props) {
                         <UserIcon/>
                     </UserIconWrap>
                     <UserReviewInfoWrap>
+
+                        <Font>
+                            5점
+                        </Font>
+                        &nbsp;&nbsp;
+                        <Font size={"small"} color={"gray"}>리뷰 225</Font>
+                        &nbsp;&nbsp;
+                        <Font size={"small"} color={"gray"}>평균별점 5.0</Font>
                         <div>
-                            <MiddleSizeFont>
-                                5점
-                            </MiddleSizeFont>
-                            &nbsp;&nbsp;
-                            <SmallSizeFont color={"gray"}>리뷰 225</SmallSizeFont>
-                            &nbsp;&nbsp;
-                            <SmallSizeFont color={"gray"}>평균별점 5.0</SmallSizeFont>
+                            <StarRatings rating={4.9}
+                                         starRatedColor={"gold"}
+                                         starDimension={"20px"}
+                                         starSpacing={"2px"}
+                            />
+                            &nbsp;
+                            <Font size={"small"} color={"gray"}>이번주</Font>
                         </div>
-                        <StarRatings rating={4.9}
-                                     starRatedColor={"gold"}
-                                     starDimension={"20px"}
-                                     starSpacing={"2px"}
-                        />
-                        &nbsp;
-                        <SmallSizeFont color={"gray"}>이번주</SmallSizeFont>
                         <OrderedMenuWrap>
-                            <MiddleSizeFont>
+                            <Font>
                                 1인 목살
-                            </MiddleSizeFont>
+                            </Font>
                         </OrderedMenuWrap>
                     </UserReviewInfoWrap>
                 </UserReviewWrap>

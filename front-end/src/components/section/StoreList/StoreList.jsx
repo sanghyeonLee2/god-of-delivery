@@ -5,7 +5,7 @@ import useGet from "../../../hooks/useGet";
 import Loading from "../../common/Loading/Loading";
 import {useRecoilValue} from "recoil";
 import {sortingState} from "../../../recoil/search/atoms";
-import {MiddleSizeTitleFont} from "../../../assets/styles/CommonStyle";
+import {Font} from "../../../assets/styles/CommonStyle";
 
 function StoreList({listType, categoryId}) {
     const [data, isError, status, isLoading] = useGet("stores")
@@ -15,11 +15,9 @@ function StoreList({listType, categoryId}) {
         return <Loading/>
     return (
         <RecommendedOuter>
-            <MiddleSizeTitleFont>
-                <p>
-                    {listType}
-                </p>
-            </MiddleSizeTitleFont>
+            <Font>
+                {listType}
+            </Font>
             <RecommendedWrap>
                 {data.data.sort((a, b) =>
                     b[sorting] - a[sorting]

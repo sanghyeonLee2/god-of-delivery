@@ -1,15 +1,15 @@
 import React from 'react';
 import {ReviewWrap, StoreHeaderWrap, StoreImgWrap} from "./StoreHeaderLayout";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import {LargeSizeTitleFont} from "../../../assets/styles/CommonStyle";
+import {Font} from "../../../assets/styles/CommonStyle";
 
 function StoreHeader({haaderData}) {
     return (
         <StoreHeaderWrap>
             <StoreImgWrap/>
-            <LargeSizeTitleFont>
-                <p>{haaderData.storeName}</p>
-            </LargeSizeTitleFont>
+            <Font size={"x-large"}>
+                {haaderData.storeName}
+            </Font>
             <div>
                 <StarRatings
                     rating={haaderData.rating}

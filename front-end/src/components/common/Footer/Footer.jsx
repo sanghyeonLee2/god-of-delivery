@@ -1,7 +1,7 @@
 import React from 'react';
 import {FooterInfoInner, FooterMenuLeft, FooterMenuOuter, FooterMenuRight, FooterWrapper} from "./FooterLayout";
 import {Link} from "react-router-dom";
-import {SmallSizeFont} from "../../../assets/styles/CommonStyle";
+import {Font} from "../../../assets/styles/CommonStyle";
 
 function Footer(props) {
     return (
@@ -9,21 +9,21 @@ function Footer(props) {
             <FooterMenuOuter>
                 <FooterMenuLeft>
                     <li>
-                        <SmallSizeFont color={"gray"}>공지사항</SmallSizeFont>
+                        <Font size={"small"} color={"gray"}>공지사항</Font>
                     </li>
                     <li>
-                        <SmallSizeFont color={"gray"}>FAQ</SmallSizeFont>
+                        <Font size={"small"} color={"gray"}>FAQ</Font>
                     </li>
                     <li>
-                        <SmallSizeFont color={"gray"}>개인정보처리방침</SmallSizeFont>
+                        <Font size={"small"} color={"gray"}>개인정보처리방침</Font>
                     </li>
                 </FooterMenuLeft>
                 <FooterMenuRight>
                     <li>
-                        <SmallSizeFont color={"gray"}>깃허브</SmallSizeFont>
+                        <Font size={"small"} color={"gray"}>깃허브</Font>
                     </li>
                     <li>
-                        <SmallSizeFont color={"gray"}>블로그</SmallSizeFont>
+                        <Font size={"small"} color={"gray"}>블로그</Font>
                     </li>
                 </FooterMenuRight>
             </FooterMenuOuter>
@@ -34,9 +34,9 @@ function Footer(props) {
                     </h1>
                 </Link>
                 <div>
-                    <SmallSizeFont color={"gray"}>주식회사 DN</SmallSizeFont>
+                    <Font size={"small"} color={"gray"}>주식회사 DN</Font>
                     <br/>
-                    <SmallSizeFont color={"gray"}>부산시 사상구 주례로 47 대표이사 이상현, 신유성</SmallSizeFont>
+                    <Font size={"small"} color={"gray"}>부산시 사상구 주례로 47 대표이사 이상현, 신유성</Font>
                 </div>
             </FooterInfoInner>
         </FooterWrapper>
