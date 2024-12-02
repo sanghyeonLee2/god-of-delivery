@@ -6,7 +6,7 @@ import {MenuDetailOptionsWrap, OptionWrap} from "./ModalComponentsLayout";
 import {MenuDetailTextWrap} from "../MenuDetailModalLayout";
 import CheckBox from "../../../common/CheckBox/CheckBox";
 
-function MenuDetailOptions({details}) {
+function MenuDetailOptions({details, register, setValue, watch}) {
     return (
         <>
             {details.map((detail) =>
@@ -17,9 +17,12 @@ function MenuDetailOptions({details}) {
                     {detail.isEssential ?
                         <RadioGroup>
                             {/*라디오가 아닌 체크박스를 만들어야한다 -> 커스텀 훅으로?*/}
-                            {detail.options.map((option) =>
+                            {detail.options.map((option, optionIdx) =>
                                 <OptionWrap key={option.content}>
-                                    <Radio name={detail.title} value={option.content}>
+                                    <Radio value={option}
+                                           name={detail.title}
+                                           setValue={setValue}
+                                           defaultChecked={optionIdx === 0}>
                                         &nbsp;&nbsp;{option.content}
                                     </Radio>
                                     <Font>
@@ -31,19 +34,26 @@ function MenuDetailOptions({details}) {
                         <>
                             {detail.options.map((option) =>
                                 <OptionWrap key={option.content}>
-                                    <CheckBox>
+                                    <CheckBox setValue={setValue}
+                                              value={option}
+                                              name={detail.title}
+                                              watch={watch}
+                                              register={register}
+                                              maxQuantity={detail.maxQuantity}>
                                         &nbsp;&nbsp;{option.content}
                                     </CheckBox>
                                     <Font>
                                         +{option.price.toLocaleString()}원
                                     </Font>
                                 </OptionWrap>
-                            )}
+                            )
+                            }
                         </>
                     }
-                </MenuDetailOptionsWrap>)}
+                </MenuDetailOptionsWrap>)
+            }
         </>
-    );
+    )
 }
 
 export default MenuDetailOptions;
