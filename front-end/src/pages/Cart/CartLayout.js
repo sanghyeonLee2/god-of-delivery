@@ -9,7 +9,7 @@ export const CartWrap = styled.div`
     ${outerPadding()};
 `
 export const CartHeader = styled.div`
-    min-height: 80px`
+    min-height: 95px`
 
 export const MinStoreInfoWrap = styled.div`
     height: 60px`
