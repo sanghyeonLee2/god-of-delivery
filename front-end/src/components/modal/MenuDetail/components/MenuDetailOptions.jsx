@@ -1,18 +1,23 @@
 import React from 'react';
-import {Font} from "../../../../assets/styles/CommonStyle";
+import {FlexOnly, Font} from "../../../../assets/styles/CommonStyle";
 import RadioGroup from "../../../common/RadioGroup/RadioGroup";
 import Radio from "../../../common/RadioGroup/Radio/Radio";
 import {MenuDetailOptionsWrap, OptionWrap} from "./ModalComponentsLayout";
 import {MenuDetailTextWrap} from "../MenuDetailModalLayout";
 import CheckBox from "../../../common/CheckBox/CheckBox";
 
-function MenuDetailOptions({details, register, setValue, watch}) {
+function MenuDetailOptions({details, register, setValue, getValues}) {
     return (
         <>
             {details.map((detail) =>
                 <MenuDetailOptionsWrap key={detail.title}>
                     <MenuDetailTextWrap>
-                        <Font>{detail.title}</Font>
+                        <FlexOnly>
+                            <Font>{detail.title}</Font>
+                            &nbsp;&nbsp;
+                            {detail?.isEssential ? <Font size={"small"} color={"red"}>필수 선택</Font> :
+                                <Font size={"small"}>최대{detail?.maxQuantity}개 선택가능</Font>}
+                        </FlexOnly>
                     </MenuDetailTextWrap>
                     {detail.isEssential ?
                         <RadioGroup>
@@ -37,8 +42,8 @@ function MenuDetailOptions({details, register, setValue, watch}) {
                                     <CheckBox setValue={setValue}
                                               value={option}
                                               name={detail.title}
-                                              watch={watch}
                                               register={register}
+                                              getValues={getValues}
                                               maxQuantity={detail.maxQuantity}>
                                         &nbsp;&nbsp;{option.content}
                                     </CheckBox>
