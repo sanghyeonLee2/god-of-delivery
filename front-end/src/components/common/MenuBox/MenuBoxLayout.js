@@ -3,6 +3,7 @@ import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const MenuBoxWrap = styled.li`
     min-height: 300px;
+    padding-top: 10px;
 `
 
 export const MenuInfoInner = styled.ul`
@@ -16,9 +17,7 @@ export const LeftMenuInfo = styled.li`
     max-width: 400px;
 `
 export const MenuTitleWrap = styled.li`
-    div:nth-child(1) {
-        ${flexLayout("stretch", "center")};
-    }
+    display: flex;
 `
 
 export const Popular = styled.div`
@@ -26,12 +25,9 @@ export const Popular = styled.div`
     border-style: dotted;
     margin-right: 8px;
     font-size: 12px;
-
+    text-align: center;
+    align-content: center;
     ${elementSize("35px", "35px")}
-    span {
-        width: 100%;
-        text-align: center;
-    }
 `
 export const RecommendWrap = styled.li`
     height: 30px;
