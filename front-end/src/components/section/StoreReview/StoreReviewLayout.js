@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {exampleColor, innerPadding, outerPadding} from "../../../assets/styles/CommonStyle";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {exampleColor, outerPadding} from "../../../assets/styles/CommonStyle";
+import {elementSize, flexLayout, setBorder} from "../../../assets/styles/Mixin";
 
 export const StoreReviewWrap = styled.div`
     min-height: 1300px;
@@ -64,7 +64,11 @@ export const UserReviewWrap = styled.div`
     position: relative;
 `
 export const UserReviewInfoWrap = styled.div`
-    padding-top: 15px;;
+    padding-top: 15px;
+
+    p {
+        display: inline;
+    }
 `
 export const UserIconWrap = styled.div`
     ${elementSize("80px", "80px")}
@@ -76,11 +80,10 @@ export const UserIcon = styled.div`
     ${elementSize("50px", "50px")})
 `
 export const OrderedMenuWrap = styled.div`
-    height: 25px;
-    ${innerPadding()};
-    border-radius: 20px;
+    height: 35px;
+    ${setBorder()};
+    padding: 3px 6px;
     position: absolute;
     top: 85px;
     left: 30px;
-    border: 1px solid gray;
 `
