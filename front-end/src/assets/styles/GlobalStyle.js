@@ -6,7 +6,7 @@ const FONT_FAMILY = "양진체"
 export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
-
+        box-sizing: border-box;
     }
 
     @font-face {
@@ -27,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
 
         padding: 0 20px;
         border-radius: 4px;
-        box-sizing: border-box;
     }
 
     li {
@@ -67,7 +66,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         position: relative;
-        min-height: 100%;
         padding-bottom: 150px;
     }
 `
