@@ -12,6 +12,7 @@ export const HeaderWrap = styled.div`
 `
 
 export const CartWrap = styled.div`
+    cursor: pointer;
     position: absolute;
     background-color: ${COLORS.BTN.SUB};
     border-radius: 35px;
