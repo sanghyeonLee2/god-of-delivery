@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {MainButtonLayout, SubButtonLayout, TransButtonLayout} from "./MainButtonLayout";
 import {Font} from "../../../../assets/styles/CommonStyle";
 
@@ -18,10 +18,10 @@ export function SubBtn({type, text, onClick}) {
     );
 }
 
-export function TransBtn({type, text, onClick}) {
+export const TransBtn = forwardRef(({dataAction, type, text, onClick}, ref) => {
     return (
-        <TransButtonLayout type={type} onClick={onClick}>
+        <TransButtonLayout type={type} onClick={onClick} ref={ref} data-action={dataAction}>
             <Font>{text}</Font>
         </TransButtonLayout>
     );
-}
+});
