@@ -9,17 +9,43 @@ import ModalHeader from "./components/ModalHeader";
 import OrderPrice from "./components/OrderPrice";
 import {MenuDetailBtnWrap, MenuDetailTextWrap, SelectQuantityWrap} from "./MenuDetailModalLayout";
 import MenuDetailProlog from "./components/MenuDetailProlog";
+import {useForm} from "react-hook-form";
+import {setMenuDetail} from "../../../utils/defaultValues";
+import useClick from "../../../hooks/useClick";
 
 function MenuDetailModal(props) {
     const modalData = useRecoilValue(modalDataState)
-    /*useEffect(() => {
-        const prevScrollY = preventScroll();
-        return () => {
-            allowScroll(prevScrollY);
-        };
-    }, []);*/
+
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        getValues,
+        watch
+    } = useForm({
+        defaultValues: setMenuDetail(modalData.details),
+    },)
+
+    const quantityOnChg = (operand) => {
+        const currentQuantity = getValues("quantity");
+        let newQuantity = currentQuantity + Number(operand)
+
+        if (newQuantity < 1) {
+            newQuantity = 1;
+        }
+        setValue("quantity", newQuantity);
+    };
+
+    const minusBtnRef = useClick(() => {
+        quantityOnChg(-1);
+    });
+
+    const plusBtnRef = useClick(() => {
+        quantityOnChg(1);
+    });
+    //리액트쿼리 사용해서 post
     return (
-        <ModalOuter onClick={() => console.log("ModalDetailModal")}>
+        <ModalOuter>
             <ModalInner>
                 <ModalHeader title={"메뉴 상세"}/>
                 <ModalContentWrap>
@@ -28,25 +54,25 @@ function MenuDetailModal(props) {
                         <Font>가격</Font>
                         <Font>{modalData.price.toLocaleString()}원</Font>
                     </MenuDetailTextWrap>
-                    <MenuDetailOptions details={modalData.details}/>
-                    <MenuDetailTextWrap>
-                        <Font>수량</Font>
-                        <SelectQuantityWrap>
-                            <TransBtn text={"-"}/>
-                            <div>1</div>
-                            <TransBtn text={"+"}/>
-                        </SelectQuantityWrap>
-                    </MenuDetailTextWrap>
                     <ModalForm>
+                        <MenuDetailOptions details={modalData.details} register={register} setValue={setValue}
+                                           getValues={getValues}/>
+                        <MenuDetailTextWrap>
+                            <Font>수량</Font>
+                            <SelectQuantityWrap>
+                                <TransBtn dataAction={-1} type={"button"} text={"-"} ref={minusBtnRef}/>
+                                <div>{getValues("quantity")}</div>
+                                <TransBtn dataAction={1} type={"button"} text={"+"} ref={plusBtnRef}/>
+                            </SelectQuantityWrap>
+                        </MenuDetailTextWrap>
                     </ModalForm>
-                    <OrderPrice price={modalData.price}/>
+                    <OrderPrice defaultPrice={modalData.price} watch={watch}/>
                 </ModalContentWrap>
                 <MenuDetailBtnWrap>
-                    <SubBtn text={"장바구니에 담기"}/>
+                    <SubBtn text={"장바구니에 담기"} onClick={handleSubmit((data) => console.log(getValues()))}/>
                     <SubBtn text={"주문하기"}/>
                 </MenuDetailBtnWrap>
             </ModalInner>
-
         </ModalOuter>
     );
 }
