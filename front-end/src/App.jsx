@@ -6,10 +6,14 @@ import Footer from "./components/common/Footer/Footer";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {isSignInState, userInfoState} from "./recoil/user/atoms";
 import {authGetApi} from "./apis/api/user";
+import MenuDetailModal from "./components/modal/MenuDetail/MenuDetailModal";
+import {isModalOpenState} from "./recoil/flag/atoms";
 
 function App() {
     //const [data, isError, status, isLoading,] = useAuthGet("me")
     const isSignIn = useRecoilValue(isSignInState)
+    const isModalOpen = useRecoilValue(isModalOpenState)
+
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     useEffect(() => {
         const fetchData = async () => {
@@ -18,7 +22,7 @@ function App() {
         }
         fetchData()
     }, [isSignIn, setUserInfo]);
-
+    
     return (
         <>
             <div className="App">
@@ -27,6 +31,7 @@ function App() {
                 <Outlet/>
             </div>
             <Footer/>
+            {isModalOpen && <MenuDetailModal/>}
         </>
     );
 }
