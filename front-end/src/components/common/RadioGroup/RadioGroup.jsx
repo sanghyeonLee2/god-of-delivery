@@ -1,11 +1,10 @@
 import React from 'react';
-import {AddressTypeWrapper} from "./RadioGroupLayout";
 
 function RadioGroup({children}) {
     return (
-        <AddressTypeWrapper>
+        <div>
             {children}
-        </AddressTypeWrapper>
+        </div>
     );
 }
 
