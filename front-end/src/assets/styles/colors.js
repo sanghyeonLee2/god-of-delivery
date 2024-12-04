@@ -3,5 +3,6 @@ export const COLORS = {
     BTN: {
         SUB: "#116EDB",
         MAIN: "#F5F5F5"
-    }
+    },
+    BORDER: "#F6F6F6"
 }
