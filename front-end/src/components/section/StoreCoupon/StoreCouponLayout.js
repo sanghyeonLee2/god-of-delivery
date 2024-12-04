@@ -12,6 +12,10 @@ export const CouponWrap = styled.div`
 `
 
 export const CouponContent = styled.div`
+    p {
+        display: inline;
+    }
+
     align-content: center;
     width: 85%;
     padding-left: 20px;
