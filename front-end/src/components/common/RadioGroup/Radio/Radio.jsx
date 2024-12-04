@@ -1,9 +1,7 @@
 import React from 'react';
-import {useFormContext} from "react-hook-form";
 
 
-function Radio({children, value, name, defaultChecked, disabled}) {
-    const {register} = useFormContext()
+function Radio({children, value, name, defaultChecked, disabled, setValue}) {
     return (
         <label>
             <input
@@ -12,7 +10,7 @@ function Radio({children, value, name, defaultChecked, disabled}) {
                 name={name}
                 defaultChecked={defaultChecked}
                 disabled={disabled}
-                {...register("addressType")}
+                onChange={() => setValue(name, value)}
             />
             {children}
         </label>
