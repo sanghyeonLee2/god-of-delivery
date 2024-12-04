@@ -12,6 +12,7 @@ import MenuDetailProlog from "./components/MenuDetailProlog";
 import {useForm} from "react-hook-form";
 import {setMenuDetail} from "../../../utils/defaultValues";
 import useClick from "../../../hooks/useClick";
+import {usePost} from "../../../hooks/usePost";
 
 function MenuDetailModal(props) {
     const modalData = useRecoilValue(modalDataState)
@@ -27,13 +28,8 @@ function MenuDetailModal(props) {
     },)
 
     const quantityOnChg = (operand) => {
-        const currentQuantity = getValues("quantity");
-        let newQuantity = currentQuantity + Number(operand)
-
-        if (newQuantity < 1) {
-            newQuantity = 1;
-        }
-        setValue("quantity", newQuantity);
+        const newQuantity = getValues("quantity") + Number(operand)
+        return newQuantity >= 1 && setValue("quantity", newQuantity);
     };
 
     const minusBtnRef = useClick(() => {
@@ -43,6 +39,8 @@ function MenuDetailModal(props) {
     const plusBtnRef = useClick(() => {
         quantityOnChg(1);
     });
+    const {mutate: handlePutInCart} = usePost("cart/products")
+
     //리액트쿼리 사용해서 post
     return (
         <ModalOuter>
@@ -69,7 +67,7 @@ function MenuDetailModal(props) {
                     <OrderPrice defaultPrice={modalData.price} watch={watch}/>
                 </ModalContentWrap>
                 <MenuDetailBtnWrap>
-                    <SubBtn text={"장바구니에 담기"} onClick={handleSubmit((data) => console.log(getValues()))}/>
+                    <SubBtn text={"장바구니에 담기"} onClick={handleSubmit((data) => handlePutInCart(data))}/>
                     <SubBtn text={"주문하기"}/>
                 </MenuDetailBtnWrap>
             </ModalInner>
