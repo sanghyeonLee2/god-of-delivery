@@ -26,6 +26,15 @@ export const usePost = (url, isAuth = false) => {
                     case "customer/register":
                         alert("성공")
                         break
+                    case "order":
+                        alert("성공")
+                        break
+                    case "cart/products":
+                        if (window.confirm("장바구니에 담겼습니다. 이동 하시겠습니까?")) {
+                            setIsModalOpen(false)
+                            navigate("/cart")
+                        }
+                        break
                     case "address":
                         alert("주소가 추가 되었습니다.")
                         setIsModalOpen(false)
