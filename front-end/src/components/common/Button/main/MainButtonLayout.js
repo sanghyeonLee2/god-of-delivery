@@ -20,7 +20,7 @@ export const TransButtonLayout = styled.button`
     border-radius: 4px;
     border: 0;
     font-size: inherit;
-    background-color: white;
+    background-color: transparent;
     box-sizing: content-box;
 `
 export const OrderBtnWrap = styled.div`
