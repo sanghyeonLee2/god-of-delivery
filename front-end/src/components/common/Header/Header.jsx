@@ -1,15 +1,14 @@
 import React from 'react';
 import {CartWrap, HeaderWrap} from "./HeaderLayout";
 import {MainBtn} from "../Button/main/MainButton";
-import {Link} from "react-router-dom";
-import {useMove} from "../../../hooks/useMove";
+import {Link, useNavigate} from "react-router-dom";
 import {useRecoilState} from "recoil";
 import {isSignInState} from "../../../recoil/user/atoms";
 import SearchSection from "../../section/SearchSection/SearchSection";
 import cart from "../../../assets/img/cart.png"
 
 export function Header({currentAddress}) {
-    const navigate = useMove()
+    const navigate = useNavigate()
     const [isSignIn, setIsSignIn] = useRecoilState(isSignInState)
     return (
         <>
@@ -29,7 +28,7 @@ export function Header({currentAddress}) {
                     }/> :
                     <MainBtn type={"button"} text={"회원가입/로그인"} onClick={() => navigate("sign-up")}/>}
             </HeaderWrap>
-            <CartWrap>
+            <CartWrap onClick={() => navigate("cart")}>
                 <img src={cart} width={50} alt={"cart"}/>
             </CartWrap>
             {/*useDrag*/}
