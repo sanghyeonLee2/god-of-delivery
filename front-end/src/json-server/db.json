@@ -56,16 +56,34 @@
     }
   ],
   "cart": {
-    "products": [],
-    "storeTitle": "맥도날드 주례점",
+    "storeTitle": "네네치킨",
     "deliveryTime": "30~40분",
     "menus": [
       {
-        "menuName": "불고기버거",
+        "menuName": "후라이드치킨",
+        "price": 4200,
+        "quantity": 1
+      },
+      {
+        "menuName": "양념치킨",
         "price": 4200,
         "quantity": 1
       }
-    ]
+    ],
+    "receiptMethods": [
+      {
+        "receiptMethodType": "배달",
+        "tip": 2000
+      },
+      {
+        "receiptMethodType": "포장",
+        "tip": 0
+      }
+    ],
+    "payment": {
+      "orderPrice": 10000,
+      "tip": 2000
+    }
   },
   "review": {
     "currentCnt": 35,
