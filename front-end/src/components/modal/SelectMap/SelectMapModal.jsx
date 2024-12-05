@@ -4,14 +4,14 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import IconButton from "../../common/Button/icon/IconButton";
 import SearchForm from "../../forms/SearchForm/SearchForm"
-import KakaoMap from "../../section/KakaoMap/KakaoMap";
+import KakaoMap from "../../kakaoMap/KakaoMap";
 import {MainBtn} from "../../common/Button/main/MainButton";
-import AdditionalAddress from "../../section/AdditionalAddressInfo/AdditionalAddress";
+import AdditionalAddress from "../../../pages/SelectAddressPage/components/AdditionalAddress";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {addressValid} from "../../../validation/userSchema";
 import {usePost} from "../../../hooks/usePost";
-import AddressInfo from "../../section/AddressInfo/AddressInfo";
+import AddressInfo from "../../../pages/SelectAddressPage/components/AddressInfo";
 
 function SelectMapModal(props) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);

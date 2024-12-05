@@ -19,13 +19,6 @@ export const ModalInner = styled.div`
     ${elementSize("460px", "600px")};
     background-color: white;
     overflow-y: hidden;
-    /*
-        button {
-            position: absolute;
-            bottom: 0;
-            height: 50px;
-        }*/
-
 `
 
 export const ModalContentWrap = styled.div`
