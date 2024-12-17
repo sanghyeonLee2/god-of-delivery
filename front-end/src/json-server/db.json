@@ -55,14 +55,42 @@
       "id": 4
     }
   ],
+  "cart-post": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    }
+  ],
   "cart": {
     "storeTitle": "네네치킨",
     "deliveryTime": "30~40분",
     "menus": [
       {
         "menuName": "후라이드치킨",
-        "price": 4200,
-        "quantity": 1
+        "price": 16000,
+        "quantity": 1,
+        "details": [
+          {
+            "title": "가격",
+            "content": ""
+          },
+          {
+            "title": "소스",
+            "content": "스리라차",
+            "price": 1000
+          }
+        ]
       },
       {
         "menuName": "양념치킨",
@@ -73,17 +101,15 @@
     "receiptMethods": [
       {
         "receiptMethodType": "배달",
-        "tip": 2000
+        "tip": 2000,
+        "waiting": "30~40분"
       },
       {
         "receiptMethodType": "포장",
-        "tip": 0
+        "tip": 0,
+        "waiting": "10~10분"
       }
-    ],
-    "payment": {
-      "orderPrice": 10000,
-      "tip": 2000
-    }
+    ]
   },
   "review": {
     "currentCnt": 35,
