@@ -16,8 +16,9 @@ export const MinStoreInfoWrap = styled.div`
 
 
 export const MenuAddBtnWrap = styled.div`
+    ${setBorder()};
+    border-top: none;
     height: 50px;
-    ${setBorder()}
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     text-align: center;
