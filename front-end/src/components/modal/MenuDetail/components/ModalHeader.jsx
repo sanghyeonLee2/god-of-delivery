@@ -10,7 +10,8 @@ function ModalHeader({title}) {
     return (
         <ModalHeaderWrap>
             <Font size={"large"}>{title}</Font>
-            <img src={reset} alt={"닫기"} width={35} onClick={() => setIsModalClose(false)}/>
+            <img src={reset} alt={"닫기"} width={35}
+                 onClick={() => setIsModalClose({modalType: null, modalFlag: false})}/>
         </ModalHeaderWrap>
     );
 }
