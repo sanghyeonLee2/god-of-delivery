@@ -16,8 +16,8 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState, modalDataState} from "../../../recoil/flag/atoms";
 
 function MenuBox({menuInfo}) {
-    const setIsModalOpenWithDataState = useSetRecoilState(isModalOpenState);
-    const setModalDataState = useSetRecoilState(modalDataState);
+    const setIsModalOpen = useSetRecoilState(isModalOpenState);
+    const setModalData = useSetRecoilState(modalDataState);
     return (
         <MenuBoxWrap>
             <Font size={"x-large"}>
@@ -25,13 +25,13 @@ function MenuBox({menuInfo}) {
             </Font>
             {menuInfo.items?.map((ele) =>
                 <div key={ele.menuName} onClick={() => {
-                    setModalDataState({
+                    setModalData({
                         price: ele.price,
                         details: ele.details,
                         name: ele.menuName,
                         description: ele.description
                     });
-                    setIsModalOpenWithDataState(true)
+                    setIsModalOpen({modalType: "menuDetail", modalFlag: true})
                 }}>
                     <MenuInfoInner>
                         <LeftMenuInfo>
