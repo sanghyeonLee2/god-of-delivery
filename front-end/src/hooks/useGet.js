@@ -10,7 +10,7 @@ export const useGet = (url) => {
             cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지
         }
     );
-    return [data, isError, status, isLoading];
+    return {data: data?.data, isError, status, isLoading};
 }
 export default useGet
 
