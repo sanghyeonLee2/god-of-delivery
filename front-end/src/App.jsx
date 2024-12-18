@@ -13,7 +13,6 @@ function App() {
     //const [data, isError, status, isLoading,] = useAuthGet("me")
     const isSignIn = useRecoilValue(isSignInState)
     const isModalOpen = useRecoilValue(isModalOpenState)
-
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     useEffect(() => {
         const fetchData = async () => {
@@ -22,7 +21,7 @@ function App() {
         }
         fetchData()
     }, [isSignIn, setUserInfo]);
-    
+
     return (
         <>
             <div className="App">
@@ -31,7 +30,7 @@ function App() {
                 <Outlet/>
             </div>
             <Footer/>
-            {isModalOpen && <MenuDetailModal/>}
+            {isModalOpen.modalFlag && <MenuDetailModal modalType={isModalOpen.modalType}/>}
         </>
     );
 }
