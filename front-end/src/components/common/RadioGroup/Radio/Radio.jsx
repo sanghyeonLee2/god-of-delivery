@@ -1,16 +1,15 @@
 import React from 'react';
 
 
-function Radio({children, value, name, defaultChecked, disabled, setValue}) {
+function Radio({children, value, name, checked, onChange}) {
     return (
         <label>
             <input
                 type="radio"
                 value={value}
                 name={name}
-                defaultChecked={defaultChecked}
-                disabled={disabled}
-                onChange={() => setValue(name, value)}
+                onChange={onChange}
+                checked={checked}
             />
             {children}
         </label>
