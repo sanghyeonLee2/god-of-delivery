@@ -6,13 +6,13 @@ import Loading from "../../../components/common/Loading/Loading";
 
 function AddressList(props) {
     //const userInfo = useRecoilValue(userInfoState)
-    const [data, isError, status, isLoading] = useGet("address")
+    const {data: addressData, isError, status, isLoading} = useGet("address")
     //const {mutate: onSignIn} = usePost("auth/sign-in")
     if (isLoading)
         return <Loading/>
     return (
         <AddressListOuter>
-            {data?.data?.map((e) =>
+            {addressData?.map((e) =>
                 <AddressBox addressInfo={e} key={e.id}/>
             )}
         </AddressListOuter>
