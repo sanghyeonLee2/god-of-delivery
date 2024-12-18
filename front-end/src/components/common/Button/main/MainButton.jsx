@@ -2,13 +2,14 @@ import React, {forwardRef} from 'react';
 import {MainButtonLayout, SubButtonLayout, TransButtonLayout} from "./MainButtonLayout";
 import {Font} from "../../../../assets/styles/CommonStyle";
 
-export function MainBtn({type, text, onClick}) {
+
+export const MainBtn = forwardRef(({type, text, onClick, width, height}, ref) => {
     return (
-        <MainButtonLayout type={type} onClick={onClick}>
+        <MainButtonLayout width={width} height={height} type={type} onClick={onClick} ref={ref}>
             <Font>{text}</Font>
         </MainButtonLayout>
     );
-}
+});
 
 export function SubBtn({type, text, onClick}) {
     return (
@@ -18,9 +19,9 @@ export function SubBtn({type, text, onClick}) {
     );
 }
 
-export const TransBtn = forwardRef(({dataAction, type, text, onClick}, ref) => {
+export const TransBtn = forwardRef(({type, text, onClick}, ref) => {
     return (
-        <TransButtonLayout type={type} onClick={onClick} ref={ref} data-action={dataAction}>
+        <TransButtonLayout type={type} onClick={onClick} ref={ref}>
             <Font>{text}</Font>
         </TransButtonLayout>
     );
