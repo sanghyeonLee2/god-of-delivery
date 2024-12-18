@@ -28,16 +28,16 @@ function StorePage(props) {
         }
     ];
     const {currentItem, setCurrentItem} = useTab(0, content)
-    const [data, isError, status, isLoading] = useGet("store")
+    const {data: storeData, isError, status, isLoading} = useGet("store")
     if (isLoading) {
         return <Loading/>
     }
     return (
         <StoreOuter>
-            <StoreHeader haaderData={data?.data.storeHeader}/>
-            <UserActions dips={data?.data.storeInfo.dips}/>
-            <StoreCoupon coupons={data?.data.coupons}/>
-            <StoreOrderInfo deliveryMethod={data?.data.deliveryMethod}/>
+            <StoreHeader haaderData={storeData?.storeHeader}/>
+            <UserActions dips={storeData?.storeInfo.dips}/>
+            <StoreCoupon coupons={storeData?.coupons}/>
+            <StoreOrderInfo deliveryMethod={storeData?.deliveryMethod}/>
             <VerticalSpace/>
             <MenuTabWrap>
                 {content.map((ele, idx) =>
@@ -50,8 +50,8 @@ function StorePage(props) {
                 )}
             </MenuTabWrap>
             <MenuInfoTapWrap>
-                {currentItem.key === 0 && <StoreMenu notice={data?.data.notice} menuInfo={data?.data.menu}/>}
-                {currentItem.key === 1 && <StoreInfo storeInfo={data?.data.storeInfo}/>}
+                {currentItem.key === 0 && <StoreMenu notice={storeData?.notice} menuInfo={storeData?.menu}/>}
+                {currentItem.key === 1 && <StoreInfo storeInfo={storeData?.storeInfo}/>}
                 {currentItem.key === 2 && <StoreReview/>}
             </MenuInfoTapWrap>
         </StoreOuter>
