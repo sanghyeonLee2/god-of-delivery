@@ -29,7 +29,7 @@ export const usePost = (url, isAuth = false) => {
                     case "order":
                         alert("성공")
                         break
-                    case "cart/products":
+                    case "cart-post":
                         if (window.confirm("장바구니에 담겼습니다. 이동 하시겠습니까?")) {
                             setIsModalOpen(false)
                             navigate("/cart")
