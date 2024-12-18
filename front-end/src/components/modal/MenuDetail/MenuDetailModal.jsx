@@ -14,9 +14,8 @@ import {setMenuDetail} from "../../../utils/defaultValues";
 import useClick from "../../../hooks/useClick";
 import {usePost} from "../../../hooks/usePost";
 
-function MenuDetailModal(props) {
+function MenuDetailModal({modalType}) {
     const modalData = useRecoilValue(modalDataState)
-
     const {
         register,
         handleSubmit,
@@ -39,7 +38,7 @@ function MenuDetailModal(props) {
     const plusBtnRef = useClick(() => {
         quantityOnChg(1);
     });
-    const {mutate: handlePutInCart} = usePost("cart/products")
+    const {mutate: handlePutInCart} = usePost("cart-post")
 
     //리액트쿼리 사용해서 post
     return (
@@ -67,8 +66,14 @@ function MenuDetailModal(props) {
                     <OrderPrice defaultPrice={modalData.price} watch={watch}/>
                 </ModalContentWrap>
                 <MenuDetailBtnWrap>
-                    <SubBtn text={"장바구니에 담기"} onClick={handleSubmit((data) => handlePutInCart(data))}/>
-                    <SubBtn text={"주문하기"}/>
+                    {modalType === "menuDetail" &&
+                        <>
+                            <SubBtn text={"장바구니에 담기"} onClick={handleSubmit((data) => handlePutInCart(data))}/>
+                            <SubBtn text={"주문하기"}/>
+                        </>}
+                    {modalType === "updateCartMenu" &&
+                        <SubBtn text={"수정하기"}/>
+                    }
                 </MenuDetailBtnWrap>
             </ModalInner>
         </ModalOuter>
