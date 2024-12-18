@@ -8,7 +8,7 @@ import {sortingState} from "../../../recoil/search/atoms";
 import {Font} from "../../../assets/styles/CommonStyle";
 
 function StoreList({listType, categoryId}) {
-    const [data, isError, status, isLoading] = useGet("stores")
+    const {data: storesData, isError, status, isLoading} = useGet("stores")
     const sorting = useRecoilValue(sortingState)
 
     if (isLoading)
@@ -19,7 +19,7 @@ function StoreList({listType, categoryId}) {
                 {listType}
             </Font>
             <RecommendedWrap>
-                {data.data.sort((a, b) =>
+                {storesData?.sort((a, b) =>
                     b[sorting] - a[sorting]
                 ).map((e) => (e.storeCategory === categoryId || categoryId === "전체보기") &&
                     <StoreBox storeInfo={e} key={e.storeId}/>)}
