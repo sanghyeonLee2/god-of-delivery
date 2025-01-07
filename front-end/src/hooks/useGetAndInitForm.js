@@ -10,7 +10,7 @@ export const useGetAndInitForm = (url) => {
         {
             onSuccess: response => {
                 reset({
-                        receiptMethods: response.data?.receiptMethods[0],
+                        receiptMethodType: response.data?.receiptMethods[0]?.receiptMethodType,
                         tip: 0,
                         menus: response.data?.menus
                     }
