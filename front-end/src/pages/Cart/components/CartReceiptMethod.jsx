@@ -9,15 +9,15 @@ function CartReceiptMethod({receiptMethods, getValues, control}) {
     return (
         <>
             <Font size={"large"}>수령방법을 선택해주세요</Font>
-            <Controller control={control} name={"receiptMethods"} defaultValue={receiptMethods[0].receiptMethodType}
+            <Controller control={control} name={"receiptMethodType"} defaultValue={receiptMethods[0].receiptMethodType}
                         render={({field: {onChange, value}}) => (
                             <RadioGroup isOtherCheckStyle={true}>
                                 {receiptMethods.map((receiptMethod) =>
                                     <Radio value={receiptMethod} key={receiptMethod.receiptMethodType}
-                                           onChange={() => onChange(receiptMethod)}
+                                           onChange={() => onChange(receiptMethod.receiptMethodType)}
                                            checked={value === receiptMethod.receiptMethodType}>
                                         <MethodReceiptBox
-                                            isChecked={receiptMethod.receiptMethodType === getValues(`receiptMethods.receiptMethodType`)}>
+                                            isChecked={receiptMethod.receiptMethodType === getValues("receiptMethodType")}>
                                             <FlexOnly>
                                                 <Font>
                                                     {receiptMethod.receiptMethodType}
