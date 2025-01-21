@@ -70,6 +70,100 @@
     },
     {
       "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    }
+  ],
+  "cart-details": [
+    {
+      "title": "치킨 선택",
+      "isEssential": true,
+      "maxQuantity": 1,
+      "options": [
+        {
+          "content": "후라이드",
+          "price": 1000
+        },
+        {
+          "content": "앙념",
+          "price": 2000
+        },
+        {
+          "content": "간장",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "title": "추가",
+      "isEssential": false,
+      "maxQuantity": 2,
+      "options": [
+        {
+          "content": "감자",
+          "price": 1000
+        },
+        {
+          "content": "샐러드",
+          "price": 2000
+        },
+        {
+          "content": "소스",
+          "price": 1000
+        }
+      ]
     }
   ],
   "cart": {
@@ -81,10 +175,6 @@
         "price": 16000,
         "quantity": 1,
         "details": [
-          {
-            "title": "가격",
-            "content": ""
-          },
           {
             "title": "소스",
             "content": "스리라차",
@@ -108,6 +198,58 @@
         "receiptMethodType": "포장",
         "tip": 0,
         "waiting": "10~10분"
+      }
+    ]
+  },
+  "menuDetails": {
+    "name": "양꼬치",
+    "description": "치킨+카레",
+    "price": 10000,
+    "quantity": 1,
+    "details": [
+      {
+        "title": "치킨 선택",
+        "isEssential": true,
+        "maxQuantity": 1,
+        "options": [
+          {
+            "content": "후라이드",
+            "price": 1000,
+            "isChecked": true
+          },
+          {
+            "content": "앙념",
+            "price": 2000,
+            "isChecked": false
+          },
+          {
+            "content": "간장",
+            "price": 1000,
+            "isChecked": false
+          }
+        ]
+      },
+      {
+        "title": "추가",
+        "isEssential": false,
+        "maxQuantity": 2,
+        "options": [
+          {
+            "content": "감자",
+            "price": 1000,
+            "isChecked": false
+          },
+          {
+            "content": "샐러드",
+            "price": 2000,
+            "isChecked": false
+          },
+          {
+            "content": "소스",
+            "price": 1000,
+            "isChecked": false
+          }
+        ]
       }
     ]
   },
