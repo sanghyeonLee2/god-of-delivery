@@ -19,6 +19,8 @@ function MenuDetailModal({modalType}) {
         return newQuantity >= 1 && form.setValue("quantity", newQuantity);
     };
 
+    console.log(form.getValues())
+
     const minusBtnRef = useClick(() => {
         quantityOnChg(-1);
     });
@@ -41,10 +43,7 @@ function MenuDetailModal({modalType}) {
                         <Font>{query.data?.price.toLocaleString()}원</Font>
                     </MenuDetailTextWrap>
                     <ModalForm>
-                        <MenuDetailOptions details={query.data?.details} register={form.register}
-                                           setValue={form.setValue}
-                                           getValues={form.getValues}
-                                           control={form.control}/>
+                        <MenuDetailOptions details={query.data?.details} control={form.control}/>
                         <MenuDetailTextWrap>
                             <Font>수량</Font>
                             <SelectQuantityWrap>
@@ -61,6 +60,7 @@ function MenuDetailModal({modalType}) {
                         <>
                             <SubBtn text={"장바구니에 담기"}
                                     onClick={form.handleSubmit((data) =>
+                                        console.log(data) ||
                                         handlePutInCart(data))}/>
                             <SubBtn text={"주문하기"}/>
                         </>}
