@@ -1,10 +1,10 @@
-export const setMenuDetail = (details, quantity) => {
-    console.log(details)
+export const setMenuDetail = (details, quantity, menuId, storeId) => {
     return details.reduce((acc, detail) => {
-            if (detail.isEssential) {
-                acc[detail.title] = detail.options.filter(option => option.isChecked)
+            if (detail.menuOptions.some((option) => option.isChecked)) {
+                acc[detail.title] = detail.menuOptions
+                    .filter((option) => option.isChecked)
             }
             return acc
-        }, {quantity}
+        }, {quantity, menuId, storeId}
     )
 }
