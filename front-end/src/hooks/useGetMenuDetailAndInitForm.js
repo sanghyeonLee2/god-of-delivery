@@ -20,7 +20,7 @@ export const useGetMenuDetailAndInitForm = (url) => {
     );
     useEffect(() => {
         if (data?.data?.details) {
-            reset(setMenuDetail(data?.data?.details, data.data?.quantity)); // 폼 초기값 설정
+            reset(setMenuDetail(data?.data?.details, data.data?.quantity, data.data?.menuId, data.data?.storeId)); // 폼 초기값 설정
         }
     }, [data, reset]);
 
