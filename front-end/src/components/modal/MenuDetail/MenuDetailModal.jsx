@@ -7,7 +7,6 @@ import ModalHeader from "./components/ModalHeader";
 import OrderPrice from "./components/OrderPrice";
 import {MenuDetailBtnWrap, MenuDetailTextWrap, SelectQuantityWrap} from "./MenuDetailModalLayout";
 import MenuDetailProlog from "./components/MenuDetailProlog";
-import useClick from "../../../hooks/useClick";
 import {usePost} from "../../../hooks/usePost";
 import useGetMenuDetailAndInitForm from "../../../hooks/useGetMenuDetailAndInitForm";
 import Loading from "../../common/Loading/Loading";
@@ -15,19 +14,9 @@ import Loading from "../../common/Loading/Loading";
 function MenuDetailModal({modalType}) {
     const {form, query} = useGetMenuDetailAndInitForm("menuDetails")
     const quantityOnChg = (operand) => {
-        const newQuantity = form.getValues("quantity") + Number(operand)
+        const newQuantity = form.getValues("quantity") + operand
         return newQuantity >= 1 && form.setValue("quantity", newQuantity);
     };
-
-    console.log(form.getValues())
-
-    const minusBtnRef = useClick(() => {
-        quantityOnChg(-1);
-    });
-
-    const plusBtnRef = useClick(() => {
-        quantityOnChg(1);
-    });
     const {mutate: handlePutInCart} = usePost("cart-post")
     if (query.isLoading) {
         return <Loading/>
@@ -47,9 +36,9 @@ function MenuDetailModal({modalType}) {
                         <MenuDetailTextWrap>
                             <Font>수량</Font>
                             <SelectQuantityWrap>
-                                <TransBtn dataAction={-1} type={"button"} text={"-"} ref={minusBtnRef}/>
+                                <TransBtn dataAction={-1} type={"button"} text={"-"} onClick={() => quantityOnChg(-1)}/>
                                 <div>{form.getValues("quantity")}</div>
-                                <TransBtn dataAction={1} type={"button"} text={"+"} ref={plusBtnRef}/>
+                                <TransBtn dataAction={1} type={"button"} text={"+"} onClick={() => quantityOnChg(+1)}/>
                             </SelectQuantityWrap>
                         </MenuDetailTextWrap>
                     </ModalForm>
