@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const Token = require('../models/token');
-const {generateToken, verifyToken} = require('../utils/authUtils');
+const {generateToken, verifyToken} = require('../utils/jwt.util');
 const jwt = require('jsonwebtoken');
 
 /* === 회원가입 Controller === */
@@ -12,12 +12,12 @@ const jwt = require('jsonwebtoken');
 exports.getCheckId = async (req, res) => {
     console.log(req.params.id);
     try {
-        const userExists = await User.findOne({
+        const existenceOfUser = await User.findOne({
             where: {
                 userId: req.params.id
             }
         })
-        if (userExists) {
+        if (existenceOfUser) {
             res.status(401).send({
                 available: false,
                 message: "중복된 ID 입니다. 다른 ID를 입력해주세요."
