@@ -9,34 +9,30 @@ class Store extends Sequelize.Model {
                 primaryKey:true,
                 autoIncrement: true,
             },
-            name:{
+            storeName:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            type:{
+            storeType:{
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue:0
             },
-            category:{
+            storeCategory:{
                 type: Sequelize.STRING(20),
                 allowNull: false,
             },
-            address:{
+            storeAddress:{
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            storePictureUrl:{
+            storePicture:{
                 type: Sequelize.TEXT,
                 allowNull: true,
             },
-            phone:{
+            storePhone:{
                 type: Sequelize.STRING(20),
                 allowNull: false,
-            },
-            content:{
-                type: Sequelize.STRING,
-                allowNull: true,
             },
             minDeliveryPrice:{
                 type: Sequelize.INTEGER,
@@ -76,30 +72,23 @@ class Store extends Sequelize.Model {
                 type:Sequelize.STRING,
                 allowNull: true,
             },
-            closedDays:{
-                type: Sequelize.STRING,
-                allowNull: true
-            },
             deliveryAddress:{
                 type: Sequelize.STRING,
                 allowNull: true
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
+            latitude:{
+              type: Sequelize.FLOAT(9,6),
+              allowNull: false,
             },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status:{
-                type: Sequelize.STRING,
-                defaultValue:'일반',
+            longitude:{
+                type: Sequelize.FLOAT(9,6),
                 allowNull: false,
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt:'updateTimestamp',
             underscored: true,
             modelName: 'Store',
             tableName: 'stores',
