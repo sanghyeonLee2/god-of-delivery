@@ -1,4 +1,4 @@
-const Cart = require('./models/cart');
+const Cart = require('../models/cart');
 
 exports.postAddCart = async (req, res) => {
     const date = new Date();
