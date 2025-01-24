@@ -12,10 +12,9 @@ import {
 } from "./CartMenusLayout";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
+import {quantityOnChg} from "../../../utils/clickHandler";
 
-function CartMenus({menus, form, register,}) {
-    const setModalData = () => {
-    }
+function CartMenus({menus, form}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
         <CartMenuBox>
@@ -35,20 +34,19 @@ function CartMenus({menus, form, register,}) {
                         <OptionBtnOuter>
                             <OptionBtnInner>
                                 <ChgQuantityWrap text={"삭제/수량 변경"}>
-                                    <TransBtn text={"-"} onClick={() => {
-                                        form.setValue(`menus[${idx}].quantity`, form.getValues(`menus[${idx}].quantity`) - 1)
-                                    }}/>
-                                    <div {...register}>{form.watch(`menus[${idx}].quantity`)}</div>
+                                    <TransBtn text={"-"}
+                                              onClick={() => quantityOnChg(-1, form, `menus[${idx}].quantity`)}/>
+                                    <div>{form.watch(`menus[${idx}].quantity`)}</div>
                                     <TransBtn text={"+"}
-                                              onClick={() => {
-                                                  form.setValue(`menus[${idx}].quantity`, form.getValues(`menus[${idx}].quantity`) + 1)
-                                              }}/>
+                                              onClick={() => quantityOnChg(+1, form, `menus[${idx}].quantity`)}/>
                                 </ChgQuantityWrap>
                                 <MainBtn text={"옵션 변경"}
                                          onClick={() => setIsModalOpen({
                                              modalType: "updateCartMenu",
-                                             modalFlag: true
+                                             modalFlag: true,
+                                             modalIdData: menu.menuId
                                          })}/>
+                                {/*헤더에 토큰 있으면 장바구니에서 옵션 변경, 아니면 음식점 탭에서 옵션 변경*/}
                             </OptionBtnInner>
                         </OptionBtnOuter>
                     </li>
