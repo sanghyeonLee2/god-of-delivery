@@ -7,15 +7,15 @@ const path = require('path');
 const {sequelize} = require('./models');
 
 /* === Middleware Require === */
-const {notFound, errorHandler} = require('./middlewares/errorHandlerMiddleware');
+const {notFound, errorHandler} = require('./middlewares/errorHandle.middleware');
 
 dotenv.config();
 
 /* === Routes Require === */
-const indexRoutes = require('./routes/indexRoutes')
-const authRoutes = require('./routes/authRoutes');
-const storeRoutes = require('./routes/storeRoutes');
-const dibRoutes = require('./routes/dibRoutes');
+const indexRoutes = require('./routes/index.routes')
+const authRoutes = require('./routes/user.routes');
+const storeRoutes = require('./routes/store.routes');
+const dibRoutes = require('./routes/dib.routes');
 
 /* === Express App 속성 설정 === */
 const app = express();

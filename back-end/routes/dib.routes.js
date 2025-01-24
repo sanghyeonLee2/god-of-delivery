@@ -1,6 +1,6 @@
 const express = require('express');
-const {getDibsWithStore,getDibsListByUser, getDibsListByStore,postDibFilled, postDibCancel} = require("../controllers/dibController");
-const {verifyToken} = require("../middlewares/authMiddleware");
+const {getDibsWithStore,getDibsListByUser, getDibsListByStore,postDibFilled, postDibCancel} = require("../controllers/dib.controller");
+const {verifyToken} = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 //찜 목록 가져오기

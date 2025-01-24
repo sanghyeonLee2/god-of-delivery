@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const {getCheckId, postSignUp, postSignIn , getRefreshReissued} = require('../controllers/authController');
+const {getCheckId, postSignUp, postSignIn , getRefreshReissued} = require('../controllers/user.controller');
 
 
 

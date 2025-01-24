@@ -1,4 +1,4 @@
-const jwtUtil = require("../utils/authUtils");
+const jwtUtil = require("../utils/jwt.util");
 const jwt = require("jsonwebtoken");
 
 exports.verifyToken = (req, res, next) => {
