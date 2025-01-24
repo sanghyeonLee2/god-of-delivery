@@ -13,14 +13,6 @@ class MenuOption extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            content:{
-              type: Sequelize.STRING,
-              allowNull: false,
-            },
-            price:{
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            },
             createdDate: {
                 type: Sequelize.DATE,
                 allowNull: false,
@@ -29,11 +21,6 @@ class MenuOption extends Sequelize.Model {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
-            status: {
-                type: Sequelize.ENUM('일반'),
-                defaultValue: '일반',
-                allowNull: false,
-            }
         }, {
             sequelize,
             timestamps: false,
