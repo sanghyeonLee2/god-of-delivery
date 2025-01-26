@@ -1,21 +1,23 @@
 import React from 'react';
-import {CartHeader, CartWrap, MenuAddBtnWrap, MinStoreInfoWrap} from "./CartLayout";
-import {Font} from "../../assets/styles/CommonStyle";
+import {CartHeader, MenuAddBtnWrap, MinStoreInfoWrap} from "./CartLayout";
+import {CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
 import {SubBtn, TransBtn} from "../../components/common/Button/main/MainButton";
 import {OrderBtnWrap} from "../../components/common/Button/main/MainButtonLayout";
 import CartPayment from "./components/CartPayment";
 import CartReceiptMethod from "./components/CartReceiptMethod";
 import CartMenus from "./components/CartMenus";
-import {useGetAndInitForm} from "../../hooks/useGetAndInitForm";
+import {useGetCartAndInitForm} from "../../hooks/useGetCartAndInitForm";
 import Loading from "../../components/common/Loading/Loading";
+import {useNavigate} from "react-router-dom";
 
-function Cart(props) {
-    const {query, form} = useGetAndInitForm("cart")
+function CartPage(props) {
+    const {query, form} = useGetCartAndInitForm("cart")
+    const navigate = useNavigate();
     if (query.isLoading) {
         return <Loading/>;
     }
-    console.log(form.watch())
-    return (<CartWrap>
+    return (
+        <CommonPageWrap>
             <CartHeader>
                 <MinStoreInfoWrap>
                     <Font size={"x-large"}>{query.data?.storeTitle}</Font>
@@ -26,16 +28,16 @@ function Cart(props) {
             <form onSubmit={form.handleSubmit((data) => console.log(data))}>
                 <CartMenus menus={query.data?.menus} form={form}/>
                 <MenuAddBtnWrap>
-                    <TransBtn text={"메뉴 추가"}/>
+                    <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/store/${query.data?.storeId}`)}/>
                 </MenuAddBtnWrap>
                 <CartReceiptMethod getValues={form.getValues} control={form.control}
                                    receiptMethods={query.data?.receiptMethods}/>
-                <CartPayment form={form}/>
+                <CartPayment getValues={form.getValues}/>
                 <OrderBtnWrap>
                     <SubBtn text={"결제하기"}/>
                 </OrderBtnWrap>
             </form>
-        </CartWrap>);
+        </CommonPageWrap>);
 }
 
-export default Cart;
+export default CartPage;
