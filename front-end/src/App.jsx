@@ -6,8 +6,8 @@ import Footer from "./components/common/Footer/Footer";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {isSignInState, userInfoState} from "./recoil/user/atoms";
 import {authGetApi} from "./apis/api/user";
-import MenuDetailModal from "./components/modal/MenuDetail/MenuDetailModal";
 import {isModalOpenState} from "./recoil/flag/atoms";
+import DefaultModal from "./components/modal/DefaultModal";
 
 function App() {
     //const [data, isError, status, isLoading,] = useAuthGet("me")
@@ -30,7 +30,8 @@ function App() {
                 <Outlet/>
             </div>
             <Footer/>
-            {isModalOpen.modalFlag && <MenuDetailModal modalType={isModalOpen.modalType}/>}
+            {isModalOpen.modalFlag &&
+                <DefaultModal modalType={isModalOpen.modalType} modalIdData={isModalOpen.modalIdData}/>}
         </>
     );
 }
