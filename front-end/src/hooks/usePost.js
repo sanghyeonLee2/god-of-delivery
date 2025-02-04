@@ -39,6 +39,9 @@ export const usePost = (url, isAuth = false) => {
                         alert("주소가 추가 되었습니다.")
                         setIsModalOpen(false)
                         break
+                    case "payment-post":
+                        alert("결제가 완료 되었습니다.")
+                        break;
                     default:
                         console.log(url)
                         alert("알 수 없는 오류")
