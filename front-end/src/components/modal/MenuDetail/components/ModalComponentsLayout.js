@@ -25,7 +25,8 @@ export const MenuDetailImg = styled.div`
     height: 230px;
 `
 export const MenuDetailDescriptionWrap = styled.div`
-    ${innerPadding()}
+    ${innerPadding()};
+
     p {
         text-align: center;
     }
@@ -40,7 +41,7 @@ export const MenuDetailOptionsWrap = styled.div`
 `
 export const OptionWrap = styled.div`
     height: 45px;
-    ${innerPadding()}
+    ${innerPadding()};
     ${flexLayout("space-between", "center")};
 `
 export const OrderPriceWrap = styled.div`

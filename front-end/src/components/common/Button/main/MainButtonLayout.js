@@ -10,7 +10,8 @@ export const MainButtonLayout = styled.button`
 `
 
 export const SubButtonLayout = styled.button`
-    ${elementSize("100%", "100%")}
+    ${elementSize("100%", "100%")};
+    height: ${(props) => props.height};
     background-color: ${COLORS.BTN.SUB};
     border-radius: 4px;
 `

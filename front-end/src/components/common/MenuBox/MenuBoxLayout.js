@@ -19,30 +19,6 @@ export const LeftMenuInfo = styled.li`
 export const MenuTitleWrap = styled.li`
     display: flex;
 `
-
-export const Popular = styled.div`
-    border-radius: 50%;
-    border-style: dotted;
-    margin-right: 8px;
-    font-size: 12px;
-    text-align: center;
-    align-content: center;
-    ${elementSize("35px", "35px")}
-`
-export const RecommendWrap = styled.li`
-    height: 30px;
-
-    div {
-        background-color: #F1EDE6;
-        color: #BA9c86;
-        font-size: 13px;
-        text-align: center;
-        border-radius: 7px;
-        align-content: center;
-        ${elementSize("80px", "23px")}
-    }
-
-`
 export const MenuDescriptionWrap = styled.li`
     height: 30px;
 `

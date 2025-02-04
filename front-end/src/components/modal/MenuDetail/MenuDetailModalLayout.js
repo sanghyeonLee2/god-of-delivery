@@ -4,7 +4,7 @@ import {exampleColor, innerPadding} from "../../../assets/styles/CommonStyle";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const MenuDetailTextWrap = styled.div`
-    ${innerPadding()}
+    ${innerPadding()};
     border-bottom: 1px solid ${COLORS.BORDER};
     ${flexLayout("space-between", "center")};
 `
@@ -23,6 +23,13 @@ export const SelectQuantityWrap = styled.div`
         width: 40%;
     }
 `
+export const ModalBtnWrap = styled.div`
+    height: 100%;
+
+    button {
+        width: 50%;
+    }
+`
 export const MenuDetailBtnWrap = styled.div`
     ${exampleColor()};
     height: 10%;
@@ -39,6 +46,6 @@ export const MenuDetailBtnWrap = styled.div`
     button {
         border-top-right-radius: 0;
         border-top-left-radius: 0;
-        width: 50%;
     }
+
 `

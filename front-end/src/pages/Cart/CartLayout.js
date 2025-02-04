@@ -1,19 +1,11 @@
 import styled from "styled-components";
-import {outerPadding} from "../../assets/styles/CommonStyle";
 import {setBorder} from "../../assets/styles/Mixin";
 
-export const CartWrap = styled.div`
-    min-height: 900px;
-    max-width: 800px;
-    margin: 0 auto;
-    ${outerPadding()};
-`
 export const CartHeader = styled.div`
     min-height: 95px`
 
 export const MinStoreInfoWrap = styled.div`
     height: 60px`
-
 
 export const MenuAddBtnWrap = styled.div`
     ${setBorder()};
