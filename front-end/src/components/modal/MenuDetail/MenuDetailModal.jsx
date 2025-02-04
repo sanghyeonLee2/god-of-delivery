@@ -32,10 +32,10 @@ function MenuDetailModal({modalType, menuId}) {
                     <MenuDetailTextWrap>
                         <Font>수량</Font>
                         <SelectQuantityWrap>
-                            <TransBtn dataAction={-1} type={"button"} text={"-"}
+                            <TransBtn type={"button"} text={"-"}
                                       onClick={() => quantityOnChg(-1, form, "quantity")}/>
                             <div>{form.getValues("quantity")}</div>
-                            <TransBtn dataAction={1} type={"button"} text={"+"}
+                            <TransBtn type={"button"} text={"+"}
                                       onClick={() => quantityOnChg(+1, form, "quantity")}/>
                         </SelectQuantityWrap>
                     </MenuDetailTextWrap>

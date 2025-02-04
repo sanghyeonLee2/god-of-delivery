@@ -42,32 +42,43 @@ function MenuDetailOptions({details, control}) {
                                                 </OptionWrap>
                                             ))}/>
                         </RadioGroup> :
-                        <Controller control={control} name={detail.title}
-                                    defaultValue={detail.menuOptions.filter(option => option.isChecked) || []}// 모두 false인 경우 기본값 제거}
-                                    render={(({field: {onChange, value}}) => (
-                                        detail.menuOptions.map((option) =>
-                                            <OptionWrap key={option.menuOptionId}>
-                                                <CheckBox
-                                                    value={option}
-                                                    onChange={(e) => {
-                                                        const isChecked = e.target.checked;
-                                                        if (isChecked && value.length >= detail.maxQuantity) {
-                                                            e.target.checked = false
-                                                            return
-                                                        }
-                                                        if (isChecked) {
-                                                            return onChange([...value, option])
-                                                        }
-                                                        return onChange(value.filter((item) => item.menuOptionId !== option.menuOptionId))
-                                                    }}>
-                                                    &nbsp;&nbsp;{option.content}
-                                                </CheckBox>
-                                                <Font>
-                                                    +{option.price.toLocaleString()}원
-                                                </Font>
-                                            </OptionWrap>
-                                        )
-                                    ))}/>
+                        <Controller
+                            control={control}
+                            name={detail.title}
+                            defaultValue={detail.menuOptions.filter(option => option.isChecked) || []} // 기본값 설정
+                            render={({field: {onChange, value}}) => (
+                                detail.menuOptions.map((option) => (
+                                    <OptionWrap key={option.menuOptionId}>
+                                        <CheckBox
+                                            value={option.menuOptionId}
+                                            checked={value.some((item) => item.menuOptionId === option.menuOptionId)}
+                                            onChange={(e) => {
+                                                const isChecked = e.target.checked;
+
+                                                // 최대 선택 수를 초과한 경우 처리
+                                                if (isChecked && value.length >= detail.maxQuantity) {
+                                                    e.target.checked = false;
+                                                    return;
+                                                }
+
+                                                // 선택된 상태 업데이트
+                                                if (isChecked) {
+                                                    onChange([...value, option]);
+                                                } else {
+                                                    onChange(value.filter((item) => item.menuOptionId !== option.menuOptionId));
+                                                }
+                                            }}
+                                        >
+                                            &nbsp;&nbsp;{option.content}
+                                        </CheckBox>
+                                        <Font>
+                                            +{option.price.toLocaleString()}원
+                                        </Font>
+                                    </OptionWrap>
+                                ))
+                            )}
+                        />
+
                     }
                 </MenuDetailOptionsWrap>)
             }
