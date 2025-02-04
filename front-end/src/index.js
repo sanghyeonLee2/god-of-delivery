@@ -11,7 +11,9 @@ import {RecoilRoot} from "recoil";
 import Loading from "./components/common/Loading/Loading";
 import SelectAddressPage from "./pages/SelectAddressPage/SelectAddressPage";
 import StorePage from "./pages/StorePage/StorePage";
-import Cart from "./pages/Cart/Cart";
+import CartPage from "./pages/Cart/CartPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import OrderStatusPage from "./pages/OrderStatusPage/OrderStatusPage";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -42,11 +44,18 @@ const router = createBrowserRouter([{
         {
             path: "loading",
             element: <Loading/>
-        }
-        ,
+        },
         {
             path: "cart",
-            element: <Cart/>
+            element: <CartPage/>
+        },
+        {
+            path: "payment",
+            element: <PaymentPage/>
+        },
+        {
+            path: "order-status",
+            element: <OrderStatusPage/>
         }
     ]
 }])
