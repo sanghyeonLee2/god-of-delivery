@@ -11,9 +11,9 @@ export const MainBtn = forwardRef(({type, text, onClick, width, height}, ref) =>
     );
 });
 
-export function SubBtn({type, text, onClick}) {
+export function SubBtn({type, text, onClick, height}) {
     return (
-        <SubButtonLayout type={type} onClick={onClick}>
+        <SubButtonLayout type={type} onClick={onClick} height={height}>
             <Font color={"white"}>{text}</Font>
         </SubButtonLayout>
     );
