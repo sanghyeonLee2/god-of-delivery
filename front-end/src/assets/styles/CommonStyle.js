@@ -1,4 +1,11 @@
 import styled, {css} from "styled-components";
+import {flexLayout, setBorder} from "./Mixin";
+import {COLORS} from "./colors";
+
+
+export const exampleColor = () => css`background-color: lightgray`
+export const outerPadding = () => css`padding: 15px 25px;`
+export const innerPadding = () => css`padding: 10px 15px`
 
 export const Font = styled.p`
     color: ${(props) => props.color};
@@ -15,6 +22,28 @@ export const Font = styled.p`
         }
 
     }};`
+export const SelectTwoTypes = styled.li.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isChecked',
+})`
+    background-color: ${(props) => props.isChecked && COLORS.BORDER};
+    ${flexLayout("space-between", "center")};
+    ${setBorder()};
+    ${outerPadding()};
+    height: 60px;
+    margin-bottom: 20px;
+`;
+export const CommonBorder = styled.li`
+    ${setBorder()};
+    min-height: 115px;
+    ${outerPadding()};
+`
+export const CommonPageWrap = styled.ul`
+    min-height: 900px;
+    max-width: 800px;
+    margin: 0 auto;
+    ${outerPadding()};
+`
+
 export const VerticalSpace = styled.div`
     height: 10px;
     background-color: #F6F6F6;
@@ -43,9 +72,8 @@ export const FlexOnly = styled(({element: Element = 'div', ...props}) => (
 ))`
     display: flex;
     align-items: center;
+    justify-content: ${(props) => props.justify || "stretch"};
+
 `;
 //기본적으로 전달되는 props가 있음
-export const exampleColor = () => css`background-color: lightgray`
-export const outerPadding = () => css`padding: 15px 25px;`
-export const innerPadding = () => css`padding: 10px 15px;`
 
