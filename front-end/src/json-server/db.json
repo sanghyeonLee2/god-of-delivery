@@ -27,7 +27,6 @@
   "me": {
     "userId": "sdf",
     "currentAddress": "주례로 47",
-    "grade": "고마운분",
     "role": "회원"
   },
   "address": [
@@ -44,6 +43,24 @@
       "addressType": "qwef",
       "forRider": "asdf",
       "roadInfo": "XZCVZ"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    }
+  ],
+  "payment-setting": {
+    "contact": "010-1234-5678",
+    "detailAddress": "305호"
+  },
+  "payment-post": [
+    {
+      "id": 1
     },
     {
       "id": 2
@@ -124,6 +141,77 @@
     },
     {
       "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "id": 27
+    },
+    {
+      "id": 28
+    },
+    {
+      "id": 29
+    },
+    {
+      "id": 30
+    },
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 33
+    },
+    {
+      "id": 34
+    },
+    {
+      "id": 35
+    },
+    {
+      "id": 36
+    },
+    {
+      "id": 37
+    },
+    {
+      "id": 38
+    },
+    {
+      "id": 39
+    },
+    {
+      "id": 40
+    },
+    {
+      "id": 41
+    },
+    {
+      "id": 42
+    },
+    {
+      "id": 43
+    }
+  ],
+  "cart-put": [
+    {
+      "id": 1,
+      "menu": "Burger",
+      "options": {
+        "size": "Large",
+        "drink": "Coke"
+      },
+      "quantity": 2
     }
   ],
   "cart-details": [
@@ -167,15 +255,19 @@
     }
   ],
   "cart": {
+    "cartId": 1,
+    "storeId": 12,
     "storeTitle": "네네치킨",
     "deliveryTime": "30~40분",
     "menus": [
       {
         "menuName": "후라이드치킨",
+        "menuId": 1,
         "price": 16000,
         "quantity": 1,
         "details": [
           {
+            "optionId": 1,
             "title": "소스",
             "content": "스리라차",
             "price": 1000
@@ -184,8 +276,10 @@
       },
       {
         "menuName": "양념치킨",
+        "menuId": 2,
         "price": 4200,
-        "quantity": 1
+        "quantity": 1,
+        "details": []
       }
     ],
     "receiptMethods": [
@@ -201,75 +295,78 @@
       }
     ]
   },
-  "menuDetails": {
-    "name": "양꼬치",
-    "description": "치킨+카레",
-    "price": 10000,
-    "quantity": 1,
-    "details": [
-      {
-        "title": "치킨 선택",
-        "isEssential": true,
-        "maxQuantity": 1,
-        "options": [
-          {
-            "content": "후라이드",
-            "price": 1000,
-            "isChecked": true
-          },
-          {
-            "content": "앙념",
-            "price": 2000,
-            "isChecked": false
-          },
-          {
-            "content": "간장",
-            "price": 1000,
-            "isChecked": false
-          }
-        ]
-      },
-      {
-        "title": "추가",
-        "isEssential": false,
-        "maxQuantity": 2,
-        "options": [
-          {
-            "content": "감자",
-            "price": 1000,
-            "isChecked": false
-          },
-          {
-            "content": "샐러드",
-            "price": 2000,
-            "isChecked": false
-          },
-          {
-            "content": "소스",
-            "price": 1000,
-            "isChecked": false
-          }
-        ]
-      }
-    ]
-  },
+  "menu-details": [
+    {
+      "id": 1,
+      "menuId": 1,
+      "storeId": 1,
+      "name": "양꼬치",
+      "description": "치킨+카레",
+      "price": 10000,
+      "quantity": 1,
+      "details": [
+        {
+          "title": "치킨 선택",
+          "isEssential": true,
+          "maxQuantity": 1,
+          "menuCategoryId": 0,
+          "menuOptions": [
+            {
+              "menuOptionId": 0,
+              "content": "후라이드",
+              "price": 1000,
+              "isChecked": true
+            },
+            {
+              "menuOptionId": 1,
+              "content": "앙념",
+              "price": 2000,
+              "isChecked": false
+            },
+            {
+              "menuOptionId": 2,
+              "content": "간장",
+              "price": 1000,
+              "isChecked": false
+            }
+          ]
+        },
+        {
+          "title": "추가",
+          "isEssential": false,
+          "maxQuantity": 2,
+          "menuCategoryId": 1,
+          "menuOptions": [
+            {
+              "menuOptionId": 3,
+              "content": "감자",
+              "price": 1000,
+              "isChecked": true
+            },
+            {
+              "menuOptionId": 4,
+              "content": "샐러드",
+              "price": 2000,
+              "isChecked": false
+            },
+            {
+              "menuOptionId": 5,
+              "content": "소스",
+              "price": 1000,
+              "isChecked": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "review": {
     "currentCnt": 35,
     "ceoCnt": 200,
     "user": [
       {
+        "reviewId": 0,
         "userId": "상큼자몽",
-        "img": "사진",
-        "orderList": [
-          "후라이드 치킨",
-          "양념 치킨"
-        ],
-        "content": "정말 맛있네요",
-        "rate": 5,
-        "ceoReview": "안녕하세요!!"
-      },
-      {
-        "userId": "수박",
         "img": "사진",
         "orderList": [
           "후라이드 치킨",
@@ -350,6 +447,7 @@
     ]
   },
   "store": {
+    "storeId": 1,
     "notice": "물가상승으로 인해 모든 메뉴 1000원 상승",
     "deliveryMethod": {
       "order": {
@@ -392,423 +490,80 @@
       "storeName": "네네치킨 사상점",
       "rating": 3.5
     },
-    "coupons": [
-      {
-        "couponContent": "1000원",
-        "couponTerm": 12000,
-        "orderType": "배달"
-      }
-    ],
-    "menu": [
+    "menuInfo": [
       {
         "menuTitle": "추천메뉴",
-        "items": [
+        "menus": [
           {
             "menuId": 1,
             "menuName": "양꼬치",
             "description": "카레+양고기",
             "price": 24000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": true,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": true,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 2,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           },
           {
             "menuId": 2,
             "menuName": "닭가슴살",
             "description": "불고기+닭고기",
             "price": 2000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": true,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "치킨 선택",
-                "isEssential": true,
-                "maxQuantity": 2,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "2인 세트",
-        "items": [
+        "menus": [
           {
             "menuId": 3,
             "menuName": "콘소세지",
             "description": "카레+양고기",
             "price": 20000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": true,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 2,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           },
           {
             "menuId": 4,
             "menuName": "스프카레",
             "description": "불고기+닭고기",
             "price": 20200,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": false,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": true,
-                "maxQuantity": 3,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "사이드",
-        "items": [
+        "menus": [
           {
             "menuId": 5,
             "menuName": "치즈스틱",
             "description": "",
             "price": 2000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": false,
-                "maxQuantity": 3,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           },
           {
             "menuId": 6,
             "menuName": "감자튀김",
             "description": "체다소스",
             "price": 1000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": false,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 2,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "음료",
-        "items": [
+        "menus": [
           {
             "menuId": 7,
             "menuName": "코카콜라",
             "description": "",
             "price": 2000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": false,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 3,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           },
           {
             "menuId": 8,
             "menuName": "사이다",
             "description": "체다소스",
             "price": 1000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false,
-            "details": [
-              {
-                "title": "치킨 선택",
-                "isEssential": false,
-                "maxQuantity": 1,
-                "options": [
-                  {
-                    "content": "후라이드",
-                    "price": 1000
-                  },
-                  {
-                    "content": "앙념",
-                    "price": 2000
-                  },
-                  {
-                    "content": "간장",
-                    "price": 1000
-                  }
-                ]
-              },
-              {
-                "title": "추가",
-                "isEssential": false,
-                "maxQuantity": 2,
-                "options": [
-                  {
-                    "content": "감자",
-                    "price": 1000
-                  },
-                  {
-                    "content": "샐러드",
-                    "price": 2000
-                  },
-                  {
-                    "content": "소스",
-                    "price": 1000
-                  }
-                ]
-              }
-            ]
+            "menuReviewCnt": 11
           }
         ]
       }
