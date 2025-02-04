@@ -25,14 +25,15 @@ function CartPage(props) {
                     {/*쿠폰 컴포넌트 추가*/}
                 </MinStoreInfoWrap>
             </CartHeader>
-            <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+            <form
+                onSubmit={form.handleSubmit((data) => navigate("/payment", {state: {orderInfo: form.getValues()}}))}>
                 <CartMenus menus={query.data?.menus} form={form}/>
                 <MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/store/${query.data?.storeId}`)}/>
                 </MenuAddBtnWrap>
                 <CartReceiptMethod getValues={form.getValues} control={form.control}
                                    receiptMethods={query.data?.receiptMethods}/>
-                <CartPayment getValues={form.getValues}/>
+                <CartPayment getValues={form.getValues} watch={form.watch}/>
                 <OrderBtnWrap>
                     <SubBtn text={"결제하기"}/>
                 </OrderBtnWrap>
