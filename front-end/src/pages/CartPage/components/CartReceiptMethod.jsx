@@ -8,7 +8,7 @@ function CartReceiptMethod({receiptMethods, getValues, control}) {
     return (
         <>
             <Font size={"large"}>수령방법을 선택해주세요</Font>
-            <Controller control={control} name={"receiptMethod"}
+            <Controller control={control} name={"receiptMethod"} defaultValue={receiptMethods[0]}
                         render={({field: {onChange, value}}) => (
                             <RadioGroup isOtherCheckStyle={true}>
                                 {receiptMethods.map((receiptMethod) =>

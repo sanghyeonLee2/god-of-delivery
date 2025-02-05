@@ -22,27 +22,3 @@ export const MenuOptionImg = styled.div`
     ${elementSize("70px", "70px")};
     ${exampleColor()};
 `
-export const OptionBtnOuter = styled.div`
-    height: 50px;
-    display: flex;
-    flex-direction: row-reverse;
-`
-export const OptionBtnInner = styled.div`
-    width: 275px;
-    ${flexLayout("space-between")};
-    flex-direction: row-reverse;
-`
-export const ChgQuantityWrap = styled.div`
-    display: flex;
-    ${elementSize("130px", "45px")};
-
-    button {
-        width: 35%;
-    }
-
-    div {
-        align-content: center;
-        text-align: center;
-        width: 30%;
-    }
-`
