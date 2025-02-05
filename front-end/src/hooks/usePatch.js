@@ -13,7 +13,7 @@ export const usePatch = (url) => {
             },
             onSuccess: async () => {
                 alert("수정 되었습니다.")
-                setIsModalOpen({modalType: null, modalFlag: false})
+                setIsModalOpen({modalType: null, modalFlag: false, modalIdData: null})
 
                 await queryClient.invalidateQueries(["getCart", "cart"]);
             }

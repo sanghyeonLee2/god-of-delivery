@@ -20,7 +20,7 @@ function SelectMapModal(props) {
         <>
             <ModalContentWrap>
                 <SearchForm/>
-                <KakaoMap/>
+                <KakaoMap mapWidth={"80%"}/>
                 <FormProvider {...methods}>
                     <MapAddressForm onSubmit={methods.handleSubmit((data) =>
                         onAddressRegister(data)

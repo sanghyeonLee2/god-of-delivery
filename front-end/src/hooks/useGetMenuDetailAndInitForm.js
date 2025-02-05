@@ -10,16 +10,14 @@ export const useGetMenuDetailAndInitForm = (url) => {
         ["getMenuDetail", url],  // 쿼리 키를 고유하게 만들기 위해 url 포함
         () => getApi(url),
         {
-            /*  onSuccess: response => {
-                  console.log("VZC")
-                  reset(setMenuDetail(response.data?.details))
-              },*/
+            onSuccess: response => {
+            },
             staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
             cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지
         }
     );
     useEffect(() => {
-        if (data?.data?.details) {
+        if (data?.data) {
             reset(setMenuDetail(data?.data?.details, data.data?.quantity, data.data?.menuId, data.data?.storeId)); // 폼 초기값 설정
         }
     }, [data, reset]);

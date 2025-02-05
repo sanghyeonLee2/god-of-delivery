@@ -3,7 +3,6 @@ import {Controller} from "react-hook-form";
 import RadioGroup from "../../../components/common/RadioGroup/RadioGroup";
 import Radio from "../../../components/common/RadioGroup/Radio/Radio";
 import {Font, SelectTwoTypes} from "../../../assets/styles/CommonStyle";
-import {PaymentMethodsWrap} from "./PaymentMethodsLayout";
 
 const paymentMethods = [
     {content: "만나서 카드 결제", method: "card"},
@@ -12,7 +11,7 @@ const paymentMethods = [
 
 function PaymentMethods({control, getValues}) {
     return (
-        <PaymentMethodsWrap>
+        <div>
             <Font size={"large"}>결제 수단</Font>
             <Controller control={control} name={"paymentMethod"} defaultValue={"card"}
                         render={({field: {onChange, value}}) => (
@@ -21,8 +20,7 @@ function PaymentMethods({control, getValues}) {
                                     <Radio value={paymentMethod.method} key={paymentMethod.method}
                                            onChange={() => onChange(paymentMethod.method)}
                                            name={"paymentMethod"}
-                                           checked={value === paymentMethod.method}
-                                    >
+                                           checked={value === paymentMethod.method}>
                                         <SelectTwoTypes isChecked={paymentMethod.method === getValues("paymentMethod")}>
                                             <Font>
                                                 {paymentMethod.content}
@@ -33,7 +31,7 @@ function PaymentMethods({control, getValues}) {
                             </RadioGroup>
                         )
                         }/>
-        </PaymentMethodsWrap>);
+        </div>);
 
 }
 

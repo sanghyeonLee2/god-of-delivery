@@ -5,6 +5,7 @@ export const SearchInputForm = styled.form`
     position: relative;
     margin: 0 auto;
     display: flex;
+    height: 45px;
     ${elementSize("350px", "45px")};
 
     input {

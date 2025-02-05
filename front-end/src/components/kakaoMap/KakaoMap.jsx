@@ -5,7 +5,7 @@ import {coordsState} from "../../recoil/map/atoms";
 import {CurrentLocationBtn, MapWrap} from "./KakaoMapLayout";
 import locationImg from "../../assets/img/my_location.png"
 
-function KakaoMap() {
+function KakaoMap({mapWidth}) {
     const [coords, setCoords] = useRecoilState(coordsState)
     const onClickCoords = () => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -17,7 +17,7 @@ function KakaoMap() {
         <MapWrap>
             <Map
                 center={coords.center}
-                style={{width: '80%', height: '100%', margin: "0 auto"}}
+                style={{width: mapWidth, height: '100%', margin: "0 auto"}}
                 level={3}
                 onClick={(_, e) => {
                     const latLng = e.latLng
@@ -34,7 +34,8 @@ function KakaoMap() {
                 <MapMarker position={coords.center}/>
             </Map>
             <CurrentLocationBtn type={"button"} onClick={onClickCoords}>
-                <img src={locationImg} width={35} alt={"위치 버튼"}/></CurrentLocationBtn>
+                <img src={locationImg} width={35} alt={"위치 버튼"}/>
+            </CurrentLocationBtn>
         </MapWrap>
     );
 }

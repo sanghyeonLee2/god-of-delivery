@@ -47,6 +47,11 @@ export const authPostApi = (url) => {
     return api.request("POST", url)
 }
 
+export const authDeleteApi = (url) => {
+    const api = new UserApi(true)
+    return api.request("Delete", url)
+}
+
 export const authPatchApi = (url) => {
     const api = new UserApi(true)
     return api.request("PATCH", url)

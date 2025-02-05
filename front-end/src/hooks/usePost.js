@@ -41,6 +41,7 @@ export const usePost = (url, isAuth = false) => {
                         break
                     case "payment-post":
                         alert("결제가 완료 되었습니다.")
+                        navigate("/order-status")
                         break;
                     default:
                         console.log(url)
