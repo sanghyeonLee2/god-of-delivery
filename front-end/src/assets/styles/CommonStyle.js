@@ -32,6 +32,14 @@ export const SelectTwoTypes = styled.li.withConfig({
     height: 60px;
     margin-bottom: 20px;
 `;
+
+export const CommonSectionWrap = styled.div`
+    padding: 10px 0;
+`;
+export const CommonPageHeader = styled.div`
+    height: 55px;
+    ${flexLayout("space-between")}
+`
 export const CommonBorder = styled.li`
     ${setBorder()};
     min-height: 115px;
@@ -72,6 +80,7 @@ export const FlexOnly = styled(({element: Element = 'div', ...props}) => (
 ))`
     display: flex;
     align-items: center;
+    width: ${(props) => props.width || "auto"};
     justify-content: ${(props) => props.justify || "stretch"};
 
 `;
