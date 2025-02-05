@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    CartWrap,
     HeaderMainText,
     HeaderTextWrap,
     HeaderWrap,
@@ -8,16 +7,17 @@ import {
     SearchBoxOuter,
     SearchBoxTextOuter
 } from "./HeaderLayout";
-import {MainBtn} from "../Button/main/MainButton";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useRecoilState} from "recoil";
 import {isSignInState} from "../../../recoil/user/atoms";
-import cart from "../../../assets/img/cart.png"
-import {Font} from "../../../assets/styles/CommonStyle";
+import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import SearchForm from "../../forms/SearchForm/SearchForm";
+import IconBtn from "../Button/icon/IconBtn";
+import myPage from "../../../assets/img/my-page.png";
+import cart from "../../../assets/img/cart.png"
+import logout from "../../../assets/img/logout.png"
 
 export function Header({currentAddress}) {
-    const navigate = useNavigate()
     const [isSignIn, setIsSignIn] = useRecoilState(isSignInState)
     return (
         <>
@@ -28,19 +28,23 @@ export function Header({currentAddress}) {
                 <Link to={"/select-address"}>
                     <p>{currentAddress}</p>
                 </Link>
-                {isSignIn ? <MainBtn type={"button"} text={"로그아웃"} onClick={
-                        () => {
-                            localStorage.removeItem("access-token")
-                            localStorage.removeItem("refresh-token")
-                            setIsSignIn(false)
-                        }
-                    }/> :
-                    <MainBtn type={"button"} text={"회원가입/로그인"} onClick={() => navigate("sign-up")}/>}
+                <FlexOnly justify="space-between" width={"70px"}>
+                    <Link to={"/cart"}>
+                        <IconBtn src={cart} width={26}/>
+                    </Link>
+                    {isSignIn ?
+                        <IconBtn type={"button"} src={logout} width={26} onClick={
+                            () => {
+                                localStorage.removeItem("access-token")
+                                localStorage.removeItem("refresh-token")
+                                setIsSignIn(false)
+                            }
+                        }/> :
+                        <Link to={"/sign-in"}>
+                            <IconBtn src={myPage} width={26}/>
+                        </Link>}
+                </FlexOnly>
             </HeaderWrap>
-            <CartWrap onClick={() => navigate("cart")}>
-                <img src={cart} width={50} alt={"cart"}/>
-            </CartWrap>
-            {/*useDrag*/}
             <SearchBoxOuter>
                 <SearchBoxInner>
                     <SearchBoxTextOuter>
