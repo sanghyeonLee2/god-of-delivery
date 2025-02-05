@@ -7,54 +7,49 @@ import {
     MenuPicture,
     MenuPriceWrap,
     MenuReviewWrap,
-    MenuTitleWrap,
-    Popular,
-    RecommendWrap
+    MenuTitleWrap
 } from "./MenuBoxLayout";
-import {
-    DividingLine,
-    MiddleSizeFont,
-    MiddleSizeTitleFont,
-    SmallSizeFont,
-    SmallSizeTitleFont,
-    VerticalSpace
-} from "../../../assets/styles/CommonStyle";
+import {DividingLine, Font, VerticalSpace} from "../../../assets/styles/CommonStyle";
+import {useSetRecoilState} from "recoil";
+import {isModalOpenState} from "../../../recoil/flag/atoms";
 
-function MenuBox({menuInfo}) {
+function MenuBox({menuInfoItem}) {
+    const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
         <MenuBoxWrap>
-            <MiddleSizeTitleFont>
-                <p>{menuInfo.menuTitle}</p>
-            </MiddleSizeTitleFont>
-            {menuInfo.items?.map((ele) =>
-                <div key={ele.menuName}>
+            <Font size={"x-large"}>
+                {menuInfoItem.menuTitle}
+            </Font>
+            {menuInfoItem.menus?.map((menu) =>
+                <div key={menu.menuId} onClick={() => {
+                    setIsModalOpen({
+                        modalType: "menuDetail",
+                        modalFlag: true,
+                        modalIdData: menu?.menuId
+                    })
+                }}>
                     <MenuInfoInner>
                         <LeftMenuInfo>
                             <ul>
                                 <MenuTitleWrap>
-                                    <SmallSizeTitleFont>
-                                        {ele.isPopular && <Popular>
-                                            <span>인기</span>
-                                        </Popular>}
-                                        <p>{ele.menuName}</p>
-                                    </SmallSizeTitleFont>
+                                    <Font size={"large"}>
+                                        {menu.menuName}
+                                    </Font>
                                 </MenuTitleWrap>
                                 <MenuDescriptionWrap>
-                                    <MiddleSizeFont color={"gray"}>
-                                        {ele?.description}
-                                    </MiddleSizeFont>
+                                    <Font color={"gray"}>
+                                        {menu?.description}
+                                    </Font>
                                 </MenuDescriptionWrap>
                                 <MenuPriceWrap>
-                                    <MiddleSizeFont>
-                                        {ele.price}원
-                                    </MiddleSizeFont>
+                                    <Font>
+                                        {menu.price.toLocaleString()}원
+                                    </Font>
                                 </MenuPriceWrap>
-                                {ele?.isOwnerRecommend &&
-                                    <RecommendWrap>
-                                        <div>사장님 추천</div>
-                                    </RecommendWrap>}
                                 <MenuReviewWrap>
-                                    <SmallSizeFont color={"gray"}>리뷰{ele.menuReviewCnt}</SmallSizeFont>
+                                    <Font size="small" color={"gray"}>
+                                        리뷰{menu.menuReviewCnt}
+                                    </Font>
                                 </MenuReviewWrap>
                             </ul>
                         </LeftMenuInfo>

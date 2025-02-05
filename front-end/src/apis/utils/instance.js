@@ -37,7 +37,7 @@ class BaseApi {
     authInterceptor() {
         return this.instance.interceptors.response.use(
             async (response) => {
-                if (response.status === 200) {
+                if (response.status === 200 || response.status === 201) {
                     return response
                 }
             }, async (err) => {

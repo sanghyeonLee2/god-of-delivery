@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const SearchInputForm = styled.form`
     position: relative;
     margin: 0 auto;
-    padding-top: 20px;
     display: flex;
+    height: 45px;
     ${elementSize("350px", "45px")};
 
     input {

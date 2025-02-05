@@ -1,27 +1,28 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {MainButtonLayout, SubButtonLayout, TransButtonLayout} from "./MainButtonLayout";
-import {MiddleSizeFont} from "../../../../assets/styles/CommonStyle";
+import {Font} from "../../../../assets/styles/CommonStyle";
 
-export function MainBtn({type, text, onClick}) {
+
+export const MainBtn = forwardRef(({type, text, onClick, width, height}, ref) => {
     return (
-        <MainButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont> {text}</MiddleSizeFont>
+        <MainButtonLayout width={width} height={height} type={type} onClick={onClick} ref={ref}>
+            <Font>{text}</Font>
         </MainButtonLayout>
     );
-}
+});
 
-export function SubBtn({type, text, onClick}) {
+export function SubBtn({type, text, onClick, height}) {
     return (
-        <SubButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont color={"white"}> {text}</MiddleSizeFont>
+        <SubButtonLayout type={type} onClick={onClick} height={height}>
+            <Font color={"white"}>{text}</Font>
         </SubButtonLayout>
     );
 }
 
-export function TransBtn({type, text, onClick}) {
+export const TransBtn = forwardRef(({type, text, onClick}, ref) => {
     return (
-        <TransButtonLayout type={type} onClick={onClick}>
-            <MiddleSizeFont> {text}</MiddleSizeFont>
+        <TransButtonLayout type={type} onClick={onClick} ref={ref}>
+            <Font>{text}</Font>
         </TransButtonLayout>
     );
-}
+});

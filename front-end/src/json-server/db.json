@@ -19,12 +19,14 @@
     },
     {
       "id": 6
+    },
+    {
+      "id": 7
     }
   ],
   "me": {
     "userId": "sdf",
     "currentAddress": "주례로 47",
-    "grade": "고마운분",
     "role": "회원"
   },
   "address": [
@@ -52,23 +54,326 @@
       "id": 4
     }
   ],
+  "payment-setting": {
+    "contact": "010-1234-5678",
+    "detailAddress": "305호"
+  },
+  "payment-post": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    }
+  ],
+  "order-detail": {
+    "orderStatus": "주문 확인 중...",
+    "orderType": "포장",
+    "store": {
+      "storeName": "맥도날드 주례점",
+      "storeLatitude": 0,
+      "storeLongitude": 0,
+      "orderTime": "2017-07-07 20시",
+      "orderId": 1
+    },
+    "menus": [
+      {
+        "menuId": 0,
+        "menuName": "후라이드",
+        "menuPrice": 3000,
+        "menuOptions": [
+          {
+            "optionId": 0,
+            "optionName": "디아블로 소스",
+            "optionPrice": 1000
+          },
+          {
+            "optionId": 1,
+            "optionName": "칠리 소스",
+            "optionPrice": 500
+          }
+        ]
+      },
+      {
+        "menuId": 1,
+        "menuName": "양념",
+        "menuPrice": 3000,
+        "menuOptions": []
+      }
+    ],
+    "paymentMethods": {
+      "tips": 1000,
+      "method": "카드"
+    },
+    "userPaymentInfo": {
+      "userAddress": "사상구",
+      "userDetailAddress": "305호",
+      "userContact": "010-1234-1234",
+      "requestedTerm": "단무지 뺴고 주세요"
+    }
+  },
+  "cart-post": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "id": 27
+    },
+    {
+      "id": 28
+    },
+    {
+      "id": 29
+    },
+    {
+      "id": 30
+    },
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 33
+    },
+    {
+      "id": 34
+    },
+    {
+      "id": 35
+    },
+    {
+      "id": 36
+    },
+    {
+      "id": 37
+    },
+    {
+      "id": 38
+    },
+    {
+      "id": 39
+    },
+    {
+      "id": 40
+    },
+    {
+      "id": 41
+    },
+    {
+      "id": 42
+    },
+    {
+      "id": 43
+    },
+    {
+      "id": 44
+    }
+  ],
+  "cart-put": [
+    {
+      "id": 1,
+      "menu": "Burger",
+      "options": {
+        "size": "Large",
+        "drink": "Coke"
+      },
+      "quantity": 2
+    }
+  ],
+  "cart-details": [
+    {
+      "title": "치킨 선택",
+      "isEssential": true,
+      "maxQuantity": 1,
+      "options": [
+        {
+          "content": "후라이드",
+          "price": 1000
+        },
+        {
+          "content": "앙념",
+          "price": 2000
+        },
+        {
+          "content": "간장",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "title": "추가",
+      "isEssential": false,
+      "maxQuantity": 2,
+      "options": [
+        {
+          "content": "감자",
+          "price": 1000
+        },
+        {
+          "content": "샐러드",
+          "price": 2000
+        },
+        {
+          "content": "소스",
+          "price": 1000
+        }
+      ]
+    }
+  ],
+  "cart-delete": [],
+  "cart": {
+    "cartId": 1,
+    "storeId": 12,
+    "storeTitle": "네네치킨",
+    "deliveryTime": "30~40분",
+    "menus": [
+      {
+        "menuName": "후라이드치킨",
+        "menuId": 1,
+        "price": 16000,
+        "quantity": 1,
+        "details": [
+          {
+            "optionId": 1,
+            "title": "소스",
+            "content": "스리라차",
+            "price": 1000
+          }
+        ]
+      },
+      {
+        "menuName": "양념치킨",
+        "menuId": 2,
+        "price": 4200,
+        "quantity": 1,
+        "details": []
+      }
+    ],
+    "receiptMethods": [
+      {
+        "receiptMethodType": "배달",
+        "tip": 2000,
+        "waiting": "30~40분"
+      },
+      {
+        "receiptMethodType": "포장",
+        "tip": 0,
+        "waiting": "10~10분"
+      }
+    ]
+  },
+  "menu-details": [],
   "review": {
     "currentCnt": 35,
     "ceoCnt": 200,
     "user": [
       {
+        "reviewId": 0,
         "userId": "상큼자몽",
-        "img": "사진",
-        "orderList": [
-          "후라이드 치킨",
-          "양념 치킨"
-        ],
-        "content": "정말 맛있네요",
-        "rate": 5,
-        "ceoReview": "안녕하세요!!"
-      },
-      {
-        "userId": "수박",
         "img": "사진",
         "orderList": [
           "후라이드 치킨",
@@ -149,9 +454,8 @@
     ]
   },
   "store": {
+    "storeId": 1,
     "notice": "물가상승으로 인해 모든 메뉴 1000원 상승",
-    "isCesco": false,
-    "isSafety": false,
     "deliveryMethod": {
       "order": {
         "minPrice": 1000,
@@ -193,95 +497,80 @@
       "storeName": "네네치킨 사상점",
       "rating": 3.5
     },
-    "coupons": [
-      {
-        "couponContent": "1000원",
-        "couponTerm": 12000,
-        "orderType": "배달"
-      }
-    ],
-    "menu": [
+    "menuInfo": [
       {
         "menuTitle": "추천메뉴",
-        "items": [
+        "menus": [
           {
+            "menuId": 1,
             "menuName": "양꼬치",
             "description": "카레+양고기",
             "price": 24000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": true
+            "menuReviewCnt": 11
           },
           {
+            "menuId": 2,
             "menuName": "닭가슴살",
             "description": "불고기+닭고기",
             "price": 2000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "2인 세트",
-        "items": [
+        "menus": [
           {
+            "menuId": 3,
             "menuName": "콘소세지",
             "description": "카레+양고기",
             "price": 20000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           },
           {
+            "menuId": 4,
             "menuName": "스프카레",
             "description": "불고기+닭고기",
             "price": 20200,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "사이드",
-        "items": [
+        "menus": [
           {
+            "menuId": 5,
             "menuName": "치즈스틱",
             "description": "",
             "price": 2000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           },
           {
+            "menuId": 6,
             "menuName": "감자튀김",
             "description": "체다소스",
             "price": 1000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           }
         ]
       },
       {
         "menuTitle": "음료",
-        "items": [
+        "menus": [
           {
+            "menuId": 7,
             "menuName": "코카콜라",
             "description": "",
             "price": 2000,
-            "isOwnerRecommend": true,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           },
           {
+            "menuId": 8,
             "menuName": "사이다",
             "description": "체다소스",
             "price": 1000,
-            "isOwnerRecommend": false,
-            "menuReviewCnt": 11,
-            "isPopular": false
+            "menuReviewCnt": 11
           }
         ]
       }

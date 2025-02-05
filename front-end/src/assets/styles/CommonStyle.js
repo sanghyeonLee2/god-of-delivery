@@ -1,43 +1,57 @@
 import styled, {css} from "styled-components";
+import {flexLayout, setBorder} from "./Mixin";
+import {COLORS} from "./colors";
 
 
-export const P = styled.p`
-    font-size: ${(props) => props.size}
-`
+export const exampleColor = () => css`background-color: lightgray`
+export const outerPadding = () => css`padding: 15px 25px;`
+export const innerPadding = () => css`padding: 10px 15px`
 
-export const MiddleSizeFont = styled.span`
+export const Font = styled.p`
     color: ${(props) => props.color};
+    font-size: ${(props) => {
+        switch (props.size) {
+            case "small":
+                return "smaller"
+            case "large":
+                return "20px"
+            case "x-large":
+                return "28px"
+            default:
+                return "normal"
+        }
 
+    }};`
+export const SelectTwoTypes = styled.li.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isChecked',
+})`
+    background-color: ${(props) => props.isChecked && COLORS.BORDER};
+    ${flexLayout("space-between", "center")};
+    ${setBorder()};
+    ${outerPadding()};
+    height: 60px;
+    margin-bottom: 20px;
+`;
+
+export const CommonSectionWrap = styled.div`
+    padding: 10px 0;
+`;
+export const CommonPageHeader = styled.div`
+    height: 55px;
+    ${flexLayout("space-between")}
 `
-export const SmallSizeFont = styled.span`
-    font-size: smaller;
-    color: ${(props) => props.color};
-
+export const CommonBorder = styled.li`
+    ${setBorder()};
+    min-height: 115px;
+    ${outerPadding()};
 `
-export const MiddleSizeTitleFont = styled.div`
-    font-size: 25px;
-
-    p {
-        align-content: center;
-    }
-
+export const CommonPageWrap = styled.ul`
+    min-height: 900px;
+    max-width: 800px;
+    margin: 0 auto;
+    ${outerPadding()};
 `
-export const LargeSizeTitleFont = styled.div`
-    font-size: 35px;
 
-    p {
-        height: 70px;
-        align-content: center;
-    }
-`
-export const SmallSizeTitleFont = styled.div`
-    font-size: 20px;
-
-    p {
-        height: 50px;
-        align-content: center;
-    }
-`
 export const VerticalSpace = styled.div`
     height: 10px;
     background-color: #F6F6F6;
@@ -65,10 +79,10 @@ export const FlexOnly = styled(({element: Element = 'div', ...props}) => (
     <Element {...props} />
 ))`
     display: flex;
+    align-items: center;
+    width: ${(props) => props.width || "auto"};
+    justify-content: ${(props) => props.justify || "stretch"};
+
 `;
 //기본적으로 전달되는 props가 있음
-
-export const exampleColor = () => css`background-color: lightgray`
-export const outerPadding = () => css`padding: 15px 25px;`
-export const innerPadding = () => css`padding: 10px 15px;`
 

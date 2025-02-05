@@ -2,17 +2,17 @@ import {createGlobalStyle} from "styled-components";
 import {COLORS} from "./colors";
 
 const HOVER_COLOR = "#F5F5F5"
-const FONT_FAMILY = "양진체"
+const FONT_FAMILY = "LINESeedKR"
 export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
-
+        box-sizing: border-box;
     }
 
     @font-face {
         font-family: ${FONT_FAMILY};
-        src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-        font-weight: normal;
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+        font-weight: 700;
         font-style: normal;
     }
 
@@ -27,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
 
         padding: 0 20px;
         border-radius: 4px;
-        box-sizing: border-box;
     }
 
     li {
@@ -56,7 +55,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p, li, h1, strong, span, label {
-        font-family: ${FONT_FAMILY}, sans-serif;
+        font-family: ${FONT_FAMILY};
         line-height: 2;
     }
 
@@ -67,7 +66,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         position: relative;
-        min-height: 100%;
         padding-bottom: 150px;
     }
 `

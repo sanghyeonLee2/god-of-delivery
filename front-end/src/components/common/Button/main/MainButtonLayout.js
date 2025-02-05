@@ -10,7 +10,8 @@ export const MainButtonLayout = styled.button`
 `
 
 export const SubButtonLayout = styled.button`
-    ${elementSize("100%", "100%")}
+    ${elementSize("100%", "100%")};
+    height: ${(props) => props.height};
     background-color: ${COLORS.BTN.SUB};
     border-radius: 4px;
 `
@@ -19,10 +20,11 @@ export const TransButtonLayout = styled.button`
     ${elementSize("100%", "100%")}
     border-radius: 4px;
     border: 0;
-    font-size: inherit;
     background-color: white;
+    font-size: inherit;
     box-sizing: content-box;
 `
 export const OrderBtnWrap = styled.div`
     margin-top: 20px;
-    height: 50px`
+    height: 50px;
+`

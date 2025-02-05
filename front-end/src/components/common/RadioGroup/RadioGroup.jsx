@@ -1,12 +1,18 @@
 import React from 'react';
-import {AddressTypeWrapper} from "./RadioGroupLayout";
+import styled from "styled-components";
 
-function RadioGroup({children}) {
+function RadioGroup({children, isOtherCheckStyle = false}) {
     return (
-        <AddressTypeWrapper>
+        <RadioGroupWrap isOtherCheckStyle={isOtherCheckStyle}>
             {children}
-        </AddressTypeWrapper>
+        </RadioGroupWrap>
     );
 }
 
 export default RadioGroup;
+
+const RadioGroupWrap = styled.div.withConfig(
+    {shouldForwardProp: (prop) => prop !== 'isOtherCheckStyle',})`
+    input {
+        display: ${(props) => props.isOtherCheckStyle && "none"}
+    }`
