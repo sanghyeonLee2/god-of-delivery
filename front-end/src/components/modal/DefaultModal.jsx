@@ -9,9 +9,9 @@ function DefaultModal({modalType, modalIdData}) {
         <ModalOuter>
             <ModalInner>
                 <ModalHeader title={modalType}/>
-                {(modalType === "menuDetail" || modalType === "updateCartMenu") &&
+                {(modalType === "메뉴상세" || modalType === "메뉴수정") &&
                     <MenuDetailModal menuId={modalIdData} modalType={modalType}/>}
-                {modalType === "selectAddress" && <SelectMapModal/>}
+                {modalType === "주소설정" && <SelectMapModal/>}
             </ModalInner>
         </ModalOuter>
     );

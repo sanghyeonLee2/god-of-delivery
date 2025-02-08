@@ -8,8 +8,8 @@ import {
     SearchBoxTextOuter
 } from "./HeaderLayout";
 import {Link} from "react-router-dom";
-import {useRecoilState, useSetRecoilState} from "recoil";
-import {isSignInState} from "../../../recoil/user/atoms";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {isSignInState, userInfoState} from "../../../recoil/user/atoms";
 import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import SearchForm from "../../forms/SearchForm/SearchForm";
 import IconBtn from "../Button/icon/IconBtn";
@@ -22,6 +22,7 @@ import {isModalOpenState} from "../../../recoil/flag/atoms";
 export function Header({currentAddress}) {
     const [isSignIn, setIsSignIn] = useRecoilState(isSignInState)
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
+    const userInfo = useRecoilValue(userInfoState)
     return (
         <>
             <HeaderWrap>
@@ -29,13 +30,15 @@ export function Header({currentAddress}) {
                     <h1>배달의 신</h1>
                 </Link>
                 <FlexOnly>
+
                     <IconBtn src={location_on} width={26} onClick={
                         () => {
                             setIsModalOpen(
-                                {modalType: "selectAddress", modalFlag: true, modalIdData: null}
+                                {modalType: "주소설정", modalFlag: true, modalIdData: null}
                             )
                         }}>
-                        <Font size={"small"}>주소를 설정해 주세요</Font>
+                        {userInfo.currentAddress ? <Font> {userInfo.currentAddress}</Font> :
+                            <Font size={"small"}>주소를 설정해 주세요</Font>}
                     </IconBtn>
                 </FlexOnly>
                 <FlexOnly justify="space-between" width={"80px"}>
