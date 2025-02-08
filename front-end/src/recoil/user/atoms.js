@@ -15,7 +15,6 @@ export const userInfoState = atom({
     default: {
         userId: "",
         currentAddress: null,
-        grade: "",
-        role: ""
+        role: "",
     },
 })
