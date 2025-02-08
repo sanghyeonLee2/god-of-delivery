@@ -30,7 +30,7 @@ function CartMenus({menus, getValues}) {
                                 <MainBtn text={"옵션 / 수량 변경"}
                                          type={"button"}
                                          onClick={() => setIsModalOpen({
-                                             modalType: "updateCartMenu",
+                                             modalType: "메뉴수정",
                                              modalFlag: true,
                                              modalIdData: menu.menuId
                                          })}/>

@@ -11,7 +11,7 @@ function ModalHeader({title}) {
         <ModalHeaderWrap>
             <Font size={"large"}>{title}</Font>
             <img src={reset} alt={"닫기"} width={35}
-                 onClick={() => setIsModalClose({modalType: null, modalFlag: false})}/>
+                 onClick={() => setIsModalClose({modalType: null, modalFlag: false, modalIdData: null})}/>
         </ModalHeaderWrap>
     );
 }

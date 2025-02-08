@@ -4,6 +4,7 @@ import {useLocation} from "react-router-dom";
 import SortingSection from "./components/SortingSection";
 import StoreList from "./components/StoreList";
 import {RestaurantsWrapper} from "./StoresPageLayout";
+import Pagination from "../../components/common/Pagination/Pagination";
 
 function StoresPage(props) {
     const {
@@ -18,6 +19,7 @@ function StoresPage(props) {
             <RestaurantsWrapper>
                 <StoreList listType={"추천 맛집"} categoryId={categoryId}/>
             </RestaurantsWrapper>
+            <Pagination/>
         </>
     );
 }

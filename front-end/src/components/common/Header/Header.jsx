@@ -8,27 +8,40 @@ import {
     SearchBoxTextOuter
 } from "./HeaderLayout";
 import {Link} from "react-router-dom";
-import {useRecoilState} from "recoil";
-import {isSignInState} from "../../../recoil/user/atoms";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {isSignInState, userInfoState} from "../../../recoil/user/atoms";
 import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import SearchForm from "../../forms/SearchForm/SearchForm";
 import IconBtn from "../Button/icon/IconBtn";
 import myPage from "../../../assets/img/my-page.png";
 import cart from "../../../assets/img/cart.png"
 import logout from "../../../assets/img/logout.png"
+import location_on from "../../../assets/img/location_on.png"
+import {isModalOpenState} from "../../../recoil/flag/atoms";
 
 export function Header({currentAddress}) {
     const [isSignIn, setIsSignIn] = useRecoilState(isSignInState)
+    const setIsModalOpen = useSetRecoilState(isModalOpenState)
+    const userInfo = useRecoilValue(userInfoState)
     return (
         <>
             <HeaderWrap>
                 <Link to={"/"}>
                     <h1>배달의 신</h1>
                 </Link>
-                <Link to={"/select-address"}>
-                    <p>{currentAddress}</p>
-                </Link>
-                <FlexOnly justify="space-between" width={"70px"}>
+                <FlexOnly>
+
+                    <IconBtn src={location_on} width={26} onClick={
+                        () => {
+                            setIsModalOpen(
+                                {modalType: "주소설정", modalFlag: true, modalIdData: null}
+                            )
+                        }}>
+                        {userInfo.currentAddress ? <Font> {userInfo.currentAddress}</Font> :
+                            <Font size={"small"}>주소를 설정해 주세요</Font>}
+                    </IconBtn>
+                </FlexOnly>
+                <FlexOnly justify="space-between" width={"80px"}>
                     <Link to={"/cart"}>
                         <IconBtn src={cart} width={26}/>
                     </Link>
@@ -39,7 +52,8 @@ export function Header({currentAddress}) {
                                 localStorage.removeItem("refresh-token")
                                 setIsSignIn(false)
                             }
-                        }/> :
+                        }/>
+                        :
                         <Link to={"/sign-in"}>
                             <IconBtn src={myPage} width={26}/>
                         </Link>}

@@ -31,13 +31,14 @@ export const usePost = (url, isAuth = false) => {
                         break
                     case "cart-post":
                         if (window.confirm("장바구니에 담겼습니다. 이동 하시겠습니까?")) {
-                            setIsModalOpen(false)
+                            setIsModalOpen({modalType: null, modalFlag: false, modalIdData: null})
                             navigate("/cart")
                         }
                         break
                     case "address":
                         alert("주소가 추가 되었습니다.")
-                        setIsModalOpen(false)
+                        setIsModalOpen({modalType: null, modalFlag: false, modalIdData: null})
+                        navigate("/category-info/전체보기", {state: {categoryId: "전체보기"}})
                         break
                     case "payment-post":
                         alert("결제가 완료 되었습니다.")
