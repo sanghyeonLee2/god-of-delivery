@@ -1,24 +1,25 @@
-import React from 'react';
-import MainInput from "../../../components/common/Input/MainInput/MainInput";
-import {ErrorMsg} from "../../AuthPage/AuthPageFormLayout";
-import {useFormContext} from "react-hook-form";
+import React, {useEffect} from 'react';
 import {useRecoilValue} from "recoil";
-import {addressState} from "../../../recoil/map/atoms";
 import {Font} from "../../../assets/styles/CommonStyle";
+import {addressState} from "../../../recoil/map/atoms";
 
-function AddressInfo(props) {
-    const {formState: {errors}} = useFormContext()
+function AddressInfo({setValue}) {
     const addressValue = useRecoilValue(addressState);
+
+    useEffect(() => {
+        setValue("address", addressValue.address);
+        setValue("lat", addressValue.lat);
+        setValue("lng", addressValue.lng);
+    }, [addressValue, setValue]);
+
     return (
         <div>
             <Font>
                 {addressValue?.roadInfo}
             </Font>
             <Font>
-                {addressValue?.detailAddress}
+                {addressValue?.address}
             </Font>
-            <MainInput type={"text"} placeholder={"상세주소를 입력해 주세요."} reigterName={"detailAddress"}/>
-            <ErrorMsg>{errors.detailAddress?.message}</ErrorMsg>
         </div>
     );
 }
