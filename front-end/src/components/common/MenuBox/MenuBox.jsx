@@ -23,7 +23,7 @@ function MenuBox({menuInfoItem}) {
             {menuInfoItem.menus?.map((menu) =>
                 <div key={menu.menuId} onClick={() => {
                     setIsModalOpen({
-                        modalType: "menuDetail",
+                        modalType: "메뉴상세",
                         modalFlag: true,
                         modalIdData: menu?.menuId
                     })
