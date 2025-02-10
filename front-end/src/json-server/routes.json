@@ -1,0 +1,3 @@
+{
+  "/stores/:category/:page": "/stores?storeCategory=:category&_page=:page&_limit=10"
+}
