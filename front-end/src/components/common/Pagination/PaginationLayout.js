@@ -1,21 +1,19 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const PaginationWrap = styled.div`
-    height: 80px;`
+    height: 80px;
+`
 
-export const PaginationInner = styled.ul`
+export const PaginationInner = styled.div`
     margin: 0 auto;
     max-width: 800px;
     height: 40px;
     ${flexLayout("center", "center")};
 
-    li {
-        margin: 0 10px;
+    button {
+        ${elementSize("32px", "32px")};
+        border-radius: 500px;
     }
 `
 
-export const PageElement = styled.li`
-    width: 30px;
-    background-color: antiquewhite;
-`
