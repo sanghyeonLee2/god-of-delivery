@@ -2,13 +2,11 @@ import styled from "styled-components";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const StoreOuter = styled.li`
-    height: 135px;
-    width: 50%;
+    ${elementSize("49.5%", "135px")};
     @media (max-width: 880px ) {
         width: 100%;
     }
     margin-bottom: 14px;
-    padding: 0 10px;
     box-sizing: border-box;
 `
 export const StoreInner = styled.div`

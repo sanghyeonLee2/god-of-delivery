@@ -21,8 +21,6 @@ function StoreBox({storeInfo}) {
                         <li><Font size={"small"}>리뷰 {storeInfo?.reviewCnt}</Font></li>
                     </FlexOnly>
                     <FlexOnly element={"ul"}>
-                        <li><Font size={"small"} color={"red"}>배달패스</Font></li>
-                        &nbsp;|&nbsp;
                         <li><Font size={"small"} color={"gray"}>{storeInfo?.minDeliveryPrice}원 이상
                             배달</Font></li>
                         <AverageTimeWrap>

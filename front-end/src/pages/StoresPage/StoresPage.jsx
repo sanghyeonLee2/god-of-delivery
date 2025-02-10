@@ -3,8 +3,9 @@ import CategoryList from "./components/CategoryList";
 import {useLocation} from "react-router-dom";
 import SortingSection from "./components/SortingSection";
 import StoreList from "./components/StoreList";
-import {RestaurantsWrapper} from "./StoresPageLayout";
 import Pagination from "../../components/common/Pagination/Pagination";
+import Loading from "../../components/common/Loading/Loading";
+import useGetStores from "../../hooks/useGetStores";
 
 function StoresPage(props) {
     const {
@@ -12,15 +13,26 @@ function StoresPage(props) {
             categoryId
         }
     } = useLocation()
+
+    const {
+        storesData,
+        pagination,
+        isError,
+        status,
+        isLoading,
+        currentPage,
+        setCurrentPage
+    } = useGetStores(`stores/${categoryId}`);
+    if (isLoading)
+        return <Loading/>
     return (
-        <>
+        <div>
             <CategoryList categoryId={categoryId}/>
-            <SortingSection/>
-            <RestaurantsWrapper>
-                <StoreList listType={"추천 맛집"} categoryId={categoryId}/>
-            </RestaurantsWrapper>
-            <Pagination/>
-        </>
+            <SortingSection categoryId={categoryId}/>
+            <StoreList categoryId={categoryId} storesData={storesData}/>
+            <Pagination categoryId={categoryId} totalPages={pagination.totalPages} currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}/>
+        </div>
     );
 }
 

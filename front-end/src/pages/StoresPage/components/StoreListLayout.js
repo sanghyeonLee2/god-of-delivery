@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import {flexLayout} from "../../../assets/styles/Mixin";
+import {outerPadding} from "../../../assets/styles/CommonStyle";
 
-export const RecommendedOuter = styled.div`
+export const StoresOuter = styled.div`
     margin: 0 auto;
     max-width: 1100px;
-    padding-top: 20px;
-    height: 100%;
+    ${outerPadding()}
 `
 
-export const RecommendedWrap = styled.ul`
+export const StoresInner = styled.ul`
     padding-top: 10px;
     ${flexLayout("space-between")};
     flex-wrap: wrap;

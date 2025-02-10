@@ -1,13 +1,10 @@
 import React from 'react';
-import {SelectWrapper} from "./SelectLayout";
-import {useFormContext} from "react-hook-form";
 
-function Select({children}) {
-    const {register} = useFormContext()
+function Select({children, onChange}) {
     return (
-        <SelectWrapper {...register("forRider")}>
+        <select onChange={onChange}>
             {children}
-        </SelectWrapper>
+        </select>
     );
 }
 

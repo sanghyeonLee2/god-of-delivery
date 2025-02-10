@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import {flexLayout} from "../../../../assets/styles/Mixin";
 
 export const IconBtnWrap = styled.button`
     border: 0;
-    background-color: transparent;
     padding: 0;
-    margin: 4px 0 0 5px;
+    background-color: white;
+    pointer-events: ${({$isDisable}) => $isDisable && "none"};
+    opacity: ${({$isDisable}) => $isDisable && "0.25"};
+    ${flexLayout("center", "center")}
 `

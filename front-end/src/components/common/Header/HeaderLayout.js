@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import {flexLayout} from "../../../assets/styles/Mixin";
 import searchBoxBackground from "../../../assets/img/search-box-background.jpg";
+import {innerPadding} from "../../../assets/styles/CommonStyle";
 
 
 export const HeaderWrap = styled.div`
@@ -8,29 +9,23 @@ export const HeaderWrap = styled.div`
     max-width: 1100px;
     margin: 0 auto;
     height: 92px;
+    ${innerPadding()}
 `
-
 export const SearchBoxOuter = styled.div`
     height: 260px;
     background-image: url(${searchBoxBackground});
-    background-size: cover; /* 또는 contain */
+    background-size: cover;
     background-position: center;
-`
-export const SearchBoxInner = styled.div`
-    ${elementSize("580px", "100%")};
-    margin: 0 auto;
-    align-content: center;
-`
-export const SearchBoxTextOuter = styled.div`
-    ${flexLayout("center", "center")}
-`
+    padding-top: 60px;
 
-export const HeaderMainText = styled.p`
-    font-size: 40px;
-    font-weight: bolder;
-    color: white;
-`
+    h2 {
+        font-size: 40px;
+        font-weight: bolder;
+        color: white;
+    }
 
-export const HeaderTextWrap = styled.section`
-    text-align: center;
+    section {
+        text-align: center;
+        padding-bottom: 10px;
+    }
 `

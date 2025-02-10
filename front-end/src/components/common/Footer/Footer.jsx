@@ -2,6 +2,8 @@ import React from 'react';
 import {FooterInfoInner, FooterMenuLeft, FooterMenuOuter, FooterMenuRight, FooterWrapper} from "./FooterLayout";
 import {Link} from "react-router-dom";
 import {Font} from "../../../assets/styles/CommonStyle";
+import IconBtn from "../Button/icon/IconBtn";
+import logo from "../../../assets/img/logo.png";
 
 function Footer(props) {
     return (
@@ -29,9 +31,7 @@ function Footer(props) {
             </FooterMenuOuter>
             <FooterInfoInner>
                 <Link to={"/"}>
-                    <h1>
-                        배달의 신
-                    </h1>
+                    <IconBtn src={logo} alt={logo} width={110}/>
                 </Link>
                 <div>
                     <Font size={"small"} color={"gray"}>주식회사 DN</Font>
