@@ -1,6 +1,6 @@
 import React from 'react';
 import {Font} from "../../../../assets/styles/CommonStyle";
-import {PageButton} from "./PaginationLayout";
+import {PageButton} from "./PaginationBtnLayout";
 
 function PaginationBtn({page, clicked, onClick}) {
     return (
