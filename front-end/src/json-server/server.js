@@ -11,6 +11,9 @@ server.use((req, res, next) => {
     next();
 });
 
+// 📌 routes.json 적용 (커스텀 라우팅 설정)
+const rewriter = jsonServer.rewriter(require("./routes.json"));
+server.use(rewriter);
 // Use default middlewares
 server.use(middlewares);
 server.use(router);
