@@ -8,23 +8,20 @@ export const StoreOuter = styled.li`
     }
     margin-bottom: 14px;
     box-sizing: border-box;
-`
-export const StoreInner = styled.div`
     padding: 0 20px;
     border: lightgray 1px solid;
-    height: 100%;
     ${flexLayout("stretch", "center")}
     position: relative;
 `
+
 export const StoreLogo = styled.div`
     background-color: brown;
     ${elementSize("95px", "95px")}`
 
 export const StoreInfoWrap = styled.div`
     padding: 8px 20px;
-
 `
-export const AverageTimeWrap = styled.li`
+export const AverageTimeWrap = styled.div`
     position: absolute;
     right: 12px;
 `
