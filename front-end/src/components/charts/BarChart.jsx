@@ -31,18 +31,20 @@ export const options = {
 
 const labels = ["1점", "2점", "3점", "4점", "5점"];
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            data: [34, 0, 0, 0, 1],
-            backgroundColor: "gold",
-            borderWidth: 0,
-            barPercentage: 0.2,
-        },
-    ],
-};
+const dataSetting = (reviewStat) => {
+    return {
+        labels,
+        datasets: [
+            {
+                data: reviewStat,
+                backgroundColor: "gold",
+                borderWidth: 0,
+                barPercentage: 0.2,
+            },
+        ],
+    };
+}
 
-export function BarChart() {
-    return <Bar options={options} data={data}/>;
+export function BarChart({reviewStat}) {
+    return <Bar options={options} data={dataSetting(reviewStat)}/>;
 }
