@@ -3,7 +3,7 @@ import {GlobalStyle} from "./assets/styles/GlobalStyle";
 import {Header} from "./components/common/Header/Header";
 import {Outlet} from "react-router-dom";
 import Footer from "./components/common/Footer/Footer";
-import {useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilValue, useSetRecoilState} from "recoil";
 import {isSignInState, userInfoState} from "./recoil/user/atoms";
 import {authGetApi} from "./apis/api/user";
 import {isModalOpenState} from "./recoil/flag/atoms";
@@ -13,7 +13,7 @@ function App() {
     //const [data, isError, status, isLoading,] = useAuthGet("me")
     const isSignIn = useRecoilValue(isSignInState)
     const isModalOpen = useRecoilValue(isModalOpenState)
-    const [userInfo, setUserInfo] = useRecoilState(userInfoState)
+    const setUserInfo = useSetRecoilState(userInfoState)
     useEffect(() => {
         const fetchData = async () => {
             const {data} = await authGetApi("me")
@@ -25,7 +25,7 @@ function App() {
     return (
         <>
             <div className="App">
-                <Header currentAddress={isSignIn && userInfo?.currentAddress}/>
+                <Header/>
                 <GlobalStyle/>
                 <Outlet/>
             </div>

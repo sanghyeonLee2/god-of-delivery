@@ -21,7 +21,6 @@ function OrderDetailPage(props) {
     if (isLoading) {
         return <Loading/>
     }
-    console.log(orderDetailData);
 
     return (
         <CommonPageWrap>

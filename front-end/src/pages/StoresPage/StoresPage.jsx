@@ -16,7 +16,7 @@ function StoresPage(props) {
 
     const {
         storesData,
-        pagination,
+        totalPages,
         isError,
         status,
         isLoading,
@@ -30,7 +30,7 @@ function StoresPage(props) {
             <CategoryList categoryId={categoryId}/>
             <SortingSection categoryId={categoryId}/>
             <StoreList categoryId={categoryId} storesData={storesData}/>
-            <Pagination categoryId={categoryId} totalPages={pagination.totalPages} currentPage={currentPage}
+            <Pagination totalPages={totalPages} currentPage={currentPage}
                         setCurrentPage={setCurrentPage}/>
         </div>
     );

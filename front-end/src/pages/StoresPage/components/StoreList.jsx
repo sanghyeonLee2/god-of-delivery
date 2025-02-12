@@ -1,10 +1,9 @@
 import React from 'react';
 import {StoresInner, StoresOuter} from "./StoreListLayout";
-import StoreBox from "../../StorePage/components/StoreBox";
+import StoreBox from "./StoreBox";
 import {Font} from "../../../assets/styles/CommonStyle";
 
 function StoreList({categoryId, storesData}) {
-
     return (
         <StoresOuter>
             <Font>

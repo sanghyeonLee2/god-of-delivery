@@ -11,12 +11,7 @@ export const useGetStores = (url) => {
             select: (res) => {
                 return {
                     storesData: res.data.storeList,
-                    pagination: {
-                        currentPage: res.data.currentPage,
-                        totalPages: Math.ceil(res.data.totalItems / res.data.pageSize),
-                        totalItems: res.data.totalItems,
-                        pageSize: res.data.pageSize,
-                    }
+                    totalPages: Math.ceil(res.data.totalItems / res.data.pageSize),
                 }
             },
             staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
@@ -25,7 +20,7 @@ export const useGetStores = (url) => {
     );
     return {
         storesData: data?.storesData,
-        pagination: data?.pagination,
+        totalPages: data?.totalPages,
         isError,
         status,
         isLoading,
