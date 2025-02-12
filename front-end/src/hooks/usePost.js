@@ -38,7 +38,7 @@ export const usePost = (url, isAuth = false) => {
                     case "address":
                         alert("주소가 추가 되었습니다.")
                         setIsModalOpen({modalType: null, modalFlag: false, modalIdData: null})
-                        navigate("/category-info/전체보기", {state: {categoryId: "전체보기"}})
+                        navigate("/category-info/전체보기/1", {state: {categoryId: "전체보기"}})
                         break
                     case "payment-post":
                         alert("결제가 완료 되었습니다.")

@@ -28,6 +28,7 @@ function CartMenus({menus, getValues}) {
                             <Font>{getValues(`menus[${idx}].quantity`)} 개</Font>
                             <FlexOnly width={"265px"} justify="space-between">
                                 <MainBtn text={"옵션 / 수량 변경"}
+                                         width={"125px"}
                                          type={"button"}
                                          onClick={() => setIsModalOpen({
                                              modalType: "메뉴수정",
@@ -35,6 +36,7 @@ function CartMenus({menus, getValues}) {
                                              modalIdData: menu.menuId
                                          })}/>
                                 <MainBtn text={"삭제"}
+                                         width={"125px"}
                                          type={"button"}
                                          onClick={() => deleteCartData(menu.menuId)}
                                 />

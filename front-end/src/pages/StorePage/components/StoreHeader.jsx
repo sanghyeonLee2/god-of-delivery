@@ -1,28 +1,27 @@
 import React from 'react';
-import {ReviewWrap, StoreHeaderWrap, StoreImgWrap} from "./StoreHeaderLayout";
+import {ReviewWrap, StoreHeaderWrap} from "./StoreHeaderLayout";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import {Font} from "../../../assets/styles/CommonStyle";
 
-function StoreHeader({haaderData}) {
+function StoreHeader({storeHeader}) {
     return (
         <StoreHeaderWrap>
-            <StoreImgWrap/>
             <Font size={"x-large"}>
-                {haaderData.storeName}
+                {storeHeader?.storeName}
             </Font>
             <div>
                 <StarRatings
-                    rating={haaderData.rating}
+                    rating={storeHeader?.rating}
                     starRatedColor={"gold"}
                     starDimension={"30px"}
                 />
                 &nbsp;
                 &nbsp;
-                <span>{haaderData.rating}</span>
+                <span>{storeHeader?.rating}</span>
             </div>
             <ReviewWrap>
-                <p>최근리뷰&nbsp;{haaderData.currentReview}</p>&nbsp;|&nbsp;
-                <p>최근사장님댓글&nbsp;{haaderData.currentOwnerReview}</p>
+                <Font>리뷰 수&nbsp;{storeHeader?.reviewCnt}</Font>&nbsp;|&nbsp;
+                <Font>사장님 댓글 수&nbsp;{storeHeader?.ownerReviewCnt}</Font>
             </ReviewWrap>
         </StoreHeaderWrap>
     );

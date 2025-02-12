@@ -66,6 +66,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         position: relative;
-        padding-bottom: 150px;
+        padding-bottom: 200px;
     }
 `

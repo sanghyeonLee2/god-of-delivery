@@ -5,7 +5,7 @@ import {Font} from "../../../../assets/styles/CommonStyle";
 
 export const MainBtn = forwardRef(({type, text, onClick, width, height}, ref) => {
     return (
-        <MainButtonWrap width={width} height={height} type={type} onClick={onClick} ref={ref}>
+        <MainButtonWrap $width={width} height={height} type={type} onClick={onClick} ref={ref}>
             <Font>{text}</Font>
         </MainButtonWrap>
     );

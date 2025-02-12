@@ -18,7 +18,7 @@ export const Font = styled.p`
             case "x-large":
                 return "28px"
             default:
-                return "normal"
+                return "medium"
         }
 
     }};`
@@ -64,12 +64,15 @@ export const DividingLine = styled.div`
     background-color: lightgray;
 `
 export const FixedTextInterval = styled.ul`
-    p {
+    ${({$hasPadding}) => $hasPadding && outerPadding()}
+    min-height: 100px;
+
+    p:nth-child(1) {
         display: inline-block;
         width: 35%;
     }
 
-    span {
+    p:nth-child(2) {
         display: inline-block;
         width: 65%;
     }

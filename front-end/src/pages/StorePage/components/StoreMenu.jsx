@@ -1,21 +1,52 @@
 import React from 'react';
-import {InfoBox, MenuWrap} from "./StoreMenuLayout";
-import MenuBox from "../../../components/common/MenuBox/MenuBox";
-import {Font} from "../../../assets/styles/CommonStyle";
+import {InfoBox, MenuInfoWrap, MenuPicture} from "./StoreMenuLayout";
+import {DividingLine, Font, VerticalSpace} from "../../../assets/styles/CommonStyle";
+import {useSetRecoilState} from "recoil";
+import {isModalOpenState} from "../../../recoil/flag/atoms";
+import Title from "../../../components/common/Title/Title";
+import {TabWrap} from "../StorePageLayout";
 
 function StoreMenu({notice, menuInfo}) {
+    const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
-        <div>
+        <TabWrap style={{paddingTop: "10px"}}>
             <InfoBox>
-                <Font>{notice}🚨잘못된주소, 없는번호 등 고객의부주의로 재배달시 배달료가 부가되니 주문전 최종확인 부탁드립니다.
-                    🚨피자쏠림, 음식누락, 오배송 등 배달에 문제가 생길시 즉시 매장으로 전화주셔야 빠르게 처리 도와드릴수 있습니다.</Font>
+                <Font>{notice}</Font>
             </InfoBox>
-            <MenuWrap> {/*컴포넌트로 만들고 재사용*/}
+            <ul>
                 {menuInfo.map((menuInfoItem) =>
-                    <MenuBox key={menuInfoItem.menuTitle} menuInfoItem={menuInfoItem}/>
+                    <li key={menuInfoItem.category}>
+                        <Title size={"x-large"} text={menuInfoItem.category}/>
+                        {menuInfoItem.menus?.map((menu) =>
+                            <div key={menu.menuId} onClick={() => {
+                                setIsModalOpen({
+                                    modalType: "메뉴상세",
+                                    modalFlag: true,
+                                    modalIdData: menu?.menuId
+                                })
+                            }}>
+                                <MenuInfoWrap>
+                                    <div>
+                                        <Font size={"large"}>
+                                            {menu?.menuName}
+                                        </Font>
+                                        <Font color={"gray"}>
+                                            {menu?.description}
+                                        </Font>
+                                        <Font>
+                                            {menu?.price.toLocaleString()}원
+                                        </Font>
+                                    </div>
+                                    <MenuPicture/>
+                                </MenuInfoWrap>
+                                <DividingLine/>
+                            </div>
+                        )}
+                        <VerticalSpace/>
+                    </li>
                 )}
-            </MenuWrap>
-        </div>
+            </ul>
+        </TabWrap>
     );
 }
 

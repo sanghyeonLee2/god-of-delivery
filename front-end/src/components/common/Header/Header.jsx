@@ -13,7 +13,7 @@ import location_on from "../../../assets/img/location_on.png"
 import logo from "../../../assets/img/logo.png"
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 
-export function Header({currentAddress}) {
+export function Header() {
     const [isSignIn, setIsSignIn] = useRecoilState(isSignInState)
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
     const userInfo = useRecoilValue(userInfoState)
@@ -28,7 +28,7 @@ export function Header({currentAddress}) {
                         () => {
                             setIsModalOpen({modalType: "주소설정", modalFlag: true, modalIdData: null})
                         }}>
-                        {userInfo.currentAddress ? <Font> {userInfo.currentAddress}</Font> :
+                        {isSignIn ? <Font> {userInfo.address}</Font> :
                             <Font size={"small"}>주소를 설정해 주세요</Font>}
                     </IconBtn>
                 </FlexOnly>

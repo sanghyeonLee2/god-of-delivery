@@ -2,7 +2,8 @@ import styled from "styled-components";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const PaginationWrap = styled.div`
-    height: 80px;
+    height: 60px;
+    align-content: center;
 `
 
 export const PaginationInner = styled.div`
