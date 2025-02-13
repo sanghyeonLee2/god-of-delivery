@@ -48,6 +48,9 @@
     },
     {
       "id": 6
+    },
+    {
+      "id": 7
     }
   ],
   "payment-post": [
@@ -446,7 +449,9 @@
       "reviewCnt": 10,
       "ownerReviewCnt": 13,
       "storeName": "네네치킨 사상점",
-      "rating": 3.5
+      "rating": 3.5,
+      "isDip": false,
+      "dips": 20
     },
     "storeInfo": {
       "address": "가야대로 344번길 60",
@@ -458,7 +463,6 @@
       "dayOff": "매주 일요일",
       "contact": "050-1234-2323",
       "area": "개금동, 가야동",
-      "dips": 20,
       "introduction": "안녕하세요 네네치킨입니다."
     },
     "menuInfo": [
@@ -538,7 +542,6 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 10000,
         "rating": 3.5,
-        "dipsCnt": 35,
         "reviewCnt": 35,
         "operationHours": "13시 ~ 익일 1시"
       },
@@ -549,7 +552,6 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 12000,
         "rating": 4.2,
-        "dipsCnt": 50,
         "reviewCnt": 80,
         "operationHours": "11시 ~ 23시"
       },
@@ -560,7 +562,6 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 15000,
         "rating": 4,
-        "dipsCnt": 60,
         "reviewCnt": 100,
         "operationHours": "10시 ~ 22시"
       },
@@ -571,7 +572,6 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 8000,
         "rating": 3.8,
-        "dipsCnt": 40,
         "reviewCnt": 70,
         "operationHours": "09시 ~ 21시"
       },
@@ -582,7 +582,6 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 9000,
         "rating": 4.5,
-        "dipsCnt": 55,
         "reviewCnt": 95,
         "operationHours": "10시 ~ 22시"
       },
@@ -593,10 +592,11 @@
         "storePicture": "이미지 없음",
         "minDeliveryPrice": 5000,
         "rating": 4.1,
-        "dipsCnt": 30,
         "reviewCnt": 45,
         "operationHours": "07시 ~ 20시"
       }
     ]
-  }
+  },
+  "dip-post": [],
+  "dip-put": []
 }
