@@ -1,41 +1,54 @@
 [
   {
-    "id": "전체보기"
+    "id": "all",
+    "name": "전체보기"
   },
   {
-    "id": "1인분주문"
+    "id": "single",
+    "name": "1인분주문"
   },
   {
-    "id": "프랜차이즈"
+    "id": "franchise",
+    "name": "프랜차이즈"
   },
   {
-    "id": "치킨"
+    "id": "chicken",
+    "name": "치킨"
   },
   {
-    "id": "피자양식"
+    "id": "western",
+    "name": "피자/양식"
   },
   {
-    "id": "중국집"
+    "id": "chinese",
+    "name": "중국집"
   },
   {
-    "id": "한식"
+    "id": "korean",
+    "name": "한식"
   },
   {
-    "id": "일식돈까스"
+    "id": "japaneseAndCutlet",
+    "name": "일식/돈까스"
   },
   {
-    "id": "족발보쌈"
+    "id": "jokbalAndBossam",
+    "name": "족발/보쌈"
   },
   {
-    "id": "야식"
+    "id": "midnight",
+    "name": "야식"
   },
   {
-    "id": "분식"
+    "id": "school",
+    "name": "분식"
   },
   {
-    "id": "카페디저트"
+    "id": "cafeAndDessert",
+    "name": "카페/디저트"
   },
   {
-    "id": "편의점마트"
+    "id": "convenienceStoreAndMart",
+    "name": "편의점/마트"
   }
 ]
