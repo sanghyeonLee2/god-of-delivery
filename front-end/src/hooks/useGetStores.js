@@ -9,8 +9,9 @@ export const useGetStores = (url) => {
     const {categoryId = "all"} = useParams();
     const queryParams = new URLSearchParams(location.search);
     const currentPage = queryParams.get('currentPage') || 1;
+    const keyword = queryParams.get('keyword') || "no";
     const sorting = queryParams.get('sorting') || 'basicAsc';
-    const apiUrl = `${url}/${categoryId}/${currentPage}/${sorting}`;
+    const apiUrl = `${url}/${categoryId}/${currentPage}/${sorting}/${keyword}`;
 
     const {data, isError, status, isLoading, refetch} = useQuery(
         ["getStoresData", categoryId, currentPage, sorting],
@@ -25,16 +26,20 @@ export const useGetStores = (url) => {
         }
     );
 
+    const setKeyword = (newKeyword) => {
+        navigate(`/stores/${categoryId}?currentPage=1&sorting=${sorting}&keyword=${newKeyword}`);
+    }
+
     const setCategory = (newCategoryId) => {
-        navigate(`/stores/${newCategoryId}?currentPage=1&sorting=${sorting}`);
+        navigate(`/stores/${newCategoryId}?currentPage=1&sorting=${sorting}&keyword=${keyword}`);
     };
 
     const setCurrentPage = (newPage) => {
-        navigate(`/stores/${categoryId}?currentPage=${newPage}&sorting=${sorting}`);
+        navigate(`/stores/${categoryId}?currentPage=${newPage}&sorting=${sorting}&keyword=${keyword}`);
     };
 
     const setSorting = (newSorting) => {
-        navigate(`/stores/${categoryId}?currentPage=${currentPage}&sorting=${newSorting}`);
+        navigate(`/stores/${categoryId}?currentPage=${currentPage}&sorting=${newSorting}&keyword=${keyword}`);
     };
 
     useEffect(() => {
@@ -48,6 +53,7 @@ export const useGetStores = (url) => {
         setCurrentPage,
         setSorting,
         isError,
+        setKeyword,
         isLoading,
         currentPage: parseInt(currentPage, 10),
         categoryId,
