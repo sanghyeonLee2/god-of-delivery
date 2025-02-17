@@ -36,13 +36,16 @@ export const usePost = (url, isAuth = false) => {
                         }
                         break
                     case "address":
-                        alert("주소가 추가 되었습니다.")
+                        alert("주소가 추가 되었습니다.") // stores 쿼리 클라이언트 초기화
                         setIsModalOpen({modalType: null, modalFlag: false, modalIdData: null})
-                        navigate("/category-info/전체보기/1", {state: {categoryId: "전체보기"}})
+                        navigate("/stores/all")
                         break
                     case "payment-post":
                         alert("결제가 완료 되었습니다.")
                         navigate("/order-status")
+                        break;
+                    case "dip-post":
+                        console.log(res)
                         break;
                     default:
                         console.log(url)
