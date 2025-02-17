@@ -8,15 +8,11 @@ function HomePage(props) {
     const navigate = useNavigate()
     return (
         <CategoryWrap>
-            {categoryDummy.map((ele, idx) =>
-                <CategoryBoxOuter key={ele.id}
-                                  onClick={() => navigate(`category-info/${ele.id}/${idx + 1}`, {
-                                      state: {
-                                          categoryId: ele.id
-                                      }
-                                  })}>
+            {categoryDummy.map((category) =>
+                <CategoryBoxOuter key={category.id}
+                                  onClick={() => navigate(`stores/${category.id}`)}>
                     <CategoryBoxInner>
-                        <CategoryText>{ele.id}</CategoryText>
+                        <CategoryText>{category.name}</CategoryText>
                         <CategoryImg src={testImg} alt={"img"} width={110}/>
                     </CategoryBoxInner>
                 </CategoryBoxOuter>)}

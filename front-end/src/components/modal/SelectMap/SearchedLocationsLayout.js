@@ -7,9 +7,7 @@ export const LocationsInfoWrap = styled.ul`
     width: 80%;
     border: 1px solid;
 `
-export const LocationsInfoItem = styled.li.attrs(({isBottom}) => ({
-    isBottom: undefined // isBottom을 DOM에서 제거
-}))`
+export const LocationsInfoItem = styled.li`
     background-color: white;
 
     &:hover {
@@ -17,6 +15,6 @@ export const LocationsInfoItem = styled.li.attrs(({isBottom}) => ({
     }
 
     ${innerPadding()};
-    border-bottom: ${(props) => (props.isBottom ? "none" : "1px solid")};
+    border-bottom: ${({$isBottom}) => ($isBottom ? "none" : "1px solid")};
 `;
 

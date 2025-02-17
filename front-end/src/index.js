@@ -9,7 +9,6 @@ import StoresPage from "./pages/StoresPage/StoresPage";
 import {QueryClient, QueryClientProvider} from "react-query"
 import {RecoilRoot} from "recoil";
 import Loading from "./components/common/Loading/Loading";
-import SelectAddressPage from "./pages/SelectAddressPage/SelectAddressPage";
 import StorePage from "./pages/StorePage/StorePage";
 import CartPage from "./pages/CartPage/CartPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
@@ -32,13 +31,10 @@ const router = createBrowserRouter([{
             path: "sign-in",
             element: <SignInPage/>
         }, {
-            path: "category-info/:id/:pages",
+            path: "stores/:categoryId",
             element: <StoresPage/>
         }, {
-            path: "select-address",
-            element: <SelectAddressPage/>,
-        }, {
-            path: "store/:id",
+            path: "store/:storeId",
             element: <StorePage/>
         },
         {

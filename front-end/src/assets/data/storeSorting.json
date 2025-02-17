@@ -1,22 +1,18 @@
 [
   {
     "id": "기본 정렬순",
-    "value": "basic"
+    "value": "basicAsc"
   },
   {
     "id": "별점 순",
-    "value": "rating"
+    "value": "ratingAsc"
   },
   {
     "id": "리뷰 많은 순",
-    "value": "reviewCnt"
+    "value": "reviewCntAsc"
   },
   {
     "id": "최소 주문 금액 순",
-    "value": "minDeliveryPrice"
-  },
-  {
-    "id": "배달시간 순",
-    "value": "maxDeliveryTime"
+    "value": "minDeliveryPriceAsc"
   }
 ]

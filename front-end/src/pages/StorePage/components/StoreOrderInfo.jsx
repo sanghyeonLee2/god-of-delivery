@@ -1,32 +1,60 @@
 import React from 'react';
 import {OrderTabWrap, OrderTypeText} from "./StoreOrderInfoLayout";
 import useTab from "../../../hooks/useTab";
-import OrderInfo from "./OrderInfo";
+import {TAB_CONTENTS} from "../../../assets/data/tabData";
+import {FixedTextInterval, Font} from "../../../assets/styles/CommonStyle";
 
-function StoreOrderInfo({deliveryMethod}) {
-    const contents = [
-        {
-            key: 0,
-            tab: "배달주문",
-            content: ["최소 주문금액", "결제방법", "배달시간", "배달팁"]
-        },
-        {
-            key: 1,
-            tab: "포장/방문주문",
-            content: ["최소 주문금액", "이용방법", "픽업시간", "위치안내", "결제방법"]
-        }
-    ];
-    const {currentItem, setCurrentItem} = useTab(0, contents)
+function StoreOrderInfo({deliveryInfo, takeoutInfo}) {
+    const {currentItem, setCurrentItem} = useTab(0, TAB_CONTENTS.ORDER_INFO)
     return (
         <div>
             <OrderTabWrap>
-                {contents.map((content, idx) =>
+                {TAB_CONTENTS.ORDER_INFO.map((content, idx) =>
                     <li key={content.key} onClick={() => setCurrentItem(idx)}>
-                        <OrderTypeText value={currentItem.key === content.key}>{content.tab}</OrderTypeText>
+                        <OrderTypeText $isOn={currentItem.key === content.key}>{content.tab}</OrderTypeText>
                     </li>
                 )}
             </OrderTabWrap>
-            <OrderInfo currentItem={currentItem} deliveryMethod={deliveryMethod}/>
+            <FixedTextInterval $hasPadding={true}>
+                {currentItem.key === 0 &&
+                    <>
+                        <li>
+                            <Font>{currentItem.content[0]}</Font>
+                            <Font>{deliveryInfo?.minPrice.toLocaleString()}원</Font>
+
+                        </li>
+                        <li>
+                            <Font>{currentItem.content[1]}</Font>
+                            <Font>{deliveryInfo?.deliveryTime}</Font>
+
+                        </li>
+                        <li>
+                            <Font>{currentItem.content[2]}</Font>
+                            <Font>{deliveryInfo?.tip.toLocaleString()}원</Font>
+                        </li>
+                    </>
+                }
+                {currentItem.key === 1 &&
+                    <>
+                        <li>
+                            <Font>{currentItem.content[0]}</Font>
+                            <Font>{takeoutInfo?.discount.toLocaleString()}원</Font>
+                        </li>
+                        <li>
+                            <Font>{currentItem.content[1]}</Font>
+                            <Font>{deliveryInfo?.minPrice.toLocaleString()}원</Font>
+                        </li>
+                        <li>
+                            <Font>{currentItem.content[2]}</Font>
+                            <Font>{takeoutInfo?.pickUpTime}분</Font>
+                        </li>
+                        <li>
+                            <Font>{currentItem.content[3]}</Font>
+                            <Font>{takeoutInfo?.location}</Font>
+                        </li>
+                    </>
+                }
+            </FixedTextInterval>
         </div>
     );
 }

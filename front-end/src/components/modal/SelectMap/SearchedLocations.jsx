@@ -13,7 +13,7 @@ function SearchedLocations({locationInfo, setLocationInfo}) {
     return (
         <LocationsInfoWrap>
             {locationInfo.map((location, idx) =>
-                <LocationsInfoItem key={location.id} isBottom={idx === locationInfo.length - 1}
+                <LocationsInfoItem key={location.id} $isBottom={idx === locationInfo.length - 1}
                                    onClick={() => onClickLocation({lat: Number(location.y), lng: Number(location.x)})}>
                     <Font>{location?.address_name}</Font>
                     <Font size={"small"}>{location?.place_name}</Font>

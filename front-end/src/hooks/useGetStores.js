@@ -1,36 +1,64 @@
 import {useQuery} from "react-query";
 import {getApi} from "../apis/api/user";
-import {useState} from "react";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
 
 export const useGetStores = (url) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const {data, isError, status, isLoading} = useQuery(
-        ["getStoresData", currentPage],  // 쿼리 키를 고유하게 만들기 위해 url 포함
-        () => getApi(`${url}/${currentPage}`),
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {categoryId = "all"} = useParams();
+    const queryParams = new URLSearchParams(location.search);
+    const currentPage = queryParams.get('currentPage') || 1;
+    const keyword = queryParams.get('keyword') || "no";
+    const sorting = queryParams.get('sorting') || 'basicAsc';
+    const apiUrl = `${url}/${categoryId}/${currentPage}/${sorting}/${keyword}`;
+
+    const {data, isError, status, isLoading, refetch} = useQuery(
+        ["getStoresData", categoryId, currentPage, sorting],
+        () => getApi(apiUrl),
         {
-            select: (res) => {
-                return {
-                    storesData: res.data.storeList,
-                    pagination: {
-                        currentPage: res.data.currentPage,
-                        totalPages: Math.ceil(res.data.totalItems / res.data.pageSize),
-                        totalItems: res.data.totalItems,
-                        pageSize: res.data.pageSize,
-                    }
-                }
-            },
-            staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
-            cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지
+            select: (res) => ({
+                storesData: res.data.storeList,
+                totalPages: Math.ceil(res.data.totalItems / res.data.pageSize),
+            }),
+            staleTime: 1000 * 60 * 5,
+            cacheTime: 1000 * 60 * 10
         }
     );
+
+    const setKeyword = (newKeyword) => {
+        navigate(`/stores/${categoryId}?currentPage=1&sorting=${sorting}&keyword=${newKeyword}`);
+    }
+
+    const setCategory = (newCategoryId) => {
+        navigate(`/stores/${newCategoryId}?currentPage=1&sorting=${sorting}&keyword=${keyword}`);
+    };
+
+    const setCurrentPage = (newPage) => {
+        navigate(`/stores/${categoryId}?currentPage=${newPage}&sorting=${sorting}&keyword=${keyword}`);
+    };
+
+    const setSorting = (newSorting) => {
+        navigate(`/stores/${categoryId}?currentPage=${currentPage}&sorting=${newSorting}&keyword=${keyword}`);
+    };
+
+    useEffect(() => {
+        refetch();
+    }, [categoryId, currentPage, sorting]);
+
     return {
         storesData: data?.storesData,
-        pagination: data?.pagination,
+        totalPages: data?.totalPages,
+        setCategory,
+        setCurrentPage,
+        setSorting,
         isError,
-        status,
+        setKeyword,
         isLoading,
-        currentPage,
-        setCurrentPage
+        currentPage: parseInt(currentPage, 10),
+        categoryId,
+        sorting,
     };
-}
-export default useGetStores
+};
+
+export default useGetStores;

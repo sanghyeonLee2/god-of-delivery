@@ -6,18 +6,16 @@ class UserApi {
         this.instance = isAuth ? authInstance() : instance()
     }
 
-    requestMethod(method, url) {
-        return this.instance({
-            method,
-            url,
-        })
-    }
 
-    async request(method, url) {
+    async request(method, url, data = {}) {  // ← data 매개변수 추가
         try {
-            return await this.requestMethod(method, url)
+            return this.instance({
+                method,
+                url,
+                data, // ← body에 데이터 추가
+            });
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     }
 
@@ -42,14 +40,14 @@ export const authGetApi = (url) => {
     return api.request("GET", url)
 }
 
-export const authPostApi = (url) => {
+export const authPostApi = (url, data) => {
     const api = new UserApi(true)
-    return api.request("POST", url)
+    return api.request("POST", url, data)
 }
 
 export const authDeleteApi = (url) => {
     const api = new UserApi(true)
-    return api.request("Delete", url)
+    return api.request("DELETE", url)
 }
 
 export const authPatchApi = (url) => {

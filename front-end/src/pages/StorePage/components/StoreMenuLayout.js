@@ -1,13 +1,21 @@
 import styled from "styled-components";
 import {innerPadding} from "../../../assets/styles/CommonStyle";
+import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 
 export const InfoBox = styled.div`
-    ${innerPadding()}
-    border-radius: 5px;
-    min-height: 35px;
+    ${innerPadding()};
+    border-radius: 10px;
     background-color: #F6F6F6;
 `
-export const MenuWrap = styled.ul`
-    min-height: 1000px;
+
+export const MenuInfoWrap = styled.ul`
+    ${innerPadding()};
+    ${flexLayout("space-between")};
+`
+
+export const MenuPicture = styled.div`
+    background-color: lightgray;
+    border-radius: 10px;
+    ${elementSize("140px", "140px")}
 `
