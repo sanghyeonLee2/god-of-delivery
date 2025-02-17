@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Select({children, onChange}) {
+function Select({children, onChange, defaultValue}) {
     return (
-        <select onChange={onChange}>
+        <select onChange={onChange} defaultValue={defaultValue}>
             {children}
         </select>
     );
