@@ -31,10 +31,10 @@ const router = createBrowserRouter([{
             path: "sign-in",
             element: <SignInPage/>
         }, {
-            path: "category-info/:id/:pages",
+            path: "stores/:categoryId",
             element: <StoresPage/>
         }, {
-            path: "store/:id",
+            path: "store/:storeId",
             element: <StorePage/>
         },
         {
