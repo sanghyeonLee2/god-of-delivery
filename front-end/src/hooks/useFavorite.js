@@ -17,7 +17,6 @@ export const useFavorite = (url, dipsInit) => {
                     isDip: !isDip,
                     dips: isDip ? dips - 1 : dips + 1,
                 }));
-                console.log("성공");
             },
             onError: () => {
                 console.log("실패")
