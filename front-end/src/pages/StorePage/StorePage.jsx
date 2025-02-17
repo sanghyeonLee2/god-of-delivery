@@ -19,7 +19,7 @@ function StorePage(props) {
     }
     return (
         <StoreOuter>
-            <StoreHeader storeHeader={storeData?.storeHeader}/>
+            <StoreHeader storeHeader={storeData?.storeHeader} storeId={storeData?.storeId}/>
             <StoreOrderInfo deliveryInfo={storeData?.deliveryInfo} takeoutInfo={storeData?.takeoutInfo}/>
             <VerticalSpace/>
             <ul style={{display: "flex"}}>

@@ -1,6 +1,5 @@
 import React from 'react';
 import CategoryList from "./components/CategoryList";
-import {useLocation} from "react-router-dom";
 import SortingSection from "./components/SortingSection";
 import StoreList from "./components/StoreList";
 import Pagination from "../../components/common/Pagination/Pagination";
@@ -9,26 +8,24 @@ import useGetStores from "../../hooks/useGetStores";
 
 function StoresPage(props) {
     const {
-        state: {
-            categoryId
-        }
-    } = useLocation()
-
-    const {
         storesData,
         totalPages,
         isError,
-        status,
         isLoading,
         currentPage,
-        setCurrentPage
-    } = useGetStores(`stores/${categoryId}`);
+        categoryId,
+        setCategory,
+        setCurrentPage,
+        setSorting,
+        sorting
+    } = useGetStores("stores");
     if (isLoading)
         return <Loading/>
     return (
         <div>
-            <CategoryList categoryId={categoryId}/>
-            <SortingSection categoryId={categoryId}/>
+            <CategoryList categoryId={categoryId} setCategory={setCategory}/>
+            <SortingSection categoryId={categoryId} setCategory={setCategory} setSorting={setSorting}
+                            sorting={sorting}/>
             <StoreList categoryId={categoryId} storesData={storesData}/>
             <Pagination totalPages={totalPages} currentPage={currentPage}
                         setCurrentPage={setCurrentPage}/>

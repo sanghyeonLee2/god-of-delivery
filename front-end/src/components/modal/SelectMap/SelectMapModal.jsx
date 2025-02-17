@@ -1,6 +1,6 @@
 import React from 'react';
 import {MapAddressForm} from "./SelectMapModalLayout";
-import SearchForm from "../../forms/SearchForm/SearchForm"
+import LocationSearchForm from "../../forms/SearchForm/LocationSearchForm"
 import {ModalBtn} from "../../common/Button/main/MainButton";
 import {usePost} from "../../../hooks/usePost";
 import AddressInfo from "./AddressInfo";
@@ -31,14 +31,13 @@ function SelectMapModal(props) {
     return (
         <>
             <ModalContentWrap>
-                <SearchForm/>
+                <LocationSearchForm/>
                 <KakaoMap/>
                 <MapAddressForm>
                     <AddressInfo setValue={form.setValue}/>
                 </MapAddressForm>
             </ModalContentWrap>
             <ModalBtn onClick={form.handleSubmit((data) =>
-                console.log(data) ||
                 onAddressRegister(data)
             )} text={"등록"}/>
         </>
