@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 const Token = require("../models/token");
+const {findById} = require("../services/token.service");
 
 
 dotenv.config({path: '../.env'})
@@ -46,13 +47,8 @@ exports.verifyToken = () => {
         },
         refresh: async (token, userId) =>{
             try{
-                const data = await Token.findOne({
-                    where:{
-                        userId: userId
-                    },
-                    attributes: token
-                })
-                if(token === data){
+                const data = findById(userId)
+                if(token === data.token){
                     try{
                         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
                         return true
