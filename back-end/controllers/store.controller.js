@@ -6,10 +6,13 @@ const StoreService = require('../services/store.service');
  * @param res
  * @returns {Promise<void>}
  */
-exports.getStores = async (req, res) => {
+exports.getStoresList = async (req, res) => {
     try {
-
-        if (stores === null || stores.length === 0) {
+        const {latitude, longitude} = await UserService.findById(req.userId);
+        const {page, limit} = req.query;
+        const category = req.params.category;
+        const storeList = await StoreService.getStores(latitude, longitude, page, limit, category)
+        if (storeList.count === null || storeList.count === 0) {
             res.status(401).send({
                 status: 401,
                 message: "Not Found"
@@ -17,7 +20,7 @@ exports.getStores = async (req, res) => {
         } else {
             res.status(200).send({
                 status: 200,
-                data: stores
+                data: storeList
             })
         }
     } catch (err) {
