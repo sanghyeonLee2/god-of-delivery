@@ -2,6 +2,8 @@ const User = require('../models/user');
 const Token = require('../models/token');
 const {generateToken, verifyToken} = require('../utils/jwt.util');
 const jwt = require('jsonwebtoken');
+const {isExistUserId, createUser, findByIdnPw} = require("../services/user.service");
+const {createToken, updateTokenForRefresh} = require("../services/token.service");
 
 /* === 회원가입 Controller === */
 /**
@@ -10,14 +12,9 @@ const jwt = require('jsonwebtoken');
  * @param res
  * */
 exports.getCheckId = async (req, res) => {
-    console.log(req.params.id);
     try {
-        const existenceOfUser = await User.findOne({
-            where: {
-                userId: req.params.id
-            }
-        })
-        if (existenceOfUser) {
+        const {userId} = req.params
+        if (await isExistUserId(userId)) {
             res.status(401).send({
                 available: false,
                 message: "중복된 ID 입니다. 다른 ID를 입력해주세요."
@@ -42,28 +39,12 @@ exports.getCheckId = async (req, res) => {
  * @param res
  * */
 exports.postSignUp = async (req, res) => {
-    const date = new Date();
     try {
-        await User.create({
-            userId: req.body.userId,
-            name: req.body.userName,
-            password: req.body.userPw,
-            phone: req.body.userPhoneNum,
-            currentAddress: null,
-            createdDate: date,
-            modifiedDate: date,
-        })
-        const user = await User.findOne({
-            where: {
-                userId: req.body.userId,
-
-            },
-            attributes: ['userId', 'password', 'name', 'phone', 'currentAddress', 'grade', 'role'],
-        })
+        const newUser = createUser(req.body)
         res.status(201).send({
             status: 201,
             message: "회원가입 되셨습니다.",
-            data: user
+            data: newUser
         })
     } catch (err) {
         res.status(500).send({
@@ -75,32 +56,16 @@ exports.postSignUp = async (req, res) => {
 
 /* === 로그인 Controller === */
 exports.postSignIn = async (req, res) => {
-    console.log(req.body);
-    const user = await User.findOne({
-        where: {
-            userId: req.body.userId,
-            password: req.body.userPw
-        },
-        attributes: ['userId', 'password', 'name', 'phone', 'currentAddress', 'grade', 'role'],
-    })
+    const user = findByIdnPw(req.body)
     if (user) {
         const accessToken = generateToken().access(user.userId)
         const refreshToken = generateToken().refresh(user.userId)
 
         if(await verifyToken().refresh(refreshToken, user.userId)){
-            await Token.update(
-                {
-                token: refreshToken
-                },
-                {
-                where:{userId:user.userId}
-            })
+            await updateTokenForRefresh(user.userId, refreshToken)
         }
         else{
-            await Token.create({
-                userId: user.userId,
-                token: refreshToken,
-            })
+            await createToken(user.userId,refreshToken)
         }
         res.status(200).send({
             status: 200,
@@ -117,7 +82,6 @@ exports.postSignIn = async (req, res) => {
 }
 
 exports.getRefreshReissued = async (req, res) => {
-    console.log(req.headers)
     if (req.headers.authorization !== null && req.headers.refreshToken !== null) {
         const authToken = req.headers.authorization.split('Bearer ')[1];
         const refreshToken = req.headers.refreshToken;
@@ -135,7 +99,6 @@ exports.getRefreshReissued = async (req, res) => {
         const refreshResult = verifyToken().refresh(refreshToken, decoded.id)
 
         if (authResult.verified === false && authResult.message === 'jwt expired') {
-            console.log(refreshResult)
             if (!refreshResult) {
                 res.status(401).send({
                     status: 401,
@@ -160,7 +123,40 @@ exports.getRefreshReissued = async (req, res) => {
     } else {
         res.status(403).send({
             status: 403,
-            message: "Access, Refresh Token이 Header에 없습니다."
+            message: "Access, RefreshToken이 Header에 없습니다."
+        })
+    }
+}
+
+exports.getLatLng = async (req, res) => {
+    try{
+        const userLocation = findByIdnPw(req.userId)
+        res.status(200).send({
+            lat : userLocation.latitude,
+            lng : userLocation.longitude
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status : 500,
+            message: err.message
+        })
+    }
+}
+
+exports.postAddress = async (req, res) => {
+    try{
+        const userAddress = findByIdnPw(req.userId)
+        res.status(200).send({
+            lat : userAddress.latitude,
+            lng : userAddress.longitude,
+            address : userAddress.address,
+        })
+    }
+    catch (err) {
+        res.status(500).send({
+            status : 500,
+            message: err.message
         })
     }
 }
