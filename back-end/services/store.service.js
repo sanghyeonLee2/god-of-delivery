@@ -1,5 +1,6 @@
 const Store = require('../models/store');
-const {Op} = require('sequelize');
+const Menu = require('../models/menu');
+const {Op, Sequelize} = require('sequelize');
 
 exports.getStores = async (lat, lng, page, limit, category) => {
     const {count, rows} = await Store.findAll({
@@ -29,20 +30,67 @@ exports.createStore = async (storeData) => {
     return await Store.create(storeData)
 }
 
-exports.createStore = async (storeInfo) => {
-    return await Store.create({
-        storeId: storeInfo.storeId,
-        storeName: storeInfo.storeName,
-        storeType: storeInfo.storeType,
-        storeCategory: storeInfo.storeCategory,
-        storeAddress: storeInfo.storeAddress,
-        storePicture: storeInfo.storePicture,
-        storePhone: storeInfo.storePhone,
-        minDeliveryPrice: storeInfo.minDeliveryPrice,
-        deliveryTip: storeInfo.deliveryTip,
-        minDeliveryTime: storeInfo.minDeliveryTime,
-        maxDeliveryTime: storeInfo.maxDeliveryTime,
-        operationHours: storeInfo.operationHours,
-        deliveryAddress: storeInfo.deliveryAddress,
+exports.findStoreById = async ({storeId}) => await Store.findOne({
+    where: {storeId: storeId},
+});
+exports.findStoreInfo = async ({storeId}) => {
+    const storeData = await Store.findOne({
+        where: {storeId: storeId},
+        include: [{
+            model: Menu
+        }]
     })
+    const menuData = Object.values(storeData.Menus.reduce((acc, item) => {
+        const key = item.category
+
+        if(!acc[key]){
+            acc[key] = {title: key, menu:[]}
+        }
+        acc[key].menu.push(item)
+
+        return acc
+    },{})
+    )
+    return processingData = {
+        storeId: storeData.storeId,
+        notice: storeData.notice,
+        deliveryMethod: {
+            order: {
+                minPrice: storeData.minDeliveryPrice,
+                paymentMethod: storeData.deliveryPayment,
+                deliveryTime: storeData.deliveryTime,
+                tips: storeData.deliveryTip,
+            },
+            takeout: {
+                discount: storeData.takeoutDiscount,
+                minPrice: storeData.takeoutMinPrice,
+                pickUpTime: storeData.takeoutPickupTime,
+                paymentMethod: storeData.takeoutPayment,
+            }
+        },
+        storeData: {
+            businessAddress: storeData.storeAddress,
+            ownerName: storeData.owner,
+            tradeName: storeData.storeName,
+            storeName: storeData.storeName,
+            origin: storeData.origin,
+            businessNum: storeData.businessNum,
+            hours: storeData.operationHour,
+            tipsInfo: storeData.deliveryTipsInfo,
+            dayOff: storeData.dayOff,
+            phoneNumber: storeData.storeNumber,
+            area: storeData.area,
+            currentOrder: "리뷰 테이블 조사해서",
+            allReview: "리뷰 테이블 조사해서",
+            dips: "찜 테이블 조사해서",
+            introduction: storeData.introduction,
+        },
+        storeHeader: {
+            currentReview: "리뷰 테이블 조사해서",
+            currentOwnerReview: "리뷰 테이블 조사해서",
+            storeName: storeData.storeName,
+            rating: "리뷰 테이블 조사해서"
+        },
+        menuInfo: menuData,
+    }
 }
