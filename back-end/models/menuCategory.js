@@ -1,26 +1,25 @@
 const Sequelize = require('sequelize');
 
-class MenuOption extends Sequelize.Model {
+class MenuCategory extends Sequelize.Model {
     static initate(sequelize) {
-        MenuOption.init({
-            menuOptionId: {
+        MenuCategory.init({
+            menuCategoryId: {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement:true
             },
-            content: {
+            title:{
                 type: Sequelize.STRING(20),
                 allowNull: false,
             },
-            price: {
-                type: Sequelize.BIGINT,
-                allowNull: false,
-            },
-            isChecked: {
+            isEssential:{
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
-            }
+            },
+            maxQuantity:{
+                type: Sequelize.BIGINT,
+            },
         }, {
             sequelize,
             timestamps: true,
@@ -30,14 +29,15 @@ class MenuOption extends Sequelize.Model {
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
-            modelName: 'MenuOption',
-            tableName: 'menuoptions',
+            modelName: 'MenuCategory',
+            tableName: 'menucategory',
         })
     }
     static associate(db){
-        db.MenuOption.hasMany(db.Cart, {foreignKey:'menuOptionId', sourceKey:'menuOptionId'})
-        db.MenuOption.belongsTo(db.MenuCategory, { foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
+        db.MenuCategory.belongsTo(db.Menu, { foreignKey: "menuId", targetKey: "menuId" });
+        db.MenuCategory.hasMany(db.MenuOption, { foreignKey: "menuCategoryId", sourceKey: "menuCategoryId" });
+        db.MenuCategory.hasMany(db.Cart, { foreignKey: "menuCategoryId", sourceKey: "menuCategoryId" });
     }
 }
 
-module.exports = MenuOption;
+module.exports = MenuCategory;

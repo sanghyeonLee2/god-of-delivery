@@ -25,14 +25,6 @@ class Dib extends Sequelize.Model {
                 onDelete: 'CASCADE',
                 onUpdate: 'CASCADE'
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
                 type: Sequelize.STRING,
                 defaultValue:'일반',
@@ -40,7 +32,9 @@ class Dib extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored:true,
             modelName: 'Dib',
             tableName: 'dibs',

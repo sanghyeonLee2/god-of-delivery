@@ -14,14 +14,6 @@ class Cart extends Sequelize.Model {
                 allowNull: false,
                 defaultValue: 1,
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
                 type: Sequelize.ENUM('일반'),
                 defaultValue:'일반',
@@ -29,9 +21,11 @@ class Cart extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored:true,
-            modelName: "Cart",
+            modelName: 'Cart',
             tableName: 'carts',
             paranoid: false,
             charset: 'utf8mb4',
@@ -43,7 +37,7 @@ class Cart extends Sequelize.Model {
         db.Cart.belongsTo(db.Menu,{foreignKey: 'menuId', targetKey:'menuId'})
         db.Cart.belongsTo(db.Order,{foreignKey: 'orderId', targetKey:'orderId'})
         db.Cart.belongsTo(db.User,{foreignKey: 'userId', targetKey:'userId'})
-        db.Cart.belongsTo(db.MenuOption,{foreignKey: 'menuOptionId', targetKey:'menuOptionId'})
+        db.Cart.belongsTo(db.MenuCategory, { foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
     }
 }
 

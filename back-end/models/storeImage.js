@@ -13,14 +13,6 @@ class StoreImage extends Sequelize.Model {
                 type: Sequelize.TEXT,
                 allowNull: false,
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
                 type: Sequelize.ENUM('일반'),
                 defaultValue:'일반',
@@ -28,7 +20,9 @@ class StoreImage extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             modelName: 'StoreImage',
             tableName: 'storeimages',

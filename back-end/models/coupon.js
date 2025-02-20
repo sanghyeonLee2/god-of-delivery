@@ -26,15 +26,7 @@ class Coupon extends Sequelize.Model {
                 allowNull: false,
                 defaultValue: 0
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             expiredDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
                 type: Sequelize.DATE,
                 allowNull: false,
             },
@@ -45,7 +37,9 @@ class Coupon extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             modelName: 'Coupon',
             tableName: 'coupons',
