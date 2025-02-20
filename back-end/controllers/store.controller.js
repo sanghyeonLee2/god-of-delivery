@@ -33,7 +33,7 @@ exports.getStoresList = async (req, res) => {
 
 exports.postCreateStore = async (req, res) => {
     try {
-        console.log(123)
+        const store = await StoreService.createStore(req.body);
         res.status(201).send({
             status: 201,
             data: store
