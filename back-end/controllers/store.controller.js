@@ -38,6 +38,11 @@ exports.postCreateStore = async (req, res) => {
             status: 201,
             data: store
         })
+    } catch (err) {
+        res.status(500).send({
+            status: 500,
+            message: err.message
+        })
     }
     catch (err) {
         res.status(500).send({
