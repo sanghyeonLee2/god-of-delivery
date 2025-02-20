@@ -1,12 +1,15 @@
-import {BarElement, CategoryScale, Chart as ChartJS, LinearScale} from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
+// ChartComponent.jsx
+
+import {BarElement, CategoryScale, Chart as ChartJS, LinearScale,} from "chart.js";
 import {Bar} from "react-chartjs-2";
 
-// 플러그인 등록!
-ChartJS.register(CategoryScale, LinearScale, BarElement, ChartDataLabels);
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+);
 
-// ✅ options를 함수로 만들어 reviewStat을 전달받을 수 있도록 수정
-const getOptions = (reviewStat) => ({
+export const options = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -17,40 +20,29 @@ const getOptions = (reviewStat) => ({
             ticks: {
                 display: true,
             },
+
         },
         y: {
             display: false,
-            suggestedMax: Math.max(...reviewStat) * 1.4, // 최대값을 20% 증가시켜 숫자가 안 짤리도록 설정
         },
     },
-    plugins: {
-        datalabels: {
-            anchor: "end",
-            align: "top",
-            color: "black",
-            font: {
-                weight: "bold",
-            },
-            formatter: (value) => value,
-            clip: false,
-        },
-    },
-});
+
+};
 
 const labels = ["1점", "2점", "3점", "4점", "5점"];
 
-const dataSetting = (reviewStat) => ({
+export const data = {
     labels,
     datasets: [
         {
-            data: reviewStat,
+            data: [34, 0, 0, 0, 1],
             backgroundColor: "gold",
             borderWidth: 0,
-            barPercentage: 0.3,
+            barPercentage: 0.2,
         },
     ],
-});
+};
 
-export function BarChart({reviewStat}) {
-    return <Bar options={getOptions(reviewStat)} data={dataSetting(reviewStat)}/>;
+export function BarChart() {
+    return <Bar options={options} data={data}/>;
 }

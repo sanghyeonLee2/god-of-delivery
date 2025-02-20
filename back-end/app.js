@@ -7,14 +7,16 @@ const path = require('path');
 const {sequelize} = require('./models');
 
 /* === Middleware Require === */
-const {notFound, errorHandler} = require('./middlewares/errorHandlerMiddleware');
+const {notFound, errorHandler} = require('./middlewares/errorHandle.middleware');
 
 dotenv.config();
 
 /* === Routes Require === */
-const indexRoutes = require('./routes/indexRoutes')
-const authRoutes = require('./routes/authRoutes');
-const storeRoutes = require('./routes/storeRoutes');
+const indexRoutes = require('./routes/index.routes')
+const authRoutes = require('./routes/user.routes');
+const storeRoutes = require('./routes/store.routes');
+const dibRoutes = require('./routes/dib.routes');
+const menuRoutes = require('./routes/menu.routes');
 
 /* === Express App 속성 설정 === */
 const app = express();
@@ -23,7 +25,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 /* === ORM을 사용하여 DB연동 및 Model들을 DB에 동기화 === */
-sequelize.sync({force:false})
+sequelize.sync({alter:true})
     .then(()=>{
         console.log('DB 연결 성공')
     })
@@ -52,6 +54,8 @@ app.use(session({
 app.use('/', indexRoutes)
 app.use('/auth', authRoutes)
 app.use('/stores', storeRoutes)
+app.use('/dibs', dibRoutes)
+app.use('/menus', menuRoutes)
 
 /* === 404 에러 처리 미들웨어 === */
 app.use(notFound)

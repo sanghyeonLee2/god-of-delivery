@@ -21,14 +21,6 @@ class Review extends Sequelize.Model {
                 type: Sequelize.TEXT,
                 allowNull: true,
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
                 type: Sequelize.STRING,
                 defaultValue:'일반',
@@ -36,7 +28,9 @@ class Review extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             modelName: 'Review',
             tableName: 'reviews',

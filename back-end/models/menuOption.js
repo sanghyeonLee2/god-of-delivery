@@ -9,34 +9,23 @@ class MenuOption extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement:true
             },
-            option:{
-                type: Sequelize.STRING,
+            content: {
+                type: Sequelize.STRING(20),
                 allowNull: false,
             },
-            content:{
-              type: Sequelize.STRING,
-              allowNull: false,
-            },
-            price:{
-                type: Sequelize.INTEGER,
+            price: {
+                type: Sequelize.BIGINT,
                 allowNull: false,
             },
-            createdDate: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status: {
-                type: Sequelize.ENUM('일반'),
-                defaultValue: '일반',
+            isChecked: {
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             }
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
@@ -47,7 +36,7 @@ class MenuOption extends Sequelize.Model {
     }
     static associate(db){
         db.MenuOption.hasMany(db.Cart, {foreignKey:'menuOptionId', sourceKey:'menuOptionId'})
-        db.MenuOption.belongsTo(db.Menu, {foreignKey:'menuId', targetKey:'menuId'})
+        db.MenuOption.belongsTo(db.MenuCategory, { foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
     }
 }
 

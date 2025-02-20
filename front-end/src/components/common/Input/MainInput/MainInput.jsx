@@ -1,17 +1,12 @@
-import React, {forwardRef} from 'react';
+import React from 'react';
 import {MainInputWrapper} from "./MainInputLayout";
+import {useFormContext} from "react-hook-form";
 
-const MainInput = forwardRef(({type, id, placeholder, register, registerName, defaultValue}, ref) => {
+function MainInput({type, id, placeholder, reigterName}) {
+    const {register} = useFormContext()
     return (
-        <MainInputWrapper
-            type={type}
-            id={id}
-            placeholder={placeholder}
-            defaultValue={defaultValue}
-            {...register(registerName)}
-            ref={ref} // ✅ ref 전달
-        />
+        <MainInputWrapper type={type} id={id} {...register(reigterName)} placeholder={placeholder}/>
     );
-});
+}
 
 export default MainInput;

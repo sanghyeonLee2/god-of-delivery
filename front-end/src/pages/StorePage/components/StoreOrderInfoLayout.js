@@ -12,9 +12,10 @@ export const OrderTabWrap = styled.ul`
         ${elementSize("50%", "40px")}
     }
 `
+
 export const OrderTypeText = styled.span`
     display: inline-block;
-    border-bottom: ${({$isOn}) => $isOn ? "black 5px solid" : "transparent 5px solid"};
+    border-bottom: ${(props) => props.value ? "black 5px solid" : "transparent 5px solid"};
     box-sizing: border-box;
     height: 100%;
 `

@@ -25,15 +25,43 @@
     }
   ],
   "me": {
-    "address": "주례로 47",
-    "role": "회원",
-    "userId": "asd"
-  },
-  "coords": {
-    "lat": 37.566314493,
-    "lng": 126.991249014
+    "userId": "sdf",
+    "currentAddress": "주례로 47",
+    "role": "회원"
   },
   "address": [
+    {
+      "id": 0,
+      "detailAddress": "qwe",
+      "addressType": "home",
+      "forRider": "asdf",
+      "roadInfo": "XZCVZ"
+    },
+    {
+      "id": 1,
+      "detailAddress": "qwe",
+      "addressType": "qwef",
+      "forRider": "asdf",
+      "roadInfo": "XZCVZ"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    }
+  ],
+  "payment-setting": {
+    "contact": "010-1234-5678",
+    "detailAddress": "305호"
+  },
+  "payment-post": [
+    {
+      "id": 1
+    },
     {
       "id": 2
     },
@@ -63,21 +91,9 @@
     },
     {
       "id": 11
-    },
-    {
-      "id": 12
-    }
-  ],
-  "payment-post": [
-    {
-      "id": 1
-    },
-    {
-      "id": 2
     }
   ],
   "order-detail": {
-    "orderId": 1,
     "orderStatus": "주문 확인 중...",
     "orderType": "포장",
     "store": {
@@ -255,9 +271,6 @@
     },
     {
       "id": 44
-    },
-    {
-      "id": 45
     }
   ],
   "cart-put": [
@@ -353,338 +366,476 @@
       }
     ]
   },
-  "menu-details": [
-    {
-      "id": 1,
-      "menuId": 1,
-      "storeId": 1,
-      "name": "양꼬치",
-      "description": "치킨+카레",
-      "price": 10000,
-      "quantity": 1,
-      "details": [
-        {
-          "title": "치킨 선택",
-          "isEssential": true,
-          "maxQuantity": 1,
-          "menuCategoryId": 0,
-          "menuOptions": [
-            {
-              "menuOptionId": 0,
-              "content": "후라이드",
-              "price": 1000,
-              "isChecked": true
-            },
-            {
-              "menuOptionId": 1,
-              "content": "앙념",
-              "price": 2000,
-              "isChecked": false
-            },
-            {
-              "menuOptionId": 2,
-              "content": "간장",
-              "price": 1000,
-              "isChecked": false
-            }
-          ]
-        },
-        {
-          "title": "추가",
-          "isEssential": false,
-          "maxQuantity": 2,
-          "menuCategoryId": 1,
-          "menuOptions": [
-            {
-              "menuOptionId": 3,
-              "content": "감자",
-              "price": 1000,
-              "isChecked": true
-            },
-            {
-              "menuOptionId": 4,
-              "content": "샐러드",
-              "price": 2000,
-              "isChecked": false
-            },
-            {
-              "menuOptionId": 5,
-              "content": "소스",
-              "price": 1000,
-              "isChecked": true
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "reviews": {
-    "pageSize": 10,
-    "totalItems": 125,
-    "reviewStat": [
-      3,
-      4,
-      5,
-      2,
-      100
-    ],
-    "reviewList": [
+  "menu-details": [],
+  "review": {
+    "currentCnt": 35,
+    "ceoCnt": 200,
+    "user": [
       {
         "reviewId": 0,
         "userId": "상큼자몽",
-        "date": "2024-12-12",
         "img": "사진",
+        "orderList": [
+          "후라이드 치킨",
+          "양념 치킨"
+        ],
         "content": "정말 맛있네요",
-        "rate": 5
+        "rate": 5,
+        "ceoReview": "안녕하세요!!"
+      }
+    ],
+    "ceoWord": "100% 한우입니다.",
+    "reviewNotice": {
+      "img": "이미지",
+      "content": "리뷰이벤트!!",
+      "date": "2024년 5월 17일"
+    },
+    "monthlyRating": [
+      {
+        "month": 5,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
       },
       {
-        "reviewId": 1,
-        "userId": "qwe",
-        "date": "2024-12-2",
-        "img": "사진",
-        "content": "정말 맛있네요",
-        "rate": 3.5
+        "month": 6,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
+      },
+      {
+        "month": 7,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
+      },
+      {
+        "month": 8,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
+      },
+      {
+        "month": 9,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
+      },
+      {
+        "month": 10,
+        "rating": [
+          0,
+          2,
+          1,
+          3,
+          45
+        ]
       }
     ]
   },
   "store": {
     "storeId": 1,
-    "status": "일반",
-    "notice": "물가상승으로 인해 모든 메뉴 1000원 상승🚨잘못된주소, 없는번호 등 고객의부주의로 재배달시 배달료가 부가되니 주문전 최종확인 부탁드립니다. 🚨피자쏠림, 음식누락, 오배송 등 배달에 문제가 생길시 즉시 매장으로 전화주셔야 빠르게 처리 도와드릴수 있습니다.",
-    "deliveryInfo": {
-      "minPrice": 10000,
-      "deliveryTime": "40~50분",
-      "tip": 1000
-    },
-    "takeoutInfo": {
-      "discount": 2000,
-      "minPrice": 0,
-      "pickUpTime": 15,
-      "location": "사상구 가야동",
-      "deliveryTime": "40~50분"
-    },
-    "storeHeader": {
-      "reviewCnt": 10,
-      "ownerReviewCnt": 13,
-      "storeName": "네네치킨 사상점",
-      "rating": 3.5,
-      "isDip": false,
-      "dips": 20
+    "notice": "물가상승으로 인해 모든 메뉴 1000원 상승",
+    "deliveryMethod": {
+      "order": {
+        "minPrice": 1000,
+        "paymentMethod": "바로결제",
+        "deliveryTime": "40~50분",
+        "tips": "10000원 이상 무료"
+      },
+      "takeout": {
+        "discount": 2000,
+        "minPrice": "없음",
+        "takeoutMethod": "바로결제",
+        "pickUpTime": "15분",
+        "location": "사상구 가야동",
+        "paymentMethod": "바로결제/직접결제",
+        "deliveryTime": "40~50분"
+      }
     },
     "storeInfo": {
-      "address": "가야대로 344번길 60",
+      "businessAddress": "가야대로 344번길 60",
       "ownerName": "심현섭",
-      "businessNum": "1234-12",
+      "tradeName": "네네",
       "storeName": "네네치킨 사상점",
-      "tradeName": "네네치킨 사상점",
+      "origin": "밥:국내산, 김치:중국산",
+      "amenities": "단체석, 무선 인터넷",
+      "businessNum": "296-77-1234",
       "hours": "평일 - 오후 12:00 : 11:00",
       "dayOff": "매주 일요일",
-      "contact": "050-1234-2323",
+      "tipsInfo": "3000이상 1000원",
+      "phoneNumber": "050-1234-2323",
       "area": "개금동, 가야동",
+      "currentOrder": 100,
+      "allReview": 1000,
+      "dips": 20,
       "introduction": "안녕하세요 네네치킨입니다."
+    },
+    "storeHeader": {
+      "currentReview": 10,
+      "currentOwnerReview": 13,
+      "storeName": "네네치킨 사상점",
+      "rating": 3.5
     },
     "menuInfo": [
       {
-        "category": "추천메뉴",
+        "menuTitle": "추천메뉴",
         "menus": [
           {
             "menuId": 1,
             "menuName": "양꼬치",
             "description": "카레+양고기",
-            "price": 24000
+            "price": 24000,
+            "menuReviewCnt": 11
           },
           {
             "menuId": 2,
             "menuName": "닭가슴살",
             "description": "불고기+닭고기",
-            "price": 2000
+            "price": 2000,
+            "menuReviewCnt": 11
           }
         ]
       },
       {
-        "category": "2인 세트",
+        "menuTitle": "2인 세트",
         "menus": [
           {
             "menuId": 3,
             "menuName": "콘소세지",
             "description": "카레+양고기",
-            "price": 20000
+            "price": 20000,
+            "menuReviewCnt": 11
           },
           {
             "menuId": 4,
             "menuName": "스프카레",
             "description": "불고기+닭고기",
-            "price": 20200
+            "price": 20200,
+            "menuReviewCnt": 11
           }
         ]
       },
       {
-        "category": "사이드",
+        "menuTitle": "사이드",
         "menus": [
           {
             "menuId": 5,
             "menuName": "치즈스틱",
             "description": "",
-            "price": 2000
+            "price": 2000,
+            "menuReviewCnt": 11
           },
           {
             "menuId": 6,
             "menuName": "감자튀김",
             "description": "체다소스",
-            "price": 1000
-          },
+            "price": 1000,
+            "menuReviewCnt": 11
+          }
+        ]
+      },
+      {
+        "menuTitle": "음료",
+        "menus": [
           {
             "menuId": 7,
             "menuName": "코카콜라",
             "description": "",
-            "price": 2000
+            "price": 2000,
+            "menuReviewCnt": 11
           },
           {
             "menuId": 8,
             "menuName": "사이다",
             "description": "체다소스",
-            "price": 1000
+            "price": 1000,
+            "menuReviewCnt": 11
           }
         ]
       }
     ]
   },
-  "stores": {
-    "pageSize": 10,
-    "totalItems": 125,
-    "storeList": [
-      {
-        "storeId": 0,
-        "storeName": "네네치킨",
-        "storeCategory": "치킨",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 10000,
-        "rating": 3.5,
-        "reviewCnt": 35,
-        "operationHours": "13시 ~ 익일 1시"
-      },
-      {
-        "storeId": 1,
-        "storeName": "BBQ 치킨",
-        "storeCategory": "치킨",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 12000,
-        "rating": 4.2,
-        "reviewCnt": 80,
-        "operationHours": "11시 ~ 23시"
-      },
-      {
-        "storeId": 2,
-        "storeName": "도미노 피자",
-        "storeCategory": "피자양식",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 15000,
-        "rating": 4,
-        "reviewCnt": 100,
-        "operationHours": "10시 ~ 22시"
-      },
-      {
-        "storeId": 3,
-        "storeName": "홍콩반점",
-        "storeCategory": "중국집",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 8000,
-        "rating": 3.8,
-        "reviewCnt": 70,
-        "operationHours": "09시 ~ 21시"
-      },
-      {
-        "storeId": 4,
-        "storeName": "미소야",
-        "storeCategory": "일식돈까스",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 9000,
-        "rating": 4.5,
-        "reviewCnt": 95,
-        "operationHours": "10시 ~ 22시"
-      },
-      {
-        "storeId": 5,
-        "storeName": "봉구스 밥버거",
-        "storeCategory": "분식",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 5000,
-        "rating": 4.1,
-        "reviewCnt": 45,
-        "operationHours": "07시 ~ 20시"
-      }
-    ]
-  },
-  "dip-post": [
+  "stores": [
     {
-      "id": 1
+      "storeId": 0,
+      "storeName": "네네치킨",
+      "storeType": "배달",
+      "storeCategory": "치킨",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "reviewCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 2
+      "storeId": 1,
+      "reviewCnt": 100,
+      "storeName": "맥도날드",
+      "storeType": "배달",
+      "storeCategory": "프랜차이즈",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 3
+      "storeId": 2,
+      "reviewCnt": 100,
+      "storeName": "금화루",
+      "storeType": "배달",
+      "storeCategory": "중국집",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 4
+      "storeId": 3,
+      "reviewCnt": 100,
+      "storeName": "DN 한정식",
+      "storeType": "배달",
+      "storeCategory": "한식",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 5
+      "storeId": 4,
+      "reviewCnt": 100,
+      "storeName": "DN 피자",
+      "storeType": "배달",
+      "storeCategory": "피자양식",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 6
+      "storeId": 5,
+      "reviewCnt": 100,
+      "storeName": "네네돈까스",
+      "storeType": "배달",
+      "storeCategory": "일식돈까스",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 7
+      "storeId": 6,
+      "reviewCnt": 100,
+      "storeName": "네네보쌈",
+      "storeType": "배달",
+      "storeCategory": "족발보쌈",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 8
+      "storeId": 7,
+      "reviewCnt": 100,
+      "storeName": "네네떡볶이",
+      "storeType": "배달",
+      "storeCategory": "분식",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 9
+      "storeId": 8,
+      "reviewCnt": 100,
+      "storeName": "달동네 야식",
+      "storeType": "배달",
+      "storeCategory": "야식",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 10
+      "storeId": 9,
+      "reviewCnt": 100,
+      "storeName": "CU",
+      "storeType": "배달",
+      "storeCategory": "편의점마트",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 11
+      "storeId": 10,
+      "reviewCnt": 100,
+      "storeName": "컴포즈커피",
+      "storeType": "배달",
+      "storeCategory": "카페디저트",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.5,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 12
+      "storeId": 11,
+      "reviewCnt": 100,
+      "storeName": "봉구치킨",
+      "storeType": "배달",
+      "storeCategory": "치킨",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 4,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     },
     {
-      "id": 13
-    },
-    {
-      "id": 14
-    },
-    {
-      "id": 15
-    },
-    {
-      "id": 16
-    },
-    {
-      "id": 17
-    },
-    {
-      "id": 18
-    },
-    {
-      "id": 19
-    },
-    {
-      "id": 20
-    },
-    {
-      "id": 21
-    },
-    {
-      "id": 22
-    },
-    {
-      "id": 23
+      "storeId": 12,
+      "reviewCnt": 120,
+      "storeName": "DN치킨",
+      "storeType": "배달",
+      "storeCategory": "치킨",
+      "storeAddress": "사상구 주례로 47",
+      "storePicture": "이미지 없음",
+      "storePhoneNum": "010-1233-1233",
+      "storeIntroduction": "사상구 맛집",
+      "minDeliveryPrice": 10000,
+      "deliveryTip": 1000,
+      "minDeliveryTime": 50,
+      "maxDeliveryTime": 100,
+      "rating": 3.7,
+      "dipsCnt": 35,
+      "operationHours": "13시 ~ 익일 1시",
+      "closedDays": "둘째주 일요일",
+      "deliveryAddress": "주례동, 가야동"
     }
-  ],
-  "dip-delete": []
+  ]
 }

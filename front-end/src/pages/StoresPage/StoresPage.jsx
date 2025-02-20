@@ -1,35 +1,24 @@
 import React from 'react';
 import CategoryList from "./components/CategoryList";
+import {useLocation} from "react-router-dom";
 import SortingSection from "./components/SortingSection";
 import StoreList from "./components/StoreList";
-import Pagination from "../../components/common/Pagination/Pagination";
-import Loading from "../../components/common/Loading/Loading";
-import useGetStores from "../../hooks/useGetStores";
+import {RestaurantsWrapper} from "./StoresPageLayout";
 
 function StoresPage(props) {
     const {
-        storesData,
-        totalPages,
-        isError,
-        isLoading,
-        currentPage,
-        categoryId,
-        setCategory,
-        setCurrentPage,
-        setSorting,
-        sorting
-    } = useGetStores("stores");
-    if (isLoading)
-        return <Loading/>
+        state: {
+            categoryId
+        }
+    } = useLocation()
     return (
-        <div>
-            <CategoryList categoryId={categoryId} setCategory={setCategory}/>
-            <SortingSection categoryId={categoryId} setCategory={setCategory} setSorting={setSorting}
-                            sorting={sorting}/>
-            <StoreList categoryId={categoryId} storesData={storesData}/>
-            <Pagination totalPages={totalPages} currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}/>
-        </div>
+        <>
+            <CategoryList categoryId={categoryId}/>
+            <SortingSection/>
+            <RestaurantsWrapper>
+                <StoreList listType={"추천 맛집"} categoryId={categoryId}/>
+            </RestaurantsWrapper>
+        </>
     );
 }
 

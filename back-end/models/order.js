@@ -21,14 +21,6 @@ class Order extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
                 type: Sequelize.ENUM('정상', '이상'),
                 defaultValue:'정상',
@@ -36,7 +28,9 @@ class Order extends Sequelize.Model {
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             paranoid: false,
             charset: 'utf8mb4',

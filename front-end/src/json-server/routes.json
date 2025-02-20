@@ -1,4 +1,0 @@
-{
-  "/stores/:category/:page/:sorting/:keyword": "/stores?storeCategory=:category&_page=:page&_limit=10&sortBy=:sorting&sortOrder=asc&keyword=:keyword",
-  "/reviews/:storeId/:page": "/reviews?storeId=:storeId&_page=:page&_limit=10"
-}

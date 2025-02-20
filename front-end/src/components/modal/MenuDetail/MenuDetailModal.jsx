@@ -1,7 +1,7 @@
 import React from 'react';
 import {ModalContentWrap, ModalForm,} from "../ModalLayout";
 import {Font} from "../../../assets/styles/CommonStyle";
-import {ModalBtn, TransBtn} from "../../common/Button/main/MainButton";
+import {SubBtn, TransBtn} from "../../common/Button/main/MainButton";
 import MenuDetailOptions from "./components/MenuDetailOptions";
 import OrderPrice from "./components/OrderPrice";
 import {MenuDetailBtnWrap, MenuDetailTextWrap, ModalBtnWrap, SelectQuantityWrap} from "./MenuDetailModalLayout";
@@ -43,15 +43,15 @@ function MenuDetailModal({modalType, menuId}) {
                 <OrderPrice defaultPrice={query.data?.price} watch={form.watch}/>
             </ModalContentWrap>
             <MenuDetailBtnWrap>
-                {modalType === "메뉴상세" &&
+                {modalType === "menuDetail" &&
                     <ModalBtnWrap>
-                        <ModalBtn text={"장바구니에 담기"}
-                                  onClick={form.handleSubmit((data) => handlePutInCart(data))}/>
-                        <ModalBtn text={"주문하기"}/>
+                        <SubBtn text={"장바구니에 담기"}
+                                onClick={form.handleSubmit((data) => handlePutInCart(data))}/>
+                        <SubBtn text={"주문하기"}/>
                     </ModalBtnWrap>}
-                {modalType === "메뉴수정" &&
-                    <ModalBtn text={"수정하기"}
-                              onClick={form.handleSubmit((data) => handleUpdateCart(data))}/>
+                {modalType === "updateCartMenu" &&
+                    <SubBtn text={"수정하기"}
+                            onClick={form.handleSubmit((data) => handleUpdateCart(data))}/>
                 }
             </MenuDetailBtnWrap>
         </>
