@@ -1,18 +1,32 @@
 const Store = require('../models/store');
 const {Op} = require('sequelize');
 
-exports.getStores = async (latitude, longitude, pages) => {
-    await Store.findAll({
-        where: {
-            address: {
-                [Op.and]: [
-                    {[Op.startsWith]: req.params.city},
-                    {[Op.substring]: req.params.district}
-                ]
-            },
-            category: {[Op.substring]: req.params.category}
-        },
-    })
+exports.getStores = async (lat, lng, page, limit, category) => {
+    const {count, rows} = await Store.findAll({
+        where: {category: category},
+        limit: limit,
+        offset: (page - 1) * limit,
+        attributes: [
+            '*',  // 모든 컬럼 조회
+            [Sequelize.literal(
+                `(6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) 
+                * cos(radians(longitude) - radians(${lng})) 
+                + sin(radians(${lat})) * sin(radians(latitude))))`
+            ), 'distance'] // 거리 계산
+        ],
+        having: Sequelize.literal('distance <= 5'),  // 5km 이내 필터링
+        order: Sequelize.literal('distance ASC'),  // 가까운 순 정렬
+    });
+    return {
+        category: category,
+        totalItems: count,
+        currentPage: `${page} / ${Math.ceil(count / limit)}`,
+        data: rows
+    }
+}
+
+exports.createStore = async (storeData) => {
+    return await Store.create(storeData)
 }
 
 exports.createStore = async (storeInfo) => {
