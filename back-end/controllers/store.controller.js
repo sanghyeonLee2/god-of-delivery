@@ -1,5 +1,6 @@
 const StoreService = require('../services/store.service');
-
+const UserService = require('../services/user.service');
+const Store = require("../models/store");
 /**
  * Type에 맞는 store 출력 함수
  * @param req
@@ -44,7 +45,13 @@ exports.postCreateStore = async (req, res) => {
             message: err.message
         })
     }
-    catch (err) {
+}
+
+exports.getStore = async (req, res) => {
+    try {
+        const storeData = await StoreService.findStoreInfo(req.params);
+        res.status(200).send(storeData)
+    } catch (err) {
         res.status(500).send({
             status: 500,
             message: err.message
