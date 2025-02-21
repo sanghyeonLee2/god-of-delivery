@@ -10,21 +10,15 @@ class Review extends Sequelize.Model {
                 autoIncrement:true
             },
             rating:{
-                type: Sequelize.INTEGER(1),
+                type: Sequelize.FLOAT(1),
                 allowNull: false,
             },
             content:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            reviewPictureUrl:{
-                type: Sequelize.TEXT,
-                allowNull: true,
-            },
-            status:{
-                type: Sequelize.STRING,
-                defaultValue:'일반',
-                allowNull: false,
+            img:{
+                type: Sequelize.TEXT
             }
         },{
             sequelize,
