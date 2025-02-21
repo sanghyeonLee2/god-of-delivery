@@ -3,10 +3,12 @@ const Menu = require('../models/menu');
 const {Op, Sequelize} = require('sequelize');
 
 exports.getStores = async (lat, lng, page, limit, category) => {
-    const {count, rows} = await Store.findAll({
+    const limitNum = Number(limit);
+    const pageNum = Number(page);
+    const data = await Store.findAll({
         where: {category: category},
-        limit: limit,
-        offset: (page - 1) * limit,
+        limit: limitNum,
+        offset: (pageNum - 1) * limitNum,
         attributes: [
             '*',  // 모든 컬럼 조회
             [Sequelize.literal(
@@ -20,9 +22,9 @@ exports.getStores = async (lat, lng, page, limit, category) => {
     });
     return {
         category: category,
-        totalItems: count,
-        currentPage: `${page} / ${Math.ceil(count / limit)}`,
-        data: rows
+        totalItems: data.length,
+        currentPage: `${pageNum} / ${Math.ceil(data.length / limitNum)}`,
+        data: data
     }
 }
 
