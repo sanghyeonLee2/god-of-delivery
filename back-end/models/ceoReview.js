@@ -24,7 +24,7 @@ class CeoReview extends Sequelize.Model {
             updatedAt: true,
             underscored: true,
             modelName: 'CeoReview',
-            tableName: 'ceoreviews',
+            tableName: 'ceo_reviews',
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
