@@ -1,6 +1,6 @@
 const Review = require('../models/review');
 
-exports.getReviewsByStoreId = async ({storeId},{limit,page}) => {
+exports.findReviewsByStoreId = async ({storeId}, {limit, page}) => {
     const pageNum = Number(page);
     const limitNum = Number(limit);
     const data = await Review.findAll({
@@ -9,14 +9,40 @@ exports.getReviewsByStoreId = async ({storeId},{limit,page}) => {
         limit: limitNum,
     })
 
-    return({
+    return ({
         totalItems: data.length,
         currentPage: `${pageNum} / ${Math.ceil(data.length / limitNum)}`,
         reviewList: data
     })
 }
 
-exports.createReview = async({userId, body}) => {
-    const createData = await Review.create(body,userId)
+exports.createReview = async ({userId, body}) => {
+    const createData = await Review.create(body, userId)
     return (createData)
+}
+
+exports.findReviewsByUserId = async ({userId, query}) => {
+    const {limit, page} = query;
+    const limitNum = Number(limit);
+    const pageNum = Number(page);
+    const reviews = await Review.findAll({
+        where: {userId: userId},
+        offset: (pageNum - 1) * limitNum,
+        limit: limitNum,
+    })
+    return ({
+        totalItems: reviews.length,
+        currentPage: pageNum,
+        reviewList: reviews
+    })
+}
+
+exports.updateReview = async ({userId, body, params}) => {
+    const {reviewId} = params;
+    const updated = await Review.update(body,
+        {
+            where: {reviewId: reviewId, userId: userId},
+        }
+    )
+    return (updated)
 }
