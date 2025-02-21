@@ -17,10 +17,6 @@ class MenuOption extends Sequelize.Model {
                 type: Sequelize.BIGINT,
                 allowNull: false,
             },
-            isChecked: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            }
         }, {
             sequelize,
             timestamps: true,
@@ -31,11 +27,10 @@ class MenuOption extends Sequelize.Model {
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
             modelName: 'MenuOption',
-            tableName: 'menuoptions',
+            tableName: 'menu_options',
         })
     }
     static associate(db){
-        db.MenuOption.hasMany(db.Cart, {foreignKey:'menuOptionId', sourceKey:'menuOptionId'})
         db.MenuOption.belongsTo(db.MenuCategory, { foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
     }
 }
