@@ -15,3 +15,8 @@ exports.getReviewsByStoreId = async ({storeId},{limit,page}) => {
         reviewList: data
     })
 }
+
+exports.createReview = async({userId, body}) => {
+    const createData = await Review.create(body,userId)
+    return (createData)
+}
