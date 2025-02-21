@@ -46,3 +46,11 @@ exports.updateReview = async ({userId, body, params}) => {
     )
     return (updated)
 }
+
+exports.deleteReview = async({userId, params}) => {
+    const {reviewId} = params;
+    const delReview = await Review.destroy({
+        where: {userId: userId, reviewId: reviewId},
+    })
+    return (delReview)
+}

@@ -57,3 +57,25 @@ exports.patchReview = async (req, res) => {
         })
     }
 }
+
+exports.deleteReview = async (req, res) => {
+    try{
+        const deleted = await ReviewService.deleteReview(req)
+        if (deleted) {
+            res.status(200).send({
+                message : "Deleted successfully"
+            })
+        }
+        else{
+            res.status(404).send({
+                message : 'Not found'
+            })
+        }
+    }
+    catch (error) {
+        res.status(500).send({
+            status: 500,
+            message: error.message
+        })
+    }
+}

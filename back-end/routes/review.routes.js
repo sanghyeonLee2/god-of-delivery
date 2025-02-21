@@ -6,5 +6,6 @@ const {postCreateReview, patchReview} = require('../controllers/review.controlle
 
 router.post('/create',[verifyToken], postCreateReview)
 router.patch('/:reviewId', [verifyToken], patchReview)
+router.delete('/:reviewId', [verifyToken], )
 
 module.exports = router;
