@@ -1,15 +1,15 @@
 import React from 'react';
-import {AverageTimeWrap, StoreInfoWrap, StoreLogo, StoreOuter} from "./StoreBoxLayout";
+import {AverageTimeWrap, StoreOuter} from "./StoreBoxLayout";
 import {useNavigate} from "react-router-dom";
-import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
+import {FlexOnly, Font, StoreLogo} from "../../../assets/styles/CommonStyle";
 import star from "../../../assets/img/star.png"
 
 function StoreBox({storeInfo}) {
     const navigate = useNavigate()
     return (
-        <StoreOuter onClick={() => navigate(`/store/${storeInfo?.storeId}`)}>
+        <StoreOuter onClick={() => navigate(`${storeInfo?.storeId}`)}>
             <StoreLogo/>
-            <StoreInfoWrap>
+            <div>
                 <Font size={"large"}>
                     {storeInfo?.storeName}
                 </Font>
@@ -28,7 +28,7 @@ function StoreBox({storeInfo}) {
                         </Font>
                     </AverageTimeWrap>
                 </FlexOnly>
-            </StoreInfoWrap>
+            </div>
         </StoreOuter>
     );
 }
