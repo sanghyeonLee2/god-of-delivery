@@ -46,6 +46,7 @@ class Menu extends Sequelize.Model {
         db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId'})
         db.Menu.hasMany(db.Review, {foreignKey:'menuId', sourceKey:'menuId'})
         db.Menu.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId'})
+        db.Menu.hasMany(db.CartItem, {foreignKey:'menuId', sourceKey:'menuId'})
     }
 }
 

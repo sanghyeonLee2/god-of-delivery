@@ -9,11 +9,6 @@ class Cart extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement:true
             },
-            quantity: {
-                type: Sequelize.INTEGER(11),
-                allowNull: false,
-                defaultValue: 1,
-            },
         },{
             sequelize,
             timestamps: true,
