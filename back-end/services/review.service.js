@@ -8,7 +8,6 @@ exports.findReviewsByStoreId = async ({storeId}, {limit, page}) => {
         offset: (pageNum - 1) * limitNum,
         limit: limitNum,
     })
-
     return ({
         totalItems: data.length,
         currentPage: `${pageNum} / ${Math.ceil(data.length / limitNum)}`,

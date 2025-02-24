@@ -18,10 +18,13 @@ exports.createUser = async ({name, password, phone, currentAddress, grade, role,
         longitude: longitude,
     })
 
-exports.findByIdnPw = async ({userId, password}) => await User.findOne({
-    where: {
-        userId: userId,
-        password: password
-    }
-})
+exports.findByIdnPw = async ({userId, password}) => {
+    const user =  await User.findOne({
+        where: {
+            userId,
+            password
+        }
+    })
+    return (user)
+}
 
