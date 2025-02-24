@@ -17,6 +17,7 @@ const authRoutes = require('./routes/user.routes');
 const storeRoutes = require('./routes/store.routes');
 const dibRoutes = require('./routes/dib.routes');
 const menuRoutes = require('./routes/menu.routes');
+const cartRoutes = require('./routes/cart.routes');
 
 /* === Express App 속성 설정 === */
 const app = express();
@@ -56,6 +57,7 @@ app.use('/auth', authRoutes)
 app.use('/stores', storeRoutes)
 app.use('/dibs', dibRoutes)
 app.use('/menus', menuRoutes)
+app.use('/cart', cartRoutes)
 
 /* === 404 에러 처리 미들웨어 === */
 app.use(notFound)
