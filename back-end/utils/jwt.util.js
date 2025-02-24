@@ -1,21 +1,19 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
-const dotenv = require('dotenv')
-const Token = require("../models/token");
 const {findById} = require("../services/token.service");
 
-
-dotenv.config({path: '../.env'})
 
 /**
  * AccessToken 생성 함수
  * */
 exports.generateToken = () => {
+
     return {
         access: (userId) => {
             return jwt.sign(
                 {id:userId},
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: "30m"}
+                {expiresIn: "7 days"}
             )
         },
         refresh: (userId) => {
