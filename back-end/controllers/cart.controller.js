@@ -1,28 +1,18 @@
-const Cart = require('../models/cart');
+const CartService = require('../services/cart.service');
 
 exports.postAddCart = async (req, res) => {
-    const date = new Date();
     try {
-        await Cart.create({
-            userId : req.body.userId,
-            storeId : req.body.storeId,
-            menuId : req.body.menuId,
-            menuOptionId : req.body.menuOptionId,
-            orderId:req.body.orderId,
-            quantity : req.body.quantity,
-            createDate: date,
-            modifiedDate: date,
-            status : req.body.status,
-        });
-        res.status(201).send({
-            status: 201,
-            message: 'Success'
-        })
+        const isSuccess = await CartService.addCart(req.userId, req.body);
+            res.status(200).send({
+                message: 'Success',
+                data:isSuccess
+            })
+
     }
     catch (err){
         res.status(500).send({
             status: 500,
-            message: err
+            message: err.message
         })
     }
 }
