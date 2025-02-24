@@ -17,13 +17,15 @@ exports.postAddCart = async (req, res) => {
     }
 }
 
-exports.getCartList = async (req, res) => {
-    const isWhoCart = await Cart.findAll({
-    where:{
-        userId:req.params.userId,
-        storeId : req.body.storeId,
-    },
-        attributes:["userId","storeId","menuId","menuOptionId","orderId","quantity","status"]
-    })
-
+exports.getCartData = async (req, res) => {
+    try{
+        const cartData = await CartService.findCartDataByUserId(req.userId)
+        res.status(200).send(cartData);
+    }
+    catch (err){
+        res.status(500).send({
+            status: 500,
+            message: err.message
+        })
+    }
 }
