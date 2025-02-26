@@ -29,7 +29,7 @@ class CartItem extends Sequelize.Model {
     }
     static associate(db) {
         db.CartItem.belongsTo(db.Cart,{foreignKey: 'cartId', targetKey:'cartId'})
-        db.CartItem.hasMany(db.CartItemOption,{foreignKey: 'cartItemId', sourceKey:'cartItemId'})
+        db.CartItem.hasMany(db.CartItemOption,{foreignKey: 'cartItemId', sourceKey:'cartItemId', onDelete: 'CASCADE', hooks:true})
         db.CartItem.belongsTo(db.Menu, {foreignKey: 'menuId', targetKey:'menuId'})
     }
 }

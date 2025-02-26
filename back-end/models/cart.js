@@ -25,7 +25,7 @@ class Cart extends Sequelize.Model {
     static associate(db) {
         db.Cart.belongsTo(db.Store,{foreignKey: 'storeId', targetKey:'storeId'})
         db.Cart.belongsTo(db.User,{foreignKey: 'userId', targetKey:'userId'})
-        db.Cart.hasMany(db.CartItem, {foreignKey: 'cartId', sourceKey: 'cartId'})
+        db.Cart.hasMany(db.CartItem, {foreignKey: 'cartId', sourceKey: 'cartId', onDelete: 'CASCADE', hooks:true})
     }
 }
 
