@@ -1,16 +1,16 @@
 const Review = require('../models/review');
+const {sequelize} = require('../models');
 
-exports.findReviewsByStoreId = async ({storeId}, {limit, page}) => {
+exports.findReviewsByStoreId = async ({storeId}, {page}) => {
     const pageNum = Number(page);
-    const limitNum = Number(limit);
     const data = await Review.findAll({
         where: {storeId: storeId},
-        offset: (pageNum - 1) * limitNum,
-        limit: limitNum,
+        offset: (pageNum - 1) * 10,
+        limit: 10,
     })
     return ({
         totalItems: data.length,
-        currentPage: `${pageNum} / ${Math.ceil(data.length / limitNum)}`,
+        currentPage: `${pageNum} / ${Math.ceil(data.length / 10)}`,
         reviewList: data
     })
 }
@@ -21,17 +21,25 @@ exports.createReview = async ({userId, body}) => {
 }
 
 exports.findReviewsByUserId = async ({userId, query}) => {
-    const {limit, page} = query;
-    const limitNum = Number(limit);
+    const {page} = query;
     const pageNum = Number(page);
     const reviews = await Review.findAll({
         where: {userId: userId},
-        offset: (pageNum - 1) * limitNum,
-        limit: limitNum,
+        offset: (pageNum - 1) * 10,
+        limit: 10,
     })
+    const countReviews = await Review.findAll({
+        attributes: [
+            [sequelize.fn('COUNT', sequelize.col('rating')), 'count'],
+        ],
+        where:{userId, rating: [1, 2, 3, 4, 5]},
+        group:['rating']
+    });
+    const countList = countReviews.map(item => item.dataValues.count)
     return ({
         totalItems: reviews.length,
         currentPage: pageNum,
+        reviewStat: countList,
         reviewList: reviews
     })
 }
