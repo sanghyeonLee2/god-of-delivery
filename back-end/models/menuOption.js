@@ -31,7 +31,9 @@ class MenuOption extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.MenuOption.belongsTo(db.MenuCategory, { foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
+        db.MenuOption.belongsTo(db.MenuCategory, {foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
+        db.MenuOption.hasMany(db.OrderItemOption, {foreignKey: "menuOptionId", sourceKey: "menuOptionId" });
+        db.MenuOption.hasMany(db.CartItemOption, {foreignKey: "menuOptionId", sourceKey: "menuOptionId"});
     }
 }
 
