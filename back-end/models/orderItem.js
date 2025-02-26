@@ -21,10 +21,6 @@ class OrderItem extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            subtotalPrice:{
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            }
         },{
             sequelize,
             timestamps: true,
