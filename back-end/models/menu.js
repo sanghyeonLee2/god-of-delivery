@@ -43,10 +43,10 @@ class Menu extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId'})
-        db.Menu.hasMany(db.Cart, {foreignKey:'menuId', sourceKey:'menuId'})
+        db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId', onDelete: 'CASCADE', hooks:true})
         db.Menu.hasMany(db.Review, {foreignKey:'menuId', sourceKey:'menuId'})
         db.Menu.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId'})
+        db.Menu.hasMany(db.CartItem, {foreignKey:'menuId', sourceKey:'menuId'})
     }
 }
 

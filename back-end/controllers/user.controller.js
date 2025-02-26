@@ -56,11 +56,10 @@ exports.postSignUp = async (req, res) => {
 
 /* === 로그인 Controller === */
 exports.postSignIn = async (req, res) => {
-    const user = findByIdnPw(req.body)
+    const user = await findByIdnPw(req.body)
     if (user) {
         const accessToken = generateToken().access(user.userId)
         const refreshToken = generateToken().refresh(user.userId)
-
         if(await verifyToken().refresh(refreshToken, user.userId)){
             await updateTokenForRefresh(user.userId, refreshToken)
         }

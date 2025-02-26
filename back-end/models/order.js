@@ -40,7 +40,7 @@ class Order extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.Order.hasMany(db.Cart,{foreignKey: 'orderId', sourceKey: 'orderId'})
+
         db.Order.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Order.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
     }

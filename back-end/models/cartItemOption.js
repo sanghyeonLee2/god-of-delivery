@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize");
 
-class Cart extends Sequelize.Model {
+class CartItemOption extends Sequelize.Model {
     static initate(sequelize) {
-        Cart.init({
-            cartId:{
+        CartItemOption.init({
+            cartItemOptionId:{
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
@@ -15,18 +15,17 @@ class Cart extends Sequelize.Model {
             createdAt: true,
             updatedAt: true,
             underscored:true,
-            modelName: 'Cart',
-            tableName: 'carts',
+            modelName: 'CartItemOption',
+            tableName: 'cart_item_options',
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
         })
     }
     static associate(db) {
-        db.Cart.belongsTo(db.Store,{foreignKey: 'storeId', targetKey:'storeId'})
-        db.Cart.belongsTo(db.User,{foreignKey: 'userId', targetKey:'userId'})
-        db.Cart.hasMany(db.CartItem, {foreignKey: 'cartId', sourceKey: 'cartId', onDelete: 'CASCADE', hooks:true})
+        db.CartItemOption.belongsTo(db.CartItem,{foreignKey: 'cartItemId', targetKey:'cartItemId'})
+        db.CartItemOption.belongsTo(db.MenuOption,{foreignKey: 'menuOptionId', targetKey:'menuOptionId'})
     }
 }
 
-module.exports = Cart;
+module.exports = CartItemOption;

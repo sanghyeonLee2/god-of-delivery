@@ -58,7 +58,7 @@ class User extends Sequelize.Model {
     static associate(db) {
         db.User.hasMany(db.Order, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasMany(db.Coupon, {foreignKey: 'userId', sourceKey: 'userId'})
-        db.User.hasMany(db.Cart, {foreignKey: 'userId', sourceKey: 'userId'})
+        db.User.hasOne(db.Cart, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasMany(db.Review, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasMany(db.Dib, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasOne(db.Token,{foreignKey:"userId", sourceKey:"userId"})

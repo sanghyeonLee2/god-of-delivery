@@ -30,13 +30,12 @@ class MenuCategory extends Sequelize.Model {
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
             modelName: 'MenuCategory',
-            tableName: 'menucategory',
+            tableName: 'menu_category',
         })
     }
     static associate(db){
         db.MenuCategory.belongsTo(db.Menu, { foreignKey: "menuId", targetKey: "menuId" });
-        db.MenuCategory.hasMany(db.MenuOption, { foreignKey: "menuCategoryId", sourceKey: "menuCategoryId" });
-        db.MenuCategory.hasMany(db.Cart, { foreignKey: "menuCategoryId", sourceKey: "menuCategoryId" });
+        db.MenuCategory.hasMany(db.MenuOption, { foreignKey: "menuCategoryId", sourceKey: "menuCategoryId", onDelete: 'CASCADE', hooks:true});
     }
 }
 
