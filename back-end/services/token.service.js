@@ -13,6 +13,6 @@ exports.updateTokenForRefresh = async (userId, refreshToken) => await Token.upda
         where:{userId:userId}
     })
 
-exports.findById = async(userId) => await Token.findOne({
-    where:{userId: userId}
+exports.findById = async({userId}) => await Token.findOne({
+    where:{userId}
 })
