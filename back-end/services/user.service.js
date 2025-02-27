@@ -1,25 +1,27 @@
 const User = require("../models/user");
 
-exports.findById = async(userId) => await User.findOne({
+exports.findById = async ({userId}) => await User.findOne({
     where: {
         userId: userId
     }
 })
 
-exports.createUser = async ({name, password, phone, currentAddress, grade, role, latitude, longitude}) =>
-    await User.create({
-        name: name,
-        password: password,
-        phone: phone,
-        currentAddress: currentAddress,
-        grade: grade,
-        role: role,
-        latitude: latitude,
-        longitude: longitude,
+exports.createUser = async ({userId, password, phone,address, currentAddress, latitude, longitude}) => {
+    const newUser = await User.create({
+        userId,
+        password,
+        phone,
+        address,
+        currentAddress,
+        latitude,
+        longitude,
     })
+    return (newUser)
+}
+
 
 exports.findByIdnPw = async ({userId, password}) => {
-    const user =  await User.findOne({
+    const user = await User.findOne({
         where: {
             userId,
             password
