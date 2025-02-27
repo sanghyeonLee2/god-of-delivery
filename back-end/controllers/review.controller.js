@@ -45,10 +45,18 @@ exports.getUserReview = async (req, res) => {
 exports.patchReview = async (req, res) => {
     try{
         const updated = await ReviewService.updateReview(req)
-        res.status(200).send({
-            status: 200,
-            data: updated
-        })
+        if(updated[0] === 0){
+            res.status(400).send({
+                status: 400,
+                message: "Not Found"
+            })
+        }
+        else{
+            res.status(200).send({
+                status: 200,
+                message: "Success"
+            })
+        }
     }
     catch (error) {
         res.status(500).send({
@@ -63,11 +71,13 @@ exports.deleteReview = async (req, res) => {
         const deleted = await ReviewService.deleteReview(req)
         if (deleted) {
             res.status(200).send({
-                message : "Deleted successfully"
+                status: 200,
+                message : "Success"
             })
         }
         else{
-            res.status(404).send({
+            res.status(400).send({
+                status: 400,
                 message : 'Not found'
             })
         }
