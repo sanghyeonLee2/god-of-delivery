@@ -21,9 +21,17 @@ class Order extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: true,
             },
+            addressSnapshot:{
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            type:{
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             status:{
-                type: Sequelize.ENUM('정상', '이상'),
-                defaultValue:'정상',
+                type: Sequelize.ENUM('접수 중', '준비 중', '완료', '취소'),
+                defaultValue:'접수 중',
                 allowNull: false,
             }
         },{
@@ -40,7 +48,7 @@ class Order extends Sequelize.Model {
         })
     }
     static associate(db) {
-
+        db.Order.hasMany(db.OrderItem,{foreignKey:'orderId', sourceKey:'orderId', onDelete:'CASCADE', hooks:true})
         db.Order.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Order.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
     }
