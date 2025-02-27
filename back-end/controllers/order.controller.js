@@ -13,3 +13,16 @@ exports.postAddOrders = async (req, res) => {
         })
     }
 }
+
+exports.getUserOrders = async (req, res) => {
+    try{
+        const getData = await OrderService.findOrderByOrderId(req.params)
+        res.status(200).send(getData)
+    }
+    catch (err) {
+        res.status(500).send({
+            status: 500,
+            message: err.message
+        })
+    }
+}
