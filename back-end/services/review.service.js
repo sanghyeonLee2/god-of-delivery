@@ -16,7 +16,14 @@ exports.findReviewsByStoreId = async ({storeId}, {page}) => {
 }
 
 exports.createReview = async ({userId, body}) => {
-    const createData = await Review.create(body, userId)
+    const createData = await Review.create({
+        userId,
+        storeId: body.storeId,
+        orderId: body.orderId,
+        rating: body.rating,
+        content: body.content,
+        img: body.img
+    })
     return (createData)
 }
 
@@ -33,7 +40,8 @@ exports.findReviewsByUserId = async ({userId, query}) => {
             [sequelize.fn('COUNT', sequelize.col('rating')), 'count'],
         ],
         where:{userId, rating: [1, 2, 3, 4, 5]},
-        group:['rating']
+        group:['rating'],
+        order:[['rating','ASC']]
     });
     const countList = countReviews.map(item => item.dataValues.count)
     return ({
