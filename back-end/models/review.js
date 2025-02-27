@@ -10,7 +10,7 @@ class Review extends Sequelize.Model {
                 autoIncrement:true
             },
             rating:{
-                type: Sequelize.FLOAT(1),
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             content:{
@@ -36,7 +36,7 @@ class Review extends Sequelize.Model {
     static associate(db){
         db.Review.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Review.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
-        db.Review.belongsTo(db.Menu,{foreignKey:'menuId', targetKey:'menuId'})
+        db.Review.belongsTo(db.Order,{foreignKey:'orderId', targetKey:'orderId'})
         db.Review.hasOne(db.CeoReview, {foreignKey: 'reviewId', sourceKey:'reviewId'})
     }
 }
