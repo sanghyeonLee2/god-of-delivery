@@ -13,7 +13,8 @@ dotenv.config();
 
 /* === Routes Require === */
 const indexRoutes = require('./routes/index.routes')
-const authRoutes = require('./routes/user.routes');
+const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 const storeRoutes = require('./routes/store.routes');
 const dibRoutes = require('./routes/dib.routes');
 const menuRoutes = require('./routes/menu.routes');
