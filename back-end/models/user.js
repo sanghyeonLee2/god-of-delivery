@@ -12,17 +12,8 @@ class User extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            name:{
-                type: Sequelize.STRING(100),
-                allowNull: false,
-            },
             phone:{
                 type: Sequelize.STRING(11),
-                allowNull: false,
-            },
-            grade:{
-                type: Sequelize.ENUM('고마운분','귀한분','더 귀한 분', '천생연분'),
-                defaultValue: '고마운분',
                 allowNull: false,
             },
             role:{
@@ -30,7 +21,7 @@ class User extends Sequelize.Model {
                 defaultValue : '회원',
                 allowNull: false,
             },
-            currentAddress:{
+            address:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
