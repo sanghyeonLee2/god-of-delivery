@@ -20,6 +20,7 @@ const dibRoutes = require('./routes/dib.routes');
 const menuRoutes = require('./routes/menu.routes');
 const cartRoutes = require('./routes/cart.routes');
 const orderRoutes = require('./routes/order.routes');
+const reviewRoutes = require('./routes/review.routes');
 
 /* === Express App 속성 설정 === */
 const app = express();
@@ -56,11 +57,13 @@ app.use(session({
 /* === Routes use === */
 app.use('/', indexRoutes)
 app.use('/auth', authRoutes)
+app.use('/users', userRoutes)
 app.use('/stores', storeRoutes)
 app.use('/dibs', dibRoutes)
 app.use('/menus', menuRoutes)
 app.use('/cart', cartRoutes)
 app.use('/orders', orderRoutes)
+app.use('/reviews', reviewRoutes)
 
 /* === 404 에러 처리 미들웨어 === */
 app.use(notFound)
