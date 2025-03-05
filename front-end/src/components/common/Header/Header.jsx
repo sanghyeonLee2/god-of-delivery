@@ -72,7 +72,7 @@ export function Header() {
                         </Link>}
                 </HeaderInner>
             </HeaderOuter>
-            {(location.pathname === "/" || location.pathname.includes("/store")) &&
+            {(location.pathname === "/" || location.pathname.includes("/stores")) &&
                 <SearchBoxOuter>
                     <section>
                         <h2>
