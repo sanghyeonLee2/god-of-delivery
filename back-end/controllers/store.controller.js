@@ -19,10 +19,7 @@ exports.getStoresList = async (req, res) => {
                 message: "Not Found"
             });
         } else {
-            res.status(200).send({
-                status: 200,
-                data: storeList
-            })
+            res.status(200).send(storeList)
         }
     } catch (err) {
         res.status(500).send({
