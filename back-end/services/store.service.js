@@ -1,29 +1,58 @@
 const Store = require('../models/store');
 const Menu = require('../models/menu');
 const {Op, Sequelize} = require('sequelize');
+const {findCategory} = require('../config/category')
+const {findSorting} = require('../config/sorting')
 
-exports.getStores = async (lat, lng, page, limit, category) => {
-    const limitNum = Number(limit);
+exports.getStores = async (lat, lng, {category}, {page, sorting, keyword}) => {
     const pageNum = Number(page);
+    let sortType
+    switch (findSorting(sorting)) {
+        case "ratingDesc":
+            sortType = [['rating', 'DESC']]; // 별점 높은 순
+            break;
+        case "reviewCntDesc":
+            sortType = [['reviewCnt', 'Desc']];
+            break;
+        case "minDeliveryPriceAsc":
+            sortType=[['minDeliveryPrice', 'DESC']];
+            break;
+        default:
+            sortType = [Sequelize.literal('distance ASC')]; // 기본: 가까운 순
+            break;
+    }
+    const whereCondition = {
+        ...(category !== "all" ? { storeCategory: findCategory(category) } : {}), // 카테고리 필터 적용
+        ...(keyword ? { storeName: { [Op.like]: `%${keyword}%` } } : {}) // 키워드 검색 추가
+    };
+
     const data = await Store.findAll({
-        where: {category: category},
-        limit: limitNum,
-        offset: (pageNum - 1) * limitNum,
+        where: whereCondition,
+        limit: 10,
+        offset: (pageNum - 1) * 10,
         attributes: [
-            '*',  // 모든 컬럼 조회
+            'storeId',
+            'storeName',
+            'storeCategory',
+            'storeLogoImage',
+            'operationHour',
+            'dips',
+            'rating',
+            'reviewCnt',
+            'minDeliveryPrice',
             [Sequelize.literal(
-                `(6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) 
+            `(6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) 
                 * cos(radians(longitude) - radians(${lng})) 
                 + sin(radians(${lat})) * sin(radians(latitude))))`
-            ), 'distance'] // 거리 계산
-        ],
+        ), 'distance']
+        ], // 거리 계산
         having: Sequelize.literal('distance <= 5'),  // 5km 이내 필터링
-        order: Sequelize.literal('distance ASC'),  // 가까운 순 정렬
+        order: sortType,
     });
     return {
         category: category,
         totalItems: data.length,
-        currentPage: `${pageNum} / ${Math.ceil(data.length / limitNum)}`,
+        currentPage: `${pageNum} / ${Math.ceil(data.length / 10)}`,
         data: data
     }
 }
