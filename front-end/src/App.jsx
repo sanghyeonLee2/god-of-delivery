@@ -51,8 +51,8 @@ function App() {
                 <Outlet/>
             </div>
             <Footer/>
-            {isModalOpen.modalFlag &&
-                <DefaultModal modalType={isModalOpen.modalType} modalIdData={isModalOpen.modalIdData}/>}
+            {isModalOpen.flag &&
+                <DefaultModal modalType={isModalOpen.modalType} apiUrl={isModalOpen.apiUrl}/>}
         </QueryClientProvider>
     );
 }
