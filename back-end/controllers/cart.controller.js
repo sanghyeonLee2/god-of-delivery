@@ -74,7 +74,7 @@ exports.deleteCart= async (req, res) => {
 
 exports.deleteCartItem = async (req, res) => {
     try{
-        const delData = CartService.destroyCartItem(req.params)
+        const delData = CartService.destroyCartItem(req, req.params)
         res.status(200).send({
             message: 'Success',
         })
