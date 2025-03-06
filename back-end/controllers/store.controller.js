@@ -9,10 +9,8 @@ const Store = require("../models/store");
  */
 exports.getStoresList = async (req, res) => {
     try {
-        const {latitude, longitude} = await UserService.findById(req.userId);
-        const {page, limit} = req.query;
-        const category = req.params.category;
-        const storeList = await StoreService.getStores(latitude, longitude, page, limit, category)
+        const {latitude, longitude} = await UserService.findById(req);
+        const storeList = await StoreService.getStores(latitude, longitude, req.params, req.query);
         if (storeList.count === null || storeList.count === 0) {
             res.status(401).send({
                 status: 401,
