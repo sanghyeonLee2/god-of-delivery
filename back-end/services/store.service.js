@@ -1,5 +1,7 @@
 const Store = require('../models/store');
 const Menu = require('../models/menu');
+const OrderService = require('../services/order.service');
+const ReviewService = require('../services/review.service');
 const {Op, Sequelize} = require('sequelize');
 const {findCategory} = require('../config/category')
 const {findSorting} = require('../config/sorting')
@@ -66,7 +68,7 @@ exports.findStoreById = async ({storeId}) => await Store.findOne({
 });
 exports.findStoreInfo = async ({storeId}) => {
     const storeData = await Store.findOne({
-        where: {storeId: storeId},
+        where: {storeId},
         include: [{
             model: Menu
         }]
@@ -82,6 +84,8 @@ exports.findStoreInfo = async ({storeId}) => {
         return acc
     },{})
     )
+    const currentOrderCnt = OrderService.orderCntInThreeMonth(storeId)
+    const currentReviewCnt = ReviewService.reviewCntInThreeMonth(storeId)
     return processingData = {
         storeId: storeData.storeId,
         notice: storeData.notice,
@@ -111,16 +115,16 @@ exports.findStoreInfo = async ({storeId}) => {
             dayOff: storeData.dayOff,
             phoneNumber: storeData.storeNumber,
             area: storeData.area,
-            currentOrder: "리뷰 테이블 조사해서",
-            allReview: "리뷰 테이블 조사해서",
-            dips: "찜 테이블 조사해서",
+            currentOrder: currentOrderCnt,
+            allReview: storeData.reviewCnt,
+            dips: storeData.dips,
             introduction: storeData.introduction,
         },
         storeHeader: {
-            currentReview: "리뷰 테이블 조사해서",
+            currentReview: currentReviewCnt,
             currentOwnerReview: "리뷰 테이블 조사해서",
             storeName: storeData.storeName,
-            rating: "리뷰 테이블 조사해서"
+            rating: storeData.rating
         },
         menuInfo: menuData,
     }
