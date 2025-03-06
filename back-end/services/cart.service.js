@@ -63,8 +63,7 @@ exports.addCart = async (userId, {storeId, quantity, options, menuId}) => {
     }))
     const newCartItemOption = await CartItemOption.bulkCreate(cartItemCreateData)
     return ({
-        newCartItem,
-        CartItemOptions: newCartItemOption
+        newCartItem,...newCartItemOption
     })
 }
 
@@ -96,19 +95,24 @@ exports.destroyCart = async ({cartId}) => {
     return (deleteData)
 }
 
-exports.destroyCartItem = async({cartItemId}) => {
+exports.destroyCartItem = async({userId},{cartItemId}) => {
     const deleteItem = await CartItem.destroy({
         where: {cartItemId}
     })
+    const cart = await Cart.findOne({where:{userId}})
+    const isExistItem = await CartItem.count({where: {cartId: cart.cartId}})
+    if (!isExistItem) {
+        await Cart.destroy({where:{cartId: cart.cartId}})
+    }
     return (deleteItem)
 }
 
 exports.updateCartItemOption = async ({userId}, {cartItemId}, {quantity, options}) => {
     const cart = await Cart.findOne({where: {userId}})
-    const cartItem = await CartItem.update({
+    const cartItems = await CartItem.update({
         quantity: quantity,
     }, {where: {cartId: cart.cartId, cartItemId},})
-    const cartOptionUpdate = CartItem.findOne({
+    const cartOptionUpdate = await CartItem.findOne({
         where: {cartItemId},
         include: [{
             model: CartItemOption,
