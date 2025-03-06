@@ -1,39 +1,40 @@
 import React from 'react';
 import {CartHeader, MenuAddBtnWrap, MinStoreInfoWrap} from "./CartLayout";
 import {CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
-import {SubBtn, TransBtn} from "../../components/common/Button/main/MainButton";
-import {OrderBtnWrap} from "../../components/common/Button/main/MainButtonLayout";
-import CartReceiptMethod from "./components/CartReceiptMethod";
-import CartMenus from "./components/CartMenus";
-import {useGetCartAndInitForm} from "../../hooks/useGetCartAndInitForm";
+import {SubBtn, TransBtn} from "components/common/Button/main/MainButton";
+import {OrderBtnWrap} from "components/common/Button/main/MainButtonLayout";
+import {useCart} from "../../hooks/useCart";
 import Loading from "../../components/common/Loading/Loading";
 import {useNavigate} from "react-router-dom";
 import CartPayment from "./components/CartPayment";
+import CartMenus from "pages/CartPage/components/CartMenus";
 
 function CartPage(props) {
-    const {query, form} = useGetCartAndInitForm("cart")
+    const {
+        cartData, isLoading,
+        handleDeleteCartItem, isCartItemDeleting,
+    } = useCart()
+    console.log(cartData)
     const navigate = useNavigate();
-    if (query.isLoading) {
+    if (isLoading) {
         return <Loading/>;
     }
     return (
         <CommonPageWrap>
             <CartHeader>
                 <MinStoreInfoWrap>
-                    <Font size={"x-large"}>{query.data?.storeTitle}</Font>
-                    <Font size={"small"} color={"gray"}>{query.data?.deliveryTime} 후 도착예정</Font>
-                    {/*쿠폰 컴포넌트 추가*/}
+                    <Font size={"x-large"}>{cartData?.store.storeName}</Font>
+                    <Font size={"small"} color={"gray"}>{cartData?.store.deliveryTime} 후 도착예정</Font>
                 </MinStoreInfoWrap>
             </CartHeader>
-            <form
-                onSubmit={form.handleSubmit((data) => navigate("/payment", {state: {orderInfo: data}}))}>
-                <CartMenus menus={query.data?.menus} getValues={form.getValues}/>
+            <form onSubmit={() => navigate("/payment")}>
+                <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.cartItems}/>
                 <MenuAddBtnWrap>
-                    <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/store/${query.data?.storeId}`)}/>
+                    <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
                 </MenuAddBtnWrap>
-                <CartReceiptMethod getValues={form.getValues} control={form.control}
-                                   receiptMethods={query.data?.receiptMethods}/>
-                <CartPayment getValues={form.getValues} control={form.control}/>
+                <CartPayment tips={cartData.store.tips}
+                             totalCartMenuPrice={cartData.cartItems.reduce((acc, {price, quantity}) =>
+                                 acc + (price * quantity), 0)}/>
                 <OrderBtnWrap>
                     <SubBtn text={"결제하기"}/>
                 </OrderBtnWrap>
