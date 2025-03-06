@@ -33,7 +33,7 @@ class Store extends Sequelize.Model {
                 type: Sequelize.FLOAT(9,6),
                 allowNull: false,
             },
-            operation_hour:{
+            operationHour:{
               type: Sequelize.STRING(45)
             },
             dayOff:{
@@ -90,6 +90,18 @@ class Store extends Sequelize.Model {
             },
             notice:{
                 type: Sequelize.STRING(45),
+            },
+            rating:{
+                type: Sequelize.DECIMAL(1,1),
+                defaultValue:0
+            },
+            reviewCnt:{
+                type: Sequelize.BIGINT,
+                defaultValue:0
+            },
+            dips:{
+                type:Sequelize.BIGINT,
+                defaultValue:0
             }
         },{
             sequelize,
