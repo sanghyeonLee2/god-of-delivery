@@ -68,6 +68,17 @@ exports.findOrderByOrderId = async ({orderId}) => {
     return (orderData)
 }
 
+exports.findUserOrder = async({userId}, {page}) => {
+    const pageNum = Number(page)
+    const orders = await Order.findAll({
+        where:{userId},
+        offset:(pageNum - 1) * 10,
+        limit:10,
+        order: [['status','ASC']]
+    })
+    return (orders)
+}
+
 exports.orderCntInThreeMonth = async (storeId) => {
     const threeMonthAgo = new Date()
     threeMonthAgo.setDate(threeMonthAgo.getMonth() - 3)
