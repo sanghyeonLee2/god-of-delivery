@@ -1,47 +1,45 @@
 import React from 'react';
-import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
-import {MainBtn} from "../../../components/common/Button/main/MainButton";
 import {CartMenuBox, MenuOptionImg, MenuOptionLeft, MenuOptionWrap} from "./CartMenusLayout";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
-import {useDelete} from "../../../hooks/useDelete";
+import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
+import {MainBtn} from "components/common/Button/main/MainButton";
+import {API_URLS} from "../../../apis/constants/urls";
 
-function CartMenus({menus, getValues}) {
+function CartMenus({cartItems, handleDeleteCartItem}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
-    const {mutate: deleteCartData} = useDelete("cart-delete")
     return (
         <CartMenuBox>
-            {menus?.map((menu, idx) =>
-                <MenuOptionWrap key={menu.menuId}>
+            {cartItems?.map((cartItem) =>
+                <MenuOptionWrap key={cartItem.cartItemId}>
                     <li>
                         <MenuOptionLeft>
                             <div>
-                                <Font>{menu.menuName}</Font>
-                                <Font size={"small"} color={"gray"}>치킨무 주세요 치킨 양념 주세요</Font>
-                                <Font>{(menu.price * getValues(`menus[${idx}].quantity`)).toLocaleString()}원</Font>
+                                <Font>{cartItem.content}</Font>
+                                <Font size={"small"} color={"gray"}>{cartItem?.description}</Font>
+                                <Font>{(cartItem.price * cartItem.quantity).toLocaleString()}원</Font>
                             </div>
                             <MenuOptionImg/>
                         </MenuOptionLeft>
                     </li>
                     <li>
                         <FlexOnly justify="space-between">
-                            <Font>{getValues(`menus[${idx}].quantity`)} 개</Font>
+                            <Font>{cartItem.quantity} 개</Font>
                             <FlexOnly width={"265px"} justify="space-between">
                                 <MainBtn text={"옵션 / 수량 변경"}
                                          width={"125px"}
                                          type={"button"}
                                          onClick={() => setIsModalOpen({
                                              modalType: "메뉴수정",
-                                             modalFlag: true,
-                                             modalIdData: menu.menuId
+                                             flag: true,
+                                             apiUrl: API_URLS.PUT_CART(cartItem?.cartItemId)
                                          })}/>
                                 <MainBtn text={"삭제"}
                                          width={"125px"}
                                          type={"button"}
-                                         onClick={() => deleteCartData(menu.menuId)}
+                                         onClick={() => handleDeleteCartItem(cartItem.cartItemId)}
                                 />
                             </FlexOnly>
-                            {/*헤더에 토큰 있으면 장바구니에서 옵션 변경, 아니면 음식점 탭에서 옵션 변경*/}
                         </FlexOnly>
                     </li>
                 </MenuOptionWrap>
