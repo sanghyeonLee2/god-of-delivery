@@ -1,6 +1,7 @@
 const {Store,Order, OrderItem, OrderItemOption, Cart, CartItem, CartItemOption, Menu, MenuOption} = require('../models')
 const CartService = require('./cart.service');
 const UserService = require('./user.service');
+const {Op, Sequelize} = require('sequelize');
 
 exports.createOrder = async({userId, body},) => {
     const cartData = await CartService.findCartDataByUserId(userId)
@@ -65,4 +66,14 @@ exports.findOrderByOrderId = async ({orderId}) => {
                 include: [{model: OrderItemOption}]}]
         })
     return (orderData)
+}
+
+exports.orderCntInThreeMonth = async (storeId) => {
+    const threeMonthAgo = new Date()
+    threeMonthAgo.setDate(threeMonthAgo.getMonth() - 3)
+    const orderCnt = await Order.count({
+        where: {storeId,
+        createdAt: {[Op.gte]:threeMonthAgo}}
+    })
+    return (orderCnt)
 }
