@@ -9,7 +9,7 @@ const {middleVerifyToken} = require("../middlewares/auth.middleware");
 
 router.get('/:category',[middleVerifyToken], getStoresList);
 router.post('/create',[middleVerifyToken], postCreateStore);
-router.post('/:storeId', getStore);
+router.get('/info/:storeId', [middleVerifyToken], getStore);
 router.get('/:storeId/reviews', getReviewList);
 
 module.exports = router;
