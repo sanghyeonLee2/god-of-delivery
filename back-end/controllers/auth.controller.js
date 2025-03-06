@@ -91,7 +91,7 @@ exports.getRefreshReissued = async (req, res) => {
                     message: "권한이 없습니다. %%"
                 })
             } else {
-                const newAccessToken = generateToken().access(decoded.userId)
+                const newAccessToken = generateToken().access(decoded.id)
 
                 res.status(200).send({
                     status: 200,
