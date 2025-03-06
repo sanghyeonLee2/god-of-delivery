@@ -10,6 +10,6 @@ router.get('/', [middleVerifyToken], getCartData);
 router.get('/:menuId',[middleVerifyToken], getCartMenuDetail);
 router.post('/:cartItemId', [middleVerifyToken], postUpdateCartItem)
 router.delete('/:cartId', [middleVerifyToken], deleteCart);
-router.delete('/:cartItemId',[middleVerifyToken], deleteCartItem);
+router.delete('/item/:cartItemId',[middleVerifyToken], deleteCartItem);
 
 module.exports = router;
