@@ -34,8 +34,8 @@ class Review extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.Review.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
-        db.Review.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
+        db.Review.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId', onDelete: 'CASCADE', hooks:true})
+        db.Review.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId', onDelete: 'CASCADE', hooks:true})
         db.Review.belongsTo(db.Order,{foreignKey:'orderId', targetKey:'orderId'})
         db.Review.hasOne(db.CeoReview, {foreignKey: 'reviewId', sourceKey:'reviewId'})
     }

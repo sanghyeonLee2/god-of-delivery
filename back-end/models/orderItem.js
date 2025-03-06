@@ -35,9 +35,9 @@ class OrderItem extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.OrderItem.belongsTo(db.Order,{foreignKey:'orderId', targetKey:'orderId'})
-        db.OrderItem.belongsTo(db.Menu, {foreignKey:'menuId', targetKey:'menuId'})
-        db.OrderItem.hasMany(db.OrderItemOption,{foreignKey:'orderItemId', sourcekey:'orderItemId', onDelete: 'CASCADE', hooks:true})
+        db.OrderItem.belongsTo(db.Order,{foreignKey:'orderId', targetKey:'orderId', onDelete: 'CASCADE', hooks:true})
+        db.OrderItem.belongsTo(db.Menu, {foreignKey:'menuId', targetKey:'menuId', onDelete: 'SET NULL', hooks:true})
+        db.OrderItem.hasMany(db.OrderItemOption,{foreignKey:'orderItemId', sourcekey:'orderItemId'})
     }
 }
 

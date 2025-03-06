@@ -31,7 +31,7 @@ class CeoReview extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.CeoReview.belongsTo(db.Review, {foreignKey:'reviewId', targetKey:'reviewId'});
+        db.CeoReview.belongsTo(db.Review, {foreignKey:'reviewId', targetKey:'reviewId', onDelete: 'CASCADE', hooks:true});
     }
 }
 

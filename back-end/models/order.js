@@ -48,10 +48,10 @@ class Order extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.Order.hasMany(db.OrderItem,{foreignKey:'orderId', sourceKey:'orderId', onDelete:'CASCADE', hooks:true})
+        db.Order.hasMany(db.OrderItem,{foreignKey:'orderId', sourceKey:'orderId'})
         db.Order.hasMany(db.Review, {foreignKey:'orderId', sourceKey:'orderId'})
-        db.Order.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
-        db.Order.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
+        db.Order.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId', onDelete: 'SET NULL', hooks:true})
+        db.Order.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId', onDelete: 'SET NULL', hooks:true})
     }
 }
 

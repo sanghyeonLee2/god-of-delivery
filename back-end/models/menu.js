@@ -24,9 +24,6 @@ class Menu extends Sequelize.Model {
             description:{
                 type: Sequelize.STRING,
             },
-            menuReviewCnt:{
-                type: Sequelize.BIGINT,
-            }
 
 
         }, {
@@ -43,10 +40,9 @@ class Menu extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId', onDelete: 'CASCADE', hooks:true})
-        db.Menu.hasMany(db.Review, {foreignKey:'menuId', sourceKey:'menuId'})
+        db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId'})
         db.Menu.hasMany(db.OrderItem,{foreignKey:'menuId', sourceKey:'menuId'})
-        db.Menu.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId'})
+        db.Menu.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId', onDelete: 'CASCADE', hooks:true})
         db.Menu.hasMany(db.CartItem, {foreignKey:'menuId', sourceKey:'menuId'})
     }
 }

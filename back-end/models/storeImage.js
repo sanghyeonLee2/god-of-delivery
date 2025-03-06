@@ -32,7 +32,7 @@ class StoreImage extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.StoreImage.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'});
+        db.StoreImage.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId', onDelete: 'CASCADE', hooks:true});
     }
 }
 

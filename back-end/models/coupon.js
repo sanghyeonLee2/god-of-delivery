@@ -49,7 +49,7 @@ class Coupon extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.Coupon.belongsTo(db.User, {foreignKey: 'userId', targetKey:'userId'});
+        db.Coupon.belongsTo(db.User, {foreignKey: 'userId', targetKey:'userId', onDelete: 'CASCADE', hooks:true});
     }
 }
 
