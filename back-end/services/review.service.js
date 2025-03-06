@@ -1,5 +1,6 @@
 const Review = require('../models/review');
 const {sequelize} = require('../models');
+const {Op} = require("sequelize");
 
 exports.findReviewsByStoreId = async ({storeId}, {page}) => {
     const pageNum = Number(page);
@@ -68,4 +69,13 @@ exports.deleteReview = async({userId, params}) => {
         where: {userId: userId, reviewId: reviewId},
     })
     return (delReview)
+}
+
+exports.reviewCntInThreeMonth = async(storeId) => {
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+    const reviewCount = await Review.count({
+        where:{storeId,
+        createdAt: {[Op.gte]:threeMonthsAgo}}
+    })
 }
