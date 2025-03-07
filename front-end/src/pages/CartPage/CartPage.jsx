@@ -11,10 +11,12 @@ import CartMenus from "pages/CartPage/components/CartMenus";
 
 function CartPage(props) {
     const {
-        cartData, isLoading,
-        handleDeleteCartItem, isCartItemDeleting,
+        cartData,
+        isLoading,
+        handleDeleteCartItem,
+        isCartItemDeleting,
+        handleSubmit
     } = useCart()
-    console.log(cartData)
     const navigate = useNavigate();
     if (isLoading) {
         return <Loading/>;
@@ -27,16 +29,15 @@ function CartPage(props) {
                     <Font size={"small"} color={"gray"}>{cartData?.store.deliveryTime} 후 도착예정</Font>
                 </MinStoreInfoWrap>
             </CartHeader>
-            <form onSubmit={() => navigate("/payment")}>
+            <form onSubmit={handleSubmit}>
                 <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.cartItems}/>
                 <MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
                 </MenuAddBtnWrap>
                 <CartPayment tips={cartData.store.tips}
-                             totalCartMenuPrice={cartData.cartItems.reduce((acc, {price, quantity}) =>
-                                 acc + (price * quantity), 0)}/>
+                             totalCartMenuPrice={cartData.totalCartMenuPrice}/>
                 <OrderBtnWrap>
-                    <SubBtn text={"결제하기"}/>
+                    <SubBtn type={"submit"} text={"결제하기"}/>
                 </OrderBtnWrap>
             </form>
         </CommonPageWrap>);
