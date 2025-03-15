@@ -1,24 +1,22 @@
-import React, {useEffect} from 'react';
-import {useRecoilValue} from "recoil";
+import React from 'react';
+import {useRecoilValueLoadable} from "recoil";
 import {Font} from "../../../assets/styles/CommonStyle";
 import {addressState} from "../../../recoil/map/atoms";
 
-function AddressInfo({setValue}) {
-    const addressValue = useRecoilValue(addressState);
-
-    useEffect(() => {
-        setValue("address", addressValue.address);
-        setValue("lat", addressValue.lat);
-        setValue("lng", addressValue.lng);
-    }, [addressValue, setValue]);
+function AddressInfo() {
+    const addressValue = useRecoilValueLoadable(addressState);
+    if (addressValue.state === "loading")
+        return <Font color={"gray"}>로딩 중...</Font>;
+    if (addressValue.state === "hasError")
+        return <Font color={"gray"}>주소를 불러올 수 없습니다.</Font>;
 
     return (
         <div>
             <Font>
-                {addressValue?.roadInfo}
+                {addressValue?.contents.roadInfo}
             </Font>
             <Font>
-                {addressValue?.address}
+                {addressValue?.contents.address}
             </Font>
         </div>
     );
