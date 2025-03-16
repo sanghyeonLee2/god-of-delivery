@@ -3,7 +3,7 @@ import {elementSize} from "../../../../assets/styles/Mixin";
 import {COLORS} from "../../../../assets/styles/colors";
 
 export const MainButtonWrap = styled.button`
-    height: 45px;
+    height: 40px;
     width: ${({$width}) => $width};
     background-color: white;
     border: 1px solid ${COLORS.BTN.MAIN};
@@ -20,7 +20,7 @@ export const ModalButtonWrap = styled.button`
 
 export const SubButtonWrap = styled.button`
     ${elementSize("100%", "100%")};
-    height: ${(props) => props.height};
+    height: ${({height}) => height};
     background-color: ${COLORS.BTN.SUB};
     border-radius: 4px;
 `
