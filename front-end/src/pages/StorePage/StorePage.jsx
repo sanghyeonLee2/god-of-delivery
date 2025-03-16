@@ -7,20 +7,22 @@ import StoreHeader from "./components/StoreHeader";
 import StoreOrderInfo from "./components/StoreOrderInfo";
 import StoreMenu from "./components/StoreMenu";
 import useTab from "../../hooks/useTab";
-import useGet from "../../hooks/useGet";
 import Loading from "../../components/common/Loading/Loading";
 import {TAB_CONTENTS} from "../../assets/data/tabData";
+import useGetStore from "../../hooks/useGetStore";
 
 function StorePage(props) {
     const {currentItem, setCurrentItem} = useTab(0, TAB_CONTENTS.STORE)
-    const {data: storeData, isError, isLoading} = useGet("store")
+    const {storeData, isLoading} = useGetStore()
     if (isLoading) {
         return <Loading/>
     }
     return (
         <StoreOuter>
             <StoreHeader storeHeader={storeData?.storeHeader} storeId={storeData?.storeId}/>
-            <StoreOrderInfo deliveryInfo={storeData?.deliveryInfo} takeoutInfo={storeData?.takeoutInfo}/>
+            <StoreOrderInfo address={storeData?.storeInfo.businessAddress}
+                            deliveryInfo={storeData?.orderMethod.delivery}
+                            takeoutInfo={storeData?.orderMethod.takeout}/>
             <VerticalSpace/>
             <ul style={{display: "flex"}}>
                 {TAB_CONTENTS.STORE.map((content, idx) =>
