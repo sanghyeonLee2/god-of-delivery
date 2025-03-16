@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import {flexLayout, setBorder} from "./Mixin";
+import {elementSize, flexLayout, setBorder} from "./Mixin";
 import {COLORS} from "./colors";
 
 
@@ -22,36 +22,39 @@ export const Font = styled.p`
         }
 
     }};`
-export const SelectTwoTypes = styled.li.withConfig({
-    shouldForwardProp: (prop) => prop !== 'isChecked',
-})`
-    background-color: ${(props) => props.isChecked && COLORS.BORDER};
+export const SelectTwoTypes = styled.li`
+    background-color: ${({$isChecked}) => $isChecked && COLORS.BORDER};
     ${flexLayout("space-between", "center")};
     ${setBorder()};
     ${outerPadding()};
     height: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 `;
 
 export const CommonSectionWrap = styled.div`
     padding: 10px 0;
 `;
+export const ErrorMsg = styled.small`
+    color: red`
 export const CommonPageHeader = styled.div`
-    height: 55px;
-    ${flexLayout("space-between")}
+    div:first-child {
+        align-items: start;
+        height: 30px;
+    }
+
+    ${flexLayout("space-between", "center")};
 `
 export const CommonBorder = styled.li`
     ${setBorder()};
-    min-height: 115px;
     ${outerPadding()};
+    margin: 10px 0;
 `
 export const CommonPageWrap = styled.ul`
-    min-height: 900px;
+    min-height: 200px;
     max-width: 800px;
     margin: 0 auto;
     ${outerPadding()};
 `
-
 export const VerticalSpace = styled.div`
     height: 10px;
     background-color: #F6F6F6;
@@ -63,6 +66,12 @@ export const DividingLine = styled.div`
     margin: 0 -25px;
     background-color: lightgray;
 `
+
+export const StoreLogo = styled.div`
+    margin-right: 20px;
+    background-color: brown;
+    ${elementSize("95px", "95px")}`
+
 export const FixedTextInterval = styled.ul`
     ${({$hasPadding}) => $hasPadding && outerPadding()}
     min-height: 100px;
@@ -84,8 +93,7 @@ export const FlexOnly = styled(({element: Element = 'div', ...props}) => (
     display: flex;
     align-items: center;
     width: ${(props) => props.width || "auto"};
-    justify-content: ${(props) => props.justify || "stretch"};
-
+    justify-content: ${(props) => props.justify || "start"};
 `;
 //기본적으로 전달되는 props가 있음
 
