@@ -1,8 +1,7 @@
 import React from 'react';
 import {CommonSectionWrap, DividingLine, FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 
-function OrderAmount({menuTotalPrice, paymentMethods}) {
-    const totalPrice = menuTotalPrice + paymentMethods.tips;
+function OrderAmount({totalPrice, paymentMethod, tips}) {
     return (
         <div>
             <CommonSectionWrap>
@@ -12,15 +11,15 @@ function OrderAmount({menuTotalPrice, paymentMethods}) {
                 </FlexOnly>
                 <FlexOnly justify={"space-between"}>
                     <Font size={"small"}>메뉴 금액</Font>
-                    <Font>{menuTotalPrice.toLocaleString()}원</Font>
+                    <Font>{(totalPrice - tips).toLocaleString()}원</Font>
                 </FlexOnly>
                 <FlexOnly justify={"space-between"}>
                     <Font size={"small"}>배달 팁</Font>
-                    <Font>{paymentMethods.tips.toLocaleString()}원</Font>
+                    <Font>{tips.toLocaleString()}원</Font>
                 </FlexOnly>
                 <FlexOnly justify={"space-between"}>
                     <Font size={"small"}>결제 방법</Font>
-                    <Font>{paymentMethods?.method}</Font>
+                    <Font>{paymentMethod === "Card" ? "카드" : "현금"}</Font>
                 </FlexOnly>
             </CommonSectionWrap>
             <DividingLine/>
