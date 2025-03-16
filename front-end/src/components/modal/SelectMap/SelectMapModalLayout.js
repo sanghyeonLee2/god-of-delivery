@@ -3,5 +3,5 @@ import {elementSize} from "../../../assets/styles/Mixin";
 
 export const MapAddressForm = styled.form`
     ${elementSize("80%", "60px")};
-    margin: 8px auto;
+    margin: 10px auto;
 `
