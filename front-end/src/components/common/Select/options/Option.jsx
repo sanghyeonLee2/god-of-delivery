@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Option({text, value, name, defaultChecked, disabled}) {
+function Option({text, value}) {
     return (
-        <option>
+        <option value={value}>
             {text}
         </option>
     );

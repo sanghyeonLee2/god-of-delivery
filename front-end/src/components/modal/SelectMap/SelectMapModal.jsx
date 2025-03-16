@@ -1,35 +1,34 @@
 import React from 'react';
 import {MapAddressForm} from "./SelectMapModalLayout";
-import SearchForm from "../../forms/SearchForm/SearchForm"
-import KakaoMap from "../../kakaoMap/KakaoMap";
-import {SubBtn} from "../../common/Button/main/MainButton";
-import {FormProvider, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {addressValid} from "../../../validation/userSchema";
-import {usePost} from "../../../hooks/usePost";
-import AddressInfo from "../../../pages/SelectAddressPage/components/AddressInfo";
+import LocationSearchForm from "../../forms/SearchForm/LocationSearchForm"
+import AddressInfo from "./AddressInfo";
 import {ModalContentWrap} from "../ModalLayout";
+import KakaoMap from "../../kakaoMap/KakaoMap";
+import SelectMapSubmitBtn from "components/modal/SelectMap/SelectMapSubmitBtn";
+import {useKakaoLoader} from "react-kakao-maps-sdk";
+import Loading from "components/common/Loading/Loading";
 
 function SelectMapModal(props) {
-    const methods = useForm({
-        mode: "onBlur",
-        resolver: yupResolver(addressValid),
-    });
-    const {mutate: onAddressRegister} = usePost("address", true)
+    const [loading, error] = useKakaoLoader({
+        appkey: process.env.REACT_APP_KAKAO_API, // 발급 받은 APPKEY
+        libraries: ["services"],
+    })
+    if (loading) {
+        return <Loading/>
+    }
+    if (error) {
+        return <div>카카오 api를 불러오는 중 에러 발생</div>
+    }
     return (
         <>
             <ModalContentWrap>
-                <SearchForm/>
-                <KakaoMap mapWidth={"80%"}/>
-                <FormProvider {...methods}>
-                    <MapAddressForm onSubmit={methods.handleSubmit((data) =>
-                        onAddressRegister(data)
-                    )}>
-                        <AddressInfo/>
-                    </MapAddressForm>
-                </FormProvider>
+                <LocationSearchForm/>
+                <KakaoMap/>
+                <MapAddressForm>
+                    <AddressInfo/>
+                </MapAddressForm>
             </ModalContentWrap>
-            <SubBtn type={"submit"} text={"등록"} height={"10%"}/>
+            <SelectMapSubmitBtn/>
         </>
     );
 }

@@ -1,34 +1,18 @@
 import React from 'react';
-import {
-    CategoryListInner,
-    CategoryListLi,
-    CategoryListOuter,
-    CategoryListSearchLi,
-    CategoryListUl,
-    SearchImg
-} from "./CategoryListLayout";
 import categoryDummy from "../../../assets/data/categoryDummy.json";
-import searchImg from "../../../assets/img/search.png"
-import {useMove} from "../../../hooks/useMove";
+import {Font} from "../../../assets/styles/CommonStyle";
+import {CategoryElement, CategoryListWrap} from "pages/StoresPage/components/CategoryListLayout";
 
-function CategoryList({categoryId}) {
-    const navigate = useMove()
+function CategoryList({categoryId, setCategory}) {
     return (
-        <CategoryListOuter>
-            <CategoryListInner>
-                <CategoryListUl>
-                    <CategoryListSearchLi key={"search"}>
-                        <SearchImg src={searchImg} width={35} alt={"search_img"}/>
-                    </CategoryListSearchLi>
-                    {categoryDummy.map((e) =>
-                        <CategoryListLi key={e.id} id={e.id} clicked={categoryId}
-                                        onClick={() => navigate(`/category-info/${e.id}`, {state: {categoryId: e.id}})}>
-                            {/*key 는 접근할 수 없는 속성*/}
-                            <span>{e.id}</span>
-                        </CategoryListLi>)}
-                </CategoryListUl>
-            </CategoryListInner>
-        </CategoryListOuter>
+        <CategoryListWrap>
+            {categoryDummy.map((category) =>
+                <CategoryElement key={category.id} id={category.id} $clicked={categoryId}
+                                 onClick={() => setCategory(category.id)}>
+                    <Font size={"small"}>{category.name}</Font>
+                </CategoryElement>
+            )}
+        </CategoryListWrap>
     );
 }
 

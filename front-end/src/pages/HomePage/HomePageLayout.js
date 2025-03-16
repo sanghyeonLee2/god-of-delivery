@@ -3,7 +3,6 @@ import {elementSize, flexLayout} from "../../assets/styles/Mixin";
 
 
 export const CategoryWrap = styled.div`
-    min-height: 1000px;
     max-width: 1180px;
     margin: 0 auto;
     ${flexLayout("space-between")};

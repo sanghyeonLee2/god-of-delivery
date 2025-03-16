@@ -1,5 +1,5 @@
-export const quantityOnChg = (operand, form, formName) => {
-    const newQuantity = form.getValues(formName) + operand
-    return newQuantity >= 1 && form.setValue(formName, newQuantity);
+export const quantityOnChg = (operand, getValues, setValue, formName) => {
+    const newQuantity = getValues(formName) + operand
+    return newQuantity >= 1 && setValue(formName, newQuantity);
 };
 
