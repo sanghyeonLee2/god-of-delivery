@@ -5,7 +5,7 @@ import {outerPadding} from "../../../assets/styles/CommonStyle";
 export const StoresOuter = styled.div`
     margin: 0 auto;
     max-width: 1100px;
-    ${outerPadding()}
+    ${outerPadding()};
 `
 
 export const StoresInner = styled.ul`
