@@ -13,7 +13,7 @@ function StoreInfo({storeInfo}) {
                     <li><Font>상호명</Font><Font>{storeInfo?.storeName}</Font></li>
                     <li><Font>운영시간</Font><Font>{storeInfo?.hours}</Font></li>
                     <li><Font>휴무일</Font><Font>{storeInfo?.dayOff}</Font></li>
-                    <li><Font>전화번호</Font><Font>{storeInfo?.contact}</Font></li>
+                    <li><Font>전화번호</Font><Font>{storeInfo?.phoneNumber}</Font></li>
                     <li><Font>배달지역</Font><Font>{storeInfo?.area}</Font></li>
                 </FixedTextInterval>
             </TabWrap>
