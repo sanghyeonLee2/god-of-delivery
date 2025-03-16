@@ -4,6 +4,7 @@ class Dib extends Sequelize.Model {
     static initate(sequelize) {
         Dib.init({
             userId: {
+                primaryKey: true,
                 type: Sequelize.STRING,
                 allowNull: false,
                 references: {
@@ -14,6 +15,7 @@ class Dib extends Sequelize.Model {
                 onUpdate: 'CASCADE'
             },
             storeId: {
+                primaryKey: true,
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 references: {
@@ -23,22 +25,16 @@ class Dib extends Sequelize.Model {
                 onDelete: 'CASCADE',
                 onUpdate: 'CASCADE'
             },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
             status:{
-                type: Sequelize.ENUM('일반'),
+                type: Sequelize.STRING,
                 defaultValue:'일반',
                 allowNull: false,
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored:true,
             modelName: 'Dib',
             tableName: 'dibs',

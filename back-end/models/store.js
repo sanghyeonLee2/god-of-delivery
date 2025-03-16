@@ -9,34 +9,72 @@ class Store extends Sequelize.Model {
                 primaryKey:true,
                 autoIncrement: true,
             },
-            name:{
+            storeName:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            type:{
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                defaultValue:0
-            },
-            category:{
+            storeCategory:{
                 type: Sequelize.STRING(20),
                 allowNull: false,
             },
-            address:{
-                type: Sequelize.STRING,
+            storeAddress:{
+                type: Sequelize.STRING(45),
                 allowNull: false,
             },
-            storePictureUrl:{
+            storeLogoImage:{
                 type: Sequelize.TEXT,
                 allowNull: true,
             },
-            phone:{
-                type: Sequelize.STRING(20),
+            latitude:{
+              type: Sequelize.FLOAT(9,6),
+              allowNull: false,
+            },
+            longitude:{
+                type: Sequelize.FLOAT(9,6),
                 allowNull: false,
             },
-            content:{
-                type: Sequelize.STRING,
-                allowNull: true,
+            operationHour:{
+              type: Sequelize.STRING(45)
+            },
+            dayOff:{
+                type: Sequelize.STRING(45),
+            },
+            storeNumber:{
+                type: Sequelize.STRING(45),
+            },
+            area:{
+                type: Sequelize.STRING(45),
+            },
+            introduction:{
+                type: Sequelize.STRING(45),
+            },
+            deliveryTipInfo:{
+                type: Sequelize.STRING(45),
+            },
+            owner:{
+                type: Sequelize.STRING(45),
+            },
+            businessNum:{
+                type: Sequelize.STRING(45),
+            },
+            origin:{
+                type: Sequelize.STRING(45),
+            },
+            takeoutMinPrice:{
+                type: Sequelize.STRING(20),
+            },
+            takeoutDiscount:{
+                type: Sequelize.INTEGER,
+            },
+            takeoutPickupTime:{
+                type: Sequelize.STRING(45),
+            },
+            takeoutPayment:{
+                type: Sequelize.STRING(45),
+            },
+            deliveryTime:{
+                type: Sequelize.STRING(45),
+                allowNull: false,
             },
             minDeliveryPrice:{
                 type: Sequelize.INTEGER,
@@ -47,59 +85,29 @@ class Store extends Sequelize.Model {
                 allowNull: false,
                 defaultValue:0
             },
-            minDeliveryTime:{
-                type: Sequelize.INTEGER,
-                allowNull: true,
-                defaultValue:null
+            deliveryPayment:{
+                type: Sequelize.STRING(45),
             },
-            maxDeliveryTime:{
-                type: Sequelize.INTEGER,
-                allowNull: true,
-                defaultValue:null
+            notice:{
+                type: Sequelize.STRING(45),
             },
             rating:{
-                type: Sequelize.DECIMAL(2,1),
-                allowNull: false,
+                type: Sequelize.DECIMAL(1,1),
                 defaultValue:0
             },
-            dibsCount:{
-                type:Sequelize.INTEGER,
-                allowNull: false,
+            reviewCnt:{
+                type: Sequelize.BIGINT,
                 defaultValue:0
             },
-            reviewCount:{
-              type:Sequelize.INTEGER,
-              allowNull:false,
-              defaultValue:0
-            },
-            operationHours:{
-                type:Sequelize.STRING,
-                allowNull: true,
-            },
-            closedDays:{
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            deliveryAddress:{
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status:{
-                type: Sequelize.STRING,
-                defaultValue:'일반',
-                allowNull: false,
+            dips:{
+                type:Sequelize.BIGINT,
+                defaultValue:0
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             modelName: 'Store',
             tableName: 'stores',

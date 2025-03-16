@@ -1,13 +1,12 @@
-import React, {forwardRef} from 'react';
 import {IconBtnWrap} from "./IconBtnLayout";
+import React from 'react';
 
-const IconBtn = forwardRef(({children, type, onClick, src, width, isDisable}, ref) => {
+function IconBtn({type, onClick, src, width}) {
     return (
-        <IconBtnWrap type={type} onClick={onClick} $isDisable={isDisable} ref={ref}>
+        <IconBtnWrap type={type} onClick={onClick}>
             <img src={src} width={width} alt={src}/>
-            {children}
         </IconBtnWrap>
     );
-});
+}
 
 export default IconBtn;

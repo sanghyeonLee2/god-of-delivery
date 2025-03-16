@@ -10,33 +10,21 @@ class Review extends Sequelize.Model {
                 autoIncrement:true
             },
             rating:{
-                type: Sequelize.INTEGER(1),
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             content:{
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            reviewPictureUrl:{
-                type: Sequelize.TEXT,
-                allowNull: true,
-            },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status:{
-                type: Sequelize.STRING,
-                defaultValue:'일반',
-                allowNull: false,
+            img:{
+                type: Sequelize.TEXT
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             modelName: 'Review',
             tableName: 'reviews',
@@ -48,7 +36,7 @@ class Review extends Sequelize.Model {
     static associate(db){
         db.Review.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Review.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
-        db.Review.belongsTo(db.Menu,{foreignKey:'menuId', targetKey:'menuId'})
+        db.Review.belongsTo(db.Order,{foreignKey:'orderId', targetKey:'orderId'})
         db.Review.hasOne(db.CeoReview, {foreignKey: 'reviewId', sourceKey:'reviewId'})
     }
 }

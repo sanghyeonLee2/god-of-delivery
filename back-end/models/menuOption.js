@@ -9,45 +9,31 @@ class MenuOption extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement:true
             },
-            option:{
-                type: Sequelize.STRING,
+            content: {
+                type: Sequelize.STRING(20),
                 allowNull: false,
             },
-            content:{
-              type: Sequelize.STRING,
-              allowNull: false,
-            },
-            price:{
-                type: Sequelize.INTEGER,
+            price: {
+                type: Sequelize.BIGINT,
                 allowNull: false,
             },
-            createdDate: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status: {
-                type: Sequelize.ENUM('일반'),
-                defaultValue: '일반',
-                allowNull: false,
-            }
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
             modelName: 'MenuOption',
-            tableName: 'menuoptions',
+            tableName: 'menu_options',
         })
     }
     static associate(db){
-        db.MenuOption.hasMany(db.Cart, {foreignKey:'menuOptionId', sourceKey:'menuOptionId'})
-        db.MenuOption.belongsTo(db.Menu, {foreignKey:'menuId', targetKey:'menuId'})
+        db.MenuOption.belongsTo(db.MenuCategory, {foreignKey: "menuCategoryId", targetKey: "menuCategoryId" });
+        db.MenuOption.hasMany(db.OrderItemOption, {foreignKey: "menuOptionId", sourceKey: "menuOptionId" });
+        db.MenuOption.hasMany(db.CartItemOption, {foreignKey: "menuOptionId", sourceKey: "menuOptionId"});
     }
 }
 

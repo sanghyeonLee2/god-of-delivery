@@ -21,9 +21,6 @@ export const ModalInner = styled.div`
     ${elementSize("460px", "600px")};
     background-color: white;
     overflow-y: hidden;
-    @media (max-height: 780px ) {
-        height: 500px;
-    }
 `
 export const ModalTitleDescriptionWrap = styled.div`
     ${innerPadding()};

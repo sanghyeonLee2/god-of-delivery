@@ -21,31 +21,19 @@ class Menu extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            menuPictureUrl:{
-                type:Sequelize.TEXT,
-                allowNull: true,
+            description:{
+                type: Sequelize.STRING,
             },
-            popularity:{
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue:0,
-            },
-            createdDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            modifiedDate:{
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            status:{
-                type: Sequelize.ENUM('일반'),
-                defaultValue:'일반',
-                allowNull: false,
+            menuReviewCnt:{
+                type: Sequelize.BIGINT,
             }
+
+
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
@@ -55,10 +43,11 @@ class Menu extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.Menu.hasMany(db.MenuOption, {foreignKey:'menuId', sourceKey:'menuId'})
-        db.Menu.hasMany(db.Cart, {foreignKey:'menuId', sourceKey:'menuId'})
+        db.Menu.hasMany(db.MenuCategory, {foreignKey:'menuId', sourceKey:'menuId', onDelete: 'CASCADE', hooks:true})
         db.Menu.hasMany(db.Review, {foreignKey:'menuId', sourceKey:'menuId'})
+        db.Menu.hasMany(db.OrderItem,{foreignKey:'menuId', sourceKey:'menuId'})
         db.Menu.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId'})
+        db.Menu.hasMany(db.CartItem, {foreignKey:'menuId', sourceKey:'menuId'})
     }
 }
 

@@ -24,12 +24,15 @@ export const SelectQuantityWrap = styled.div`
     }
 `
 export const ModalBtnWrap = styled.div`
+    height: 100%;
+
     button {
         width: 50%;
     }
 `
 export const MenuDetailBtnWrap = styled.div`
     ${exampleColor()};
+    height: 10%;
 
     button:first-child {
         background-color: #555555;

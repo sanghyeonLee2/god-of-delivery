@@ -21,22 +21,24 @@ class Order extends Sequelize.Model {
                 type: Sequelize.STRING,
                 allowNull: true,
             },
-            createdDate:{
-                type: Sequelize.DATE,
+            addressSnapshot:{
+                type: Sequelize.STRING,
                 allowNull: false,
             },
-            modifiedDate:{
-                type: Sequelize.DATE,
+            type:{
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             status:{
-                type: Sequelize.ENUM('정상', '이상'),
-                defaultValue:'정상',
+                type: Sequelize.ENUM('접수 중', '준비 중', '완료', '취소'),
+                defaultValue:'접수 중',
                 allowNull: false,
             }
         },{
             sequelize,
-            timestamps: false,
+            timestamps: true,
+            createdAt: true,
+            updatedAt: true,
             underscored: true,
             paranoid: false,
             charset: 'utf8mb4',
@@ -46,7 +48,8 @@ class Order extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.Order.hasMany(db.Cart,{foreignKey: 'orderId', sourceKey: 'orderId'})
+        db.Order.hasMany(db.OrderItem,{foreignKey:'orderId', sourceKey:'orderId', onDelete:'CASCADE', hooks:true})
+        db.Order.hasMany(db.Review, {foreignKey:'orderId', sourceKey:'orderId'})
         db.Order.belongsTo(db.Store,{foreignKey:'storeId', targetKey:'storeId'})
         db.Order.belongsTo(db.User,{foreignKey:'userId', targetKey:'userId'})
     }

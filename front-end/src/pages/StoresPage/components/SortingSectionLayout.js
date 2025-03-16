@@ -1,30 +1,20 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
-import {innerPadding} from "../../../assets/styles/CommonStyle";
+import {elementSize} from "../../../assets/styles/Mixin";
+
 
 export const SortingOuter = styled.div`
-    border-bottom: lightgray 1px solid;
-    border-top: lightgray 1px solid;
-    height: 55px;
+    height: 60px;
+    border: lightgray 1px solid;
 `
 
 export const SortingInner = styled.div`
-    ${innerPadding()};
-    ${flexLayout("space-between", "center")};
-    flex-direction: row-reverse;
     margin: 0 auto;
+    padding: 12px 1px;
     max-width: 1100px;
     height: 100%;
-    width: 100%;
+`
 
-    select {
-        ${elementSize("49%", "100%")}
-    }
-
-    select:nth-child(2) {
-        display: none;
-        @media (max-width: 880px ) {
-            display: inline-block;
-        }
-    }
+export const SortingSelect = styled.select`
+    float: right;
+    ${elementSize("32%", "60%")}
 `
