@@ -10,7 +10,7 @@ export const InfoBox = styled.div`
 `
 
 export const MenuInfoWrap = styled.ul`
-    ${innerPadding()};
+    padding: 15px 0;
     ${flexLayout("space-between")};
 `
 
