@@ -41,33 +41,38 @@ export const authGetApi = (url) => {
 }
 
 export const authPostApi = (url, data) => {
+    console.log(url, data)
     const api = new UserApi(true)
     return api.request("POST", url, data)
 }
 
 export const authDeleteApi = (url) => {
+    console.log(url)
     const api = new UserApi(true)
     return api.request("DELETE", url)
 }
 
-export const authPatchApi = (url) => {
+export const authPatchApi = (url, data) => {
+    console.log(url, data)
     const api = new UserApi(true)
-    return api.request("PATCH", url)
+    return api.request("PATCH", url, data)
 }
 
-export const authPutApi = (url) => {
+export const authPutApi = (url, data) => {
     const api = new UserApi(true)
-    return api.request("PUT", url)
+    console.log(url, data)
+    return api.request("PUT", url, data)
 }
 
 export const getApi = (url) => {
     const api = new UserApi(false)
+    console.log(url)
     return api.request("GET", url)
 }
 
-export const postApi = (url) => {
+export const postApi = (url, data) => {
     const api = new UserApi(false)
-    return api.request("POST", url)
+    return api.request("POST", url, data)
 }
 
 export const reissueApi = async (url) => {
