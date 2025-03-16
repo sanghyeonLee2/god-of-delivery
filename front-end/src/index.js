@@ -12,7 +12,14 @@ import Loading from "./components/common/Loading/Loading";
 import StorePage from "./pages/StorePage/StorePage";
 import CartPage from "./pages/CartPage/CartPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
-import OrderStatusPage from "./pages/OrderStatusPage/OrderStatusPage";
+import OrderPage from "pages/OrderPage/OrderPage";
+import OrdersPage from "pages/ManagementPage/OrdersPage";
+import OwnerPage from "pages/OwnerPage/OwnerPage";
+import StoreManagement from "pages/OwnerPage/components/StoreManagement";
+import MenuManagement from "pages/OwnerPage/components/MenuManagement";
+import ErrorPage from "pages/ErrorPage/ErrorPage";
+import OwnerReviewPage from "pages/OwnerPage/OwnerReviewPage";
+import ReviewManagement from "pages/ManagementPage/ReviewManagement";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,6 +30,7 @@ const router = createBrowserRouter([{
         {
             path: "",
             element: <HomePage/>
+
         },
         {
             path: "sign-up",
@@ -32,10 +40,11 @@ const router = createBrowserRouter([{
             element: <SignInPage/>
         }, {
             path: "stores/:categoryId",
-            element: <StoresPage/>
-        }, {
-            path: "store/:storeId",
-            element: <StorePage/>
+            element: <StoresPage/>,
+        },
+        {
+            path: "stores/:categoryId/:storeId",
+            element: <StorePage/>,
         },
         {
             path: "loading",
@@ -50,9 +59,36 @@ const router = createBrowserRouter([{
             element: <PaymentPage/>
         },
         {
-            path: "order-status",
-            element: <OrderStatusPage/>
-        }
+            path: "orders/:orderId",
+            element: <OrderPage/>
+        },
+        {
+            path: "users/me/orders",
+            element: <OrdersPage/>
+        },
+        {
+            path: "users/me/reviews",
+            element: <ReviewManagement/>
+        },
+        {
+            path: "owners/me",
+            element: <OwnerPage/>
+        },
+        {
+            path: "owners/me/store",
+            element: <StoreManagement/>
+        }, {
+            path: "owners/me/reviews",
+            element: <OwnerReviewPage/>
+        },
+        {
+            path: "owners/me/menus",
+            element: <MenuManagement/>
+        },
+        {
+            path: "error",
+            element: <ErrorPage/>
+        },
     ]
 }])
 
