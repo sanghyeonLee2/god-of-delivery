@@ -6,6 +6,7 @@ import star from "../../../assets/img/star.png"
 
 function StoreBox({storeInfo}) {
     const navigate = useNavigate()
+
     return (
         <StoreOuter onClick={() => navigate(`${storeInfo?.storeId}`)}>
             <StoreLogo/>
@@ -20,7 +21,7 @@ function StoreBox({storeInfo}) {
                     <Font size={"small"}>리뷰 {storeInfo?.reviewCnt}</Font>
                 </FlexOnly>
                 <FlexOnly>
-                    <Font size={"small"} color={"gray"}>{storeInfo?.minDeliveryPrice}원 이상
+                    <Font size={"small"} color={"gray"}>{storeInfo?.minDeliveryPrice.toLocaleString()}원 이상
                         배달</Font>
                     <AverageTimeWrap>
                         <Font size={"small"} color={"gray"}>
