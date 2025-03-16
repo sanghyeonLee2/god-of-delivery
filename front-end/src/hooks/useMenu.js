@@ -1,11 +1,11 @@
 import {useForm} from "react-hook-form";
 import {useMutation, useQuery} from "react-query";
-import {authGetApi, authPutApi} from "../apis/api/user";
+import {authGetApi, authPatchApi} from "../apis/api/user";
 import {useEffect} from "react";
 
-export const useUpdateStore = (url) => {
-    const {data, isError, status, isLoading} = useQuery(
-        ["getMenu", url],
+export const useMenu = (url) => {
+    const {data, isLoading} = useQuery(
+        ["getStore", url],
         () => authGetApi(url),
         {
             staleTime: 1000 * 60 * 5, // 5분 동안 신선한 데이터 유지
@@ -24,8 +24,8 @@ export const useUpdateStore = (url) => {
         }
     }, [data, reset]);
 
-    const {mutate: updateStore, isLoading: isUpdating} = useMutation(
-        (formData) => authPutApi(`store-put/${data?.data.storeId}`, formData),
+    const {mutate: updateMenu, isLoading: isUpdating} = useMutation(
+        (formData, menuId) => authPatchApi(`menu-put/${menuId}`, formData),
         {
             onSuccess: () => {
                 alert("가게 정보를 수정했습니다.");
@@ -35,9 +35,10 @@ export const useUpdateStore = (url) => {
             }
         }
     );
+    console.log(getValues());
 
     return {
-        updateStore,
+        updateMenu,
         isUpdating,
         handleSubmit,
         isLoading,
