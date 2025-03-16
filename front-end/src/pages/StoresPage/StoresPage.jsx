@@ -5,30 +5,38 @@ import StoreList from "./components/StoreList";
 import Pagination from "../../components/common/Pagination/Pagination";
 import Loading from "../../components/common/Loading/Loading";
 import useGetStores from "../../hooks/useGetStores";
+import categoryDummy from "../../assets/data/categoryDummy.json";
+import HomeBoard from "components/common/HomeBoard/HomeBoard";
+
+const findCategoryName = (categoryId) => {
+    return categoryDummy.find((category) => category.id === categoryId).name
+}
 
 function StoresPage(props) {
     const {
         storesData,
         totalPages,
-        isError,
         isLoading,
-        currentPage,
+        page,
         categoryId,
         setCategory,
-        setCurrentPage,
+        setPage,
         setSorting,
         sorting
-    } = useGetStores("stores");
+    } = useGetStores(true);
     if (isLoading)
         return <Loading/>
+
     return (
         <div>
+            <HomeBoard/>
             <CategoryList categoryId={categoryId} setCategory={setCategory}/>
-            <SortingSection categoryId={categoryId} setCategory={setCategory} setSorting={setSorting}
+            <SortingSection category={categoryId} setCategory={setCategory} setSorting={setSorting}
                             sorting={sorting}/>
-            <StoreList categoryId={categoryId} storesData={storesData}/>
-            <Pagination totalPages={totalPages} currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}/>
+            <StoreList categoryName={findCategoryName(categoryId)}
+                       storesData={storesData}/>
+            <Pagination totalPages={totalPages} page={page}
+                        setPage={setPage}/>
         </div>
     );
 }
