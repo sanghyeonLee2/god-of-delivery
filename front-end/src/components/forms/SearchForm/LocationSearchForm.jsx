@@ -2,17 +2,15 @@ import React from 'react';
 import Input from "../../common/Input/Input";
 import {SubBtn} from "../../common/Button/main/MainButton";
 import {SearchInputForm} from "./SearchFormLayout";
-import {useForm} from "react-hook-form";
 import SearchedLocations from "../../modal/SelectMap/SearchedLocations";
 import useSearchLocation from "../../../hooks/useSearchLocation";
 
 function LocationSearchForm() {
-    const {register, handleSubmit} = useForm()
-    const {locationInfo, searchLocation, setLocationInfo} = useSearchLocation()
-
+    const {locationInfo, searchLocation, setLocationInfo, register, handleSubmit} = useSearchLocation()
     return (
         <>
-            <SearchInputForm onSubmit={handleSubmit((data) => searchLocation(data.searchKeyword))}>
+            <SearchInputForm onSubmit={
+                handleSubmit(({searchKeyword}) => searchLocation(searchKeyword))}>
                 <Input type={"text"}
                        register={register("searchKeyword")}
                        placeholder={"주소를 검색해 보세요"}
