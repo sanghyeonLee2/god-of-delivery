@@ -24,8 +24,8 @@ export const API_URLS = {
     DELETE_CART: (cartItemId) => `cart/item/${cartItemId}`,
     GET_ORDER: (orderId) => `orders/${orderId}`,
     GET_ORDERS: (page) => `users/me/orders/?page=${page}`,
-    GET_OWNER_STORE: "owners/me/store",
-    PUT_OWNER_STORE: "owners/me/store",
+    GET_OWNER_STORE: "owners/me/stores",
+    PUT_OWNER_STORE: "owners/me/stores",
     GET_STORES: ({
                      categoryId,
                      page,

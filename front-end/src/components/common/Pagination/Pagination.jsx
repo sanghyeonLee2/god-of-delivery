@@ -1,11 +1,11 @@
 import React from 'react';
-import {PaginationInner, PaginationWrap} from "./PaginationLayout";
 import PaginationBtn from "./components/PaginationBtn";
 import IconBtn from "../Button/icon/IconBtn";
 import arrowLeft from "../../../assets/img/arrow_left.png"
 import arrowRight from "../../../assets/img/arrow_right.png"
 import arrowDoubleLeft from "../../../assets/img/double_arrow_left.png"
 import arrowDoubleRight from "../../../assets/img/double_arrow_right.png"
+import {PaginationInner, PaginationWrap} from "components/common/Pagination/PaginationLayout";
 
 const PAGE_BTN_LIMIT = 5;
 

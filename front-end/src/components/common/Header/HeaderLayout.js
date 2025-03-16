@@ -3,7 +3,6 @@ import {flexLayout, setBorder} from "../../../assets/styles/Mixin";
 import searchBoxBackground from "../../../assets/img/search-box-background.jpg";
 import {innerPadding} from "../../../assets/styles/CommonStyle";
 
-
 export const HeaderInner = styled.div`
     ${flexLayout("space-between", "center")};
     max-width: 1100px;
