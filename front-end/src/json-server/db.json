@@ -1,6 +1,9 @@
 {
   "check-id": {},
-  "signIn": {},
+  "signIn": {
+    "userId": "qwe",
+    "userPw": "123123123"
+  },
   "signUp": [
     {
       "id": 1
@@ -22,106 +25,181 @@
     },
     {
       "id": 7
+    },
+    {
+      "userId": "qwe",
+      "userPw": "123123123",
+      "pwCheck": "123123123",
+      "id": 8
     }
   ],
   "me": {
     "address": "주례로 47",
-    "role": "회원",
+    "role": "owner",
     "userId": "asd"
   },
   "coords": {
-    "lat": 37.566314493,
-    "lng": 126.991249014
+    "lat": 35.161002844,
+    "lng": 129.148573511
   },
   "address": [
     {
-      "id": 2
+      "lat": 37.56633925371136,
+      "lng": 126.99102404608097,
+      "address": "서울 중구 을지로3가 347-3",
+      "id": 13
     },
     {
-      "id": 3
+      "lat": 37.56569964344981,
+      "lng": 126.9924050270047,
+      "address": "서울 중구 을지로3가 296-30",
+      "id": 14
     },
     {
-      "id": 4
+      "lat": 37.566222197289655,
+      "lng": 126.99204276704602,
+      "address": "서울 중구 을지로3가 335-1",
+      "id": 15
     },
     {
-      "id": 5
+      "lat": 37.56597895945187,
+      "lng": 126.99251818793624,
+      "address": "서울 중구 을지로3가 295-2",
+      "id": 16
     },
     {
-      "id": 6
+      "lat": 37.566438245223544,
+      "lng": 126.98958652139943,
+      "address": "서울 중구 을지로2가 101-2",
+      "id": 17
     },
     {
-      "id": 7
+      "lat": 37.56282512501165,
+      "lng": 126.98825144701576,
+      "address": "서울 중구 명동2가 1-6",
+      "id": 18
     },
     {
-      "id": 8
+      "address": "서울 중구 을지로3가 347-3",
+      "lat": 37.566314493,
+      "lng": 126.991249014,
+      "id": 19
     },
     {
-      "id": 9
-    },
-    {
-      "id": 10
-    },
-    {
-      "id": 11
-    },
-    {
-      "id": 12
+      "address": "서울 중구 을지로3가 347-3",
+      "lat": 37.56629406568529,
+      "lng": 126.98936016193755,
+      "id": 20
     }
   ],
   "payment-post": [
     {
-      "id": 1
-    },
-    {
-      "id": 2
+      "orderId": 1,
+      "message": "결제가 완료되었습니다.",
+      "status": "success"
     }
   ],
   "order-detail": {
-    "orderId": 1,
-    "orderStatus": "주문 확인 중...",
-    "orderType": "포장",
-    "store": {
-      "storeName": "맥도날드 주례점",
-      "storeLatitude": 0,
-      "storeLongitude": 0,
-      "orderTime": "2017-07-07 20시",
-      "orderId": 1
+    "orderId": 11,
+    "totalPrice": 37000,
+    "tips": 1000,
+    "status": "접수 중",
+    "createdAt": "2025-03-06T08:27:01.000Z",
+    "updatedAt": "2025-03-06T08:27:01.000Z",
+    "storeId": 31,
+    "userId": "user123",
+    "storeName": "브루클린버거",
+    "userPaymentInfo": {
+      "orderType": "Delivery",
+      "paymentMethod": "Card",
+      "detailAddressSnapshot": "305호",
+      "contact": "010-1234-1234",
+      "requests": "단무지 주지 마세요",
+      "addressSnapshot": "주례로 47"
     },
-    "menus": [
+    "orderItems": [
       {
-        "menuId": 0,
-        "menuName": "후라이드",
-        "menuPrice": 3000,
-        "menuOptions": [
+        "orderItemId": 9,
+        "menuNameSnapshot": "양꼬치",
+        "menuPriceSnapshot": 10000,
+        "quantity": 1,
+        "createdAt": "2025-03-06T08:27:01.000Z",
+        "updatedAt": "2025-03-06T08:27:01.000Z",
+        "menuId": 10,
+        "orderId": 11,
+        "orderItemOptions": [
           {
-            "optionId": 0,
-            "optionName": "디아블로 소스",
-            "optionPrice": 1000
+            "orderItemOptionId": 4,
+            "optionNameSnapshot": "간장",
+            "optionPriceSnapshot": 1000,
+            "createdAt": "2025-03-06T08:27:01.000Z",
+            "updatedAt": "2025-03-06T08:27:01.000Z",
+            "menuOptionId": 32,
+            "orderItemId": 9
           },
           {
-            "optionId": 1,
-            "optionName": "칠리 소스",
-            "optionPrice": 500
+            "orderItemOptionId": 5,
+            "optionNameSnapshot": "앙념",
+            "optionPriceSnapshot": 2000,
+            "createdAt": "2025-03-06T08:27:01.000Z",
+            "updatedAt": "2025-03-06T08:27:01.000Z",
+            "menuOptionId": 31,
+            "orderItemId": 9
           }
         ]
       },
       {
-        "menuId": 1,
-        "menuName": "양념",
-        "menuPrice": 3000,
-        "menuOptions": []
+        "orderItemId": 10,
+        "menuNameSnapshot": "찜닭",
+        "menuPriceSnapshot": 10000,
+        "quantity": 1,
+        "createdAt": "2025-03-06T08:27:01.000Z",
+        "updatedAt": "2025-03-06T08:27:01.000Z",
+        "menuId": 10,
+        "orderId": 11,
+        "orderItemOptions": [
+          {
+            "orderItemOptionId": 6,
+            "optionNameSnapshot": "앙념",
+            "optionPriceSnapshot": 2000,
+            "createdAt": "2025-03-06T08:27:01.000Z",
+            "updatedAt": "2025-03-06T08:27:01.000Z",
+            "menuOptionId": 31,
+            "orderItemId": 10
+          }
+        ]
+      },
+      {
+        "orderItemId": 11,
+        "menuNameSnapshot": "양꼬치",
+        "menuPriceSnapshot": 10000,
+        "quantity": 1,
+        "createdAt": "2025-03-06T08:27:01.000Z",
+        "updatedAt": "2025-03-06T08:27:01.000Z",
+        "menuId": 10,
+        "orderId": 11,
+        "orderItemOptions": [
+          {
+            "orderItemOptionId": 7,
+            "optionNameSnapshot": "간장",
+            "optionPriceSnapshot": 1000,
+            "createdAt": "2025-03-06T08:27:01.000Z",
+            "updatedAt": "2025-03-06T08:27:01.000Z",
+            "menuOptionId": 32,
+            "orderItemId": 11
+          },
+          {
+            "orderItemOptionId": 8,
+            "optionNameSnapshot": "후라이드",
+            "optionPriceSnapshot": 1000,
+            "createdAt": "2025-03-06T08:27:01.000Z",
+            "updatedAt": "2025-03-06T08:27:01.000Z",
+            "menuOptionId": 30,
+            "orderItemId": 11
+          }
+        ]
       }
-    ],
-    "paymentMethods": {
-      "tips": 1000,
-      "method": "카드"
-    },
-    "userPaymentInfo": {
-      "userAddress": "사상구",
-      "userDetailAddress": "305호",
-      "userContact": "010-1234-1234",
-      "requestedTerm": "단무지 뺴고 주세요"
-    }
+    ]
   },
   "cart-post": [
     {
@@ -258,6 +336,34 @@
     },
     {
       "id": 45
+    },
+    {
+      "quantity": 1,
+      "menuId": 1,
+      "storeId": 1,
+      "치킨 선택": [
+        {
+          "menuOptionId": 0,
+          "content": "후라이드",
+          "price": 1000,
+          "isChecked": true
+        }
+      ],
+      "추가": [
+        {
+          "menuOptionId": 3,
+          "content": "감자",
+          "price": 1000,
+          "isChecked": true
+        },
+        {
+          "menuOptionId": 5,
+          "content": "소스",
+          "price": 1000,
+          "isChecked": true
+        }
+      ],
+      "id": 46
     }
   ],
   "cart-put": [
@@ -313,309 +419,432 @@
   ],
   "cart-delete": [],
   "cart": {
-    "cartId": 1,
-    "storeId": 12,
-    "storeTitle": "네네치킨",
-    "deliveryTime": "30~40분",
-    "menus": [
+    "cartId": 3,
+    "createdAt": "2025-03-06T02:48:57.000Z",
+    "updatedAt": "2025-03-06T02:48:57.000Z",
+    "storeId": 31,
+    "userId": "user123",
+    "store": {
+      "storeId": 31,
+      "storeName": "브루클린버거",
+      "deliveryTime": "45분",
+      "tips": 1000
+    },
+    "cartItems": [
       {
-        "menuName": "후라이드치킨",
-        "menuId": 1,
-        "price": 16000,
-        "quantity": 1,
-        "details": [
+        "content": "치킨",
+        "price": 4000,
+        "description": "치킨+카레",
+        "cartItemId": 16,
+        "quantity": 2,
+        "createdAt": "2025-03-06T02:48:57.000Z",
+        "updatedAt": "2025-03-06T02:52:46.000Z",
+        "cartId": 3,
+        "menuId": 10,
+        "cartItemOptions": [
           {
-            "optionId": 1,
-            "title": "소스",
-            "content": "스리라차",
-            "price": 1000
+            "cartItemOptionId": 36,
+            "createdAt": "2025-03-06T02:48:57.000Z",
+            "updatedAt": "2025-03-06T02:48:57.000Z",
+            "cartItemId": 16,
+            "menuOptionId": 30
           }
         ]
       },
       {
-        "menuName": "양념치킨",
-        "menuId": 2,
-        "price": 4200,
+        "cartItemId": 17,
         "quantity": 1,
-        "details": []
-      }
-    ],
-    "receiptMethods": [
-      {
-        "receiptMethodType": "배달",
-        "tip": 2000,
-        "waiting": "30~40분"
-      },
-      {
-        "receiptMethodType": "포장",
-        "tip": 0,
-        "waiting": "10~10분"
+        "content": "버거",
+        "price": 3000,
+        "description": "치킨+카레",
+        "createdAt": "2025-03-06T02:53:06.000Z",
+        "updatedAt": "2025-03-06T02:53:06.000Z",
+        "cartId": 3,
+        "menuId": 10,
+        "cartItemOptions": [
+          {
+            "cartItemOptionId": 38,
+            "createdAt": "2025-03-06T02:53:06.000Z",
+            "updatedAt": "2025-03-06T02:53:06.000Z",
+            "cartItemId": 17,
+            "menuOptionId": 36
+          },
+          {
+            "cartItemOptionId": 37,
+            "createdAt": "2025-03-06T02:53:06.000Z",
+            "updatedAt": "2025-03-06T02:53:06.000Z",
+            "cartItemId": 17,
+            "menuOptionId": 30
+          }
+        ]
       }
     ]
   },
-  "menu-details": [
-    {
-      "id": 1,
-      "menuId": 1,
-      "storeId": 1,
-      "name": "양꼬치",
-      "description": "치킨+카레",
-      "price": 10000,
-      "quantity": 1,
-      "details": [
-        {
-          "title": "치킨 선택",
-          "isEssential": true,
-          "maxQuantity": 1,
-          "menuCategoryId": 0,
-          "menuOptions": [
-            {
-              "menuOptionId": 0,
-              "content": "후라이드",
-              "price": 1000,
-              "isChecked": true
-            },
-            {
-              "menuOptionId": 1,
-              "content": "앙념",
-              "price": 2000,
-              "isChecked": false
-            },
-            {
-              "menuOptionId": 2,
-              "content": "간장",
-              "price": 1000,
-              "isChecked": false
-            }
-          ]
-        },
-        {
-          "title": "추가",
-          "isEssential": false,
-          "maxQuantity": 2,
-          "menuCategoryId": 1,
-          "menuOptions": [
-            {
-              "menuOptionId": 3,
-              "content": "감자",
-              "price": 1000,
-              "isChecked": true
-            },
-            {
-              "menuOptionId": 4,
-              "content": "샐러드",
-              "price": 2000,
-              "isChecked": false
-            },
-            {
-              "menuOptionId": 5,
-              "content": "소스",
-              "price": 1000,
-              "isChecked": true
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "menu-details": {
+    "menuId": 10,
+    "category": "메인요리",
+    "name": "양꼬치",
+    "price": 10000,
+    "description": "치킨+카레",
+    "menuReviewCnt": null,
+    "createdAt": "2025-02-20T23:27:22.000Z",
+    "updatedAt": "2025-02-20T23:27:22.000Z",
+    "storeId": 1,
+    "menuCategories": [
+      {
+        "menuCategoryId": 20,
+        "title": "치킨 선택",
+        "isEssential": true,
+        "maxQuantity": 1,
+        "createdAt": "2025-02-20T23:27:22.000Z",
+        "updatedAt": "2025-02-20T23:27:22.000Z",
+        "menuId": 10,
+        "menuOptions": [
+          {
+            "menuOptionId": 32,
+            "content": "간장",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 20
+          },
+          {
+            "menuOptionId": 31,
+            "content": "앙념",
+            "price": 2000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 20
+          },
+          {
+            "menuOptionId": 30,
+            "content": "후라이드",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 20
+          }
+        ]
+      },
+      {
+        "menuCategoryId": 21,
+        "title": "추가",
+        "isEssential": false,
+        "maxQuantity": 2,
+        "createdAt": "2025-02-20T23:27:22.000Z",
+        "updatedAt": "2025-02-20T23:27:22.000Z",
+        "menuId": 10,
+        "menuOptions": [
+          {
+            "menuOptionId": 35,
+            "content": "소스",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          },
+          {
+            "menuOptionId": 34,
+            "content": "샐러드",
+            "price": 2000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          },
+          {
+            "menuOptionId": 33,
+            "content": "감자",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          }
+        ]
+      }
+    ]
+  },
   "reviews": {
+    "totalItems": 6,
     "pageSize": 10,
-    "totalItems": 125,
     "reviewStat": [
-      3,
-      4,
-      5,
-      2,
-      100
+      1,
+      1,
+      1,
+      1,
+      2
     ],
     "reviewList": [
       {
-        "reviewId": 0,
-        "userId": "상큼자몽",
-        "date": "2024-12-12",
-        "img": "사진",
-        "content": "정말 맛있네요",
-        "rate": 5
+        "reviewId": 4,
+        "rating": 4,
+        "content": "맛있었어요! 양도 많고 좋아요.",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-21T10:55:46.000Z",
+        "updatedAt": "2025-02-21T10:55:46.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd",
+        "owner": {
+          "id": 1,
+          "content": "감사합니다.",
+          "createdAt": "2025-02-21T10:55:46.000Z"
+        }
       },
       {
-        "reviewId": 1,
-        "userId": "qwe",
-        "date": "2024-12-2",
-        "img": "사진",
-        "content": "정말 맛있네요",
-        "rate": 3.5
+        "reviewId": 7,
+        "rating": 3,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:04.000Z",
+        "updatedAt": "2025-02-25T19:28:06.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd"
+      },
+      {
+        "reviewId": 8,
+        "rating": 2,
+        "content": "g",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:06.000Z",
+        "updatedAt": "2025-02-25T19:28:07.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 9,
+        "rating": 1,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:07.000Z",
+        "updatedAt": "2025-02-25T19:28:08.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 10,
+        "rating": 5,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:09.000Z",
+        "updatedAt": "2025-02-25T19:28:09.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 11,
+        "rating": 5,
+        "content": "dd",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-27T17:24:20.000Z",
+        "updatedAt": "2025-02-27T17:24:21.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
       }
     ]
   },
+  "review-post": [],
+  "review-patch": [],
+  "review-delete": [],
   "store": {
-    "storeId": 1,
-    "status": "일반",
-    "notice": "물가상승으로 인해 모든 메뉴 1000원 상승🚨잘못된주소, 없는번호 등 고객의부주의로 재배달시 배달료가 부가되니 주문전 최종확인 부탁드립니다. 🚨피자쏠림, 음식누락, 오배송 등 배달에 문제가 생길시 즉시 매장으로 전화주셔야 빠르게 처리 도와드릴수 있습니다.",
-    "deliveryInfo": {
-      "minPrice": 10000,
-      "deliveryTime": "40~50분",
-      "tip": 1000
-    },
-    "takeoutInfo": {
-      "discount": 2000,
-      "minPrice": 0,
-      "pickUpTime": 15,
-      "location": "사상구 가야동",
-      "deliveryTime": "40~50분"
-    },
-    "storeHeader": {
-      "reviewCnt": 10,
-      "ownerReviewCnt": 13,
-      "storeName": "네네치킨 사상점",
-      "rating": 3.5,
-      "isDip": false,
-      "dips": 20
+    "storeId": 29,
+    "notice": "신규 오픈 할인",
+    "orderMethod": {
+      "delivery": {
+        "minPrice": 18000,
+        "deliveryTime": 50,
+        "tips": 3000
+      },
+      "takeout": {
+        "minPrice": 12000,
+        "pickUpTime": 40
+      }
     },
     "storeInfo": {
-      "address": "가야대로 344번길 60",
-      "ownerName": "심현섭",
-      "businessNum": "1234-12",
-      "storeName": "네네치킨 사상점",
-      "tradeName": "네네치킨 사상점",
-      "hours": "평일 - 오후 12:00 : 11:00",
-      "dayOff": "매주 일요일",
-      "contact": "050-1234-2323",
-      "area": "개금동, 가야동",
-      "introduction": "안녕하세요 네네치킨입니다."
+      "businessAddress": "서울 마포구 OO동 56-7",
+      "ownerName": "박영희",
+      "tradeName": "도쿄라멘",
+      "storeName": "도쿄라멘",
+      "origin": "일본산",
+      "businessNum": "987-65-43210",
+      "hours": "11:00-22:00",
+      "dayOff": "월요일",
+      "phoneNumber": "02-9876-5432",
+      "area": "마포구",
+      "allReview": 0,
+      "introduction": "정통 일본식 라멘"
+    },
+    "storeHeader": {
+      "isDib": false,
+      "reviewCnt": 10,
+      "ownerReviewCnt": 100,
+      "storeName": "도쿄라멘",
+      "rating": 3,
+      "dibs": 0
     },
     "menuInfo": [
       {
-        "category": "추천메뉴",
+        "title": "라멘",
         "menus": [
-          {
-            "menuId": 1,
-            "menuName": "양꼬치",
-            "description": "카레+양고기",
-            "price": 24000
-          },
           {
             "menuId": 2,
-            "menuName": "닭가슴살",
-            "description": "불고기+닭고기",
-            "price": 2000
-          }
-        ]
-      },
-      {
-        "category": "2인 세트",
-        "menus": [
-          {
-            "menuId": 3,
-            "menuName": "콘소세지",
-            "description": "카레+양고기",
-            "price": 20000
-          },
-          {
-            "menuId": 4,
-            "menuName": "스프카레",
-            "description": "불고기+닭고기",
-            "price": 20200
-          }
-        ]
-      },
-      {
-        "category": "사이드",
-        "menus": [
-          {
-            "menuId": 5,
-            "menuName": "치즈스틱",
-            "description": "",
-            "price": 2000
-          },
-          {
-            "menuId": 6,
-            "menuName": "감자튀김",
-            "description": "체다소스",
-            "price": 1000
-          },
-          {
-            "menuId": 7,
-            "menuName": "코카콜라",
-            "description": "",
-            "price": 2000
-          },
-          {
-            "menuId": 8,
-            "menuName": "사이다",
-            "description": "체다소스",
-            "price": 1000
+            "category": "라멘",
+            "name": "돈코츠 라멘",
+            "price": 10000,
+            "description": "진한 돈코츠 국물",
+            "menuReviewCnt": 32,
+            "createdAt": "2025-02-19T16:04:55.000Z",
+            "updatedAt": "2025-02-19T16:04:55.000Z",
+            "storeId": 30
           }
         ]
       }
     ]
   },
   "stores": {
-    "pageSize": 10,
-    "totalItems": 125,
+    "category": "all",
+    "totalItems": 10,
+    "pageSize": 5,
     "storeList": [
       {
-        "storeId": 0,
-        "storeName": "네네치킨",
-        "storeCategory": "치킨",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 10000,
-        "rating": 3.5,
-        "reviewCnt": 35,
-        "operationHours": "13시 ~ 익일 1시"
-      },
-      {
-        "storeId": 1,
-        "storeName": "BBQ 치킨",
-        "storeCategory": "치킨",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 12000,
-        "rating": 4.2,
-        "reviewCnt": 80,
-        "operationHours": "11시 ~ 23시"
-      },
-      {
-        "storeId": 2,
-        "storeName": "도미노 피자",
-        "storeCategory": "피자양식",
-        "storePicture": "이미지 없음",
+        "storeId": 29,
+        "storeName": "맛있는김밥집",
+        "storeCategory": "한식",
+        "storeLogoImage": null,
+        "operationHour": "10:00-21:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
         "minDeliveryPrice": 15000,
-        "rating": 4,
-        "reviewCnt": 100,
-        "operationHours": "10시 ~ 22시"
+        "distance": 0.00526869521453601
       },
       {
-        "storeId": 3,
-        "storeName": "홍콩반점",
-        "storeCategory": "중국집",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 8000,
-        "rating": 3.8,
-        "reviewCnt": 70,
-        "operationHours": "09시 ~ 21시"
+        "storeId": 30,
+        "storeName": "도쿄라멘",
+        "storeCategory": "일식/돈까스",
+        "storeLogoImage": null,
+        "operationHour": "11:00-22:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 18000,
+        "distance": 0.00526869521453601
       },
       {
-        "storeId": 4,
-        "storeName": "미소야",
-        "storeCategory": "일식돈까스",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 9000,
-        "rating": 4.5,
-        "reviewCnt": 95,
-        "operationHours": "10시 ~ 22시"
+        "storeId": 31,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
       },
       {
-        "storeId": 5,
-        "storeName": "봉구스 밥버거",
-        "storeCategory": "분식",
-        "storePicture": "이미지 없음",
-        "minDeliveryPrice": 5000,
-        "rating": 4.1,
-        "reviewCnt": 45,
-        "operationHours": "07시 ~ 20시"
+        "storeId": 32,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 33,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 34,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 35,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 36,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 37,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 38,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
+      },
+      {
+        "storeId": 39,
+        "storeName": "브루클린버거",
+        "storeCategory": "피자/양식",
+        "storeLogoImage": null,
+        "operationHour": "10:30-23:00",
+        "dibs": 0,
+        "rating": "0.0",
+        "reviewCnt": 0,
+        "minDeliveryPrice": 20000,
+        "distance": 0.00526869521453601
       }
     ]
   },
-  "dip-post": [
+  "dib-post": [
     {
       "id": 1
     },
@@ -684,7 +913,449 @@
     },
     {
       "id": 23
+    },
+    {
+      "storeId": 30,
+      "id": 24
+    },
+    {
+      "storeId": 30,
+      "id": 25
+    },
+    {
+      "storeId": 30,
+      "id": 26
+    },
+    {
+      "storeId": 30,
+      "id": 27
+    },
+    {
+      "storeId": 30,
+      "id": 28
+    },
+    {
+      "storeId": 30,
+      "id": 29
+    },
+    {
+      "storeId": 29,
+      "id": 30
+    },
+    {
+      "storeId": 29,
+      "id": 31
+    },
+    {
+      "storeId": 29,
+      "id": 32
+    },
+    {
+      "storeId": 29,
+      "id": 33
+    },
+    {
+      "storeId": 29,
+      "id": 34
+    },
+    {
+      "storeId": 29,
+      "id": 35
+    },
+    {
+      "storeId": 29,
+      "id": 36
+    },
+    {
+      "storeId": 29,
+      "id": 37
+    },
+    {
+      "storeId": 29,
+      "id": 38
+    },
+    {
+      "storeId": 29,
+      "id": 39
+    },
+    {
+      "storeId": 29,
+      "id": 40
+    },
+    {
+      "storeId": 29,
+      "id": 41
+    },
+    {
+      "storeId": 29,
+      "id": 42
+    },
+    {
+      "storeId": 29,
+      "id": 43
+    },
+    {
+      "storeId": 29,
+      "id": 44
+    },
+    {
+      "storeId": 29,
+      "id": 45
+    },
+    {
+      "storeId": 29,
+      "id": 46
+    },
+    {
+      "storeId": 29,
+      "id": 47
+    },
+    {
+      "storeId": 29,
+      "id": 48
+    },
+    {
+      "storeId": 29,
+      "id": 49
+    },
+    {
+      "storeId": 29,
+      "id": 50
+    },
+    {
+      "storeId": 29,
+      "id": 51
+    },
+    {
+      "storeId": 29,
+      "id": 52
+    },
+    {
+      "storeId": 29,
+      "id": 53
+    },
+    {
+      "storeId": 29,
+      "id": 54
+    },
+    {
+      "storeId": 29,
+      "id": 55
     }
   ],
-  "dip-delete": []
+  "dib-delete": [],
+  "orders": {
+    "paymentMethod": "card",
+    "requests": "",
+    "address": "주례로 47",
+    "detailAddress": "",
+    "orderType": "takeOut",
+    "contact": ""
+  },
+  "my-orders": {
+    "totalItems": 10,
+    "pageSize": 5,
+    "userOrderList": [
+      {
+        "hasReviewed": true,
+        "orderId": 10,
+        "paymentMethod": "Card",
+        "totalPrice": 14000,
+        "requests": "단무지 주지 마세요",
+        "addressSnapshot": "주례로 47",
+        "type": "Delivery",
+        "status": "완료",
+        "createdAt": "2025-02-27T02:56:10.000Z",
+        "updatedAt": "2025-02-27T02:56:10.000Z",
+        "storeName": "네네치킨",
+        "representativeOrder": "후라이드 외 1개",
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "hasReviewed": false,
+        "orderId": 11,
+        "paymentMethod": "Card",
+        "totalPrice": 37000,
+        "requests": "단무지 주지 마세요",
+        "addressSnapshot": "주례로 47",
+        "type": "Delivery",
+        "status": "접수 중",
+        "createdAt": "2025-03-06T08:27:01.000Z",
+        "updatedAt": "2025-03-06T08:27:01.000Z",
+        "representativeOrder": "후라이드 외 1개",
+        "storeName": "맥도날드",
+        "storeId": 31,
+        "userId": "user123"
+      }
+    ]
+  },
+  "my-reviews": {
+    "totalItems": 6,
+    "reviewStat": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "reviewList": [
+      {
+        "reviewId": 4,
+        "rating": 4,
+        "content": "맛있었어요! 양도 많고 좋아요.",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-21T10:55:46.000Z",
+        "updatedAt": "2025-02-21T10:55:46.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "qwe",
+        "owner": {
+          "id": 1,
+          "content": "감사합니다.",
+          "createdAt": "2025-02-21T10:55:46.000Z"
+        }
+      },
+      {
+        "reviewId": 7,
+        "rating": 3,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:04.000Z",
+        "updatedAt": "2025-02-25T19:28:06.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd"
+      },
+      {
+        "reviewId": 8,
+        "rating": 2,
+        "content": "g",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:06.000Z",
+        "updatedAt": "2025-02-25T19:28:07.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd"
+      },
+      {
+        "reviewId": 9,
+        "rating": 1,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:07.000Z",
+        "updatedAt": "2025-02-25T19:28:08.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 10,
+        "rating": 5,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:09.000Z",
+        "updatedAt": "2025-02-25T19:28:09.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 11,
+        "rating": 5,
+        "content": "dd",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-27T17:24:20.000Z",
+        "updatedAt": "2025-02-27T17:24:21.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      }
+    ]
+  },
+  "store-put": [],
+  "store-get": {
+    "storeId": 1,
+    "status": "일반",
+    "notice": "asdasdsad",
+    "deliveryMinPrice": 10000,
+    "deliveryTime": "40~50분",
+    "deliveryTip": 1000,
+    "takeoutDiscount": 2000,
+    "takeoutMinPrice": 0,
+    "takeoutPickUpTime": 15,
+    "takeoutLocation": "사상구 가야동",
+    "takeoutDeliveryTime": "40~50분",
+    "reviewCnt": 10,
+    "ownerReviewCnt": 13,
+    "storeName": "네네치킨 사상점",
+    "tradeName": "네네치킨 사상점",
+    "rating": 3.5,
+    "isDib": false,
+    "dibs": 20,
+    "address": "가야대로 344번길 60",
+    "ownerName": "심현섭",
+    "businessNum": "1234-12",
+    "hours": "평일 - 오후 12:00 : 11:00",
+    "dayOff": "매주 일요일",
+    "contact": "050-1234-2323",
+    "area": "개금동, 가야동",
+    "introduction": "안녕하세요 네네치킨입니다."
+  },
+  "menu-get": [
+    {
+      "category": "추천메뉴",
+      "menus": [
+        {
+          "menuId": 1,
+          "menuName": "양꼬치",
+          "description": "카레+양고기",
+          "price": 24000
+        },
+        {
+          "menuId": 2,
+          "menuName": "닭가슴살",
+          "description": "불고기+닭고기",
+          "price": 2000
+        }
+      ]
+    },
+    {
+      "category": "2인 세트",
+      "menus": [
+        {
+          "menuId": 3,
+          "menuName": "콘소세지",
+          "description": "카레+양고기",
+          "price": 20000
+        },
+        {
+          "menuId": 4,
+          "menuName": "스프카레",
+          "description": "불고기+닭고기",
+          "price": 20200
+        }
+      ]
+    },
+    {
+      "category": "사이드",
+      "menus": [
+        {
+          "menuId": 5,
+          "menuName": "치즈스틱",
+          "description": "",
+          "price": 2000
+        },
+        {
+          "menuId": 6,
+          "menuName": "감자튀김",
+          "description": "체다소스",
+          "price": 1000
+        },
+        {
+          "menuId": 7,
+          "menuName": "코카콜라",
+          "description": "",
+          "price": 2000
+        },
+        {
+          "menuId": 8,
+          "menuName": "사이다",
+          "description": "체다소스",
+          "price": 1000
+        }
+      ]
+    }
+  ],
+  "owner-review": {
+    "totalItems": 6,
+    "pageSize": 10,
+    "reviewStat": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "reviewList": [
+      {
+        "reviewId": 4,
+        "rating": 4,
+        "content": "맛있었어요! 양도 많고 좋아요.",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-21T10:55:46.000Z",
+        "updatedAt": "2025-02-21T10:55:46.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd",
+        "owner": {
+          "id": 1,
+          "content": "감사합니다.",
+          "createdAt": "2025-02-21T10:55:46.000Z"
+        }
+      },
+      {
+        "reviewId": 7,
+        "rating": 3,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:04.000Z",
+        "updatedAt": "2025-02-25T19:28:06.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "asd"
+      },
+      {
+        "reviewId": 8,
+        "rating": 2,
+        "content": "g",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:06.000Z",
+        "updatedAt": "2025-02-25T19:28:07.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 9,
+        "rating": 1,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:07.000Z",
+        "updatedAt": "2025-02-25T19:28:08.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 10,
+        "rating": 5,
+        "content": "good",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-25T19:28:09.000Z",
+        "updatedAt": "2025-02-25T19:28:09.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 11,
+        "rating": 5,
+        "content": "dd",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-27T17:24:20.000Z",
+        "updatedAt": "2025-02-27T17:24:21.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      }
+    ]
+  },
+  "owner-review-patch": [
+    {
+      "id": 4,
+      "content": "사장님 응답이 빠르고 좋아요."
+    }
+  ],
+  "owner-review-delete": []
 }
