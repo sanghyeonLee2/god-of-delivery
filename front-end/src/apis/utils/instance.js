@@ -53,6 +53,7 @@ class BaseApi {
                 } else {
                     localStorage.clear()
                     alert("토큰 만료 인해 로그아웃 되었습니다.")
+                    return axios.request(err.config);
                 }
             })
     }
