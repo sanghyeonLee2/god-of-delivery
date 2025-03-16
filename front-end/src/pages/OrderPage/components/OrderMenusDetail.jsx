@@ -1,23 +1,23 @@
 import React from 'react';
 import {CommonSectionWrap, DividingLine, Font} from "../../../assets/styles/CommonStyle";
 
-function MenuDetail({menus}) {
+function OrderMenusDetail({menus}) {
     return (
         <div>
             {menus.map((menu) => {
-                    const totalMenuPrice = menu.menuPrice + menu.menuOptions.reduce((optionAcc, option) => optionAcc + option.optionPrice, 0);
-                    return (<div key={menu.menuId}>
+                    const totalMenuPrice = menu.menuPriceSnapshot + menu.orderItemOptions.reduce((optionAcc, option) => optionAcc + option.optionPriceSnapshot, 0);
+                    return (<div key={menu.orderItemId}>
                         <CommonSectionWrap>
                             <Font>
-                                {menu?.menuName}
+                                {menu?.menuNameSnapshot}
                             </Font>
                             <Font size={"small"} color={"gray"}>
-                                기본 : {menu?.menuPrice.toLocaleString()}원
+                                기본 : {menu?.menuPriceSnapshot.toLocaleString()}원
                             </Font>
-                            {menu?.menuOptions.map((option) =>
-                                <div key={option.optionId}>
+                            {menu?.orderItemOptions.map((option) =>
+                                <div key={option.menuOptionId}>
                                     <Font size={"small"} color={"gray"}>
-                                        {option.optionName} : {option.optionPrice.toLocaleString()}원
+                                        {option.optionNameSnapshot} : {option.optionPriceSnapshot.toLocaleString()}원
                                     </Font>
                                 </div>
                             )}
@@ -33,4 +33,4 @@ function MenuDetail({menus}) {
     );
 }
 
-export default MenuDetail;
+export default OrderMenusDetail;
