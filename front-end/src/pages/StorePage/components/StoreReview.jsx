@@ -1,24 +1,23 @@
 import React from 'react';
-import {ReviewImgWrap, TotalRatingWrap} from "./StoreReviewLayout";
 import {FlexOnly, Font, VerticalSpace} from "../../../assets/styles/CommonStyle";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import {BarChart} from "../../../components/charts/BarChart";
+import {BarChart} from "components/charts/BarChart";
 import {TabWrap} from "../StorePageLayout";
 import Loading from "../../../components/common/Loading/Loading";
 import Pagination from "../../../components/common/Pagination/Pagination";
 import useGetReviews from "../../../hooks/useGetReviews";
+import Review from "components/common/Review/Review";
 
 
-function StoreReview({rating, storeId}) {
+function StoreReview({rating}) {
     const {
         reviews,
         totalPages,
-        isError,
         isLoading,
-        currentPage,
+        page,
         reviewStat,
-        setCurrentPage
-    } = useGetReviews(`reviews/${storeId}`)
+        setPage
+    } = useGetReviews("storeReviews");
     if (isLoading) {
         return <Loading/>
     }
@@ -28,15 +27,15 @@ function StoreReview({rating, storeId}) {
                 <Font size={"large"}>
                     가게 평점
                 </Font>
-                <FlexOnly>
-                    <TotalRatingWrap>
-                        <Font size={"x-large"}>{rating}</Font>
+                <FlexOnly justify="center">
+                    <div>
+                        <Font size={"x-large"} style={{textAlign: "center"}}>{rating.toFixed(1)}</Font>
                         <StarRatings
                             rating={rating}
                             starRatedColor={"gold"}
                             starDimension={"20px"}
                         />
-                    </TotalRatingWrap>
+                    </div>
                     <div style={{width: "60%"}}>
                         <BarChart reviewStat={reviewStat}/>
                     </div>
@@ -44,25 +43,10 @@ function StoreReview({rating, storeId}) {
             </TabWrap>
             <VerticalSpace/>
             <TabWrap>
-                {reviews.map((review) =>
-                    <div key={review.reviewId}>
-                        <FlexOnly justify={"space-between"}>
-                            <Font size={"large"}>{review?.userId}</Font>
-                            <Font size={"small"} color={"gray"}>{review?.date}</Font>
-                        </FlexOnly>
-                        <StarRatings rating={review?.rate}
-                                     starRatedColor={"gold"}
-                                     starDimension={"20px"}
-                                     starSpacing={"2px"}/>
-                        <ReviewImgWrap/>
-                        <Font>
-                            {review?.content}
-                        </Font>
-                    </div>
-                )}
+                {reviews.map((review) => <Review review={review} key={review.reviewId}/>)}
             </TabWrap>
-            <Pagination totalPages={totalPages} currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}/>
+            <Pagination totalPages={totalPages} page={page}
+                        setPage={setPage}/>
         </>
     );
 }
