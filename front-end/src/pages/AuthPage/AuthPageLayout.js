@@ -1,14 +1,18 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../assets/styles/Mixin";
 
 export const AuthPageOuter = styled.div`
-    ${flexLayout("center")}
+    width: 300px;
+    margin: 0 auto;
 `
-
 export const AuthPageInner = styled.div`
     margin-top: 50px;
 
-    h1 {
+    button {
+        margin: 15px 0;
+        height: 45px;
+    }
+
+    div:last-child {
         text-align: center;
     }
 `
