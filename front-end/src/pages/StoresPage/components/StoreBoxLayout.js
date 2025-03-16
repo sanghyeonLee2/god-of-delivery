@@ -10,17 +10,10 @@ export const StoreOuter = styled.li`
     box-sizing: border-box;
     padding: 0 20px;
     border: lightgray 1px solid;
-    ${flexLayout("stretch", "center")}
+    ${flexLayout("start", "center")};
     position: relative;
 `
 
-export const StoreLogo = styled.div`
-    background-color: brown;
-    ${elementSize("95px", "95px")}`
-
-export const StoreInfoWrap = styled.div`
-    padding: 8px 20px;
-`
 export const AverageTimeWrap = styled.div`
     position: absolute;
     right: 12px;
