@@ -1,13 +1,13 @@
 import {useState} from "react";
+import {useForm} from "react-hook-form";
 
 const useSearchLocation = () => {
     const [locationInfo, setLocationInfo] = useState([])
-
+    const {register, handleSubmit} = useForm()
     const searchLocation = (keyword) => {
         const ps = new window.kakao.maps.services.Places()
         ps.keywordSearch(keyword, (data, status) => {
             if (status === window.kakao.maps.services.Status.OK) {
-                console.log(window.kakao.maps.services.Status.OK)
                 setLocationInfo(data)
             } else {
                 alert("검색결과가 없습니다.")
@@ -15,7 +15,7 @@ const useSearchLocation = () => {
             }
         })
     }
-    return {locationInfo, searchLocation, setLocationInfo}
+    return {locationInfo, searchLocation, setLocationInfo, register, handleSubmit}
 }
 
 export default useSearchLocation
