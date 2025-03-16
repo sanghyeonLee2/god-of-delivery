@@ -1,42 +1,68 @@
 import React from 'react';
-import {CommonPageHeader, CommonPageWrap, CommonSectionWrap, Font} from "../../assets/styles/CommonStyle";
+import {CommonPageHeader, CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
 import {SubBtn} from "../../components/common/Button/main/MainButton";
 import PaymentAmount from "./components/PaymentAmount";
-import {useLocation} from "react-router-dom";
-import {usePaymentInitForm} from "../../hooks/usePaymentInitForm";
-import PaymentInput from "./components/PaymentInput";
+import {usePayment} from "../../hooks/usePayment";
+import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import PaymentMethods from "./components/PaymentMethods";
-import {usePost} from "../../hooks/usePost";
+
+const paymentMethods = {
+    methodsName: "paymentMethod",
+    methods: [
+        {
+            content: "만나서 카드 결제",
+            method: "card"
+        },
+        {
+            content: "만나서 현금 결제",
+            method: "cash"
+        },]
+}
+
+const orderMethods = {
+    methodsName: "orderType",
+    methods: [
+        {
+            content: "포장 주문 후 픽업",
+            method: "takeOut"
+        },
+        {
+            content: "배달 주문",
+            method: "delivery"
+        }
+    ]
+}
 
 function PaymentPage(props) {
-    const location = useLocation();
     const {
-        control, register, getValues, setValue, watch, handleSubmit
-    } = usePaymentInitForm(location.state.orderInfo);
-    const {mutate: handlePayment} = usePost("payment-post")
+        paymentInfo,
+        isOrderPosting,
+        control,
+        register,
+        handleSubmit
+    } = usePayment();
 
     return (
         <CommonPageWrap>
             <CommonPageHeader>
-                <Font size={"large"}>{getValues("receiptMethod.receiptMethodType")}로 받을게요</Font>
-                <Font color={"gray"}>{getValues("receiptMethod.waiting")} 후 도착예정</Font>
+                <Font size={"x-large"}>주문하기</Font>
             </CommonPageHeader>
-            <form onSubmit={handleSubmit((data) => handlePayment(data))}>
-                {getValues("receiptMethod.receiptMethodType") === "배달" && <>
-                    <PaymentInput title={"배달 주소"} value={getValues("address")}
-                                  register={register("address")} disabled={true}/>
-                    <PaymentInput title={"상세 주소"} value={getValues("detailAddress")}
+            <PaymentMethods control={control} toSelectMethods={paymentMethods} tips={paymentInfo.tips}/>
+            <PaymentMethods control={control} toSelectMethods={orderMethods} tips={paymentInfo.tips}/>
+            <form onSubmit={handleSubmit}>
+                <LabeledTextInput title={"배달 주소"} register={register("address")}
+                                  disabled={true}/>
+                <LabeledTextInput title={"상세 주소"}
+                                  placeholder={"동 / 호수를 입력해주세요"}
                                   register={register("detailAddress")}/>
-                </>}
-                <PaymentInput title={"주문시 요청사항"} value={getValues("requestedTerm")}
-                              register={register("requestedTerm")}/>
-                <PaymentInput title={"내 연락처"} value={getValues("contact")}
-                              register={register("contact")}/>
-                <PaymentMethods control={control} getValues={getValues}/>
-                <PaymentAmount/>
-                <CommonSectionWrap>
-                    <SubBtn text={"결제하기"} height={"50px"}/>
-                </CommonSectionWrap>
+                <LabeledTextInput title={"주문시 요청사항"}
+                                  placeholder={"사장님 / 라이더님께 요청사항을 입력해주세요"}
+                                  register={register("requests")}/>
+                <LabeledTextInput title={"내 연락처"} type={"tel"}
+                                  placeholder={"- 를 제외한 휴대전화 번호를 입력해 주세요"}
+                                  register={register("contact")}/>
+                <PaymentAmount paymentInfo={paymentInfo}/>
+                <SubBtn text={"결제하기"} type={"submit"} height={"50px"}/>
             </form>
         </CommonPageWrap>
     );
