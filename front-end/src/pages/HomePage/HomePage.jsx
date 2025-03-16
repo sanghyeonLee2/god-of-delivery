@@ -1,22 +1,29 @@
 import React from 'react';
-import {CategoryBoxInner, CategoryBoxOuter, CategoryImg, CategoryText, CategoryWrap} from "./HomePageLayout";
-import categoryDummy from "../../assets/data/categoryDummy.json"
-import testImg from "../../assets/img/category_text_img.png"
+import * as S from "./HomePageLayout";
+import categoryDummy from "../../assets/data/categoryDummy.json";
+import testImg from "../../assets/img/category_text_img.png";
 import {useNavigate} from "react-router-dom";
+import HomeBoard from "components/common/HomeBoard/HomeBoard";
 
-function HomePage(props) {
-    const navigate = useNavigate()
+function HomePage() {
+    const navigate = useNavigate();
     return (
-        <CategoryWrap>
-            {categoryDummy.map((category) =>
-                <CategoryBoxOuter key={category.id}
-                                  onClick={() => navigate(`stores/${category.id}`)}>
-                    <CategoryBoxInner>
-                        <CategoryText>{category.name}</CategoryText>
-                        <CategoryImg src={testImg} alt={"img"} width={110}/>
-                    </CategoryBoxInner>
-                </CategoryBoxOuter>)}
-        </CategoryWrap>
+        <>
+            <HomeBoard/>
+            <S.CategoryWrap>
+                {categoryDummy.map((category) => (
+                    <S.CategoryBoxOuter
+                        key={category.id}
+                        onClick={() => navigate(`stores/${category.id}`)}
+                    >
+                        <S.CategoryBoxInner>
+                            <S.CategoryText>{category.name}</S.CategoryText>
+                            <S.CategoryImg src={testImg} alt="img" width={110}/>
+                        </S.CategoryBoxInner>
+                    </S.CategoryBoxOuter>
+                ))}
+            </S.CategoryWrap>
+        </>
     );
 }
 
