@@ -1,5 +1,6 @@
 import {createGlobalStyle} from "styled-components";
 import {COLORS} from "./colors";
+import {innerPadding} from "./CommonStyle";
 
 const HOVER_COLOR = "#F5F5F5"
 const FONT_FAMILY = "LINESeedKR"
@@ -29,6 +30,13 @@ export const GlobalStyle = createGlobalStyle`
         border-radius: 4px;
     }
 
+    textarea {
+        resize: none;
+        width: 100%;
+        margin-bottom: 4px;
+        ${innerPadding()};
+    }
+
     li {
         list-style: none;
         cursor: pointer;
@@ -40,7 +48,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-        height: 900px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* 전체 뷰포트 높이 설정 */
+        padding-top: 92px;
     }
 
     button {
@@ -54,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
         padding-inline: 0;
     }
 
-    p, li, h1, strong, span, label {
+    p, li, h1, strong, span, label, textarea {
         font-family: ${FONT_FAMILY};
         line-height: 2;
     }
@@ -66,6 +77,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         position: relative;
-        padding-bottom: 200px;
+        flex-grow: 1;
     }
 `
