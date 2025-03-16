@@ -22,7 +22,7 @@ export const TAB_CONTENTS = {
         {
             key: 1,
             tab: "포장/방문주문",
-            content: ["할인", "최소 주문금액", "픽업시간", "위치안내"]
+            content: ["최소 주문금액", "픽업시간", "위치안내"]
         }
     ]
 }
