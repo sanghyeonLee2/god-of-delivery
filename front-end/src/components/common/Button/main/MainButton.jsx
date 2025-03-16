@@ -3,10 +3,10 @@ import {MainButtonWrap, ModalButtonWrap, SubButtonWrap, TransButtonWrap} from ".
 import {Font} from "../../../../assets/styles/CommonStyle";
 
 
-export const MainBtn = forwardRef(({type, text, onClick, width, height}, ref) => {
+export const MainBtn = forwardRef(({type, text, onClick, width}, ref) => {
     return (
-        <MainButtonWrap $width={width} height={height} type={type} onClick={onClick} ref={ref}>
-            <Font>{text}</Font>
+        <MainButtonWrap $width={width} type={type} onClick={onClick} ref={ref}>
+            <Font size={"small"}>{text}</Font>
         </MainButtonWrap>
     );
 });
