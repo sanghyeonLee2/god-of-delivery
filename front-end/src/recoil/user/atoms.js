@@ -1,7 +1,6 @@
 import {atom} from "recoil";
 import {recoilPersist} from "recoil-persist";
 
-
 export const {persistAtom: signInPersist} = recoilPersist({
     key: "is-sign-in",
 })
@@ -28,7 +27,9 @@ export const userInfoState = atom({
     effects: [
         ({onSet}) => {
             onSet((newValue) => {
-                sessionStorage.setItem("address", JSON.stringify(newValue.address)); // address 값만 세션 스토리지에 저장
+                if (newValue?.address) {
+                    sessionStorage.setItem("address", JSON.stringify(newValue.address)); // address 값만 세션 스토리지에 저장
+                }
             });
         },
     ],
