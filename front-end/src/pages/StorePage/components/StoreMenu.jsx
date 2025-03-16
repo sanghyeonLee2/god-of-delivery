@@ -5,6 +5,7 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import Title from "../../../components/common/Title/Title";
 import {TabWrap} from "../StorePageLayout";
+import {API_URLS} from "../../../apis/constants/urls";
 
 function StoreMenu({notice, menuInfo}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
@@ -15,20 +16,21 @@ function StoreMenu({notice, menuInfo}) {
             </InfoBox>
             <ul>
                 {menuInfo.map((menuInfoItem) =>
-                    <li key={menuInfoItem.category}>
-                        <Title size={"x-large"} text={menuInfoItem.category}/>
+                    <li key={menuInfoItem.title}>
+                        <Title size={"x-large"} text={menuInfoItem.title}/>
                         {menuInfoItem.menus?.map((menu) =>
                             <div key={menu.menuId} onClick={() => {
                                 setIsModalOpen({
-                                    modalType: "메뉴상세",
-                                    modalFlag: true,
-                                    modalIdData: menu?.menuId
-                                })
+                                        modalType: "메뉴상세",
+                                        flag: true,
+                                        modalData: {api: API_URLS.GET_MENUS(menu?.menuId)}
+                                    }
+                                )
                             }}>
                                 <MenuInfoWrap>
                                     <div>
                                         <Font size={"large"}>
-                                            {menu?.menuName}
+                                            {menu?.name}
                                         </Font>
                                         <Font color={"gray"}>
                                             {menu?.description}
