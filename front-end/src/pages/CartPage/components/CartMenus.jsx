@@ -32,7 +32,7 @@ function CartMenus({cartItems, handleDeleteCartItem}) {
                                          onClick={() => setIsModalOpen({
                                              modalType: "메뉴수정",
                                              flag: true,
-                                             apiUrl: API_URLS.PUT_CART(cartItem?.cartItemId)
+                                             modalData: {api: API_URLS.PUT_CART(cartItem?.cartItemId)}
                                          })}/>
                                 <MainBtn text={"삭제"}
                                          width={"125px"}
