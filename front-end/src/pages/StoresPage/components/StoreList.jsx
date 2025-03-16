@@ -2,17 +2,16 @@ import React from 'react';
 import {StoresInner, StoresOuter} from "./StoreListLayout";
 import StoreBox from "./StoreBox";
 import {Font} from "../../../assets/styles/CommonStyle";
-import categoryDummy from "../../../assets/data/categoryDummy.json";
 
-function StoreList({categoryId, storesData}) {
-    const category = categoryDummy.find((category) => category.id === categoryId)
+function StoreList({categoryName, storesData}) {
     return (
         <StoresOuter>
             <Font>
-                {category.name}
+                {categoryName}
             </Font>
             <StoresInner>
-                {storesData?.map((e) => <StoreBox storeInfo={e} key={e.storeId}/>)}
+                {storesData?.map((storeData) =>
+                    <StoreBox storeInfo={storeData} key={storeData.storeId}/>)}
             </StoresInner>
         </StoresOuter>
     );
