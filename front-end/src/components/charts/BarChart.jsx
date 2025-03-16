@@ -5,7 +5,6 @@ import {Bar} from "react-chartjs-2";
 // 플러그인 등록!
 ChartJS.register(CategoryScale, LinearScale, BarElement, ChartDataLabels);
 
-// ✅ options를 함수로 만들어 reviewStat을 전달받을 수 있도록 수정
 const getOptions = (reviewStat) => ({
     responsive: true,
     maintainAspectRatio: false,
