@@ -24,13 +24,6 @@ export const MenuDetailImg = styled.div`
     ${exampleColor()};
     height: 230px;
 `
-export const MenuDetailDescriptionWrap = styled.div`
-    ${innerPadding()};
-
-    p {
-        text-align: center;
-    }
-`
 
 export const MenuDetailOptionsWrap = styled.div`
     border-bottom: 1px solid ${COLORS.BORDER};
