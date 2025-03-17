@@ -6,7 +6,7 @@ import Pagination from "components/common/Pagination/Pagination";
 import useGetReviews from "../../hooks/useGetReviews";
 import Title from "components/common/Title/Title";
 
-function ReviewManagement(props) {
+function ReviewManagementPage(props) {
     const {
         reviews,
         totalPages,
@@ -27,4 +27,4 @@ function ReviewManagement(props) {
     );
 }
 
-export default ReviewManagement;
+export default ReviewManagementPage;

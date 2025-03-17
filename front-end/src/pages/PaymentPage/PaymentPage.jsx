@@ -1,6 +1,6 @@
 import React from 'react';
 import {CommonPageHeader, CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
-import {SubBtn} from "../../components/common/Button/main/MainButton";
+import {SubBtn} from "components/common/Button/main/MainButton";
 import PaymentAmount from "./components/PaymentAmount";
 import {usePayment} from "../../hooks/usePayment";
 import LabeledTextInput from "components/common/Input/LabeledTextInput";
