@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {innerPadding} from "../../../assets/styles/CommonStyle";
-import {flexLayout} from "../../../assets/styles/Mixin";
+import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
 
 export const OwnerReviewWrap = styled.form`
     margin: 15px 0;
@@ -14,4 +14,9 @@ export const ReviewBtnWrap = styled.div`
     ${flexLayout("space-between")};
     margin-left: auto;
     flex-direction: row-reverse;
+`
+
+export const ReviewImgWrap = styled.div`
+    margin: 10px 0;
+    ${elementSize("200px", "150px")};
 `

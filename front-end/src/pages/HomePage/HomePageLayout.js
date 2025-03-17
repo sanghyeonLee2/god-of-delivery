@@ -5,7 +5,7 @@ import {elementSize, flexLayout} from "../../assets/styles/Mixin";
 export const CategoryWrap = styled.div`
     max-width: 1180px;
     margin: 0 auto;
-    ${flexLayout("space-between")};
+    ${flexLayout("start")};
     flex-wrap: wrap;
     padding: 10px 0;
 `
@@ -28,13 +28,14 @@ export const CategoryBoxInner = styled.div`
     height: 100%;
     position: relative;
     cursor: pointer;
+
+    svg {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+    }
 `
 export const CategoryText = styled.p`
     margin-top: 25px;
     margin-left: 25px;
-`
-export const CategoryImg = styled.img`
-    position: absolute;
-    left: 90px;
-    top: 108px;
 `

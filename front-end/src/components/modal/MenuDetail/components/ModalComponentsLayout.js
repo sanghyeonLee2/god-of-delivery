@@ -19,12 +19,11 @@ export const ModalHeaderWrap = styled.div`
 export const MenuDetailPrologWrap = styled.div`
     min-height: 300px;
     border-bottom: 1px solid ${COLORS.BORDER};
-`
-export const MenuDetailImg = styled.div`
-    ${exampleColor()};
-    height: 230px;
-`
 
+    img {
+        width: 100%;
+    }
+`
 export const MenuDetailOptionsWrap = styled.div`
     border-bottom: 1px solid ${COLORS.BORDER};
 

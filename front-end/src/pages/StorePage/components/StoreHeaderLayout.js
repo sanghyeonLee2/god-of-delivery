@@ -10,4 +10,7 @@ export const StoreHeaderWrap = styled.div`
 `
 export const ReviewWrap = styled.div`
     ${flexLayout("center")}
+    button {
+        margin-bottom: 2px;
+    }
 `

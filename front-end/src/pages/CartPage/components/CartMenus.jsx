@@ -1,26 +1,27 @@
 import React from 'react';
-import {CartMenuBox, MenuOptionImg, MenuOptionLeft, MenuOptionWrap} from "./CartMenusLayout";
+import * as S from "./CartMenusLayout";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import {MainBtn} from "components/common/Button/main/MainButton";
 import {API_URLS} from "../../../apis/constants/urls";
+import Image from "components/common/Image/Image";
 
 function CartMenus({cartItems, handleDeleteCartItem}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
-        <CartMenuBox>
+        <S.CartMenuBox>
             {cartItems?.map((cartItem) =>
-                <MenuOptionWrap key={cartItem.cartItemId}>
+                <S.MenuOptionWrap key={cartItem.cartItemId}>
                     <li>
-                        <MenuOptionLeft>
+                        <S.MenuOptionLeft>
                             <div>
                                 <Font>{cartItem.content}</Font>
                                 <Font size={"small"} color={"gray"}>{cartItem?.description}</Font>
                                 <Font>{(cartItem.price * cartItem.quantity).toLocaleString()}원</Font>
                             </div>
-                            <MenuOptionImg/>
-                        </MenuOptionLeft>
+                            <Image width={70} height={70} src={cartItems.imgUrl}/>
+                        </S.MenuOptionLeft>
                     </li>
                     <li>
                         <FlexOnly justify="space-between">
@@ -42,10 +43,10 @@ function CartMenus({cartItems, handleDeleteCartItem}) {
                             </FlexOnly>
                         </FlexOnly>
                     </li>
-                </MenuOptionWrap>
+                </S.MenuOptionWrap>
             )}
 
-        </CartMenuBox>
+        </S.CartMenuBox>
     );
 }
 
