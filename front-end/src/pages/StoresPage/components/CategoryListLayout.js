@@ -1,42 +1,30 @@
-import styled from "styled-components";
 import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
+import styled from "styled-components";
+import {COLORS} from "../../../assets/styles/colors";
 
-export const CategoryListOuter = styled.div`
+export const CategoryListWrap = styled.ul`
+    @media (max-width: 880px ) {
+        display: none;
+    }
     height: 75px;
-    border-bottom: 1px solid #d9d9d9;`
-
-export const CategoryListInner = styled.div`
+    margin: 0 auto;
     max-width: 1100px;
-    height: 100%;
-    margin: 0 auto;`
-
-export const CategoryListUl = styled.ul`
     ${flexLayout("center", "center")}
-    height: 100%;`
-export const CategoryListLi = styled.li`
-    ${elementSize("7.3%", "100%")};
+`
+export const CategoryElement = styled.li`
+    ${elementSize("7.5%", "100%")};
+    background-color: ${(props) => props.$clicked === props.id && COLORS.BTN.SUB};
     ${flexLayout("center", "center")};
-    background-color: ${(props) => props.id === props.clicked && "#333333"};
 
-    span {
-        color: ${(props) => props.id === props.clicked && "white"}
+    p {
+        color: ${(props) => props.$clicked === props.id && "white"}
     }
 
     &:hover {
-        background-color: #333333;
+        background-color: ${COLORS.BTN.SUB};
 
-        span {
+        p {
             color: white;
         }
     }
-
-`
-export const SearchImg = styled.img`
-    border: lightgray 1px solid;
-    border-radius: 3px;
-`
-export const CategoryListSearchLi = styled.li`
-    ${flexLayout("center")}
-    width: 5%;
-`
-
+`;

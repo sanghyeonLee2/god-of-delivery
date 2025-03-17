@@ -1,10 +1,7 @@
-export const setMenuDetail = (details, quantity, menuId, storeId) => {
-    return details.reduce((acc, detail) => {
-            if (detail.menuOptions.some((option) => option.isChecked)) {
-                acc[detail.title] = detail.menuOptions
-                    .filter((option) => option.isChecked)
-            }
-            return acc
-        }, {quantity, menuId, storeId}
-    )
+export const setMenuOptions = (menuCategories = []) => {
+    const options = []
+    menuCategories
+        .filter((e) => e.isEssential)
+        .map(e => options.push(e.menuOptions[0].menuOptionId))
+    return options
 }

@@ -2,14 +2,15 @@ import React from 'react';
 import {Font} from "../../../../assets/styles/CommonStyle";
 import {OrderPriceWrap} from "./ModalComponentsLayout";
 
-function OrderPrice({watch, defaultPrice = 0}) {
-    const orderPrice = watch("quantity") * (
-        defaultPrice +
-        Object.values(watch())
-            .filter((option) => Array.isArray(option) && option.length >= 1)
-            .flat()
-            .reduce((acc, option) => acc + (option.price || 0), 0)
-    );
+function OrderPrice({watch, menuCategories, defaultPrice = 0}) {
+    const orderPrice = watch("quantity") *
+        menuCategories.reduce(
+            (categoryPrice, {menuOptions}) =>
+                categoryPrice + menuOptions.reduce(
+                    (optionPrice, cur) =>
+                        watch("options").includes(cur.menuOptionId) ? optionPrice + cur.price : optionPrice, 0),
+            defaultPrice);
+
     return (
         <OrderPriceWrap>
             <Font>총 주문금액</Font>
