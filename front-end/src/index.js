@@ -19,7 +19,7 @@ import StoreManagement from "pages/OwnerPage/components/StoreManagement";
 import MenuManagement from "pages/OwnerPage/components/MenuManagement";
 import ErrorPage from "pages/ErrorPage/ErrorPage";
 import OwnerReviewPage from "pages/OwnerPage/OwnerReviewPage";
-import ReviewManagement from "pages/ManagementPage/ReviewManagement";
+import ReviewManagementPage from "pages/ManagementPage/ReviewManagementPage";
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -68,7 +68,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "users/me/reviews",
-            element: <ReviewManagement/>
+            element: <ReviewManagementPage/>
         },
         {
             path: "owners/me",
