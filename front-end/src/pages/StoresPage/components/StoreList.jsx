@@ -1,19 +1,19 @@
 import React from 'react';
-import {StoresInner, StoresOuter} from "./StoreListLayout";
+import * as S from "./StoreListLayout";
 import StoreBox from "./StoreBox";
 import {Font} from "../../../assets/styles/CommonStyle";
 
 function StoreList({categoryName, storesData}) {
     return (
-        <StoresOuter>
+        <S.StoresOuter>
             <Font>
                 {categoryName}
             </Font>
-            <StoresInner>
+            <S.StoresInner>
                 {storesData?.map((storeData) =>
                     <StoreBox storeInfo={storeData} key={storeData.storeId}/>)}
-            </StoresInner>
-        </StoresOuter>
+            </S.StoresInner>
+        </S.StoresOuter>
     );
 }
 

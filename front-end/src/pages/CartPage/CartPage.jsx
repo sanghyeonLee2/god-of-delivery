@@ -1,5 +1,5 @@
 import React from 'react';
-import {CartHeader, MenuAddBtnWrap, MinStoreInfoWrap} from "./CartLayout";
+import * as S from "./CartLayout";
 import {CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
 import {SubBtn, TransBtn} from "components/common/Button/main/MainButton";
 import {OrderBtnWrap} from "components/common/Button/main/MainButtonLayout";
@@ -23,17 +23,17 @@ function CartPage(props) {
     }
     return (
         <CommonPageWrap>
-            <CartHeader>
-                <MinStoreInfoWrap>
+            <S.CartHeader>
+                <S.MinStoreInfoWrap>
                     <Font size={"x-large"}>{cartData?.store.storeName}</Font>
                     <Font size={"small"} color={"gray"}>{cartData?.store.deliveryTime} 후 도착예정</Font>
-                </MinStoreInfoWrap>
-            </CartHeader>
+                </S.MinStoreInfoWrap>
+            </S.CartHeader>
             <form onSubmit={handleSubmit}>
                 <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.cartItems}/>
-                <MenuAddBtnWrap>
+                <S.MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
-                </MenuAddBtnWrap>
+                </S.MenuAddBtnWrap>
                 <CartPayment tips={cartData.store.tips}
                              totalCartMenuPrice={cartData.totalCartMenuPrice}/>
                 <OrderBtnWrap>
