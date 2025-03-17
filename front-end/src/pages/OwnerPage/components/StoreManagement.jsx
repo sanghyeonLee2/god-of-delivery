@@ -20,6 +20,8 @@ function StoreManagement(props) {
             <Title text={"가게 정보 관리"} size={"x-large"}/>
             <form onSubmit={handleSubmit}>
                 <Font size={"large"}>배달 정보</Font>
+                <LabeledTextInput title={"가게 이미지"} type={"file"} defaultValue={storeData?.imgUrl}
+                                  register={register("imgUrl")}/>
                 <LabeledTextInput title={"최소 주문 금액"} type={"number"} defaultValue={storeData?.deliveryMinPrice}
                                   register={register("deliveryMinPrice")}/>
                 <LabeledTextInput title={"팁"} type={"number"} defaultValue={storeData?.deliveryTip}
