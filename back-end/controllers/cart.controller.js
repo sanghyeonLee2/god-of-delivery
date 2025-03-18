@@ -41,7 +41,7 @@ exports.getCartMenuDetail = async (req, res) => {
         })
     }
 }
-exports.postUpdateCartItem = async (req, res) => {
+exports.updateCartItem = async (req, res) => {
     try{
         const updateData = await CartService.updateCartItemOption(req,req.params,req.body);
         res.status(200).send({
