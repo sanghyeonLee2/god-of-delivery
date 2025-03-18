@@ -18,7 +18,7 @@ exports.postCreateReview = async (req, res) => {
         const data = await ReviewService.createReview(req);
         res.status(201).send({
             status: 201,
-            data: data
+            message: "Success"
         })
     }
     catch (error) {
