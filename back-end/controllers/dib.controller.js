@@ -1,20 +1,14 @@
 const Dib = require('../models/dib');
 const User = require('../models/user');
 const Store = require('../models/store');
+const DibService = require('../services/dib.service')
+const StoreService = require('../services/store.service')
 const {Sequelize} = require("sequelize");
 
-exports.getDibsWithStore = async (req, res) => {
+exports.getUserDibStoreList = async (req, res) => {
     try{
-        const StoreListWithDib = await Dib.findAll({
-            where:{
-                userId: req.params.userId
-            },
-            include: [{model:Store}],
-        })
-        res.status(200).send({
-            status: 200,
-            data: StoreListWithDib
-        });
+        const dibList = await DibService.findUserDibList(req)
+        res.status(200).send(dibList);
     }
     catch (err){
         res.status(500).send({
@@ -23,24 +17,6 @@ exports.getDibsWithStore = async (req, res) => {
         })
     }
 
-}
-
-exports.getDibsListByUser = async (req, res) => {
-    try{
-        const dibsList = await Dib.findAll({
-            where:{userId:req.params.userId}
-        });
-        res.status(200).send({
-            status:200,
-            data: dibsList
-        })
-    }
-    catch (err){
-        res.status(400).send({
-            status:400,
-            message:err.message
-        })
-    }
 }
 
 exports.getDibsListByStore = async (req, res) => {
@@ -61,65 +37,29 @@ exports.getDibsListByStore = async (req, res) => {
     }
 }
 
-exports.postDibFilled = async (req, res) => {
-    const date = new Date();
+exports.postAddDib = async (req, res) => {
     try {
-        const dibData = await Dib.create({
-            userId: req.body.userId,
-            storeId: req.body.storeId,
-            createdDate: date,
-            modifiedDate: date
-        })
-        await Store.update(
-            {
-                dibsCount: Sequelize.literal('dibs_count + 1'),
-            },
-            {
-                where: {storeId: req.body.storeId,},
-            }
-        );
-        const storeData = await Store.findOne({
-            where:{storeId:req.body.storeId}
-        })
+        const newDib = await DibService.addDib(req, req.body)
+
         res.status(201).send({
-            status: 201,
-            filled: true,
-            storeData: storeData,
-            dibData: dibData,
+            message: "Success"
         })
     } catch (err) {
-        res.status(400).send({
-            status: 400,
-            filled: false,
+        res.status(500).send({
+            status: 500,
             message: err.message,
         })
     }
 }
-exports.postDibCancel = async (req, res) => {
+exports.deleteDibCancel = async (req, res) => {
     try {
-        await Dib.destroy({
-            where: {
-                userId: req.body.userId,
-                storeId: req.body.storeId,
-            }
-        })
-        await Store.update({
-            dibsCount: Sequelize.literal('dibs_count - 1'),},{
-            where: {
-                storeId: req.body.storeId,
-            }
-        })
-        const storeData = await Store.findOne({
-            where:{storeId:req.body.storeId}
-        })
+        const dibCancel = await DibService.deleteDib(req, req.params)
         res.status(200).send({
-            status: 200,
-            filled: false,
-            storeData: storeData,
+            message: "Success",
         })
     } catch (err) {
-        res.status(400).send({
-            status: 400,
+        res.status(500).send({
+            status: 500,
             message: err.message,
         })
     }
