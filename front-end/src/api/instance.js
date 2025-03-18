@@ -1,5 +1,5 @@
 import axios from "axios";
-import {reissueApi} from "../api/user";
+import {reissueApi} from "./user";
 
 //const API_KEY = process.env.REACT_APP_API
 //const API_KEY = process.env.REACT_APP_POSTMAN_MOCK// postman
