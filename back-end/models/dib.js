@@ -3,10 +3,15 @@ const Sequelize = require("sequelize");
 class Dib extends Sequelize.Model {
     static initate(sequelize) {
         Dib.init({
-            status:{
+            userId:{
                 type: Sequelize.STRING,
-                defaultValue:'일반',
+                primaryKey: true,
                 allowNull: false,
+            },
+            storeId:{
+                type: Sequelize.BIGINT,
+                allowNull: false,
+                primaryKey: true,
             }
         },{
             sequelize,

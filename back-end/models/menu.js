@@ -24,7 +24,9 @@ class Menu extends Sequelize.Model {
             description:{
                 type: Sequelize.STRING,
             },
-
+            imgUrl : {
+                type: Sequelize.STRING,
+            }
 
         }, {
             sequelize,

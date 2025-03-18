@@ -8,12 +8,8 @@ class User extends Sequelize.Model {
                 allowNull: false,
                 primaryKey: true,
             },
-            password:{
+            userPw:{
                 type: Sequelize.STRING,
-                allowNull: false,
-            },
-            phone:{
-                type: Sequelize.STRING(11),
                 allowNull: false,
             },
             role:{
@@ -27,11 +23,9 @@ class User extends Sequelize.Model {
             },
             latitude:{
                 type: Sequelize.FLOAT(9,6),
-                allowNull: false,
             },
             longitude:{
                 type: Sequelize.FLOAT(9,6),
-                allowNull: false,
             }
         },{
             sequelize,

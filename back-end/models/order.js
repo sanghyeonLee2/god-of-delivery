@@ -33,6 +33,14 @@ class Order extends Sequelize.Model {
                 type: Sequelize.ENUM('접수 중', '준비 중', '완료', '취소'),
                 defaultValue:'접수 중',
                 allowNull: false,
+            },
+            detailAddress:{
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            contact:{
+                type: Sequelize.STRING,
+                allowNull: false,
             }
         },{
             sequelize,
