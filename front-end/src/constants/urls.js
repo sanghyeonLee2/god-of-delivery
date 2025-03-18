@@ -1,4 +1,4 @@
-import {keywordIncludedUrl} from "../../utils/transducer";
+import {keywordIncludedUrl} from "../utils/transducer";
 
 export const API_URLS = {
     GET_CART: "cart",

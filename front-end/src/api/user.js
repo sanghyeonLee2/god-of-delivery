@@ -1,4 +1,4 @@
-import {authInstance, instance} from "../utils/instance";
+import {authInstance, instance} from "./instance";
 
 
 class UserApi {

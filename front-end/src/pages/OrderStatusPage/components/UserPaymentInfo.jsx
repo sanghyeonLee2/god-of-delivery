@@ -5,7 +5,7 @@ function UserPaymentInfo({userPaymentInfo}) {
     return (
         <div>
             <CommonSectionWrap>
-                {userPaymentInfo.orderType === "Delivery" ? <><Font>배달 주소</Font>
+                {userPaymentInfo?.orderType === "Delivery" ? <><Font>배달 주소</Font>
                     <Font size={"small"} color={"gray"}>
                         {userPaymentInfo?.addressSnapshot}
                     </Font>

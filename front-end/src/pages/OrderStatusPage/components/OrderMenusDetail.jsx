@@ -4,7 +4,7 @@ import {CommonSectionWrap, DividingLine, Font} from "../../../assets/styles/Comm
 function OrderMenusDetail({menus}) {
     return (
         <div>
-            {menus.map((menu) => {
+            {menus?.map((menu) => {
                     const totalMenuPrice = menu.menuPriceSnapshot + menu.orderItemOptions.reduce((optionAcc, option) => optionAcc + option.optionPriceSnapshot, 0);
                     return (<div key={menu.orderItemId}>
                         <CommonSectionWrap>
