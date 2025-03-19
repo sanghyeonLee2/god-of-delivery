@@ -4,7 +4,6 @@ const {postSignUp, postSignIn, getRefreshReissued} = require("../controllers/aut
 const {middleVerifyToken} = require("../middlewares/auth.middleware");
 
 router.post('/sign-up', postSignUp);
-// router.get('/sign-up/check-id/:id', getCheckId)
 router.post('/sign-in', postSignIn);
 router.post('/sign-in/reissue', getRefreshReissued);
 
