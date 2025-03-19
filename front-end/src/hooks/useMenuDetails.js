@@ -1,15 +1,14 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {authPostApi, authPutApi, getApi} from "../apis/api/user";
+import {authPostApi, authPutApi, getApi} from "../api/user";
 import {useForm} from "react-hook-form";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {useNavigate} from "react-router-dom";
+import {QUERY_KEYS} from "../constants/queryKeys";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../recoil/flag/atoms";
 import {setMenuOptions} from "../utils/defaultValues";
-import {API_URLS} from "../apis/constants/urls";
+import {API_URLS} from "../constants/urls";
+import {showSuccess} from "../utils/toasts";
 
 export const useMenuDetails = (menuAPi) => {
-    const navigate = useNavigate()
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
     const queryClient = useQueryClient();
     const cachedData = queryClient.getQueryData([QUERY_KEYS.MENU_DETAILS, menuAPi]);
@@ -45,26 +44,24 @@ export const useMenuDetails = (menuAPi) => {
     const {mutate: handlePostCart, isLoading: isCartPosting} = useMutation(
         (data) => authPostApi("cart", data), {
             onSuccess: () => {
-                if (window.confirm("장바구니에 담겼습니다. 이동 하시겠습니까?")) {
-                    setIsModalOpen({modalType: "", flag: false, modalData: null})
-                    navigate("/cart")
-                }
+                showSuccess("장바구니에 담았습니다")
+                setIsModalOpen({modalType: "", flag: false, modalData: null})
             }
         });
 
 
-    const {mutate: handleUpdateCart, isLoading: isUpdateCart} = useMutation(
+    const {mutate: handleUpdateCart, isLoading: isUpdatingCart} = useMutation(
         (data) => authPutApi(menuAPi, data), {
             onSuccess: async () => {
                 await queryClient.invalidateQueries([QUERY_KEYS.MENU_DETAILS, API_URLS.GET_CART])
                 setIsModalOpen({modalType: "", flag: false, modalData: null})
-                alert("장바구니가 수정되었습니다.")
+                showSuccess("수정 되었습니다")
             }
         });
 
     return {
         query: {menuData: data?.data, isError, status, isLoading},
-        mutate: {handlePostCart, isCartPosting, handleUpdateCart, isUpdateCart},
+        mutate: {handlePostCart, isCartPosting, handleUpdateCart, isUpdatingCart},
         form: {control, register, getValues, setValue, watch, handleSubmit}
     };
 }
