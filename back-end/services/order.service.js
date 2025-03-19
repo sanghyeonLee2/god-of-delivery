@@ -1,4 +1,4 @@
-const {Store,Order, OrderItem, OrderItemOption, Cart, CartItem, CartItemOption, Menu, MenuOption} = require('../models')
+const {Store, Order, OrderItem, OrderItemOption, Review, Menu, MenuOption} = require('../models')
 const CartService = require('./cart.service');
 const UserService = require('./user.service');
 const {Op, Sequelize} = require('sequelize');
@@ -9,11 +9,12 @@ exports.createOrder = async({userId, body},) => {
         paymentMethod: body.paymentMethod,
         totalPrice: 0, // 초기 0, 나중에 합산
         requests: body.requests,
-        status: body.status,
         addressSnapshot: body.address,
         type: body.orderType,
         userId,
-        storeId: cartData.storeId
+        storeId: cartData.storeId,
+        detailAddress: body.detailAddress,
+        contact: body.contact,
     })
 
     let orderTotal = 0
