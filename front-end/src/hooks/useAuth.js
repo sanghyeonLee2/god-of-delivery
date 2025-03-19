@@ -1,14 +1,14 @@
 import {useQuery} from "react-query";
-import {authGetApi} from "../apis/api/user";
-import {API_URLS} from "../apis/constants/urls";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
+import {authGetApi} from "../api/user";
+import {API_URLS} from "../constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
 import {useSetRecoilState} from "recoil";
 import {userInfoState} from "../recoil/user/atoms";
 
 export const useAuth = () => {
     const setUserInfo = useSetRecoilState(userInfoState)
     const accessToken = localStorage.getItem("access-token");
-    const {isLoading} = useQuery(
+    return useQuery(
         [QUERY_KEYS.ME, API_URLS.GET_ME],  // 쿼리 키를 고유하게 만들기 위해 url 포함
         () => authGetApi(API_URLS.GET_ME),
         {
@@ -21,7 +21,7 @@ export const useAuth = () => {
             retry: false,
         }
     );
-    return isLoading;
+
 }
 
 export default useAuth

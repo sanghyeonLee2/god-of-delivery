@@ -1,10 +1,11 @@
 import React from 'react';
-import {CommonBorder, CommonPageHeader, FlexOnly, Font, StoreLogo} from "../../../assets/styles/CommonStyle";
+import {CommonBorder, CommonPageHeader, FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import {omittedDate} from "../../../utils/transducer";
 import {MainBtn, SubBtn} from "components/common/Button/main/MainButton";
 import {useNavigate} from "react-router-dom";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
+import Image from "components/common/Image/Image";
 
 function OrderList({orders}) {
     const navigate = useNavigate()
@@ -26,10 +27,8 @@ function OrderList({orders}) {
                         <MainBtn text={"주문상세"} width={"65px"} onClick={() => navigate(`/orders/${order.orderId}`)}/>
                     </CommonPageHeader>
                     <FlexOnly>
-                        <StoreLogo onClick={() => navigate(`/stores/${order.storeId}`)}>
-                            {order?.storeImg}
-                        </StoreLogo>
-                        <div>
+                        <Image src={order?.imgUrl} width={95} height={95}/>
+                        <div style={{marginLeft: "20px"}}>
                             <Font size={"large"} onClick={() => navigate(`/stores/${order.storeId}`)}>
                                 {order.storeName}
                             </Font>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {useReviewForm} from "../../../hooks/useReviewForm";
-import Input from "components/common/Input/Input";
 import OwnerReview from "components/common/Review/components/OwnerReview";
 import ReviewUpdateMode from "components/common/Review/components/ReviewUpdateMode";
 import {MainBtn} from "components/common/Button/main/MainButton";
@@ -8,15 +7,14 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import ReviewMain from "components/common/Review/components/ReviewMain";
 import Textarea from "components/common/TextArea/TextArea";
+import FileInput from "components/common/Input/FileInput";
 
 function Review({review}) {
     const {
         updateMode,
         isMyReview,
         deleteReview,
-        isDeleting,
         updateReview,
-        isUpdating,
         handleRatingChange,
         cancelUpdateMode,
         setUpdateMode,
@@ -41,7 +39,7 @@ function Review({review}) {
                         cancelUpdateMode={cancelUpdateMode}
                         setUpdateMode={setUpdateMode}
                         deleteReview={deleteReview}>
-                        <Input type={"file"} register={register("img")}/>
+                        <FileInput type={"file"} name={"img"} register={register}/>
                         <Textarea {...register("content")} defaultValue={review?.content}/>
                     </ReviewUpdateMode>
                 }

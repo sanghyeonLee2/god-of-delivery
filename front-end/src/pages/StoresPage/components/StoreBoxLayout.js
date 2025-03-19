@@ -14,12 +14,13 @@ export const StoreOuter = styled.li`
     position: relative;
 `
 
-export const StoreLogo = styled.div`
-    background-color: brown;
-    ${elementSize("95px", "95px")}`
-
 export const StoreInfoWrap = styled.div`
     padding: 8px 20px;
+
+    svg {
+        color: #FFD700;
+        margin-bottom: 4px;
+    }
 `
 export const AverageTimeWrap = styled.div`
     position: absolute;

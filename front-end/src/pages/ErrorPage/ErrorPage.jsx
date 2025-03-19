@@ -1,14 +1,20 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {MainBtn} from "components/common/Button/main/MainButton";
+import {ErrorPageWrap, Font} from "../../assets/styles/CommonStyle";
+import {useError} from "../../hooks/useError";
 
 const ErrorPage = () => {
-    const navigate = useNavigate();
+    const {errorData, navigateHome} = useError()
+
     return (
-        <div style={{textAlign: "center", marginTop: "50px"}}>
-            <h1>⚠ 오류 발생</h1>
-            <p>요청을 처리하는 중 문제가 발생했습니다.</p>
-            <button onClick={() => navigate("/")}>홈으로 돌아가기</button>
-        </div>
+        <ErrorPageWrap>
+            <div>
+                <h1>⚠ 오류 발생</h1>
+                <h2>{errorData.status} 에러</h2>
+                <Font>{errorData.message}</Font>
+                <MainBtn text={"홈 화면으로 돌아가기"} onClick={navigateHome}/>
+            </div>
+        </ErrorPageWrap>
     );
 };
 

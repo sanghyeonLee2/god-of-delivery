@@ -6,6 +6,7 @@ import Textarea from "components/common/TextArea/TextArea";
 import {ModalContentWrap, ModalTitleDescriptionWrap} from "components/modal/ModalLayout";
 import {ModalReviewForm} from "components/modal/CreateReview/CreateReviewLayout";
 import {Font} from "../../../assets/styles/CommonStyle";
+import FileInput from "components/common/Input/FileInput";
 
 function CreateReview({modalData}) {
     const {form, mutation} =
@@ -28,11 +29,11 @@ function CreateReview({modalData}) {
                         starDimension="30px"
                         starSpacing="5px"
                     />
-                    <input type={"file"} {...form.register("img")} />
+                    <FileInput name={"img"} register={form.register}/>
                     <Textarea {...form.register("content")} placeholder={"리뷰를 작성해보세요"} style={{width: "80%"}}/>
                 </ModalReviewForm>
             </ModalContentWrap>
-            <ModalBtn text={"등록"} onClick={
+            <ModalBtn text={"등록"} isLoading={mutation.isCreatingReview} onClick={
                 form.handleSubmit(
                     (data) => mutation.handleCreateReview(data)
                 )}/>

@@ -1,10 +1,11 @@
 import React from 'react';
-import {CommonPageHeader, CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
-import {SubBtn} from "../../components/common/Button/main/MainButton";
+import {CommonPageWrap} from "../../assets/styles/CommonStyle";
+import {SubBtn} from "components/common/Button/main/MainButton";
 import PaymentAmount from "./components/PaymentAmount";
 import {usePayment} from "../../hooks/usePayment";
 import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import PaymentMethods from "./components/PaymentMethods";
+import Title from "components/common/Title/Title";
 
 const paymentMethods = {
     methodsName: "paymentMethod",
@@ -44,9 +45,7 @@ function PaymentPage(props) {
 
     return (
         <CommonPageWrap>
-            <CommonPageHeader>
-                <Font size={"x-large"}>주문하기</Font>
-            </CommonPageHeader>
+            <Title text={"주문하기"} size={"x-large"}/>
             <PaymentMethods control={control} toSelectMethods={paymentMethods} tips={paymentInfo.tips}/>
             <PaymentMethods control={control} toSelectMethods={orderMethods} tips={paymentInfo.tips}/>
             <form onSubmit={handleSubmit}>
@@ -62,7 +61,7 @@ function PaymentPage(props) {
                                   placeholder={"- 를 제외한 휴대전화 번호를 입력해 주세요"}
                                   register={register("contact")}/>
                 <PaymentAmount paymentInfo={paymentInfo}/>
-                <SubBtn text={"결제하기"} type={"submit"} height={"50px"}/>
+                <SubBtn text={"결제하기"} type={"submit"} height={"50px"} isLoading={isOrderPosting}/>
             </form>
         </CommonPageWrap>
     );

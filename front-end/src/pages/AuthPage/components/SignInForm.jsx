@@ -12,7 +12,7 @@ function SignInForm(props) {
             <ErrorMsg>{errors.userId?.message}</ErrorMsg>
             <LabeledTextInput type={"password"} title={"비밀번호"} register={register("userPw")}/>
             <ErrorMsg>{errors.userPw?.message}</ErrorMsg>
-            <SubBtn type={"submit"} text={"로그인"}/>
+            <SubBtn type={"submit"} text={"로그인"} isLoading={isLoggingIn}/>
         </form>
     );
 }

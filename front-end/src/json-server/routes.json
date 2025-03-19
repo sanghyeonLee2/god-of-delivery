@@ -6,7 +6,7 @@
   "/store-put/:storeId": "/store-put/1",
   "/stores/info/:storeId": "/store?storeId=:storeId",
   "/menus/:menuId": "/menu-details",
-  "/cart/item/:cartItemId": "/menu-details",
+  "/cart/item/:cartItemId": "/cart-delete",
   "/users/me/location": "/coords",
   "/users/me/address": "/address",
   "/dibs": "/dib-post",

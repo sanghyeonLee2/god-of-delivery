@@ -13,11 +13,11 @@ export const CategoryListWrap = styled.ul`
 `
 export const CategoryElement = styled.li`
     ${elementSize("7.5%", "100%")};
-    background-color: ${(props) => props.$clicked === props.id && COLORS.BTN.SUB};
+    background-color: ${({$clicked, id}) => $clicked === id && COLORS.BTN.SUB};
     ${flexLayout("center", "center")};
 
     p {
-        color: ${(props) => props.$clicked === props.id && "white"}
+        color: ${({$clicked, id}) => $clicked === id && "white"}
     }
 
     &:hover {

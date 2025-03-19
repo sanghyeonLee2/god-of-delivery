@@ -11,19 +11,16 @@ function OwnerReviewPage(props) {
         reviews,
         totalPages,
         isLoading,
-        queryKeyObj,
         page,
         setPage
     } = useGetReviews("ownerReviews");
     if (isLoading) {
         return <Loading/>;
     }
-
     return (
         <CommonPageWrap>
             <Title text={"사장님 리뷰 관리"} size={"x-large"}/>
-            {reviews.map((review) => <Review key={review.reviewId} review={review} queryKeyObj={queryKeyObj}
-                                             isOwner={true}/>)}
+            {reviews.map((review) => <Review key={review.reviewId} review={review} isOwner={true}/>)}
             <Pagination totalPages={totalPages} page={page} setPage={setPage}/>
         </CommonPageWrap>
     );

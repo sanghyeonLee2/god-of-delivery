@@ -1,9 +1,10 @@
-import {keywordIncludedUrl} from "../../utils/transducer";
+import {keywordIncludedUrl} from "../utils/transducer";
 
 export const API_URLS = {
     GET_CART: "cart",
     SIGN_IN: "auth/sign-in",
     SIGN_UP: "auth/sign-up",
+    REISSUE: "auth/reissue",
     DIB: (storeId) => `dibs/${storeId}`,
     GET_ME: "me",
     POST_ADDRESS: "users/me/address",

@@ -1,34 +1,31 @@
 import React from 'react';
-import {ReviewWrap, StoreHeaderWrap} from "./StoreHeaderLayout";
+import * as S from "./StoreHeaderLayout";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import {Font} from "../../../assets/styles/CommonStyle";
 import {useDibs} from "../../../hooks/useDibs";
 import IconBtn from "../../../components/common/Button/icon/IconBtn";
-import favoriteFill from "../../../assets/img/favorite_fill.png";
-import favorite from "../../../assets/img/favorite.png";
+import {MdFavorite, MdFavoriteBorder} from "react-icons/md";
 
 function StoreHeader({storeHeader, storeId}) {
-    const {handleToggleDib, isLoading} = useDibs()
+    const handleToggleDib = useDibs()
     return (
-        <StoreHeaderWrap>
+        <S.StoreHeaderWrap>
             <Font size={"x-large"}>{storeHeader?.storeName}</Font>
             <div>
                 <StarRatings rating={storeHeader?.rating} starRatedColor={"gold"} starDimension={"30px"}/>
                 &nbsp;&nbsp;
                 <span>{storeHeader?.rating.toFixed(1)}</span>
             </div>
-            <ReviewWrap>
-                <IconBtn
-                    src={storeHeader?.isDib ? favoriteFill : favorite}
-                    alt={storeHeader?.isDib ? "찜한 상태" : "찜 안한 상태"}
-                    width={19}
-                    onClick={() => handleToggleDib({storeId, isDib: storeHeader?.isDib})}
-                />
+            <S.ReviewWrap>
+                <IconBtn onClick={() => handleToggleDib.mutate({storeId, isDib: storeHeader?.isDib})}>
+                    {storeHeader?.isDib ? <MdFavorite size={19} color={"red"}/> :
+                        <MdFavoriteBorder size={19} color={"red"}/>}
+                </IconBtn>
                 &nbsp;<Font>{storeHeader?.dibs}</Font>&nbsp;|&nbsp;
                 <Font>리뷰 수 {storeHeader?.reviewCnt}</Font>&nbsp;|&nbsp;
                 <Font>사장님 댓글 수 {storeHeader?.ownerReviewCnt}</Font>
-            </ReviewWrap>
-        </StoreHeaderWrap>
+            </S.ReviewWrap>
+        </S.StoreHeaderWrap>
     );
 }
 

@@ -1,9 +1,9 @@
 import {useQuery} from "react-query";
-import {getApi} from "../apis/api/user";
+import {getApi} from "../api/user";
 import {useState} from "react";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
+import {QUERY_KEYS} from "../constants/queryKeys";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {API_URLS} from "../apis/constants/urls";
+import {API_URLS} from "../constants/urls";
 
 export const useGetReviews = (reviewType) => {
     const [storeReviewsCurrentPage, setStoreReviewsCurrentPage] = useState(1)

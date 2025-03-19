@@ -2,6 +2,8 @@ import React from 'react';
 import {FlexOnly, Font} from "../../../../assets/styles/CommonStyle";
 import {omittedDate} from "../../../../utils/transducer";
 import StarRatings from "react-star-ratings/build/star-ratings";
+import Image from "components/common/Image/Image";
+import {ReviewImgWrap} from "components/common/Review/ReviewLayout";
 
 function ReviewMain({review, watch, updateMode, handleRatingChange}) {
     return (
@@ -17,7 +19,11 @@ function ReviewMain({review, watch, updateMode, handleRatingChange}) {
                          changeRating={updateMode ? handleRatingChange : undefined}
                          starDimension={updateMode ? "30px" : "20px"}
                          starSpacing={"2px"}/>
-            {(review?.img && !updateMode) && <div style={{height: "150px", marginTop: "5px"}}/>}
+            {(review?.img && !updateMode) &&
+                <ReviewImgWrap>
+                    <Image src={review.img} height={150} width={150}/>
+                </ReviewImgWrap>
+            }
             <Font size={"small"}>{review.content}</Font>
         </>
     );

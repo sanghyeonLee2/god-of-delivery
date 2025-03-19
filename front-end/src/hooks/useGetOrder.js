@@ -1,7 +1,7 @@
 import {useQuery} from "react-query";
-import {authGetApi} from "../apis/api/user";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {API_URLS} from "../apis/constants/urls";
+import {authGetApi} from "../api/user";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {API_URLS} from "../constants/urls";
 import {useNavigate, useParams} from "react-router-dom";
 
 

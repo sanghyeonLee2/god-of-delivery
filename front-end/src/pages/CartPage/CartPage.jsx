@@ -1,5 +1,5 @@
 import React from 'react';
-import {CartHeader, MenuAddBtnWrap, MinStoreInfoWrap} from "./CartLayout";
+import * as S from "./CartLayout";
 import {CommonPageWrap, Font} from "../../assets/styles/CommonStyle";
 import {SubBtn, TransBtn} from "components/common/Button/main/MainButton";
 import {OrderBtnWrap} from "components/common/Button/main/MainButtonLayout";
@@ -14,33 +14,31 @@ function CartPage(props) {
         cartData,
         isLoading,
         handleDeleteCartItem,
-        isCartItemDeleting,
         handleSubmit
-    } = useCart()
+    } = useCart();
     const navigate = useNavigate();
-    if (isLoading) {
-        return <Loading/>;
-    }
+
     return (
-        <CommonPageWrap>
-            <CartHeader>
-                <MinStoreInfoWrap>
-                    <Font size={"x-large"}>{cartData?.store.storeName}</Font>
-                    <Font size={"small"} color={"gray"}>{cartData?.store.deliveryTime} 후 도착예정</Font>
-                </MinStoreInfoWrap>
-            </CartHeader>
+        <CommonPageWrap style={{minHeight: "calc(100vh - 200px)"}}> {/* ✅ CLS 방지 */}
+            {isLoading && <Loading/>}
+            <S.CartHeader>
+                <S.MinStoreInfoWrap>
+                    <Font size={"x-large"}>{cartData?.store?.storeName}</Font>
+                    <Font size={"small"} color={"gray"}>{cartData?.store?.deliveryTime} 후 도착예정</Font>
+                </S.MinStoreInfoWrap>
+            </S.CartHeader>
             <form onSubmit={handleSubmit}>
                 <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.cartItems}/>
-                <MenuAddBtnWrap>
+                <S.MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
-                </MenuAddBtnWrap>
-                <CartPayment tips={cartData.store.tips}
-                             totalCartMenuPrice={cartData.totalCartMenuPrice}/>
+                </S.MenuAddBtnWrap>
+                <CartPayment tips={cartData?.store?.tips} totalCartMenuPrice={cartData?.totalCartMenuPrice}/>
                 <OrderBtnWrap>
                     <SubBtn type={"submit"} text={"결제하기"}/>
                 </OrderBtnWrap>
             </form>
-        </CommonPageWrap>);
+        </CommonPageWrap>
+    );
 }
 
 export default CartPage;

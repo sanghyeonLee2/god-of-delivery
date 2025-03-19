@@ -2,7 +2,7 @@ import {createGlobalStyle} from "styled-components";
 import {COLORS} from "./colors";
 import {innerPadding} from "./CommonStyle";
 
-const HOVER_COLOR = "#F5F5F5"
+/*const HOVER_COLOR = "#F5F5F5"*/
 const FONT_FAMILY = "LINESeedKR"
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -79,4 +79,6 @@ export const GlobalStyle = createGlobalStyle`
         position: relative;
         flex-grow: 1;
     }
+
+
 `

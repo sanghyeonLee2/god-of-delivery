@@ -1,11 +1,14 @@
 import {useForm} from "react-hook-form";
 import {useMutation, useQuery} from "react-query";
-import {authGetApi, authPutApi} from "../apis/api/user";
-import {API_URLS} from "../apis/constants/urls";
+import {authGetApi, authPutApi} from "../api/user";
+import {API_URLS} from "../constants/urls";
 import {useRecoilValue} from "recoil";
 import {userInfoState} from "../recoil/user/atoms";
+import {showSuccess} from "../utils/toasts";
+import {useNavigate} from "react-router-dom";
 
 export const useOwnerStore = () => {
+    const navigate = useNavigate();
     const {userId} = useRecoilValue(userInfoState)
     const {data, isLoading} = useQuery(
         [API_URLS.GET_OWNER_STORE, userId],
@@ -23,7 +26,8 @@ export const useOwnerStore = () => {
         () => authPutApi(API_URLS.PUT_OWNER_STORE, getValues()),
         {
             onSuccess: () => {
-                alert("가게 정보를 수정했습니다.");
+                showSuccess("가게 정보를 수정했습니다")
+                navigate("/owners/me")
             }
         }
     );

@@ -14,12 +14,13 @@ function StoreManagement(props) {
     if (isLoading) {
         return <Loading/>
     }
-    console.log(storeData)
     return (
         <CommonPageWrap>
             <Title text={"가게 정보 관리"} size={"x-large"}/>
             <form onSubmit={handleSubmit}>
                 <Font size={"large"}>배달 정보</Font>
+                <LabeledTextInput title={"가게 이미지"} type={"file"} defaultValue={storeData?.imgUrl}
+                                  register={register("imgUrl")}/>
                 <LabeledTextInput title={"최소 주문 금액"} type={"number"} defaultValue={storeData?.deliveryMinPrice}
                                   register={register("deliveryMinPrice")}/>
                 <LabeledTextInput title={"팁"} type={"number"} defaultValue={storeData?.deliveryTip}
@@ -45,7 +46,7 @@ function StoreManagement(props) {
                 <LabeledTextInput title={"연락처"} defaultValue={storeData?.contact} register={register("contact")}/>
                 <LabeledTextInput title={"휴무일"} defaultValue={storeData?.dayOff} register={register("dayOff")}/>
                 <LabeledTextInput title={"운영시간"} defaultValue={storeData?.hours} register={register("hours")}/>
-                <SubBtn text={"수정"} height={"50px"}/>
+                <SubBtn text={"수정"} height={"50px"} isLoading={isUpdating}/>
             </form>
         </CommonPageWrap>
     );

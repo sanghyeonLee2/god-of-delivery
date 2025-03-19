@@ -1,21 +1,22 @@
 import React from 'react';
-import {InfoBox, MenuInfoWrap, MenuPicture} from "./StoreMenuLayout";
+import * as S from "./StoreMenuLayout";
 import {DividingLine, Font, VerticalSpace} from "../../../assets/styles/CommonStyle";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import Title from "../../../components/common/Title/Title";
 import {TabWrap} from "../StorePageLayout";
-import {API_URLS} from "../../../apis/constants/urls";
+import {API_URLS} from "../../../constants/urls";
+import Image from "components/common/Image/Image";
 
 function StoreMenu({notice, menuInfo}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
         <TabWrap style={{paddingTop: "10px"}}>
-            <InfoBox>
+            <S.InfoBox>
                 <Font>{notice}</Font>
-            </InfoBox>
+            </S.InfoBox>
             <ul>
-                {menuInfo.map((menuInfoItem) =>
+                {menuInfo?.map((menuInfoItem) =>
                     <li key={menuInfoItem.title}>
                         <Title size={"x-large"} text={menuInfoItem.title}/>
                         {menuInfoItem.menus?.map((menu) =>
@@ -27,7 +28,7 @@ function StoreMenu({notice, menuInfo}) {
                                     }
                                 )
                             }}>
-                                <MenuInfoWrap>
+                                <S.MenuInfoWrap>
                                     <div>
                                         <Font size={"large"}>
                                             {menu?.name}
@@ -39,8 +40,8 @@ function StoreMenu({notice, menuInfo}) {
                                             {menu?.price.toLocaleString()}원
                                         </Font>
                                     </div>
-                                    <MenuPicture/>
-                                </MenuInfoWrap>
+                                    <Image src={menu?.imgUrl} width={140} height={140}/>
+                                </S.MenuInfoWrap>
                                 <DividingLine/>
                             </div>
                         )}

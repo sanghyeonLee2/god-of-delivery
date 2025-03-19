@@ -1,11 +1,13 @@
 import React from 'react';
 import PaginationBtn from "./components/PaginationBtn";
 import IconBtn from "../Button/icon/IconBtn";
-import arrowLeft from "../../../assets/img/arrow_left.png"
-import arrowRight from "../../../assets/img/arrow_right.png"
-import arrowDoubleLeft from "../../../assets/img/double_arrow_left.png"
-import arrowDoubleRight from "../../../assets/img/double_arrow_right.png"
 import {PaginationInner, PaginationWrap} from "components/common/Pagination/PaginationLayout";
+import {
+    MdKeyboardArrowLeft,
+    MdKeyboardArrowRight,
+    MdKeyboardDoubleArrowLeft,
+    MdKeyboardDoubleArrowRight
+} from "react-icons/md";
 
 const PAGE_BTN_LIMIT = 5;
 
@@ -16,17 +18,22 @@ function Pagination({page, totalPages, setPage}) {
     return (
         <PaginationWrap>
             <PaginationInner>
-                <IconBtn src={arrowDoubleLeft} isDisable={page === 1} alt={arrowDoubleLeft} width={22}
-                         onClick={() => setPage(1)}/>
-                <IconBtn src={arrowLeft} isDisable={page === 1} alt={arrowLeft} width={22}
-                         onClick={() => setPage(page - 1)}/>
+                <IconBtn isDisable={page === 1} onClick={() => setPage(1)}>
+                    <MdKeyboardDoubleArrowLeft size={22}/>
+                </IconBtn>
+                <IconBtn isDisable={page === 1} onClick={() => setPage(page - 1)}>
+                    <MdKeyboardArrowLeft size={22}/>
+                </IconBtn>
                 {allPages.map((seletedpage) => <PaginationBtn key={seletedpage} page={seletedpage}
                                                               clicked={seletedpage === page}
                                                               onClick={() => setPage(seletedpage)}/>)}
-                <IconBtn src={arrowRight} isDisable={page === totalPages} alt={arrowRight} width={22}
-                         onClick={() => setPage(page + 1)}/>
-                <IconBtn src={arrowDoubleRight} isDisable={endPage === totalPages} alt={arrowDoubleRight}
-                         onClick={() => setPage(totalPages)} width={22}/>
+
+                <IconBtn isDisable={page === totalPages} onClick={() => setPage(page + 1)}>
+                    <MdKeyboardArrowRight size={22}/>
+                </IconBtn>
+                <IconBtn isDisable={endPage === totalPages} onClick={() => setPage(totalPages)}>
+                    <MdKeyboardDoubleArrowRight size={22}/>
+                </IconBtn>
             </PaginationInner>
         </PaginationWrap>
     );

@@ -1,8 +1,8 @@
 import {useQuery} from "react-query";
-import {getApi} from "../apis/api/user";
+import {getApi} from "../api/user";
 import {useParams} from "react-router-dom";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {API_URLS} from "../apis/constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {API_URLS} from "../constants/urls";
 
 export const useGetStore = () => { // 가게 정보 불러오는 커스텀훅을 만들고 주소 설정했을때 queryClient 뭐 삭제해서 다시 받아오게
     const {storeId} = useParams();
