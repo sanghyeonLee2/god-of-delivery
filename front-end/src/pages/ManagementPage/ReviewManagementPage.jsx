@@ -14,16 +14,15 @@ function ReviewManagementPage(props) {
         page,
         setPage
     } = useGetReviews("myReviews");
-    if (isLoading) {
-        return <Loading/>;
-    }
-
     return (
-        <CommonPageWrap>
-            <Title text={"리뷰 관리"} size={"x-large"}/>
-            {reviews.map((review) => <Review key={review.reviewId} review={review}/>)}
-            <Pagination totalPages={totalPages} page={page} setPage={setPage}/>
-        </CommonPageWrap>
+        <>
+            {isLoading && <Loading/>}
+            <CommonPageWrap>
+                <Title text={"리뷰 관리"} size={"x-large"}/>
+                {reviews?.map((review) => <Review key={review.reviewId} review={review}/>)}
+                <Pagination totalPages={totalPages} page={page} setPage={setPage}/>
+            </CommonPageWrap>
+        </>
     );
 }
 
