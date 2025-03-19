@@ -123,3 +123,16 @@ exports.findStoreInfo = async ({storeId},{userId}) => {
         menuInfo: menuData,
     }
 }
+
+exports.updateDibCnt = async (storeId, isPlus) => {
+    if(isPlus){
+        const plusDib = await Store.increment('dibs',{where:{storeId}})
+        return (plusDib)
+    }
+    else{
+        const minusDib = await Store.decrement('dibs',{where:{storeId}})
+        return (minusDib)
+    }
+}
+
+
