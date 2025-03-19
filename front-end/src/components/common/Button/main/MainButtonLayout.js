@@ -4,7 +4,7 @@ import {COLORS} from "../../../../assets/styles/colors";
 
 export const MainButtonWrap = styled.button`
     height: 40px;
-    width: ${({$width}) => $width};
+    width: ${({$width}) => $width || "100%"};
     background-color: white;
     border: 1px solid ${COLORS.BTN.MAIN};
     border-radius: 4px;
@@ -19,11 +19,15 @@ export const ModalButtonWrap = styled.button`
 `
 
 export const SubButtonWrap = styled.button`
-    ${elementSize("100%", "100%")};
-    height: ${({height}) => height};
+    width: 100%;
+    opacity: ${({$isLoading}) => ($isLoading ? "0.9" : "1")};
+    cursor: ${({$isLoading}) => $isLoading ? "not-allowed" : "pointer"};
+    position: relative;
+    height: ${({$height}) => $height || "40px"};
     background-color: ${COLORS.BTN.SUB};
     border-radius: 4px;
-`
+`;
+
 
 export const TransButtonWrap = styled.button`
     ${elementSize("100%", "100%")}

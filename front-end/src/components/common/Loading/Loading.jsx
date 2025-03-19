@@ -1,14 +1,11 @@
 import React from 'react';
 import {LoadingWrapper} from "./LoadingLayout";
-import spinner from "../../../assets/img/spinner.gif"
+import {ReactComponent as Spinner} from "../../../assets/img/Rolling@1x-1.0s-200px-200px_blue.svg";
 
 function Loading(props) {
     return (
         <LoadingWrapper>
-            <div>
-                <img src={spinner} alt={"로딩"} width={100}/>
-                <p>로딩 중 입니다</p>
-            </div>
+            <Spinner width={35} height={35} className="loading-icon"/>
         </LoadingWrapper>
     );
 }

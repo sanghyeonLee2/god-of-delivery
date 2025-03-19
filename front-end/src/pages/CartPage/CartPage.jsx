@@ -14,19 +14,17 @@ function CartPage(props) {
         cartData,
         isLoading,
         handleDeleteCartItem,
-        isCartItemDeleting,
         handleSubmit
-    } = useCart()
+    } = useCart();
     const navigate = useNavigate();
-    if (isLoading) {
-        return <Loading/>;
-    }
+
     return (
-        <CommonPageWrap>
+        <CommonPageWrap style={{minHeight: "calc(100vh - 200px)"}}> {/* ✅ CLS 방지 */}
+            {isLoading && <Loading/>}
             <S.CartHeader>
                 <S.MinStoreInfoWrap>
-                    <Font size={"x-large"}>{cartData?.store.storeName}</Font>
-                    <Font size={"small"} color={"gray"}>{cartData?.store.deliveryTime} 후 도착예정</Font>
+                    <Font size={"x-large"}>{cartData?.store?.storeName}</Font>
+                    <Font size={"small"} color={"gray"}>{cartData?.store?.deliveryTime} 후 도착예정</Font>
                 </S.MinStoreInfoWrap>
             </S.CartHeader>
             <form onSubmit={handleSubmit}>
@@ -34,13 +32,13 @@ function CartPage(props) {
                 <S.MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
                 </S.MenuAddBtnWrap>
-                <CartPayment tips={cartData.store.tips}
-                             totalCartMenuPrice={cartData.totalCartMenuPrice}/>
+                <CartPayment tips={cartData?.store?.tips} totalCartMenuPrice={cartData?.totalCartMenuPrice}/>
                 <OrderBtnWrap>
                     <SubBtn type={"submit"} text={"결제하기"}/>
                 </OrderBtnWrap>
             </form>
-        </CommonPageWrap>);
+        </CommonPageWrap>
+    );
 }
 
 export default CartPage;

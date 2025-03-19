@@ -3,14 +3,15 @@ import {useRecoilValue} from "recoil";
 import {userInfoState} from "../recoil/user/atoms";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useMutation} from "react-query";
-import {authPostApi} from "../apis/api/user";
-import {API_URLS} from "../apis/constants/urls";
+import {authPostApi} from "../api/user";
+import {API_URLS} from "../constants/urls";
+import {showSuccess} from "../utils/toasts";
 
 export const usePayment = () => {
     const location = useLocation();
     const {address} = useRecoilValue(userInfoState)
     const navigate = useNavigate();
-    const {handleSubmit, control, register, reset, watch, getValues, setValue}
+    const {handleSubmit, control, register}
         = useForm({
         defaultValues:
             {
@@ -26,15 +27,14 @@ export const usePayment = () => {
 
     const {mutate, isLoading: isOrderPosting} = useMutation(
         (data) => authPostApi(API_URLS.POST_ORDERS, data), {
-            onSuccess: () => {
-                const tmpOrderId = 1
-                alert("결제가 완료되었습니다.")
-                navigate(`/orders/${tmpOrderId}`)
+            onSuccess: (res) => {
+                showSuccess("결제가 완료 되었습니다")
+                navigate(`/orders/${res.data?.orderId}`)
             }
         });
 
     return {
-        paymentInfo: location.state.paymentInfo,
+        paymentInfo: location.state?.paymentInfo,
         isOrderPosting,
         handleSubmit: handleSubmit((data) => mutate(data)),
         control,

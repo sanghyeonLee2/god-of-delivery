@@ -33,7 +33,7 @@ function CreateReview({modalData}) {
                     <Textarea {...form.register("content")} placeholder={"리뷰를 작성해보세요"} style={{width: "80%"}}/>
                 </ModalReviewForm>
             </ModalContentWrap>
-            <ModalBtn text={"등록"} onClick={
+            <ModalBtn text={"등록"} isLoading={mutation.isCreatingReview} onClick={
                 form.handleSubmit(
                     (data) => mutation.handleCreateReview(data)
                 )}/>

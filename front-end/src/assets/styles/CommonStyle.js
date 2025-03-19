@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import {elementSize, flexLayout, setBorder} from "./Mixin";
+import {flexLayout, setBorder} from "./Mixin";
 import {COLORS} from "./colors";
 
 
@@ -8,9 +8,9 @@ export const outerPadding = () => css`padding: 15px 25px;`
 export const innerPadding = () => css`padding: 10px 15px`
 
 export const Font = styled.p`
-    color: ${(props) => props.color};
-    font-size: ${(props) => {
-        switch (props.size) {
+    color: ${({color}) => color};
+    font-size: ${({size}) => {
+        switch (size) {
             case "small":
                 return "smaller"
             case "large":
@@ -22,6 +22,22 @@ export const Font = styled.p`
         }
 
     }};`
+
+export const ErrorPageWrap = styled.div`
+    width: 100vw;
+    height: 100vh;
+    ${flexLayout("center", "center")};
+    margin: 0 auto;
+    align-content: center;
+
+    button {
+        cursor: pointer;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+`
 export const SelectTwoTypes = styled.li`
     background-color: ${({$isChecked}) => $isChecked && COLORS.BORDER};
     ${flexLayout("space-between", "center")};
@@ -36,6 +52,7 @@ export const CommonSectionWrap = styled.div`
 `;
 export const ErrorMsg = styled.small`
     color: red`
+
 export const CommonPageHeader = styled.div`
     div:first-child {
         align-items: start;
@@ -67,11 +84,6 @@ export const DividingLine = styled.div`
     background-color: lightgray;
 `
 
-export const StoreLogo = styled.div`
-    margin-right: 20px;
-    background-color: brown;
-    ${elementSize("95px", "95px")}`
-
 export const FixedTextInterval = styled.ul`
     ${({$hasPadding}) => $hasPadding && outerPadding()}
     min-height: 100px;
@@ -92,8 +104,8 @@ export const FlexOnly = styled(({element: Element = 'div', ...props}) => (
 ))`
     display: flex;
     align-items: center;
-    width: ${(props) => props.width || "auto"};
-    justify-content: ${(props) => props.justify || "start"};
+    width: ${({width}) => width || "auto"};
+    justify-content: ${({justify}) => justify || "start"};
 `;
 //기본적으로 전달되는 props가 있음
 
