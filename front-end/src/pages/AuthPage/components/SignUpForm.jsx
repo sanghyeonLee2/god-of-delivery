@@ -16,7 +16,7 @@ function SignUpForm(props) {
             <LabeledTextInput
                 type={"password"} title={"비밀번호 확인"} register={register("pwCheck")}/>
             <ErrorMsg>{errors.pwCheck?.message}</ErrorMsg>
-            <SubBtn type={"submit"} text={"회원가입"}/>
+            <SubBtn type={"submit"} text={"회원가입"} isLoading={isSigningUp}/>
             <div>
                 <Font color={"gray"}>
                     가입한 계정이 있으신가요?
