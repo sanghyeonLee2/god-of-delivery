@@ -52,7 +52,12 @@ export const CommonSectionWrap = styled.div`
 `;
 export const ErrorMsg = styled.small`
     color: red`
-
+export const ColumnFlex = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: ${({$height}) => $height || "auto"}
+`
 export const CommonPageHeader = styled.div`
     div:first-child {
         align-items: start;
@@ -61,7 +66,7 @@ export const CommonPageHeader = styled.div`
 
     ${flexLayout("space-between", "center")};
 `
-export const CommonBorder = styled.li`
+export const CommonBorder = styled.div`
     ${setBorder()};
     ${outerPadding()};
     margin: 10px 0;

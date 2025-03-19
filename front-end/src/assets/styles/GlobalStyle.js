@@ -55,10 +55,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     button {
-        &:hover {
-            filter: brightness(0.95);
-        }
-
         cursor: pointer;
         border: 0;
         padding-block: 0;
