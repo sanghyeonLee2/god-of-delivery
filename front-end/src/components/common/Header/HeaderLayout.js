@@ -18,7 +18,7 @@ export const HeaderOuter = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 100;
 `
 
 export const SearchBoxOuter = styled.div`
