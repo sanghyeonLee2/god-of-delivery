@@ -5,6 +5,6 @@ const {middleVerifyToken} = require("../middlewares/auth.middleware");
 
 router.post('/sign-up', postSignUp);
 router.post('/sign-in', postSignIn);
-router.post('/sign-in/reissue', getRefreshReissued);
+router.post('/reissue', getRefreshReissued);
 
 module.exports = router;
