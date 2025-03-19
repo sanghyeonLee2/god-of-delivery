@@ -6,14 +6,11 @@ exports.findById = async ({userId}) => await User.findOne({
     }
 })
 
-exports.createUser = async ({userId, userPw, role, address, latitude, longitude}) => {
+exports.createUser = async ({userId, userPw, role}) => {
     const newUser = await User.create({
         userId,
         userPw,
         role,
-        address,
-        latitude,
-        longitude,
     })
     return (newUser)
 }
