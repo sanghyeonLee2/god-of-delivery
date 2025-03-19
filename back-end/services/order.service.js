@@ -60,12 +60,29 @@ exports.findOrderByOrderId = async ({orderId}) => {
         {where:{orderId},
             include: [
                 {model: Store,
-                    attributes: ['storeName', 'latitude','longitude']
+                    attributes: ['storeName','deliveryTip'],
                 },
                 {model: OrderItem,
                 include: [{model: OrderItemOption}]}]
         })
-    return (orderData)
+    return ({
+      userPaymentINfo : {
+          orderType: orderData.type,
+          paymentMethod: orderData.paymentMethod,
+          detailAddressSnapshot: orderData.detailAddress,
+          contact: orderData.contact,
+          requests: orderData.requests,
+          addressSnapshot: orderData.addressSnapshot
+      },
+        orderId: orderData.orderId,
+        status: orderData.status,
+        storeId:orderData.storeId,
+        storeName: orderData.Store.storeName,
+        tips: orderData.Store.deliveryTip,
+        userId: orderData.userId,
+        totalPrice: orderData.totalPrice,
+        orderItems : orderData.OrderItems
+    })
 }
 
 exports.findUserOrder = async({userId}, {page}) => {
