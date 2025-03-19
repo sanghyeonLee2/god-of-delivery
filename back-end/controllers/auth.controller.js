@@ -10,20 +10,23 @@ const {Sequelize} = require("sequelize");
  * */
 exports.postSignUp = async (req, res) => {
     try {
-        const pw = req.body.password;
-        const chPw = req.body.pwCheck;
-        if (pw === chPw){
-            const newUser = await createUser(req.body)
-            res.status(201).send({
-                status: 201,
-                message: "회원가입 되셨습니다.",
-                data: newUser
-            })
-        }
-        else{
-            res.status(400).send({
+        const {userPw, pwCheck} = req.body;
+        if (userPw !== pwCheck){
+            return res.status(400).send({
                 status: 400,
                 message:"패스워드와 패스워드 확인이 동일하지 않습니다."
+            })
+        }
+        const newUser = await createUser(req.body)
+        res.status(201).send({
+            status: 201,
+            message: "회원가입 되셨습니다.",
+        })
+    } catch (err) {
+        if(err instanceof Sequelize.UniqueConstraintError){
+            return res.status(400).send({
+                status: 400,
+                message: "이미 존재하는 아이디입니다."
             })
         }
         res.status(500).send({
