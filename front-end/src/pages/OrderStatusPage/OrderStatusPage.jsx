@@ -8,18 +8,17 @@ import {
 } from "../../assets/styles/CommonStyle";
 import Loading from "components/common/Loading/Loading";
 import {useGetOrder} from "../../hooks/useGetOrder";
-import OrderMenusDetail from "pages/OrderPage/components/OrderMenusDetail";
-import OrderAmount from "pages/OrderPage/components/OrderAmount";
-import UserPaymentInfo from "pages/OrderPage/components/UserPaymentInfo";
+import OrderMenusDetail from "pages/OrderStatusPage/components/OrderMenusDetail";
+import OrderAmount from "pages/OrderStatusPage/components/OrderAmount";
+import UserPaymentInfo from "pages/OrderStatusPage/components/UserPaymentInfo";
 import {SubBtn} from "components/common/Button/main/MainButton";
 import {detailDate} from "../../utils/transducer";
 
-function OrderPage(props) {
+function OrderStatusPage(props) {
     const {orderData, navigateOrders, isLoading} = useGetOrder()
     if (isLoading) {
         return <Loading/>
     }
-
     return (
         <CommonPageWrap>
             <CommonPageHeader>
@@ -51,4 +50,4 @@ function OrderPage(props) {
     );
 }
 
-export default OrderPage;
+export default OrderStatusPage;

@@ -1,16 +1,17 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {authDeleteApi, authGetApi} from "../apis/api/user";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {API_URLS} from "../apis/constants/urls";
+import {authDeleteApi, authGetApi} from "../api/user";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {API_URLS} from "../constants/urls";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../recoil/flag/atoms";
 import {useNavigate} from "react-router-dom";
+import {showSuccess} from "../utils/toasts";
 
 export const useCart = () => {
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
     const queryClient = useQueryClient();
     const navigate = useNavigate();
-    const {data, isError, status, isLoading} = useQuery(
+    const {data, isLoading} = useQuery(
         [QUERY_KEYS.CART, API_URLS.GET_CART],
         () => authGetApi(API_URLS.GET_CART),
         {
@@ -25,17 +26,18 @@ export const useCart = () => {
             },
         }
     );
-    const {mutate: handleDeleteCartItem, isLoading: isCartItemDeleting} = useMutation(
+    const {mutate: handleDeleteCartItem} = useMutation(
         (cartItemId) => authDeleteApi(API_URLS.DELETE_CART(cartItemId)), {
             onSuccess: async () => {
                 await queryClient.invalidateQueries([QUERY_KEYS.MENU_DETAILS, API_URLS.GET_CART])
+                showSuccess("장바구니 메뉴가 삭제되었습니다")
                 setIsModalOpen({modalType: "", flag: false, modalData: null})
             }
         });
 
     return {
         cartData: data, isLoading,
-        handleDeleteCartItem, isCartItemDeleting,
+        handleDeleteCartItem,
         handleSubmit: () => {
             navigate("/payment", {
                 state: {

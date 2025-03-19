@@ -5,7 +5,7 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import Title from "../../../components/common/Title/Title";
 import {TabWrap} from "../StorePageLayout";
-import {API_URLS} from "../../../apis/constants/urls";
+import {API_URLS} from "../../../constants/urls";
 import Image from "components/common/Image/Image";
 
 function StoreMenu({notice, menuInfo}) {
@@ -16,7 +16,7 @@ function StoreMenu({notice, menuInfo}) {
                 <Font>{notice}</Font>
             </S.InfoBox>
             <ul>
-                {menuInfo.map((menuInfoItem) =>
+                {menuInfo?.map((menuInfoItem) =>
                     <li key={menuInfoItem.title}>
                         <Title size={"x-large"} text={menuInfoItem.title}/>
                         {menuInfoItem.menus?.map((menu) =>

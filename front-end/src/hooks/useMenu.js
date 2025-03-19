@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import {useMutation, useQuery} from "react-query";
-import {authGetApi, authPatchApi} from "../apis/api/user";
+import {authGetApi, authPatchApi} from "../api/user";
 import {useEffect} from "react";
 
 export const useMenu = (url) => {

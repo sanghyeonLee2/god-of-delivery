@@ -1,5 +1,5 @@
 import * as yup from "yup"
-import {getApi} from "../apis/api/user";
+import {getApi} from "../api/user";
 
 export const signUpValid = yup.object({
     userId: yup.string()

@@ -12,13 +12,12 @@ import {TAB_CONTENTS} from "../../assets/data/tabData";
 import useGetStore from "../../hooks/useGetStore";
 
 function StorePage(props) {
-    const {currentItem, setCurrentItem} = useTab(0, TAB_CONTENTS.STORE)
-    const {storeData, isLoading} = useGetStore()
-    if (isLoading) {
-        return <Loading/>
-    }
+    const {currentItem, setCurrentItem} = useTab(0, TAB_CONTENTS.STORE);
+    const {storeData, isLoading} = useGetStore();
+
     return (
         <StoreOuter>
+            {isLoading && (<Loading/>)}
             <StoreHeader storeHeader={storeData?.storeHeader} storeId={storeData?.storeId}/>
             <StoreOrderInfo address={storeData?.storeInfo.businessAddress}
                             deliveryInfo={storeData?.orderMethod.delivery}
@@ -38,5 +37,6 @@ function StorePage(props) {
         </StoreOuter>
     );
 }
+
 
 export default StorePage;

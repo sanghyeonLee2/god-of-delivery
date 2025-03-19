@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -6,13 +6,13 @@ import SignUpPage from "./pages/AuthPage/SignUpPage";
 import SignInPage from "./pages/AuthPage/SIgnInPage";
 import HomePage from "./pages/HomePage/HomePage";
 import StoresPage from "./pages/StoresPage/StoresPage";
-import {QueryClient, QueryClientProvider} from "react-query"
+import {QueryClientProvider} from "react-query"
 import {RecoilRoot} from "recoil";
 import Loading from "./components/common/Loading/Loading";
 import StorePage from "./pages/StorePage/StorePage";
 import CartPage from "./pages/CartPage/CartPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
-import OrderPage from "pages/OrderPage/OrderPage";
+import OrderStatusPage from "pages/OrderStatusPage/OrderStatusPage";
 import OrdersPage from "pages/ManagementPage/OrdersPage";
 import OwnerPage from "pages/OwnerPage/OwnerPage";
 import StoreManagement from "pages/OwnerPage/components/StoreManagement";
@@ -20,8 +20,9 @@ import MenuManagement from "pages/OwnerPage/components/MenuManagement";
 import ErrorPage from "pages/ErrorPage/ErrorPage";
 import OwnerReviewPage from "pages/OwnerPage/OwnerReviewPage";
 import ReviewManagementPage from "pages/ManagementPage/ReviewManagementPage";
+import customQueryClient from "./react-query/queryClient";
+import {ToastContainer} from "react-toastify";
 
-const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
     path: "/",
@@ -30,7 +31,6 @@ const router = createBrowserRouter([{
         {
             path: "",
             element: <HomePage/>
-
         },
         {
             path: "sign-up",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "orders/:orderId",
-            element: <OrderPage/>
+            element: <OrderStatusPage/>
         },
         {
             path: "users/me/orders",
@@ -85,20 +85,18 @@ const router = createBrowserRouter([{
             path: "owners/me/menus",
             element: <MenuManagement/>
         },
-        {
-            path: "error",
-            element: <ErrorPage/>
-        },
     ]
-}])
+}, {
+    path: "*",
+    element: <ErrorPage/>
+},])
 
 root.render(
     <React.StrictMode>
         <RecoilRoot>
-            <QueryClientProvider client={queryClient}>
-                <Suspense fallback={<Loading/>}>
-                    <RouterProvider router={router}/>
-                </Suspense>
+            <QueryClientProvider client={customQueryClient}>
+                <RouterProvider router={router}/>
+                <ToastContainer/>
             </QueryClientProvider>
         </RecoilRoot>
     </React.StrictMode>

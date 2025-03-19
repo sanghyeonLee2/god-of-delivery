@@ -18,6 +18,7 @@ function MenuDetailModal({modalType, api}) {
     return (
         <>
             <ModalContentWrap $modalType={modalType}>
+                {query.isLoading && <Loading/>}
                 <MenuDetailProlog imgUrl={query.menuData?.imgUrl} name={query.menuData?.name}
                                   description={query.menuData?.description}/>
                 <S.MenuDetailTextWrap>
@@ -43,11 +44,12 @@ function MenuDetailModal({modalType, api}) {
                             watch={form.watch}/>
             </ModalContentWrap>
             {modalType === "메뉴상세" &&
-                <ModalBtn text={"장바구니에 담기"}
+                <ModalBtn isLoading={mutate.isCartPosting} text={"장바구니에 담기"}
                           onClick={form.handleSubmit((data) => mutate.handlePostCart(data))}/>
             }
             {modalType === "메뉴수정" &&
                 <ModalBtn text={"수정하기"}
+                          isLoading={mutate.isUpdatingCart}
                           onClick={form.handleSubmit((data) => mutate.handleUpdateCart(data))}/>
             }
         </>

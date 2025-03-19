@@ -4,7 +4,7 @@ import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../../../recoil/flag/atoms";
 import {FlexOnly, Font} from "../../../assets/styles/CommonStyle";
 import {MainBtn} from "components/common/Button/main/MainButton";
-import {API_URLS} from "../../../apis/constants/urls";
+import {API_URLS} from "../../../constants/urls";
 import Image from "components/common/Image/Image";
 
 function CartMenus({cartItems, handleDeleteCartItem}) {

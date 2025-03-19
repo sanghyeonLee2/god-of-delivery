@@ -8,7 +8,8 @@ function StoreSearchForm() {
     const {setKeyword, searchForm} = useGetStores(false)
     return (
         <SearchInputForm onSubmit={searchForm.handleSubmit((data) => setKeyword(data.keyword))}>
-            <Input type={"text"} register={searchForm.register("keyword")} placeholder={"음식점을 검색해 보세요"}/>
+            <Input type={"text"} defaultValue={searchForm.urlKeyword}
+                   register={searchForm.register("keyword")} placeholder={"음식점을 검색해 보세요"}/>
             <SubBtn type={"submit"} text={"검색"}/>
         </SearchInputForm>
     );

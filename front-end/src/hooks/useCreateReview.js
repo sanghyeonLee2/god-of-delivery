@@ -1,10 +1,11 @@
 import {useForm} from "react-hook-form";
 import {useMutation, useQueryClient} from "react-query";
-import {authPostApi} from "../apis/api/user";
-import {API_URLS} from "../apis/constants/urls";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
+import {authPostApi} from "../api/user";
+import {API_URLS} from "../constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
 import {useSetRecoilState} from "recoil";
 import {isModalOpenState} from "../recoil/flag/atoms";
+import {showSuccess} from "../utils/toasts";
 
 export const useCreateReview = ({orderId, storeId}) => {
     const queryClient = useQueryClient();
@@ -24,6 +25,7 @@ export const useCreateReview = ({orderId, storeId}) => {
         (data) => authPostApi(API_URLS.POST_REVIEW, data), {
             onSuccess: async () => {
                 await queryClient.invalidateQueries([QUERY_KEYS.ORDERS, API_URLS.GET_ORDER(orderId)])
+                showSuccess("리뷰가 추가 되었습니다")
                 setIsModalOpen({modalType: "", flag: false, modalData: null})
             }
         });

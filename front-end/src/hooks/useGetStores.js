@@ -1,8 +1,8 @@
 import {useQuery} from "react-query";
-import {getApi} from "../apis/api/user";
+import {getApi} from "../api/user";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {API_URLS} from "../apis/constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {API_URLS} from "../constants/urls";
 import {useForm} from "react-hook-form";
 import {pageCalculator} from "../utils/calculator";
 import {keywordIncludedUrl} from "../utils/transducer";
@@ -22,12 +22,12 @@ export const useGetStores = (isEnabled) => {
         keyword
     })
 
-    const {data, isError, status, isLoading, refetch} = useQuery(
+    const {data, isLoading} = useQuery(
         [QUERY_KEYS.STORES, GET_STORES_URL],
         () => getApi(GET_STORES_URL),
         {
             select: (res) => ({
-                storesData: res.data.storeList,
+                storesData: res.data?.storeList,
                 totalPages: pageCalculator(res.data.totalItems, res.data.pageSize),
             }),
             staleTime: 1000 * 60 * 5,
@@ -60,12 +60,11 @@ export const useGetStores = (isEnabled) => {
         storesData: data?.storesData,
         totalPages: data?.totalPages,
         searchForm: {
-            handleSubmit, register
+            handleSubmit, register, urlKeyword: keyword
         },
         setCategory,
         setPage,
         setSorting,
-        isError,
         setKeyword,
         isLoading,
         page: parseInt(page, 10),

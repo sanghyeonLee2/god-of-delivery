@@ -4,12 +4,8 @@
     "name": "전체보기"
   },
   {
-    "id": "single",
-    "name": "1인분주문"
-  },
-  {
-    "id": "franchise",
-    "name": "프랜차이즈"
+    "id": "fastFood",
+    "name": "패스트푸드"
   },
   {
     "id": "chicken",
@@ -18,6 +14,10 @@
   {
     "id": "western",
     "name": "피자/양식"
+  },
+  {
+    "id": "soup",
+    "name": "찜/탕"
   },
   {
     "id": "chinese",
@@ -38,10 +38,6 @@
   {
     "id": "midnight",
     "name": "야식"
-  },
-  {
-    "id": "school",
-    "name": "분식"
   },
   {
     "id": "cafeAndDessert",
