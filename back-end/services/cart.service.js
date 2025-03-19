@@ -1,7 +1,4 @@
-const {Store, Cart, CartItem, CartItemOption, Menu} = require('../models');
-const {Sequelize} = require("sequelize");
-const MenuCategory = require("../models/menuCategory");
-const MenuOption = require("../models/menuOption");
+const {Store, Cart, CartItem, CartItemOption, Menu, MenuCategory} = require('../models');
 
 exports.addCart = async (userId, {storeId, quantity, options, menuId}) => {
     let cart = await Cart.findOne({
@@ -73,11 +70,14 @@ exports.findCartDataByUserId = async (userId) => {
         include: [
             {
                 model: Store,
-                attributes: ['storeId', 'storeName', 'deliveryTime']
+                attributes: ['storeId', 'storeName', 'deliveryTime','deliveryTip']
             },
             {
                 model: CartItem,
                 include: [
+                    {model: Menu,
+                    attributes: ['name','price','description']},
+
                     {
                         model: CartItemOption
                     }
@@ -85,6 +85,7 @@ exports.findCartDataByUserId = async (userId) => {
             }
         ]
     })
+
     return (myCartData)
 }
 
@@ -108,10 +109,9 @@ exports.destroyCartItem = async({userId},{cartItemId}) => {
 }
 
 exports.updateCartItemOption = async ({userId}, {cartItemId}, {quantity, options}) => {
-    const cart = await Cart.findOne({where: {userId}})
     const cartItems = await CartItem.update({
         quantity: quantity,
-    }, {where: {cartId: cart.cartId, cartItemId},})
+    }, {where: {cartItemId},})
     const cartOptionUpdate = await CartItem.findOne({
         where: {cartItemId},
         include: [{
