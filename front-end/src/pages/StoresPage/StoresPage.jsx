@@ -3,10 +3,11 @@ import CategoryList from "./components/CategoryList";
 import SortingSection from "./components/SortingSection";
 import StoreList from "./components/StoreList";
 import Pagination from "../../components/common/Pagination/Pagination";
-import Loading from "../../components/common/Loading/Loading";
 import useGetStores from "../../hooks/useGetStores";
 import categoryDummy from "../../assets/data/categoryDummy.json";
 import HomeBoard from "components/common/HomeBoard/HomeBoard";
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from "components/common/Loading/Loading";
 
 const findCategoryName = (categoryId) => {
     return categoryDummy.find((category) => category.id === categoryId).name
@@ -24,11 +25,13 @@ function StoresPage(props) {
         setSorting,
         sorting
     } = useGetStores(true);
-    if (isLoading)
-        return <Loading/>
+    /*  if (!isLoading) {
+          return <Loading/>
+      }*/
 
     return (
         <div>
+            {isLoading && <Loading/>}
             <HomeBoard/>
             <CategoryList categoryId={categoryId} setCategory={setCategory}/>
             <SortingSection category={categoryId} setCategory={setCategory} setSorting={setSorting}
