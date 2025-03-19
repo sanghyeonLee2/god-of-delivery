@@ -11,7 +11,6 @@ function CreateOwnerReview({modalData}) {
         register,
         handleSubmit,
         handleCreateOwnerReview,
-        isCreatingOwnerReview
     } = useCreateOwnerReview(modalData.reviewId);
     return (
         <>
