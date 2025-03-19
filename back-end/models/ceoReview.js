@@ -6,12 +6,7 @@ class CeoReview extends Sequelize.Model {
             reviewId:{
                 type: Sequelize.BIGINT,
                 allowNull: false,
-                references: {
-                    model:'reviews',
-                    key:'reviewId'
-                },
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE'
+                primaryKey: true,
             },
             content:{
                 type: Sequelize.STRING,
@@ -31,7 +26,7 @@ class CeoReview extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.CeoReview.belongsTo(db.Review, {foreignKey:'reviewId', targetKey:'reviewId'});
+        db.CeoReview.belongsTo(db.Review, {foreignKey:'reviewId', targetKey:'reviewId', onDelete: 'CASCADE', hooks:true});
     }
 }
 

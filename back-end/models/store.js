@@ -67,13 +67,13 @@ class Store extends Sequelize.Model {
                 type: Sequelize.INTEGER,
             },
             takeoutPickupTime:{
-                type: Sequelize.STRING(45),
+                type: Sequelize.INTEGER,
             },
             takeoutPayment:{
                 type: Sequelize.STRING(45),
             },
             deliveryTime:{
-                type: Sequelize.STRING(45),
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             minDeliveryPrice:{

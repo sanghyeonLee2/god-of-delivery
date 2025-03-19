@@ -30,7 +30,7 @@ class Token extends Sequelize.Model {
         })
     }
     static associate(db){
-        db.Token.belongsTo(db.User, {foreignKey: 'userId', targetKey: 'userId'})
+        db.Token.belongsTo(db.User, {foreignKey: 'userId', targetKey: 'userId', onDelete: 'CASCADE', hooks:true})
     }
 }
 

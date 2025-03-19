@@ -1,4 +1,4 @@
-const {Store,Order, OrderItem, OrderItemOption, Cart, CartItem, CartItemOption, Menu, MenuOption} = require('../models')
+const {Store, Order, OrderItem, OrderItemOption, Review, Menu, MenuOption} = require('../models')
 const CartService = require('./cart.service');
 const UserService = require('./user.service');
 const {Op, Sequelize} = require('sequelize');
@@ -9,11 +9,12 @@ exports.createOrder = async({userId, body},) => {
         paymentMethod: body.paymentMethod,
         totalPrice: 0, // 초기 0, 나중에 합산
         requests: body.requests,
-        status: body.status,
         addressSnapshot: body.address,
         type: body.orderType,
         userId,
-        storeId: cartData.storeId
+        storeId: cartData.storeId,
+        detailAddress: body.detailAddress,
+        contact: body.contact,
     })
 
     let orderTotal = 0
@@ -60,12 +61,59 @@ exports.findOrderByOrderId = async ({orderId}) => {
         {where:{orderId},
             include: [
                 {model: Store,
-                    attributes: ['storeName', 'latitude','longitude']
+                    attributes: ['storeName','deliveryTip'],
                 },
                 {model: OrderItem,
                 include: [{model: OrderItemOption}]}]
         })
-    return (orderData)
+    return ({
+      userPaymentINfo : {
+          orderType: orderData.type,
+          paymentMethod: orderData.paymentMethod,
+          detailAddressSnapshot: orderData.detailAddress,
+          contact: orderData.contact,
+          requests: orderData.requests,
+          addressSnapshot: orderData.addressSnapshot
+      },
+        orderId: orderData.orderId,
+        status: orderData.status,
+        storeId:orderData.storeId,
+        storeName: orderData.Store.storeName,
+        tips: orderData.Store.deliveryTip,
+        userId: orderData.userId,
+        totalPrice: orderData.totalPrice,
+        orderItems : orderData.OrderItems
+    })
+}
+
+exports.findUserOrder = async({userId}, {page}) => {
+    const pageNum = Number(page)
+    const orders = await Order.findAll({
+        where:{userId},
+        offset:(pageNum - 1) * 10,
+        limit:10,
+        order: [['status','ASC']],
+        include:[{model: Store, attributes:['storeLogoImage']},{model: OrderItem}]
+    })
+    const hasReview = await Review.findAll({where:{userId}, attributes:["orderId"]})
+    const hasReviewOrderId = hasReview.reduce((acc,item) => {
+        acc.push(item.orderId)
+        return acc
+    },[])
+    const formattedOrders = orders.map(order => {
+        const orderData = order.get({ plain: true });
+        const imgUrl = orderData.Store ? orderData.Store.storeLogoImage : null;
+
+        if(!order.OrderItems || order.OrderItems.length === 0){
+            return {...orderData, representativeOrder : "메뉴없음", hasReviewed : hasReviewOrderId.includes(order.orderId),imgUrl}
+        }
+        const sortedMenu = order.OrderItems.sort((a,b) => b.menuPriceSnapshot - a.menuPriceSnapshot)
+        const representiveMessage = sortedMenu.length - 1 ? `${sortedMenu[0].menuNameSnapshot} 외 ${sortedMenu.length - 1}` : sortedMenu[0].menuNameSnapshot
+        const {OrderItems, Store, ...withOutOrderItem} = orderData
+        return {...withOutOrderItem, representativeOrder : representiveMessage, hasReviewed : hasReviewOrderId.includes(order.orderId),imgUrl}
+    })
+
+    return (formattedOrders)
 }
 
 exports.orderCntInThreeMonth = async (storeId) => {

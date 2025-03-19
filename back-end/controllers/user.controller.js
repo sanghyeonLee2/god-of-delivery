@@ -1,4 +1,5 @@
 const UserService = require("../services/user.service");
+const OrderService = require("../services/order.service");
 
 exports.getLatLng = async (req, res) => {
     try{
@@ -18,8 +19,10 @@ exports.getLatLng = async (req, res) => {
 
 exports.getUserInfo = async (req, res) => {
     try{
-        const user = await UserService.findById(req)
-        res.status(200).send(user)
+        const {userId, role, address} = await UserService.findById(req)
+        res.status(200).send({
+            userId, role, address
+        })
     }
     catch (err) {
         res.status(500).send({
@@ -29,14 +32,36 @@ exports.getUserInfo = async (req, res) => {
     }
 }
 
-exports.getAddress = async (req, res) => {
+exports.patchUserAddress = async (req, res) => {
     try{
-        const userAddress = await UserService.findById(req)
-        res.status(200).send({
-            lat : userAddress.latitude,
-            lng : userAddress.longitude,
-            address : userAddress.address,
+        const updateUser = await UserService.updateUserAddress(req)
+        if(updateUser > 0){
+            res.status(200).send({
+                status: 200,
+                message: "Success"
+            })
+        }
+        else{
+            res.status(400).send({
+                status: 400,
+                message: "데이터를 못 찾았거나 변경사항이 없습니다."
+            })
+        }
+    }
+    catch (err) {
+        res.status(500).send({
+            status : 500,
+            message: err.message
         })
+    }
+}
+
+exports.getUserOrders = async (req, res) => {
+    try{
+        const userOrderList = await OrderService.findUserOrder(req, req.query)
+        res.status(200).send({
+            totalItems: userOrderList.length,
+            userOrderList})
     }
     catch (err) {
         res.status(500).send({

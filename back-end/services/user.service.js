@@ -6,27 +6,35 @@ exports.findById = async ({userId}) => await User.findOne({
     }
 })
 
-exports.createUser = async ({userId, password, phone,address, currentAddress, latitude, longitude}) => {
+exports.createUser = async ({userId, userPw, role}) => {
     const newUser = await User.create({
         userId,
-        password,
-        phone,
-        address,
-        currentAddress,
-        latitude,
-        longitude,
+        userPw,
+        role,
     })
     return (newUser)
 }
 
 
-exports.findByIdnPw = async ({userId, password}) => {
+exports.findByIdnPw = async ({userId, userPw}) => {
     const user = await User.findOne({
         where: {
             userId,
-            password
+            userPw
         }
     })
     return (user)
 }
 
+exports.updateUserAddress = async ({userId, body}) => {
+    const [isUpdated] = await User.update(
+        {
+            latitude: body.lat,
+            longitude: body.lng,
+            address : body.address
+        },{
+            where: {userId}
+        }
+    )
+    return isUpdated
+}

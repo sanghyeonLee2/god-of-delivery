@@ -1,7 +1,4 @@
-const {Store, Cart, CartItem, CartItemOption, Menu} = require('../models');
-const {Sequelize} = require("sequelize");
-const MenuCategory = require("../models/menuCategory");
-const MenuOption = require("../models/menuOption");
+const {Store, Cart, CartItem, CartItemOption, Menu, MenuCategory} = require('../models');
 
 exports.addCart = async (userId, {storeId, quantity, options, menuId}) => {
     let cart = await Cart.findOne({
@@ -63,8 +60,7 @@ exports.addCart = async (userId, {storeId, quantity, options, menuId}) => {
     }))
     const newCartItemOption = await CartItemOption.bulkCreate(cartItemCreateData)
     return ({
-        newCartItem,
-        CartItemOptions: newCartItemOption
+        newCartItem,...newCartItemOption
     })
 }
 
@@ -74,11 +70,14 @@ exports.findCartDataByUserId = async (userId) => {
         include: [
             {
                 model: Store,
-                attributes: ['storeId', 'storeName', 'deliveryTime']
+                attributes: ['storeId', 'storeName', 'deliveryTime','deliveryTip']
             },
             {
                 model: CartItem,
                 include: [
+                    {model: Menu,
+                    attributes: ['name','price','description']},
+
                     {
                         model: CartItemOption
                     }
@@ -86,6 +85,7 @@ exports.findCartDataByUserId = async (userId) => {
             }
         ]
     })
+
     return (myCartData)
 }
 
@@ -96,19 +96,23 @@ exports.destroyCart = async ({cartId}) => {
     return (deleteData)
 }
 
-exports.destroyCartItem = async({cartItemId}) => {
+exports.destroyCartItem = async({userId},{cartItemId}) => {
     const deleteItem = await CartItem.destroy({
         where: {cartItemId}
     })
+    const cart = await Cart.findOne({where:{userId}})
+    const isExistItem = await CartItem.count({where: {cartId: cart.cartId}})
+    if (!isExistItem) {
+        await Cart.destroy({where:{cartId: cart.cartId}})
+    }
     return (deleteItem)
 }
 
 exports.updateCartItemOption = async ({userId}, {cartItemId}, {quantity, options}) => {
-    const cart = await Cart.findOne({where: {userId}})
-    const cartItem = await CartItem.update({
+    const cartItems = await CartItem.update({
         quantity: quantity,
-    }, {where: {cartId: cart.cartId, cartItemId},})
-    const cartOptionUpdate = CartItem.findOne({
+    }, {where: {cartItemId},})
+    const cartOptionUpdate = await CartItem.findOne({
         where: {cartItemId},
         include: [{
             model: CartItemOption,

@@ -5,10 +5,8 @@ exports.postAddCart = async (req, res) => {
     try {
         const isSuccess = await CartService.addCart(req.userId, req.body);
             res.status(200).send({
-                message: 'Success',
-                data:isSuccess
+                message: 'Success'
             })
-
     }
     catch (err){
         res.status(500).send({
@@ -43,12 +41,12 @@ exports.getCartMenuDetail = async (req, res) => {
         })
     }
 }
-exports.postUpdateCartItem = async (req, res) => {
+exports.updateCartItem = async (req, res) => {
     try{
         const updateData = await CartService.updateCartItemOption(req,req.params,req.body);
         res.status(200).send({
             status: 200,
-            data: updateData
+            message: "Success"
         });
     }
     catch (err){
@@ -76,7 +74,7 @@ exports.deleteCart= async (req, res) => {
 
 exports.deleteCartItem = async (req, res) => {
     try{
-        const delData = CartService.destroyCartItem(req.params)
+        const delData = CartService.destroyCartItem(req, req.params)
         res.status(200).send({
             message: 'Success',
         })

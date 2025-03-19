@@ -3,32 +3,15 @@ const Sequelize = require("sequelize");
 class Dib extends Sequelize.Model {
     static initate(sequelize) {
         Dib.init({
-            userId: {
-                primaryKey: true,
+            userId:{
                 type: Sequelize.STRING,
-                allowNull: false,
-                references: {
-                    model: 'users', // User 모델 참조
-                    key: 'userId'
-                },
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE'
-            },
-            storeId: {
                 primaryKey: true,
+                allowNull: false,
+            },
+            storeId:{
                 type: Sequelize.BIGINT,
                 allowNull: false,
-                references: {
-                    model: 'stores', // Store 모델 참조
-                    key: 'storeId'
-                },
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE'
-            },
-            status:{
-                type: Sequelize.STRING,
-                defaultValue:'일반',
-                allowNull: false,
+                primaryKey: true,
             }
         },{
             sequelize,
@@ -44,8 +27,8 @@ class Dib extends Sequelize.Model {
         })
     }
     static associate(db) {
-        db.Dib.belongsTo(db.User, {foreignKey:'userId', targetKey:'userId'})
-        db.Dib.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId'})
+        db.Dib.belongsTo(db.User, {foreignKey:'userId', targetKey:'userId', onDelete: 'CASCADE', hooks:true})
+        db.Dib.belongsTo(db.Store, {foreignKey:'storeId', targetKey:'storeId', onDelete: 'CASCADE', hooks:true})
     }
 }
 

@@ -44,7 +44,7 @@ exports.postCreateStore = async (req, res) => {
 
 exports.getStore = async (req, res) => {
     try {
-        const storeData = await StoreService.findStoreInfo(req.params);
+        const storeData = await StoreService.findStoreInfo(req.params, req);
         res.status(200).send(storeData)
     } catch (err) {
         res.status(500).send({

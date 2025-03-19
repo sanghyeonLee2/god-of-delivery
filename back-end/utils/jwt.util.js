@@ -9,16 +9,16 @@ const {findById} = require("../services/token.service");
 exports.generateToken = () => {
 
     return {
-        access: (userId) => {
+        access: (userId, role) => {
             return jwt.sign(
-                {id:userId},
+                {id:userId, role: role},
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: "7 days"}
+                {expiresIn: "30 days"}
             )
         },
-        refresh: (userId) => {
+        refresh: (userId, role) => {
             return jwt.sign(
-                {id:userId},
+                {id:userId, role: role},
                 process.env.REFRESH_TOKEN_SECRET,
                 {expiresIn: "180 days"}
             )
@@ -34,6 +34,7 @@ exports.verifyToken = () => {
                 return {
                     verified:true,
                     userId: decoded.id,
+                    role: decoded.role,
                 }
             }
             catch (err){
@@ -45,7 +46,7 @@ exports.verifyToken = () => {
         },
         refresh: async (token, userId) =>{
             try{
-                const data = findById(userId)
+                const data = await findById(userId)
                 if(token === data.token){
                     try{
                         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)

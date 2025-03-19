@@ -14,7 +14,7 @@ exports.postAddOrders = async (req, res) => {
     }
 }
 
-exports.getUserOrders = async (req, res) => {
+exports.getOrder = async (req, res) => {
     try{
         const getData = await OrderService.findOrderByOrderId(req.params)
         res.status(200).send(getData)
