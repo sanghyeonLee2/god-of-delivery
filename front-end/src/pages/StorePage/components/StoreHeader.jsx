@@ -7,7 +7,7 @@ import IconBtn from "../../../components/common/Button/icon/IconBtn";
 import {MdFavorite, MdFavoriteBorder} from "react-icons/md";
 
 function StoreHeader({storeHeader, storeId}) {
-    const {handleToggleDib, isLoading} = useDibs()
+    const handleToggleDib = useDibs()
     return (
         <S.StoreHeaderWrap>
             <Font size={"x-large"}>{storeHeader?.storeName}</Font>
@@ -17,7 +17,7 @@ function StoreHeader({storeHeader, storeId}) {
                 <span>{storeHeader?.rating.toFixed(1)}</span>
             </div>
             <S.ReviewWrap>
-                <IconBtn onClick={() => handleToggleDib({storeId, isDib: storeHeader?.isDib})}>
+                <IconBtn onClick={() => handleToggleDib.mutate({storeId, isDib: storeHeader?.isDib})}>
                     {storeHeader?.isDib ? <MdFavorite size={19} color={"red"}/> :
                         <MdFavoriteBorder size={19} color={"red"}/>}
                 </IconBtn>
