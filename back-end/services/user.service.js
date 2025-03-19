@@ -30,3 +30,15 @@ exports.findByIdnPw = async ({userId, password}) => {
     return (user)
 }
 
+exports.updateUserAddress = async ({userId, body}) => {
+    const [isUpdated] = await User.update(
+        {
+            latitude: body.lat,
+            longitude: body.lng,
+            address : body.address
+        },{
+            where: {userId}
+        }
+    )
+    return isUpdated
+}
