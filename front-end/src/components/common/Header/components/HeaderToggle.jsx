@@ -4,14 +4,14 @@ import {Link} from "react-router-dom";
 import {Font} from "../../../../assets/styles/CommonStyle";
 import useToggleDisplay from "../../../../hooks/useToggleDisplay";
 import useSignOut from "../../../../hooks/useSignOut";
-import {MdPersonOutline} from "react-icons/md";
+import {MdOutlinePersonOutline} from "react-icons/md";
 
 function HeaderToggle(props) {
     const [menuRef, showMenu, hideMenu] = useToggleDisplay();
     const handleSignOut = useSignOut()
     return (
         <UserMenuWrap onMouseEnter={showMenu} onMouseLeave={hideMenu}>
-            <MdPersonOutline size={35}/>
+            <MdOutlinePersonOutline size={35}/>
             <ul ref={menuRef}>
                 <li>
                     <Link to={"/cart"}>
@@ -21,6 +21,11 @@ function HeaderToggle(props) {
                 <li>
                     <Link to={"users/me/reviews?page=1"}>
                         <Font>리뷰 관리</Font>
+                    </Link>
+                </li>
+                <li>
+                    <Link to={"users/me/dibs?page=1"}>
+                        <Font>찜</Font>
                     </Link>
                 </li>
                 <li>

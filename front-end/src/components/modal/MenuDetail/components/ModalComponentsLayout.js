@@ -9,7 +9,7 @@ export const ModalHeaderWrap = styled.div`
     padding-top: 14px;
     text-align: center;
 
-    img {
+    svg {
         cursor: pointer;
         position: absolute;
         top: 10px;

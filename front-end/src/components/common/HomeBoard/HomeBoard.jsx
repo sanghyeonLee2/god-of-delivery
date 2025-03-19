@@ -13,8 +13,8 @@ function HomeBoard(props) {
                 <Font color={"white"}>
                     배달 받으실 위치를 입력해 주세요
                 </Font>
+                <StoreSearchForm/>
             </section>
-            <StoreSearchForm/>
         </SearchBoxOuter>
     );
 }

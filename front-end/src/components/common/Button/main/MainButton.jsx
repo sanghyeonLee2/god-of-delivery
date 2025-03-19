@@ -7,7 +7,7 @@ import MutateLoading from "components/common/Loading/MutateLoading";
 export const MainBtn = forwardRef(({type, text, onClick, width}, ref) => {
     return (
         <MainButtonWrap $width={width} type={type} onClick={onClick} ref={ref}>
-            <Font size={"small"}>{text}</Font>
+            <Font>{text}</Font>
         </MainButtonWrap>
     );
 });

@@ -26,7 +26,7 @@ export const SearchBoxOuter = styled.div`
     background-image: url(${searchBoxBackground});
     background-size: cover;
     background-position: center;
-    padding-top: 60px;
+    ${flexLayout("center", "center")};
 
     h2 {
         font-size: 40px;
@@ -36,7 +36,6 @@ export const SearchBoxOuter = styled.div`
 
     section {
         text-align: center;
-        padding-bottom: 10px;
     }
 `
 export const UserMenuWrap = styled.div`

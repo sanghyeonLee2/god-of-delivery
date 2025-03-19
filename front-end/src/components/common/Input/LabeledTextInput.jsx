@@ -1,6 +1,6 @@
 import React from 'react';
 import {CommonSectionWrap, Font} from "../../../assets/styles/CommonStyle";
-import {PaymentInputTextWrap} from "pages/PaymentPage/PaymentPageLayout";
+import {PaymentInputTextWrap} from "pages/user/PaymentPage/PaymentPageLayout";
 
 function LabeledTextInput({title, defaultValue, register, type = 'text', disabled = false, placeholder}) {
     return (

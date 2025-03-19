@@ -43,7 +43,42 @@ server.post("/test", (req, res) => {
     // ✅ 홀수 번째 요청: 200 OK 반환
     return res.status(200).json({message: "✅ 인증 성공: 정상 응답"});
 });
+server.use((req, res, next) => {
+    if (req.path === "/stores/all") {
+        const {page, sorting, keyword} = req.query;
 
+        // 기본 정렬 방식 정의
+        let sortField = "id";
+        let order = "asc";
+
+        if (sorting === "basicAsc") {
+            sortField = "name";
+            order = "asc";
+        } else if (sorting === "basicDesc") {
+            sortField = "name";
+            order = "desc";
+        }
+
+        // ✅ URL 재구성: 기본적으로 `/stores` 엔드포인트로 변경
+        let newUrl = `/stores?_page=${page || 1}&_sort=${sortField}&_order=${order}`;
+
+        // ✅ keyword가 있으면 `q` 파라미터 추가 (json-server 기본 검색)
+        if (keyword) {
+            newUrl += `&q=${encodeURIComponent(keyword)}`;
+        }
+
+        req.url = newUrl;
+    }
+
+    next();
+});
+
+server.post("/signIn", (req, res) => {
+    return res.json({
+        accessToken: "dummy-access-token",
+        refreshToken: "dummy-refresh-token",
+    });
+});
 
 // 📌 커스텀 라우트 적용 (routes.json이 존재할 경우)
 const rewriter = jsonServer.rewriter(require("./routes.json"));

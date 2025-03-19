@@ -1,5 +1,5 @@
 import React from 'react';
-import {useReviewForm} from "../../../hooks/useReviewForm";
+import {useReviewForm} from "../../../hooks/review/useReviewForm";
 import OwnerReview from "components/common/Review/components/OwnerReview";
 import ReviewUpdateMode from "components/common/Review/components/ReviewUpdateMode";
 import {MainBtn} from "components/common/Button/main/MainButton";
@@ -25,7 +25,7 @@ function Review({review}) {
     } = useReviewForm(review);
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
     return (
-        <>
+        <div>
             <form onSubmit={handleSubmit(() => updateReview(review.reviewId))}>
                 <ReviewMain
                     updateMode={updateMode}
@@ -55,7 +55,7 @@ function Review({review}) {
                              }
                          )}
                 />}
-        </>
+        </div>
     );
 }
 

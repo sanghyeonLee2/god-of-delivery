@@ -14,9 +14,8 @@ const reissue = async (originalRequest) => {
             return Promise.reject(reissueResult);
         }
 
-        const {accessToken, refreshToken} = reissueResult.data;
+        const {accessToken} = reissueResult.data;
         localStorage.setItem("access-token", accessToken);
-        localStorage.setItem("refresh-token", refreshToken);
 
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {FlexOnly, Font} from "../../../../assets/styles/CommonStyle";
 import {omittedDate} from "../../../../utils/transducer";
 import {OwnerReviewWrap} from "components/common/Review/ReviewLayout";
-import {useOwnerReview} from "../../../../hooks/useOwnerReview";
+import {useOwnerReview} from "../../../../hooks/review/useOwnerReview";
 import ReviewUpdateMode from "components/common/Review/components/ReviewUpdateMode";
 import Textarea from "components/common/TextArea/TextArea";
 

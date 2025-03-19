@@ -6,9 +6,9 @@ const customQueryClient = new QueryClient({
         queries: {
             onError: (error) => errorHandler(error),
         },
-        mutations: {
-            onError: (error) => errorHandler(error),
-        },
+        /* mutations: {
+             onError: (error) => errorHandler(error),
+         },*/
     },
 });
 export default customQueryClient;

@@ -3,6 +3,7 @@ export const QUERY_KEYS = {
     COORDS: "coords",
     STORES: "stores",
     STORE: "store",
+    DIBS: "dibs",
     MENU_DETAILS: "menuDetails",
     STORE_REVIEWS: "storeReviews",
     OWNER_STORE_REVIEWS: "ownerStoreReviews",
@@ -11,4 +12,6 @@ export const QUERY_KEYS = {
     USER: "user",
     ORDER: "order",
     ORDERS: "orders",
+    MENU_CATEGORY: "menuCategory",
+    MENU_OPTION: "menuOption",
 };
