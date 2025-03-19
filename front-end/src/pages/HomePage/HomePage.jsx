@@ -6,9 +6,16 @@ import {categoryObj} from "../../assets/data/categoryObj";
 
 function HomePage() {
     const navigate = useNavigate();
+
+    /*  const post = useMutation(
+          () => authPostApi("test"),
+      )*/
     return (
         <>
             <HomeBoard/>
+            {/* <button type={"button"} onClick={() => post.mutate()}
+                    style={{width: "50px", height: "50px", marginLeft: "300px"}}>테스트
+            </button>*/}
             <S.CategoryWrap>
                 {categoryObj.map((category) => (
                     <S.CategoryBoxOuter
