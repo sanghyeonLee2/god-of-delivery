@@ -2,6 +2,7 @@ const {isExistUserId, createUser, findByIdnPw} = require("../services/user.servi
 const TokenService = require("../services/token.service");
 const {generateToken, verifyToken} = require('../utils/jwt.util');
 const jwt = require("jsonwebtoken");
+const {Sequelize} = require("sequelize");
 /**
  * 회원가입 DB INSERT USER 함수
  * @param req
@@ -25,7 +26,6 @@ exports.postSignUp = async (req, res) => {
                 message:"패스워드와 패스워드 확인이 동일하지 않습니다."
             })
         }
-    } catch (err) {
         res.status(500).send({
             status: 500,
             message: err.message
@@ -44,8 +44,8 @@ exports.postSignIn = async (req, res) => {
                 message: "Success",
             })
         } else if (user) {
-            const accessToken = generateToken().access(user.userId)
-            const refreshToken = generateToken().refresh(user.userId)
+            const accessToken = generateToken().access(user.userId, user.role)
+            const refreshToken = generateToken().refresh(user.userId, user.role)
             await TokenService.createToken(user.userId, refreshToken)
             res.status(201).send({
                 status: 201,
@@ -91,7 +91,7 @@ exports.getRefreshReissued = async (req, res) => {
                     message: "권한이 없습니다. %%"
                 })
             } else {
-                const newAccessToken = generateToken().access(decoded.id)
+                const newAccessToken = generateToken().access(decoded.id, decoded.role)
 
                 res.status(200).send({
                     status: 200,
