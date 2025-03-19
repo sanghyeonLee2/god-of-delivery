@@ -1,12 +1,13 @@
 import {useMutation, useQueryClient} from "react-query";
-import {authDeleteApi, authPostApi} from "../apis/api/user";
-import {API_URLS} from "../apis/constants/urls";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
+import {authDeleteApi, authPostApi} from "../api/user";
+import {API_URLS} from "../constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {showSuccess} from "../utils/toasts";
 
 export const useDibs = () => {
     const queryClient = useQueryClient();
 
-    const {mutate: handleToggleDib, isLoading} = useMutation(
+    return useMutation(
         async ({storeId, isDib}) => {
             const DIB_URL = API_URLS.DIB(storeId);
             if (isDib) {
@@ -37,7 +38,9 @@ export const useDibs = () => {
                 });
                 return {previousStoreData};
             },
-
+            onSuccess: () => {
+                showSuccess("찜 목록에 추가되었습니다.")
+            },
             onError: (err, variables, context) => {
                 if (context?.previousStoreData) {
                     const GET_STORE_URL = API_URLS.GET_STORE(variables.storeId)
@@ -49,10 +52,5 @@ export const useDibs = () => {
                 await queryClient.invalidateQueries([QUERY_KEYS.STORE, GET_STORE_URL]);
             },
         }
-    );
-
-    return {
-        handleToggleDib,
-        isLoading
-    }
+    )
 };

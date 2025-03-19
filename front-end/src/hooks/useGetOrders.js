@@ -1,8 +1,8 @@
 import {useQuery} from "react-query";
-import {authGetApi} from "../apis/api/user";
+import {authGetApi} from "../api/user";
 import {useLocation, useNavigate} from "react-router-dom";
-import {QUERY_KEYS} from "../apis/constants/queryKeys";
-import {API_URLS} from "../apis/constants/urls";
+import {QUERY_KEYS} from "../constants/queryKeys";
+import {API_URLS} from "../constants/urls";
 import {pageCalculator} from "../utils/calculator";
 
 const useGetOrders = () => {
