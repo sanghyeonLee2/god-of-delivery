@@ -92,9 +92,28 @@ exports.findUserOrder = async({userId}, {page}) => {
         where:{userId},
         offset:(pageNum - 1) * 10,
         limit:10,
-        order: [['status','ASC']]
+        order: [['status','ASC']],
+        include:[{model: Store, attributes:['storeLogoImage']},{model: OrderItem}]
     })
-    return (orders)
+    const hasReview = await Review.findAll({where:{userId}, attributes:["orderId"]})
+    const hasReviewOrderId = hasReview.reduce((acc,item) => {
+        acc.push(item.orderId)
+        return acc
+    },[])
+    const formattedOrders = orders.map(order => {
+        const orderData = order.get({ plain: true });
+        const imgUrl = orderData.Store ? orderData.Store.storeLogoImage : null;
+
+        if(!order.OrderItems || order.OrderItems.length === 0){
+            return {...orderData, representativeOrder : "메뉴없음", hasReviewed : hasReviewOrderId.includes(order.orderId),imgUrl}
+        }
+        const sortedMenu = order.OrderItems.sort((a,b) => b.menuPriceSnapshot - a.menuPriceSnapshot)
+        const representiveMessage = sortedMenu.length - 1 ? `${sortedMenu[0].menuNameSnapshot} 외 ${sortedMenu.length - 1}` : sortedMenu[0].menuNameSnapshot
+        const {OrderItems, Store, ...withOutOrderItem} = orderData
+        return {...withOutOrderItem, representativeOrder : representiveMessage, hasReviewed : hasReviewOrderId.includes(order.orderId),imgUrl}
+    })
+
+    return (formattedOrders)
 }
 
 exports.orderCntInThreeMonth = async (storeId) => {
