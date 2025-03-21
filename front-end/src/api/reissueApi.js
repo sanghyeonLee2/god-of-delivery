@@ -8,6 +8,7 @@ const reissue = async (originalRequest) => {
 
     const reissueResult = await postApi(API_URLS.REISSUE, {
       refreshToken: localStorage.getItem("refresh-token"),
+      accessToken: localStorage.getItem("access-token"),
     });
 
     if (reissueResult.status >= 300) {
@@ -21,7 +22,6 @@ const reissue = async (originalRequest) => {
 
     return authInstance(originalRequest);
   } catch (error) {
-    console.error("🚨 리이슈 요청 중 오류 발생:", error);
     return Promise.reject(error);
   }
 };

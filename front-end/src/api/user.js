@@ -1,22 +1,17 @@
-import {authInstance, instance} from "./instance";
+import { authInstance, instance } from "./instance";
 
 class UserApi {
-    constructor(isAuth) {
-        this.instance = isAuth ? authInstance : instance;
-    }
+  constructor(isAuth) {
+    this.instance = isAuth ? authInstance : instance;
+  }
 
-    async request(method, url, data = {}) {
-        try {
-            return await this.instance({
-                method,
-                url,
-                data,
-            });
-        } catch (err) {
-            console.error("🚨 API 요청 실패:", method, url, err);
-            throw err;
-        }
-    }
+  async request(method, url, data = {}) {
+    return this.instance({
+      method,
+      url,
+      data,
+    });
+  }
 }
 
 const authApi = new UserApi(true);
