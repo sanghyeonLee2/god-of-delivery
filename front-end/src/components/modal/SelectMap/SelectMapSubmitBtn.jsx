@@ -1,9 +1,9 @@
 import React from 'react';
 import {ModalBtn} from "components/common/Button/main/MainButton";
-import {usePostAddress} from "../../../hooks/usePostAddress";
+import {usePatchAddress} from "../../../hooks/usePatchAddress";
 
 function SelectMapSubmitBtn(props) {
-    const {handlePostAddress, isPostingAddress, addressesState} = usePostAddress()
+    const {handlePostAddress, isPostingAddress, addressesState} = usePatchAddress()
     if (addressesState === "hasError")
         return <ModalBtn text={"에러가 발생했습니다"}/>
     return (

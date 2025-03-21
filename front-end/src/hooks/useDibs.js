@@ -8,14 +8,9 @@ export const useDibs = () => {
     const queryClient = useQueryClient();
 
     return useMutation(
-        async ({storeId, isDib}) => {
-            const DIB_URL = API_URLS.DIB(storeId);
-            if (isDib) {
-                await authDeleteApi(DIB_URL);
-            } else {
-                await authPostApi(DIB_URL, {storeId});
-            }
-        },
+        async ({storeId, isDib}) =>
+            isDib ? await authDeleteApi(API_URLS.DELETE_DIB(storeId)) : await authPostApi(API_URLS.POST_DIB, {storeId})
+        ,
         {
             onMutate: async ({storeId}) => {
                 const GET_STORE_URL = API_URLS.GET_STORE(storeId)
@@ -38,19 +33,27 @@ export const useDibs = () => {
                 });
                 return {previousStoreData};
             },
-            onSuccess: () => {
-                showSuccess("찜 목록에 추가되었습니다.")
-            },
-            onError: (err, variables, context) => {
-                if (context?.previousStoreData) {
+            onSuccess:
+                (res) => {
+                    if (res.data.message === "Success") {
+                        showSuccess("찜 목록에 추가 되었습니다.")
+                    }
+                    if (res.data.message === "Delete") {
+                        showSuccess("찜 목록에서 삭제 되었습니다.")
+                    }
+                },
+            onError:
+                (err, variables, context) => {
+                    if (context?.previousStoreData) {
+                        const GET_STORE_URL = API_URLS.GET_STORE(variables.storeId)
+                        queryClient.setQueryData([QUERY_KEYS.STORE, GET_STORE_URL], context.previousStoreData);
+                    }
+                },
+            onSettled:
+                async (data, err, variables) => {
                     const GET_STORE_URL = API_URLS.GET_STORE(variables.storeId)
-                    queryClient.setQueryData([QUERY_KEYS.STORE, GET_STORE_URL], context.previousStoreData);
-                }
-            },
-            onSettled: async (data, err, variables) => {
-                const GET_STORE_URL = API_URLS.GET_STORE(variables.storeId)
-                await queryClient.invalidateQueries([QUERY_KEYS.STORE, GET_STORE_URL]);
-            },
+                    await queryClient.invalidateQueries([QUERY_KEYS.STORE, GET_STORE_URL]);
+                },
         }
     )
 };

@@ -7,14 +7,15 @@ import Pagination from "components/common/Pagination/Pagination";
 import StoreList from "components/common/StoreList/StoreList";
 
 function DibsPage(props) {
-    const {storesData, totalPages, setPage, page, isLoading} = useGetDibs();
+    const {dibList, totalPages, setPage, page, isLoading} = useGetDibs();
     if (isLoading) {
         return <Loading/>;
     }
+
     return (
         <CommonPageWrap>
             <Title text={"찜 목록"} size={"x-large"}/>
-            <StoreList storesData={storesData} isDibs={true}/>
+            <StoreList storesData={dibList} isDibs={true}/>
             <Pagination totalPages={totalPages} setPage={setPage} page={page}/>
         </CommonPageWrap>
     );

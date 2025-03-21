@@ -73,7 +73,7 @@ exports.findOrderByOrderId = async ({ orderId }) => {
     ],
   });
   return {
-    userPaymentINfo: {
+    userPaymentInfo: {
       orderType: orderData.type,
       paymentMethod: orderData.paymentMethod,
       detailAddressSnapshot: orderData.detailAddress,
@@ -82,6 +82,7 @@ exports.findOrderByOrderId = async ({ orderId }) => {
       addressSnapshot: orderData.addressSnapshot,
     },
     orderId: orderData.orderId,
+    createdAt: orderData.createdAt,
     status: orderData.status,
     storeId: orderData.storeId,
     storeName: orderData.Store.storeName,

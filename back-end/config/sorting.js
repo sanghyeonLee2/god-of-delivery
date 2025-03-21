@@ -1,15 +1,15 @@
 const sorting = [
   {
     value: "기본 정렬순",
-    id: "basicAsc",
+    id: "basic",
   },
   {
     value: "별점 순",
-    id: "ratingAsc",
+    id: "ratingDesc",
   },
   {
     value: "리뷰 많은 순",
-    id: "reviewCntAsc",
+    id: "reviewCntDesc",
   },
   {
     value: "최소 주문 금액 순",
@@ -17,8 +17,6 @@ const sorting = [
   },
 ];
 
-const findSorting = (sortingId) => {
-  return sorting.find((item) => item.id === sortingId)?.name;
-};
 
-module.exports = { sorting, findSorting };
+
+module.exports = { sorting };

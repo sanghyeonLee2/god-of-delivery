@@ -54,5 +54,5 @@ exports.isDibByUserId = async (userId, storeId) => {
   const isDip = await Dib.findOne({
     where: { userId, storeId },
   });
-  return isDip;
+  return (isDip);
 };

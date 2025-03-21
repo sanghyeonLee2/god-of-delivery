@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getApi } from "../api/user";
+import {authGetApi, getApi} from "../api/user";
 import { useLocation, useNavigate } from "react-router-dom";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { API_URLS } from "../constants/urls";
@@ -14,10 +14,10 @@ export const useGetDibs = () => {
   const GET_DIBS_URL = API_URLS.GET_DIBS(page);
   const { data, isLoading } = useQuery(
     [QUERY_KEYS.DIBS, GET_DIBS_URL], // 쿼리 키를 고유하게 만들기 위해 url 포함
-    () => getApi(GET_DIBS_URL),
+    () => authGetApi(GET_DIBS_URL),
     {
       select: (res) => ({
-        storesData: res.data?.storeList,
+        dibList: res.data?.dibList,
         totalPages: pageCalculator(res.data.totalItems),
       }),
       staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
@@ -26,7 +26,7 @@ export const useGetDibs = () => {
   );
   return {
     totalPages: data?.totalPages,
-    storesData: data?.storesData,
+    dibList: data?.dibList,
     page: parseInt(page, 10),
     setPage: (newPage) => navigate(`?page=${newPage}`),
     isLoading,

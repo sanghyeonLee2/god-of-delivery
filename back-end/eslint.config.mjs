@@ -17,7 +17,7 @@ export default defineConfig([
     },
     rules: {
       ...js.configs.recommended.rules,
-      "prettier/prettier": "error", // Prettier 위반 시 ESLint 오류
+      "prettier/prettier": "off", // Prettier 위반 시 ESLint 오류
     },
   },
 ]);

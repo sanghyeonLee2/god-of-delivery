@@ -15,7 +15,7 @@ class Store extends Sequelize.Model {
           allowNull: true,
         },
         storeCategory: {
-          type: Sequelize.STRING(20),
+          type: Sequelize.STRING(100),
           allowNull: false,
         },
         storeAddress: {
@@ -93,14 +93,14 @@ class Store extends Sequelize.Model {
           type: Sequelize.STRING(45),
         },
         rating: {
-          type: Sequelize.DECIMAL(1, 1),
+          type: Sequelize.DECIMAL(2, 1),
           defaultValue: 0,
         },
         reviewCnt: {
           type: Sequelize.BIGINT,
           defaultValue: 0,
         },
-        dips: {
+        dibs: {
           type: Sequelize.BIGINT,
           defaultValue: 0,
         },
@@ -124,10 +124,6 @@ class Store extends Sequelize.Model {
     db.Store.hasMany(db.Cart, { foreignKey: "storeId", sourceKey: "storeId" });
     db.Store.hasMany(db.Menu, { foreignKey: "storeId", sourceKey: "storeId" });
     db.Store.hasMany(db.Review, {
-      foreignKey: "storeId",
-      sourceKey: "storeId",
-    });
-    db.Store.hasMany(db.StoreImage, {
       foreignKey: "storeId",
       sourceKey: "storeId",
     });

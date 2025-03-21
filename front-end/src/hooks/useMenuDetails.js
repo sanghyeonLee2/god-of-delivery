@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {authPostApi, authPutApi, getApi} from "../api/user";
+import {authGetApi, authPostApi, authPutApi, getApi} from "../api/user";
 import {useForm} from "react-hook-form";
 import {QUERY_KEYS} from "../constants/queryKeys";
 import {useSetRecoilState} from "recoil";
@@ -26,7 +26,7 @@ export const useMenuDetails = (menuAPi) => {
 
     const {data, isError, status, isLoading} = useQuery(
         [QUERY_KEYS.MENU_DETAILS, menuAPi],  // 쿼리 키를 고유하게 만들기 위해 url 포함
-        () => getApi(menuAPi),
+        () => authGetApi(menuAPi),
         {
             staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
             cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지,
@@ -51,9 +51,9 @@ export const useMenuDetails = (menuAPi) => {
 
 
     const {mutate: handleUpdateCart, isLoading: isUpdatingCart} = useMutation(
-        (data) => authPutApi(menuAPi, data), {
+        ( cartItemId) =>console.log(getValues())||authPutApi(API_URLS.PUT_CART(cartItemId), getValues()), {
             onSuccess: async () => {
-                await queryClient.invalidateQueries([QUERY_KEYS.MENU_DETAILS, API_URLS.GET_CART])
+                await queryClient.invalidateQueries([QUERY_KEYS.CART, API_URLS.GET_CART])
                 setIsModalOpen({modalType: "", flag: false, modalData: null})
                 showSuccess("수정 되었습니다")
             }

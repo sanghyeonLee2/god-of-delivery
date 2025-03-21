@@ -42,13 +42,13 @@ function MenuDetailOptions({menuCategories, getValues, setValue}) {
                     </MenuDetailTextWrap>
                     {category?.isEssential && category?.maxQuantity === 1 ?
                         <RadioGroup>
-                            {category.menuOptions.map((option, idx) =>
+                            {category.MenuOptions.map((option, idx) =>
                                 <OptionWrap key={option.menuOptionId}>
                                     <Radio
                                         value={option.content}
                                         defaultChecked={idx === 0}// Radio의 고유 값
                                         name={category?.menuCategoryId} // 같은 그룹으로 묶음
-                                        onChange={() => setRadioMenuOptions(option.menuOptionId, category.menuOptions)} // 단일 객체 전달
+                                        onChange={() => setRadioMenuOptions(option.menuOptionId, category.MenuOptions)} // 단일 객체 전달
                                     >
                                         &nbsp;&nbsp;{option.content}
                                     </Radio>
@@ -58,12 +58,12 @@ function MenuDetailOptions({menuCategories, getValues, setValue}) {
                                 </OptionWrap>
                             )}
                         </RadioGroup> :
-                        category.menuOptions.map((option) => (
+                        category.MenuOptions?.map((option) => (
                             <OptionWrap key={option.menuOptionId}>
                                 <CheckBox
                                     value={option.menuOptionId}
                                     /*checked={value.some((item) => item.menuOptionId === option.menuOptionId)}*/
-                                    onChange={(e) => setCheckboxMenuOptions(e, option.menuOptionId, category.maxQuantity, category.menuOptions)}
+                                    onChange={(e) => setCheckboxMenuOptions(e, option.menuOptionId, category.maxQuantity, category.MenuOptions)}
                                 >
                                     &nbsp;&nbsp;{option.content}
                                 </CheckBox>

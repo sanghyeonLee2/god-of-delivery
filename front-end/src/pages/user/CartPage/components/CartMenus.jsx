@@ -7,7 +7,7 @@ import {MainBtn} from "components/common/Button/main/MainButton";
 import {API_URLS} from "../../../../constants/urls";
 import Image from "components/common/Image/Image";
 
-function CartMenus({cartItems, handleDeleteCartItem}) {
+function CartMenus({cartItems,orderPrice, handleDeleteCartItem}) {
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
     return (
         <S.CartMenuBox>
@@ -16,9 +16,9 @@ function CartMenus({cartItems, handleDeleteCartItem}) {
                     <li>
                         <S.MenuOptionLeft>
                             <div>
-                                <Font>{cartItem.content}</Font>
+                                <Font size={"large"}>{cartItem.name}</Font>
                                 <Font size={"small"} color={"gray"}>{cartItem?.description}</Font>
-                                <Font>{(cartItem.price * cartItem.quantity).toLocaleString()}원</Font>
+                                <Font>{orderPrice.toLocaleString()}원</Font>
                             </div>
                             <Image width={70} height={70} src={cartItems.imgUrl}/>
                         </S.MenuOptionLeft>
@@ -33,7 +33,7 @@ function CartMenus({cartItems, handleDeleteCartItem}) {
                                          onClick={() => setIsModalOpen({
                                              modalType: "메뉴수정",
                                              flag: true,
-                                             modalData: {api: API_URLS.PUT_CART(cartItem?.cartItemId)}
+                                             modalData: {api: API_URLS.GET_CART_DETAIL(cartItem?.menuId),cartItemId:cartItem.cartItemId}
                                          })}/>
                                 <MainBtn text={"삭제"}
                                          width={"125px"}

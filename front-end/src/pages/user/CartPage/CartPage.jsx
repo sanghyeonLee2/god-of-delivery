@@ -17,22 +17,31 @@ function CartPage(props) {
         handleSubmit
     } = useCart();
     const navigate = useNavigate();
+/*   const orderPrice = cartData.CartItems.reduce((cartTotal, cartItem) => {
+        const menuPrice = (cartItem.Menu?.price || 0) * cartItem.quantity; // 메뉴 가격 * 수량
+        const optionsPrice = cartItem.CartItemOptions.reduce(
+            (optionsTotal, option) => optionsTotal + (option.MenuOption?.price || 0),
+            0
+        );
+
+        return cartTotal + menuPrice + optionsPrice;
+    }, 0);*/
 
     return (
         <CommonPageWrap style={{minHeight: "calc(100vh - 200px)"}}> {/* ✅ CLS 방지 */}
             {isLoading && <Loading/>}
             <S.CartHeader>
                 <S.MinStoreInfoWrap>
-                    <Font size={"x-large"}>{cartData?.store?.storeName}</Font>
-                    <Font size={"small"} color={"gray"}>{cartData?.store?.deliveryTime} 후 도착예정</Font>
+                    <Font size={"x-large"}>{cartData?.Store?.storeName}</Font>
+                    <Font size={"small"} color={"gray"}>{cartData?.Store?.deliveryTime} 후 도착예정</Font>
                 </S.MinStoreInfoWrap>
             </S.CartHeader>
             <form onSubmit={handleSubmit}>
-                <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.cartItems}/>
+                <CartMenus handleDeleteCartItem={handleDeleteCartItem} orderPrice={cartData?.totalCartMenuPrice} cartItems={cartData?.CartItems}/>
                 <S.MenuAddBtnWrap>
                     <TransBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)}/>
                 </S.MenuAddBtnWrap>
-                <CartPayment tips={cartData?.store?.tips} totalCartMenuPrice={cartData?.totalCartMenuPrice}/>
+                <CartPayment tips={cartData?.Store.deliveryTip} orderPrice={cartData?.totalCartMenuPrice}/>
                 <OrderBtnWrap>
                     <SubBtn type={"submit"} text={"결제하기"}/>
                 </OrderBtnWrap>

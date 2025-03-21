@@ -5,8 +5,8 @@ import {OrderPriceWrap} from "./ModalComponentsLayout";
 function OrderPrice({watch, menuCategories, defaultPrice = 0}) {
     const orderPrice = watch("quantity") *
         menuCategories.reduce(
-            (categoryPrice, {menuOptions}) =>
-                categoryPrice + menuOptions.reduce(
+            (categoryPrice, {MenuOptions}) =>
+                categoryPrice + MenuOptions.reduce(
                     (optionPrice, cur) =>
                         watch("options").includes(cur.menuOptionId) ? optionPrice + cur.price : optionPrice, 0),
             defaultPrice);

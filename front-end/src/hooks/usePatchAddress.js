@@ -1,23 +1,26 @@
-import {useMutation} from "react-query";
-import {authPostApi} from "../api/user";
+import {useMutation, useQueryClient} from "react-query";
+import {authPatchApi, authPostApi} from "../api/user";
 import {API_URLS} from "../constants/urls";
 import {useRecoilValueLoadable, useSetRecoilState} from "recoil";
 import {addressState} from "../recoil/map/atoms";
 import {isModalOpenState} from "../recoil/flag/atoms";
 import {showSuccess} from "../utils/toasts";
+import {QUERY_KEYS} from "../constants/queryKeys";
 
-export const usePostAddress = () => {
+export const usePatchAddress = () => {
+    const queryClient = useQueryClient();
     const addresses = useRecoilValueLoadable(addressState);
     const setIsModalOpen = useSetRecoilState(isModalOpenState);
     const {mutate: handlePostAddress, isLoading: isPostingAddress} = useMutation(
-        () => authPostApi(API_URLS.POST_ADDRESS, {
+        () => authPatchApi(API_URLS.POST_ADDRESS, {
                 address: addresses.contents?.address,
                 lat: addresses.contents?.lat,
                 lng: addresses.contents?.lng,
             }
         ), {
-            onSuccess: () => {
+            onSuccess: async () => {
                 showSuccess("주소가 등록 되었습니다");
+                await queryClient.invalidateQueries([QUERY_KEYS.ME, API_URLS.GET_ME])
                 setIsModalOpen({flag: false, modalData: null, modalType: ""})
             }
         }

@@ -14,8 +14,8 @@ class User extends Sequelize.Model {
           allowNull: false,
         },
         role: {
-          type: Sequelize.STRING(100),
-          defaultValue: "회원",
+          type: Sequelize.ENUM('user', 'owner'),
+          defaultValue: "user",
           allowNull: false,
         },
         address: {
@@ -23,10 +23,10 @@ class User extends Sequelize.Model {
           allowNull: true,
         },
         latitude: {
-          type: Sequelize.FLOAT(9, 6),
+          type: Sequelize.DECIMAL(17, 14)
         },
         longitude: {
-          type: Sequelize.FLOAT(9, 6),
+          type: Sequelize.DECIMAL(17, 14)
         },
       },
       {
@@ -45,7 +45,6 @@ class User extends Sequelize.Model {
   }
   static associate(db) {
     db.User.hasMany(db.Order, { foreignKey: "userId", sourceKey: "userId" });
-    db.User.hasMany(db.Coupon, { foreignKey: "userId", sourceKey: "userId" });
     db.User.hasOne(db.Cart, { foreignKey: "userId", sourceKey: "userId" });
     db.User.hasMany(db.Review, { foreignKey: "userId", sourceKey: "userId" });
     db.User.hasMany(db.Dib, { foreignKey: "userId", sourceKey: "userId" });

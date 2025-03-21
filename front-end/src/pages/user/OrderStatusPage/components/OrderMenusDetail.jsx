@@ -5,7 +5,7 @@ function OrderMenusDetail({menus}) {
     return (
         <div>
             {menus?.map((menu) => {
-                    const totalMenuPrice = menu.menuPriceSnapshot + menu.orderItemOptions.reduce((optionAcc, option) => optionAcc + option.optionPriceSnapshot, 0);
+                    const totalMenuPrice = menu.menuPriceSnapshot + menu.OrderItemOptions.reduce((optionAcc, option) => optionAcc + option.optionPriceSnapshot, 0);
                     return (<div key={menu.orderItemId}>
                         <CommonSectionWrap>
                             <Font>
@@ -14,7 +14,7 @@ function OrderMenusDetail({menus}) {
                             <Font size={"small"} color={"gray"}>
                                 기본 : {menu?.menuPriceSnapshot.toLocaleString()}원
                             </Font>
-                            {menu?.orderItemOptions.map((option) =>
+                            {menu?.OrderItemOptions.map((option) =>
                                 <div key={option.menuOptionId}>
                                     <Font size={"small"} color={"gray"}>
                                         {option.optionNameSnapshot} : {option.optionPriceSnapshot.toLocaleString()}원

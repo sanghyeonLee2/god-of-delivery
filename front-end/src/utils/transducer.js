@@ -19,5 +19,5 @@ export const detailDate = (isoString) => {
 }
 
 export const keywordIncludedUrl = (keyword) => {
-    return keyword ? `&keyword${keyword}` : "";
+    return keyword ? `&keyword=${keyword.trim()}` : "";
 }

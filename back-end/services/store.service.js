@@ -1,10 +1,8 @@
-const Store = require("../models/store");
-const Menu = require("../models/menu");
+const {Store, Menu, CeoReview, Review} = require("../models");
+
 
 const DibService = require("../services/dib.service");
-const { Op, Sequelize } = require("sequelize");
-const { findCategory } = require("../config/category");
-const { findSorting } = require("../config/sorting");
+const { Op, Sequelize, fn, col, where } = require("sequelize");
 
 exports.getStores = async (
   lat,
@@ -14,27 +12,42 @@ exports.getStores = async (
 ) => {
   const pageNum = Number(page);
   let sortType;
-  switch (findSorting(sorting)) {
+  switch (sorting) {
     case "ratingDesc":
       sortType = [["rating", "DESC"]]; // 별점 높은 순
       break;
     case "reviewCntDesc":
-      sortType = [["reviewCnt", "Desc"]];
+      sortType = [["reviewCnt", "DESC"]];
       break;
     case "minDeliveryPriceAsc":
-      sortType = [["minDeliveryPrice", "DESC"]];
+      sortType = [["minDeliveryPrice", "ASC"]];
       break;
     default:
-      sortType = [Sequelize.literal("distance ASC")]; // 기본: 가까운 순
+      // sortType = [Sequelize.literal("distance ASC")]; // 기본: 가까운 순
       break;
   }
-  const whereCondition = {
-    ...(category !== "all" ? { storeCategory: findCategory(category) } : {}), // 카테고리 필터 적용
-    ...(keyword ? { storeName: { [Op.like]: `%${keyword}%` } } : {}), // 키워드 검색 추가
-  };
+  const searchKeyword = keyword || ""; // 예: "Hello World"
+  const categoryName = category || "all"; // 예: "fastFood", or "all"
+  const keywordCondition = where(
+      fn("REPLACE", fn("LOWER", col("store_name")), " ", ""),
+      {
+        [Op.like]: `%${searchKeyword.toLowerCase().replace(/\s/g, "")}%`
+      }
+  );
+
+// 카테고리 조건
+  const categoryCondition = categoryName === "all"
+      ? {} // 조건 없음
+      : { store_category: categoryName };
+
 
   const data = await Store.findAll({
-    where: whereCondition,
+    where: {
+      [Op.and]: [
+        keywordCondition,
+        categoryCondition
+      ]
+    },
     limit: 10,
     offset: (pageNum - 1) * 10,
     attributes: [
@@ -46,16 +59,16 @@ exports.getStores = async (
       "rating",
       "reviewCnt",
       "minDeliveryPrice",
-      [
-        Sequelize.literal(
-          `(6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) 
-                * cos(radians(longitude) - radians(${lng})) 
-                + sin(radians(${lat})) * sin(radians(latitude))))`,
-        ),
-        "distance",
-      ],
+      // [
+      //   Sequelize.literal(
+      //     `(6371 * acos(cos(radians(${lat})) * cos(radians(latitude))
+      //           * cos(radians(longitude) - radians(${lng}))
+      //           + sin(radians(${lat})) * sin(radians(latitude))))`,
+      //   ),
+      //   "distance",
+      // ],
     ], // 거리 계산
-    having: Sequelize.literal("distance <= 5"), // 5km 이내 필터링
+    // having: Sequelize.literal("distance <= 5"), // 5km 이내 필터링
     order: sortType,
   });
   return {
@@ -94,7 +107,20 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
       return acc;
     }, {}),
   );
-  const isDib = await DibService.isDibByUserId(storeId, userId);
+  const isDib = await DibService.isDibByUserId(userId, storeId);
+  const ceoReviewCnt = await CeoReview.findAll({
+    attributes: [
+      [col("review.store_id"), "store_id"],
+      [fn("COUNT", col("ceo_review_id")), "ceo_review_count"]
+    ],
+    include: [
+      {
+        model: Review,
+        attributes: [], // 불필요한 필드는 가져오지 않음
+      }
+    ],
+    group: ["review.store_id"]
+  });
   return {
     storeId: storeData.storeId,
     notice: storeData.notice,
@@ -124,7 +150,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
       introduction: storeData.introduction,
     },
     storeHeader: {
-      ownerReview: "리뷰 테이블 조사해서",
+      ownerReview: ceoReviewCnt,
       dibs: storeData.dibs,
       isDib: isDib ? true : false,
       storeName: storeData.storeName,

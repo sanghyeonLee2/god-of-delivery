@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getApi } from "../api/user";
+import {authGetApi, getApi} from "../api/user";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { API_URLS } from "../constants/urls";
@@ -24,7 +24,7 @@ export const useGetStores = (isEnabled) => {
 
   const { data, isLoading } = useQuery(
     [QUERY_KEYS.STORES, GET_STORES_URL],
-    () => getApi(GET_STORES_URL),
+    () => authGetApi(GET_STORES_URL),
     {
       select: (res) => ({
         storesData: res.data?.storeList,
@@ -35,12 +35,11 @@ export const useGetStores = (isEnabled) => {
       enabled: isEnabled,
     }
   );
-
   const { handleSubmit, register } = useForm();
 
   const setKeyword = (newKeyword) => {
     navigate(
-      `/stores/${categoryId}?page=1&sorting=${sorting}&keyword=${newKeyword}`
+      `/stores/${categoryId}?page=1&sorting=${sorting}&keyword=${newKeyword.trim()}`
     );
   };
 

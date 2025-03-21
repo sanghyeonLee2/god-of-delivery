@@ -11,6 +11,7 @@ export const useCart = () => {
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
     const queryClient = useQueryClient();
     const navigate = useNavigate();
+
     const {data, isLoading} = useQuery(
         [QUERY_KEYS.CART, API_URLS.GET_CART],
         () => authGetApi(API_URLS.GET_CART),
@@ -18,12 +19,20 @@ export const useCart = () => {
             staleTime: 1000 * 60 * 5, // 5분 동안 신선한 데이터 유지
             cacheTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
             select: (res) => {
+                const totalCartMenuPrice = res.data?.CartItems.reduce((sum, cartItem) => {
+                    const menuTotal = (cartItem.price || 0) * cartItem.quantity;
+                    const optionsTotal = cartItem.CartItemOptions.reduce((optionSum, option) => {
+                        return optionSum + (option.price || 0);
+                    }, 0);
+
+                    return sum + menuTotal + optionsTotal;
+                }, 0)
                 return {
                     ...res.data,
-                    totalCartMenuPrice: res.data?.cartItems.reduce((acc, {price, quantity}) =>
-                        acc + (price * quantity), 0)
+                    totalCartMenuPrice
                 }
             },
+
         }
     );
     const {mutate: handleDeleteCartItem} = useMutation(
@@ -34,16 +43,16 @@ export const useCart = () => {
                 setIsModalOpen({modalType: "", flag: false, modalData: null})
             }
         });
-
     return {
-        cartData: data, isLoading,
+        cartData: data,
+        isLoading,
         handleDeleteCartItem,
         handleSubmit: () => {
             navigate("/payment", {
                 state: {
                     paymentInfo: {
                         totalCartMenuPrice: data?.totalCartMenuPrice,
-                        tips: data?.store.tips,
+                        tips: data?.Store.deleveryTip,
                     }
                 }
             })

@@ -20,7 +20,7 @@ exports.middleVerifyTokenIsOwner = (req, res, next) => {
   if (req.headers.authorization) {
     const token = req.headers.authorization.split("Bearer ")[1];
     const result = jwtUtil.verifyToken().access(token);
-    if (result.verified && result.role === "사장님") {
+    if (result.verified && result.role === "owner") {
       req.userId = result.userId;
       req.role = result.role;
       next();

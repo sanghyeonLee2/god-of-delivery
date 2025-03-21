@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getApi } from "../api/user";
+import {authGetApi, getApi} from "../api/user";
 import { useState } from "react";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -26,7 +26,7 @@ export const useGetReviews = (reviewType) => {
 
   const { data, isLoading } = useQuery(
     [GET_REVIEWS_URL(), QUERY_KEYS.REVIEWS],
-    () => getApi(GET_REVIEWS_URL()),
+    () => authGetApi(GET_REVIEWS_URL()),
     {
       select: (res) => {
         return {

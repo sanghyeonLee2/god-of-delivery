@@ -8,7 +8,12 @@ const UserService = require("../services/user.service");
  */
 exports.getStoresList = async (req, res) => {
   try {
-    const { latitude, longitude } = await UserService.findById(req);
+    const { latitude, longitude, address } = await UserService.findById(req);
+    if(!latitude || !longitude || !address ) {
+      return res.status(422).send({
+          message : "위도 경도 주소 값이 없습니다."
+      })
+    }
     const storeList = await StoreService.getStores(
       latitude,
       longitude,

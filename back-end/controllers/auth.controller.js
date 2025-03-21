@@ -40,16 +40,13 @@ exports.postSignUp = async (req, res) => {
 exports.postSignIn = async (req, res) => {
   try {
     const user = await UserService.findByIdnPw(req.body);
-    const token = await TokenService.findById(req.body);
-    if (user && token) {
-      res.status(200).send({
-        status: 200,
-        message: "Success",
-      });
-    } else if (user) {
+    const token = await TokenService.findById(req.body)
+    if (user) {
       const accessToken = generateToken().access(user.userId, user.role);
       const refreshToken = generateToken().refresh(user.userId, user.role);
-      await TokenService.createToken(user.userId, refreshToken);
+      if(!token){
+        await TokenService.createToken(user.userId, refreshToken);
+      }
       res.status(201).send({
         status: 201,
         message: "Success",

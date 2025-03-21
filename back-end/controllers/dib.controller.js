@@ -47,7 +47,7 @@ exports.deleteDibCancel = async (req, res) => {
   try {
     await DibService.deleteDib(req, req.params);
     res.status(200).send({
-      message: "Success",
+      message: "Delete",
     });
   } catch (err) {
     res.status(500).send({

@@ -12,7 +12,7 @@ function DefaultModal({modalType, modalData}) {
             <ModalInner>
                 <ModalHeader title={modalType}/>
                 {(modalType === "메뉴상세" || modalType === "메뉴수정") &&
-                    <MenuDetailModal api={modalData.api} modalType={modalType}/>}
+                    <MenuDetailModal modalData={modalData} modalType={modalType}/>}
                 {modalType === "주소설정" && <SelectMapModal/>}
                 {modalType === "리뷰작성" && <CreateReview modalData={modalData}/>}
                 {modalType === "사장님 리뷰작성" && <CreateOwnerReview modalData={modalData}/>}

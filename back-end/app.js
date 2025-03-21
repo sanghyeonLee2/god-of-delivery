@@ -35,7 +35,7 @@ app.set("views", path.join(__dirname, "views"));
 
 /* === ORM을 사용하여 DB연동 및 Model들을 DB에 동기화 === */
 sequelize
-  .sync({ alter: true })
+  .sync()
   .then(() => {
     console.log("DB 연결 성공");
   })

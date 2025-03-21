@@ -20,9 +20,6 @@ export const useSelectMapLocation = () => {
         {
             staleTime: 1000 * 60 * 5, // 5분 동안 신선한 데이터 유지
             cacheTime: 1000 * 60 * 10,
-            onSuccess: (res) => {
-                setCoords({lat: res.data.lat, lng: res.data.lng})
-            }
         }
     );
     return {isLoading, coords, onClickCurrentLocation, setCoords};

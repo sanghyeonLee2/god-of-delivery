@@ -16,11 +16,11 @@ export const errorHandler = (error) => {
     return showError("토큰이 유효하지 않습니다");
   }
 
-  if (status >= 500) {
+/*  if (status >= 500) {
     saveErrorToSession(status, "서버 오류가 발생했습니다.");
     return (window.location.href = "/error");
-  }
-
+  }*/
+/*
   switch (status) {
     case 400:
       return showError("잘못된 요청입니다. 입력값을 확인해주세요.");
@@ -38,5 +38,5 @@ export const errorHandler = (error) => {
     default:
       saveErrorToSession(status, "알 수 없는 오류가 발생했습니다.");
       return (window.location.href = "/error");
-  }
+  }*/
 };

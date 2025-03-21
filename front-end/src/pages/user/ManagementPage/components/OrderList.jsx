@@ -10,6 +10,7 @@ import Image from "components/common/Image/Image";
 function OrderList({orders}) {
     const navigate = useNavigate()
     const setIsModalOpen = useSetRecoilState(isModalOpenState)
+    console.log(orders)
     return (
         <ul>
             {orders.map((order) =>
@@ -39,7 +40,7 @@ function OrderList({orders}) {
                             </Font>
                         </div>
                     </FlexOnly>
-                    {order.hasReviewed &&
+                    {!order.hasReviewed &&
                         <div style={{marginTop: "10px"}}>
                             <SubBtn type={"button"} text={"리뷰 작성하기"} height={"40px"}
                                     onClick={() => setIsModalOpen({

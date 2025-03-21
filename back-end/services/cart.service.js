@@ -1,4 +1,4 @@
-const { Store, Cart, CartItem, CartItemOption, Menu } = require("../models");
+const { Store, Cart, CartItem, CartItemOption, Menu, MenuOption } = require("../models");
 
 exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
   let cart = await Cart.findOne({
@@ -71,6 +71,7 @@ exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
 exports.findCartDataByUserId = async (userId) => {
   const myCartData = await Cart.findOne({
     where: { userId },
+    attributes: ["cartId", "storeId", "userId"], // Cart 테이블의 필요한 컬럼만 선택
     include: [
       {
         model: Store,
@@ -78,18 +79,52 @@ exports.findCartDataByUserId = async (userId) => {
       },
       {
         model: CartItem,
+        attributes: ["cartItemId", "quantity", "cartId", "menuId"], // CartItem 테이블의 필요한 컬럼 선택
         include: [
-          { model: Menu, attributes: ["name", "price", "description"] },
-
+          {
+            model: Menu,
+            attributes: ["name", "price", "description"], // Menu 테이블의 필요한 속성
+          },
           {
             model: CartItemOption,
+            attributes: ["cartItemOptionId", "cartItemId"], // CartItemOption의 필요한 속성
+            include: [
+              {
+                model: MenuOption,
+                attributes: ["menuOptionId", "content", "price", "menuCategoryId"], // MenuOption의 필요한 속성
+              },
+            ],
           },
         ],
       },
     ],
   });
 
-  return myCartData;
+  if (!myCartData) return null;
+
+  // ✅ 데이터 변환: attributes와 map을 활용하여 원하는 형태로 가공
+  const formattedCartData = {
+    ...myCartData.get(), // Sequelize 객체에서 JSON 변환
+    CartItems: myCartData.CartItems.map((cartItem) => ({
+      ...cartItem.get(),
+      name: cartItem.Menu?.name || null, // Menu 데이터를 평탄화
+      price: cartItem.Menu?.price || null,
+      description: cartItem.Menu?.description || null,
+      Menu: undefined, // 기존 Menu 객체 제거
+      CartItemOptions: cartItem.CartItemOptions.map((option) => ({
+        ...option.get(),
+        menuOptionId: option.MenuOption?.menuOptionId || null,
+        content: option.MenuOption?.content || null,
+        price: option.MenuOption?.price || null,
+        createdAt: option.MenuOption?.createdAt || null,
+        updatedAt: option.MenuOption?.updatedAt || null,
+        menuCategoryId: option.MenuOption?.menuCategoryId || null,
+        MenuOption: undefined, // 기존 MenuOption 객체 제거
+      })),
+    })),
+  };
+
+  return formattedCartData;
 };
 
 exports.destroyCart = async ({ cartId }) => {
@@ -117,35 +152,10 @@ exports.updateCartItemOption = async (
 ) => {
   await CartItem.update(
     {
-      quantity: quantity,
+      quantity,options
     },
     { where: { cartItemId } },
   );
-  const cartOptionUpdate = await CartItem.findOne({
-    where: { cartItemId },
-    include: [
-      {
-        model: CartItemOption,
-      },
-    ],
-  });
-  const sortOptionId = options.sort();
-
-  const isSameOption = (existOptions, newOptions) => {
-    if (existOptions.length !== newOptions.length) {
-      return false;
-    }
-    return existOptions.every((val, idx) => val === newOptions[idx]);
-  };
-  const existOptions = cartOptionUpdate.CartItemOptions.map(
-    (option) => option.menuOptionId,
-  ).sort();
-  if (isSameOption(existOptions, sortOptionId)) {
-    throw new Error("옵션 변경 점이 없습니다.");
-  }
-  await CartItemOption.destroy({
-    where: { cartItemId },
-  });
   const cartItemCreateData = options.map((optionId) => ({
     cartItemId,
     menuOptionId: optionId,

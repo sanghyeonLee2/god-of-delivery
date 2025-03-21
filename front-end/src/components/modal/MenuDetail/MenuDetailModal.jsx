@@ -10,8 +10,8 @@ import Loading from "../../common/Loading/Loading";
 import OrderPrice from "components/modal/MenuDetail/components/OrderPrice";
 import {quantityOnChg} from "../../../utils/clickHandler";
 
-function MenuDetailModal({modalType, api}) {
-    const {form, query, mutate} = useMenuDetails(api)
+function MenuDetailModal({modalType, modalData}) {
+    const {form, query, mutate} = useMenuDetails(modalData.api)
     if (query.isLoading) {
         return <Loading/>
     }
@@ -27,7 +27,7 @@ function MenuDetailModal({modalType, api}) {
                 </S.MenuDetailTextWrap>
                 <ModalForm>
                     <MenuDetailOptions getValues={form.getValues} setValue={form.setValue}
-                                       menuCategories={query.menuData?.menuCategories} control={form.control}/>
+                                       menuCategories={query.menuData?.MenuCategories} control={form.control}/>
                     <S.MenuDetailTextWrap>
                         <Font>수량</Font>
                         <S.SelectQuantityWrap>
@@ -40,7 +40,7 @@ function MenuDetailModal({modalType, api}) {
                     </S.MenuDetailTextWrap>
                 </ModalForm>
                 <OrderPrice defaultPrice={query.menuData?.price}
-                            menuCategories={query.menuData?.menuCategories}
+                            menuCategories={query.menuData?.MenuCategories}
                             watch={form.watch}/>
             </ModalContentWrap>
             {modalType === "메뉴상세" &&
@@ -50,7 +50,7 @@ function MenuDetailModal({modalType, api}) {
             {modalType === "메뉴수정" &&
                 <ModalBtn text={"수정하기"}
                           isLoading={mutate.isUpdatingCart}
-                          onClick={form.handleSubmit((data) => mutate.handleUpdateCart(data))}/>
+                          onClick={form.handleSubmit((data) => mutate.handleUpdateCart(modalData.cartItemId))}/>
             }
         </>
     );
