@@ -135,4 +135,11 @@ exports.updateDibCnt = async (storeId, isPlus) => {
     }
 }
 
+exports.findStoreByUserId = async (userId) => {
+    const store = await Store.findOne({
+        where: {userId},
+    })
+    return (store)
+}
+
 
