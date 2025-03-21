@@ -1,5 +1,6 @@
 const UserService = require("../services/user.service");
 const OrderService = require("../services/order.service");
+const DibService = require("../services/dib.service");
 
 exports.getLatLng = async (req, res) => {
     try{
@@ -64,6 +65,22 @@ exports.getUserOrders = async (req, res) => {
             userOrderList})
     }
     catch (err) {
+        res.status(500).send({
+            status : 500,
+            message: err.message
+        })
+    }
+}
+
+exports.getUserDibStoreList = async (req, res) => {
+    try{
+        const dibs = await DibService.findUserDibList(req, req.query)
+        res.status(200).send({
+            totalItems: dibs.length,
+            dibList : dibs
+        })
+    }
+    catch (err){
         res.status(500).send({
             status : 500,
             message: err.message
