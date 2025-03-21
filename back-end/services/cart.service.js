@@ -1,11 +1,4 @@
-const {
-  Store,
-  Cart,
-  CartItem,
-  CartItemOption,
-  Menu,
-
-} = require("../models");
+const { Store, Cart, CartItem, CartItemOption, Menu } = require("../models");
 
 exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
   let cart = await Cart.findOne({

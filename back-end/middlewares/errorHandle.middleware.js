@@ -9,5 +9,5 @@ exports.errorHandler = (err, req, res, next) => {
   res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
   res.status(err.status || 500);
   res.render("error");
-  next()
+  next();
 };

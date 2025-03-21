@@ -42,19 +42,18 @@ exports.verifyToken = () => {
       }
     },
     refresh: async (token, userId) => {
-        const record = await TokenService.findById(userId);
-        if(!record || !record.token) {
-          throw new Error("Refresh Token이 존재하지 않음");
-        }
-        if(token !== record.token) {
-          throw new Error("Refresh Token 불일치")
-        }
-        try{
-          jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
-        }
-        catch(err){
-            throw new Error("Refresh Token 만료 또는 검증 실패")
-        }
-    }
-  }
-}
+      const record = await TokenService.findById(userId);
+      if (!record || !record.token) {
+        throw new Error("Refresh Token이 존재하지 않음");
+      }
+      if (token !== record.token) {
+        throw new Error("Refresh Token 불일치");
+      }
+      try {
+        jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+      } catch (err) {
+        throw new Error("Refresh Token 만료 또는 검증 실패");
+      }
+    },
+  };
+};

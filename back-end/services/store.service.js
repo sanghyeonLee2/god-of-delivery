@@ -1,7 +1,6 @@
 const Store = require("../models/store");
 const Menu = require("../models/menu");
 
-
 const DibService = require("../services/dib.service");
 const { Op, Sequelize } = require("sequelize");
 const { findCategory } = require("../config/category");
@@ -96,7 +95,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
     }, {}),
   );
   const isDib = await DibService.isDibByUserId(storeId, userId);
-  return ({
+  return {
     storeId: storeData.storeId,
     notice: storeData.notice,
     orderMethod: {
@@ -133,7 +132,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
       reviewCnt: storeData.reviewCnt,
     },
     menuInfo: menuData,
-  });
+  };
 };
 
 exports.updateDibCnt = async (storeId, isPlus) => {
