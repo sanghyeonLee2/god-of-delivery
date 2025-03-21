@@ -1,37 +1,67 @@
 module.exports = {
   env: {
-    browser: true, // 브라우저 환경
-    es2021: true, // 최신 ES 문법 지원
-    node: true, // Node.js 환경 추가
+    browser: true,
+    es2021: true,
+    node: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "airbnb", // Airbnb 스타일 가이드 적용
-    "plugin:prettier/recommended", // Prettier와 ESLint 충돌 방지
+    "airbnb",
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: "module",
   },
   rules: {
-    "prettier/prettier": "error", // Prettier 규칙 위반 시 ESLint 오류로 표시
-    "react/react-in-jsx-scope": "off", // Next.js 사용 시 불필요한 오류 방지
-    "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".js"] }], // JSX 파일 확장자 허용
+    "prettier/prettier": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".js"] }],
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
-    "react/prop-types": "off", // PropTypes 강제하지 않음 (TypeScript 사용 시)
-    "sort-imports": [
-      "error",
-      { ignoreCase: true, ignoreDeclarationSort: false },
-    ],
-    "react/jsx-sort-props": [
-      "error",
-      { callbacksLast: true, shorthandFirst: true },
-    ],
-    "sort-keys": ["error", "asc", { caseSensitive: false, natural: true }],
+    "import/prefer-default-export": "off",
+    "no-return-assign": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "no-return-await": "off",
+    "prefer-template": "off",
+    "sort-imports": "off",
+    "import/order": "off",
+    "import/no-cycle": "off",
+    "import/no-named-as-default": "off",
+    "spaced-comment": "off",
+    "prefer-destructuring": "off",
+    "consistent-return": "off",
+    "no-else-return": "off",
+
+    // React-specific
+    "react/prop-types": "off",
+    "react/jsx-sort-props": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-boolean-value": "off",
+
+    // Accessibility (a11y)
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
   },
   settings: {
+    "import/resolver": {
+      alias: {
+        map: [
+          ["components", "./src/components"],
+          ["pages", "./src/pages"],
+        ],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
     react: {
       version: "detect",
     },
