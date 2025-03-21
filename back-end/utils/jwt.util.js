@@ -1,6 +1,6 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const { findById } = require("../services/token.service");
+const TokenService = require("../services/token.service");
 
 /**
  * AccessToken 생성 함수
@@ -42,21 +42,19 @@ exports.verifyToken = () => {
       }
     },
     refresh: async (token, userId) => {
-      try {
-        const data = await findById(userId);
-        if (token === data.token) {
-          try {
-            jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-            return true;
-          } catch (err) {
-            return false;
-          }
-        } else {
-          return false;
+        const record = await TokenService.findById(userId);
+        if(!record || !record.token) {
+          throw new Error("Refresh Token이 존재하지 않음");
         }
-      } catch (err) {
-        return false;
-      }
-    },
-  };
-};
+        if(token !== record.token) {
+          throw new Error("Refresh Token 불일치")
+        }
+        try{
+          jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
+        }
+        catch(err){
+            throw new Error("Refresh Token 만료 또는 검증 실패")
+        }
+    }
+  }
+}
