@@ -1,3 +1,5 @@
-export const pageCalculator = (totalItems, pageSize) => {
-    return Math.ceil(totalItems / pageSize)
-}
+const PAGE_SIZE = 10;
+
+export const pageCalculator = (totalItems) => {
+  return Math.ceil(totalItems / PAGE_SIZE);
+};
