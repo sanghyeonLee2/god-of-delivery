@@ -47,6 +47,8 @@ class User extends Sequelize.Model {
         db.User.hasMany(db.Review, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasMany(db.Dib, {foreignKey: 'userId', sourceKey: 'userId'})
         db.User.hasOne(db.Token,{foreignKey:"userId", sourceKey:"userId"})
+        db.User.hasOne(db.Store, {foreignKey: 'userId', sourceKey: 'userId'})
+        db.User.hasMany(db.CeoReview, {foreignKey: 'userId', sourceKey: 'userId'})
     }
 }
 

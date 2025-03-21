@@ -123,6 +123,7 @@ class Store extends Sequelize.Model {
         db.Store.hasMany(db.Review, {foreignKey:'storeId', sourceKey:'storeId'})
         db.Store.hasMany(db.StoreImage, {foreignKey:'storeId', sourceKey:'storeId'})
         db.Store.hasMany(db.Dib, {foreignKey:'storeId', sourceKey:'storeId'})
+        db.Store.belongsTo(db.User, {foreignKey : 'userId', targetKey:'userId', onDelete: 'CASCADE',hooks:false})
     }
 }
 
