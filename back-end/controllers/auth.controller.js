@@ -71,42 +71,29 @@ exports.postSignIn = async (req, res) => {
 };
 
 exports.getRefreshReissued = async (req, res) => {
-  const { authorization, refreshToken } = req.headers;
+  const { accessToken, refreshToken } = req.body;
 
-  if (!authorization || !refreshToken) {
-    return res.status(403).json({
+  if (!accessToken || !refreshToken) {
+    return res.status(403).send({
       status: 403,
-      message: "Access, RefreshToken이 Header에 없습니다.",
+      message: "AccessToken, RefreshToken이 Body에 없습니다!",
     });
   }
 
   try {
-    const authToken = authorization.split("Bearer ")[1];
-    const authResult = verifyToken().access(authToken);
-    const decoded = jwt.decode(authToken);
-
-    if (!decoded) {
+    const decoded = jwt.decode(accessToken);
+    if (!decoded || !decoded.id || !decoded.role) {
       return res.status(401).json({
         status: 401,
-        message: "Decode 내용이 없습니다.",
+        message: "AccessToken에 유효한 사용자 정보가 없습니다.",
       });
     }
-
-    if (authResult.verified === false && authResult.message === "jwt expired") {
-      // 여기서 refresh는 이제 에러를 throw할 수 있음
-      await verifyToken().refresh(refreshToken, decoded.id);
-
-      const newAccessToken = generateToken().access(decoded.id, decoded.role);
-      return res.status(200).json({ accessToken: newAccessToken });
-    } else {
-      return res.status(400).json({
-        status: 400,
-        message: "AccessToken이 만료되지 않았습니다.",
-      });
-    }
+    // 여기서 refresh는 이제 에러를 throw할 수 있음
+    await verifyToken().refresh(refreshToken, decoded.id);
+    const newAccessToken = generateToken().access(decoded.id, decoded.role);
+    res.status(200).send({ accessToken: newAccessToken });
   } catch (err) {
-    // 여기서 refresh에서 던진 에러도 catch됨
-    return res.status(401).json({
+    res.status(401).send({
       status: 401,
       message: err.message || "토큰 재발급 중 오류 발생",
     });
