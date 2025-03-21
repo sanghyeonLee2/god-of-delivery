@@ -12,3 +12,12 @@ exports.findById = async ({menuId}) => {
     )
     return (menuData)
 }
+
+exports.findByStoreId = async (storeId) => {
+    console.log(storeId)
+    const menus = await Menu.findAll({
+        where:{storeId},
+        include: [{model: MenuCategory, include: MenuOption}]
+    })
+    return (menus)
+}
