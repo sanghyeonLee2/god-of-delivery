@@ -1,11 +1,14 @@
 const {Dib, Store} = require('../models')
 const StoreService = require("./store.service");
 
-exports.findUserDibList = async ({userId}) => {
+exports.findUserDibList = async ({userId}, {page}) => {
+    const pageNum = Number(page)
     const storeListWithDib = await Dib.findAll({
         where:{
             userId
         },
+        limit: 10,
+        offset: (pageNum - 1) * 10,
         include: [{model:Store,
         attributes: [
         'storeId',
@@ -17,7 +20,8 @@ exports.findUserDibList = async ({userId}) => {
         'reviewCnt',
         'minDeliveryPrice']}],
     })
-    return(storeListWithDib)
+    const storeList = storeListWithDib.map(item => item.Store)
+    return(storeList)
 }
 
 exports.addDib = async ({userId}, {storeId}) => {
