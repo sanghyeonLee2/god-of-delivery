@@ -18,7 +18,7 @@ export const useGetStores = (isEnabled) => {
   const { data, isLoading } = useQuery(
     QUERY_KEYS.STORES({ page, keyword, sorting, categoryId }),
     () =>
-      authGetApi(API_URLS.STORE.LIST(categoryId), {
+      authGetApi(API_URLS.STORE.LIST, {
         params: {
           page,
           keyword,
