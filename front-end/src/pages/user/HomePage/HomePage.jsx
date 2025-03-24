@@ -3,6 +3,7 @@ import * as S from "./HomePageLayout";
 import { useNavigate } from "react-router-dom";
 import HomeBoard from "components/common/HomeBoard/HomeBoard";
 import { categoryObj } from "../../../assets/data/categoryObj";
+import { SubBtn } from "components/common/Button/main/MainButton";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function HomePage() {
   return (
     <>
       <HomeBoard />
+      <SubBtn text={"Home"} />
       <S.CategoryWrap>
         {categoryObj.map((category) => (
           <S.CategoryBoxOuter key={category.id} onClick={() => navigate(`stores/${category.id}`)}>
