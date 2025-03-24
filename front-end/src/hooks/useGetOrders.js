@@ -1,20 +1,24 @@
 import { useQuery } from "react-query";
-import { authGetApi } from "../api/user";
-import { useLocation, useNavigate } from "react-router-dom";
+import { authGetApi } from "../api/request";
+import { useNavigate } from "react-router-dom";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { API_URLS } from "../constants/urls";
 import { pageCalculator } from "../utils/calculator";
+import useCustomQueryParams from "./useCustomQueryParams";
+import QUERY_PARAMS_INIT from "../constants/queryParamsInit";
 
 const useGetOrders = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const queryParams = new URLSearchParams(location.search);
-  const page = queryParams.get("page") || 1;
+  const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
 
-  const GET_ORDERS_URL = API_URLS.GET_ORDERS(page);
   const { data, isError, status, isLoading } = useQuery(
-    [QUERY_KEYS.ORDERS, GET_ORDERS_URL],
-    () => authGetApi(GET_ORDERS_URL),
+    QUERY_KEYS.ORDERS(page),
+    () =>
+      authGetApi(API_URLS.USER.ORDERS, {
+        params: {
+          page,
+        },
+      }),
     {
       select: (res) => ({
         userOrderList: res.data.userOrderList,
@@ -35,7 +39,7 @@ const useGetOrders = () => {
     isError,
     status,
     isLoading,
-    page: parseInt(page, 10),
+    page,
     setPage,
   };
 };

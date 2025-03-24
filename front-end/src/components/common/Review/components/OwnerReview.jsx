@@ -15,14 +15,10 @@ function OwnerReview({ ownerReview, isOwner }) {
     deleteReview,
     updateReview,
     handleSubmit,
-    isDeleting,
-    isUpdating,
   } = useOwnerReview(ownerReview);
   return (
     <OwnerReviewWrap
-      onSubmit={handleSubmit((data) =>
-        updateReview({ id: ownerReview.id, content: data.content })
-      )}
+      onSubmit={handleSubmit((data) => updateReview({ id: ownerReview.id, content: data.content }))}
     >
       <FlexOnly justify={"space-between"}>
         <Font>사장님</Font>
@@ -38,10 +34,7 @@ function OwnerReview({ ownerReview, isOwner }) {
           setUpdateMode={setUpdateMode}
           deleteReview={deleteReview}
         >
-          <Textarea
-            {...register("content")}
-            defaultValue={ownerReview?.content}
-          />
+          <Textarea {...register("content")} defaultValue={ownerReview?.content} />
         </ReviewUpdateMode>
       )}
     </OwnerReviewWrap>

@@ -13,12 +13,14 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem("access-token");
   if (config.url === API_URLS.AUTH.REISSUE) {
     return config;
   }
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+
+  const accessToken = localStorage.getItem("access-token");
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
   }
   return config;
 });

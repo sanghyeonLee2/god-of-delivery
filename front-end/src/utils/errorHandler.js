@@ -1,5 +1,4 @@
 import { showError } from "./toasts";
-import { saveErrorToSession } from "./storage";
 import { API_URLS } from "../constants/urls";
 
 export const errorHandler = (error) => {
@@ -7,20 +6,20 @@ export const errorHandler = (error) => {
     return showError("네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요");
   }
   const { status } = error;
-  if (error.config.url === API_URLS.REISSUE && status === 401) {
+  if (error.config.url === API_URLS.USER.REISSUE && status === 401) {
     localStorage.clear();
     return showError("토큰 만료로 인해 로그아웃 되었습니다");
   }
-  if (error.config.url === API_URLS.REISSUE && status === 403) {
+  if (error.config.url === API_URLS.USER.REISSUE && status === 403) {
     localStorage.clear();
     return showError("토큰이 유효하지 않습니다");
   }
 
-/*  if (status >= 500) {
+  /*  if (status >= 500) {
     saveErrorToSession(status, "서버 오류가 발생했습니다.");
     return (window.location.href = "/error");
   }*/
-/*
+  /*
   switch (status) {
     case 400:
       return showError("잘못된 요청입니다. 입력값을 확인해주세요.");

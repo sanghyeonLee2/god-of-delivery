@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { postApi } from "../api/user";
+import { postApi } from "../api/request";
 import { API_URLS } from "../constants/urls";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
