@@ -63,25 +63,15 @@ exports.findReviewsByUserId = async ({ userId, query }) => {
 
 exports.updateReview = async ({ userId, body, params }) => {
   const { reviewId } = params;
-  const updated = await Review.update(body, {
-    where: { reviewId: reviewId, userId: userId },
+  return await Review.update(body, {
+    where: {reviewId: reviewId, userId: userId},
   });
-  return updated;
 };
 
 exports.deleteReview = async ({ userId, params }) => {
   const { reviewId } = params;
-  const delReview = await Review.destroy({
-    where: { userId: userId, reviewId: reviewId },
-  });
-  return delReview;
-};
-
-exports.reviewCntInThreeMonth = async (storeId) => {
-  const threeMonthsAgo = new Date();
-  threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-  await Review.count({
-    where: { storeId, createdAt: { [Op.gte]: threeMonthsAgo } },
+  return await Review.destroy({
+    where: {userId: userId, reviewId: reviewId},
   });
 };
 
@@ -109,25 +99,28 @@ exports.findListOwnerReview = async ({ userId, query }) => {
 };
 
 exports.createCeoReview = async ({ userId }, { reviewId, content }) => {
-  const newCeoReview = await CeoReview.create({
+  return await CeoReview.create({
     content,
     userId,
     reviewId,
   });
-  return newCeoReview;
 };
 
 exports.updateCeoReview = async ({ params, body }) => {
   const updateCeoReview = await CeoReview.update(body, {
     where: { reviewId: params.reviewId },
   });
-  console.log(updateCeoReview);
   return updateCeoReview > 0;
 };
 
 exports.deleteCeoReview = async ({ reviewId }) => {
-  const delCeoReview = await CeoReview.destroy({
-    where: { reviewId },
+  return await CeoReview.destroy({
+    where: {reviewId},
   });
-  return delCeoReview;
 };
+
+exports.countCeoReview = async (storeId ) => {
+    const countCR = await Review.findAll({where: {storeId},
+    include: [{ model: CeoReview }]})
+    return countCR.reduce((acc, item) => {if(item.CeoReview) {acc++} return acc;}, 0)
+}
