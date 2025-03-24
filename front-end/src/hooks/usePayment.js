@@ -9,7 +9,6 @@ import { showSuccess } from "../utils/toasts";
 
 export const usePayment = () => {
   const location = useLocation();
-  console.log(location.state);
   const { address } = useRecoilValue(userInfoState);
   const navigate = useNavigate();
   const { handleSubmit, control, register } = useForm({
