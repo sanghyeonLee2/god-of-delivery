@@ -8,6 +8,7 @@ front-end/node_modules
 .idea/
 front-end/.env
 back-end/node_modules
+front-end/build
 # testing
 /coverage
 

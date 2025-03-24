@@ -12,7 +12,6 @@ import CartMenus from "pages/user/CartPage/components/CartMenus";
 function CartPage(props) {
   const { cartData, isLoading, handleDeleteCartItem, handleSubmit } = useCart();
   const navigate = useNavigate();
-  console.log(cartData);
   return (
     <CommonPageWrap style={{ minHeight: "calc(100vh - 200px)" }}>
       {" "}
