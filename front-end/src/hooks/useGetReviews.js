@@ -1,32 +1,29 @@
 import { useQuery } from "react-query";
-import {authGetApi, getApi} from "../api/user";
+import { authGetApi } from "../api/request";
 import { useState } from "react";
 import { QUERY_KEYS } from "../constants/queryKeys";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API_URLS } from "../constants/urls";
 import { pageCalculator } from "../utils/calculator";
+import useCustomQueryParams from "./useCustomQueryParams";
+import useCustomParams from "./useCustomParams";
+import QUERY_PARAMS_INIT from "../constants/queryParamsInit";
 
 export const useGetReviews = (reviewType) => {
   const [storeReviewsCurrentPage, setStoreReviewsCurrentPage] = useState(1);
-  const { storeId } = useParams();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const reviewPageParams = queryParams.get("page") || 1;
+  const { storeId } = useCustomParams();
+  const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
   const navigate = useNavigate();
-  const setMyReviewsCurrentPage = (newPage) =>
-    navigate(`users/me/reviews?page=${newPage}`);
 
   const GET_REVIEWS_URL = () => {
-    if (reviewType === "storeReviews")
-      return API_URLS.GET_STORE_REVIEWS(storeId, storeReviewsCurrentPage);
-    if (reviewType === "myReviews")
-      return API_URLS.GET_MY_REVIEWS(reviewPageParams);
-    return API_URLS.GET_OWNER_REVIEWS(reviewPageParams);
+    if (reviewType === "storeReviews") return API_URLS.STORE.REVIEWS(storeId);
+    if (reviewType === "myReviews") return API_URLS.USER.REVIEWS;
+    return API_URLS.REVIEW.OWNER;
   };
 
   const { data, isLoading } = useQuery(
-    [GET_REVIEWS_URL(), QUERY_KEYS.REVIEWS],
-    () => authGetApi(GET_REVIEWS_URL()),
+    QUERY_KEYS.STORE_REVIEWS(storeId, page),
+    () => authGetApi(GET_REVIEWS_URL(), { params: { page } }),
     {
       select: (res) => {
         return {
@@ -45,8 +42,10 @@ export const useGetReviews = (reviewType) => {
     totalPages: data?.totalPages,
     reviewStat: data?.reviewStat,
     isLoading,
-    page: storeId ? storeReviewsCurrentPage : parseInt(reviewPageParams, 10),
-    setPage: storeId ? setStoreReviewsCurrentPage : setMyReviewsCurrentPage,
+    page: storeId ? storeReviewsCurrentPage : page,
+    setPage: storeId
+      ? setStoreReviewsCurrentPage
+      : (newPage) => navigate(`users/me/reviews?page=${newPage}`),
   };
 };
 export default useGetReviews;

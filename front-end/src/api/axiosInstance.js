@@ -1,27 +1,33 @@
 import axios from "axios";
 import reissue from "./reissueApi";
+import { API_URLS } from "../constants/urls";
 
 const API_KEY = process.env.REACT_APP_API;
 //const API_KEY = process.env.REACT_APP_JSON_SERVER// 테스트 용
 
-export const instance = axios.create({
+const axiosInstance = axios.create({
   baseURL: API_KEY,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export const authInstance = axios.create({
-  baseURL: API_KEY,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("access-token")}`,
-  },
+axiosInstance.interceptors.request.use((config) => {
+  if (config.url === API_URLS.AUTH.REISSUE) {
+    return config;
+  }
+
+  const accessToken = localStorage.getItem("access-token");
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+  return config;
 });
 
-authInstance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
-  (err) => {
+  async (err) => {
     const originalRequest = err.config;
 
     if (!err.response) {
@@ -31,6 +37,11 @@ authInstance.interceptors.response.use(
     if (originalRequest._retry) {
       return Promise.reject(err);
     }
+
+    if (!originalRequest.headers?.Authorization) {
+      return Promise.reject(err);
+    }
+
     if (err.response.status === 401) {
       return reissue(originalRequest);
     }
@@ -38,3 +49,5 @@ authInstance.interceptors.response.use(
     return Promise.reject(err);
   }
 );
+
+export default axiosInstance;

@@ -45,9 +45,7 @@ function Review({ review }) {
           </ReviewUpdateMode>
         )}
       </form>
-      {review.owner && (
-        <OwnerReview ownerReview={review?.owner} isOwner={isOwner} />
-      )}
+      {review.owner && <OwnerReview ownerReview={review?.owner} isOwner={isOwner} />}
       {!review.owner && isOwner && (
         <MainBtn
           text={"사장님 리뷰 추가"}

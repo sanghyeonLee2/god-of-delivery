@@ -3,44 +3,49 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../recoil/user/atoms";
 import { useMutation, useQueryClient } from "react-query";
-import { authDeleteApi, authPatchApi } from "../api/user";
+import { authDeleteApi, authPatchApi } from "../api/request";
 import { API_URLS } from "../constants/urls";
 import { QUERY_KEYS } from "../constants/queryKeys";
 import { useLocation } from "react-router-dom";
 import { showSuccess } from "../utils/toasts";
+import useCustomQueryParams from "./useCustomQueryParams";
+import QUERY_PARAMS_INIT from "../constants/queryParamsInit";
 
 export const useReviewForm = (review) => {
+  const location = useLocation();
   const queryClient = useQueryClient();
   const [updateMode, setUpdateMode] = useState(false);
   const { userId, role } = useRecoilValue(userInfoState);
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const page = queryParams.get("page") || 1;
-  const GET_MY_REVIEWS_URL = API_URLS.GET_MY_REVIEWS(page);
+  const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
 
   const { handleSubmit, register, watch, getValues, setValue } = useForm();
 
   const { mutate: deleteReview } = useMutation(
-    () => authDeleteApi(API_URLS.DELETE_MY_REVIEW(review.reviewId)),
+    () =>
+      authDeleteApi(API_URLS.REVIEW.MY(review.reviewId), {
+        params: {
+          page,
+        },
+      }),
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries([
-          GET_MY_REVIEWS_URL,
-          QUERY_KEYS.REVIEWS,
-        ]);
+        await queryClient.invalidateQueries(QUERY_KEYS.REVIEWS(page));
         showSuccess("리뷰가 삭제되었습니다");
       },
     }
   );
 
   const { mutate: updateReview } = useMutation(
-    () => authPatchApi(API_URLS.PATCH_MY_REVIEW(review.reviewId), getValues()),
+    () =>
+      authPatchApi(API_URLS.REVIEW.MY(review.reviewId), getValues(), {
+        params: {
+          page,
+        },
+      }),
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries([
-          GET_MY_REVIEWS_URL,
-          QUERY_KEYS.REVIEWS,
-        ]);
+        setUpdateMode(false);
+        await queryClient.invalidateQueries(QUERY_KEYS.REVIEWS(page));
         showSuccess("리뷰가 수정되었습니다");
       },
     }
