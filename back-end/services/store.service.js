@@ -2,6 +2,7 @@ const {Store, Menu, CeoReview, Review} = require("../models");
 
 
 const DibService = require("../services/dib.service");
+const ReviewService = require("../services/review.service");
 const { Op, Sequelize, fn, col, where } = require("sequelize");
 
 exports.getStores = async (
@@ -108,19 +109,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
     }, {}),
   );
   const isDib = await DibService.isDibByUserId(userId, storeId);
-  const ceoReviewCnt = await CeoReview.findAll({
-    attributes: [
-      [col("review.store_id"), "store_id"],
-      [fn("COUNT", col("ceo_review_id")), "ceo_review_count"]
-    ],
-    include: [
-      {
-        model: Review,
-        attributes: [], // 불필요한 필드는 가져오지 않음
-      }
-    ],
-    group: ["review.store_id"]
-  });
+  const ceoRvCnt = await ReviewService.countCeoReview(storeId)
   return {
     storeId: storeData.storeId,
     notice: storeData.notice,
@@ -150,7 +139,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
       introduction: storeData.introduction,
     },
     storeHeader: {
-      ownerReview: ceoReviewCnt,
+      ownerReview: ceoRvCnt,
       dibs: storeData.dibs,
       isDib: isDib ? true : false,
       storeName: storeData.storeName,
