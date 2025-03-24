@@ -7,7 +7,7 @@ on:
       - '.github/workflows/frontend-deploy.yml'
     branches:
       - main
-
+      - release/64
 jobs:
   deploy:
     runs-on: ubuntu-latest
