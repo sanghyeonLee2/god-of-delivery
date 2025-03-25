@@ -1,6 +1,5 @@
 const { Review, CeoReview } = require("../models");
 const { sequelize } = require("../models");
-const { Op } = require("sequelize");
 const StoreService = require("./store.service");
 
 exports.findReviewsByStoreId = async ({ storeId }, { page }) => {
@@ -73,7 +72,7 @@ exports.findReviewsByUserId = async ({ userId, query }) => {
 
 exports.updateReview = async ({ userId, body, params }) => {
   const { reviewId } = params;
-  return await Review.update(body, {
+  return Review.update(body, {
     where: {reviewId: reviewId, userId: userId},
   });
 };

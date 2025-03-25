@@ -14,8 +14,7 @@ exports.findById = async ({ menuId }, transaction) => {
 };
 
 exports.findByStoreId = async (storeId) => {
-  console.log(storeId);
-  const menus = await Menu.findAll({
+  return await Menu.findAll({
     where: { storeId },
     include: [{ model: MenuCategory, include: MenuOption }],
   });

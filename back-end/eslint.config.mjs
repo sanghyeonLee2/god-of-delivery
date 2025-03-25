@@ -1,23 +1,14 @@
-// eslint.config.mjs
 import { defineConfig } from "eslint/config";
 import globals from "globals";
 import js from "@eslint/js";
-import prettierPlugin from "eslint-plugin-prettier";
+
 
 export default defineConfig([
-  {
-    files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: {
-      sourceType: "commonjs",     // CommonJS 모듈로 인식
-      globals: globals.node,      // Node.js 글로벌 변수 허용
-    },
-    plugins: {
-      js,
-      prettier: prettierPlugin,
-    },
-    rules: {
-      ...js.configs.recommended.rules,
-      "prettier/prettier": "off", // Prettier 위반 시 ESLint 오류
-    },
-  },
+  { files: ["**/*.{js,mjs,cjs}"] },
+  { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
+  { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: {
+        ...globals.browser,
+        ...globals.node // ✅ Node 전역 환경 추가
+      } } },
+  { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
 ]);

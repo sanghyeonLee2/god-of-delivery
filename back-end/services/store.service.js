@@ -155,13 +155,12 @@ exports.updateDibCnt = async (storeId, isPlus, transaction) => {
     return await Store.increment("dibs", { where: { storeId }, transaction});
 
   } else {
-    const minusDib = await Store.decrement("dibs", { where: { storeId } });
-    return minusDib;
+    return await Store.decrement("dibs", { where: { storeId }, transaction });
   }
 };
 
 exports.findStoreByUserId = async (userId) => {
-  const store = await Store.findOne({
+  return await Store.findOne({
     where: { userId },
   });
   return store;

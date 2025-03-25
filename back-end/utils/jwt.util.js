@@ -52,7 +52,7 @@ exports.verifyToken = () => {
       try {
         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
       } catch (err) {
-        throw new Error("Refresh Token 만료 또는 검증 실패");
+        throw new Error(`Refresh Token 만료 또는 검증 실패 : ${err.message}`);
       }
     },
   };
