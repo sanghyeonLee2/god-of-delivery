@@ -161,5 +161,12 @@ exports.findStoreByUserId = async (userId) => {
   return await Store.findOne({
     where: { userId },
   });
-  return store;
+};
+
+exports.updateReviewCnt = async (storeId, isPlus, transaction) => {
+  if (isPlus) {
+    return await Store.increment("reviewCnt", { where: { storeId }, transaction});
+  } else {
+    return await Store.decrement("reviewCnt", { where: { storeId }, transaction});
+  }
 };
