@@ -1,6 +1,5 @@
 const { Review, CeoReview } = require("../models");
 const { sequelize } = require("../models");
-const { Op } = require("sequelize");
 const StoreService = require("./store.service");
 
 exports.findReviewsByStoreId = async ({ storeId }, { page }) => {
@@ -26,15 +25,25 @@ exports.findReviewsByStoreId = async ({ storeId }, { page }) => {
 };
 
 exports.createReview = async ({ userId, body }) => {
-  const createData = await Review.create({
-    userId,
-    storeId: body.storeId,
-    orderId: body.orderId,
-    rating: body.rating,
-    content: body.content,
-    img: body.img,
-  });
-  return createData;
+  const t = await sequelize.transaction();
+  try{
+    const createData = await Review.create({
+      userId,
+      storeId: body.storeId,
+      orderId: body.orderId,
+      rating: body.rating,
+      content: body.content,
+      img: body.img,
+    }, {transaction: t});
+    await StoreService.updateReviewCnt(body.storeId, 1, t);
+
+    await t.commit();
+    return  createData;
+  }
+  catch (err){
+    await t.rollback();
+    throw err;
+  }
 };
 
 exports.findReviewsByUserId = async ({ userId, query }) => {
@@ -63,16 +72,26 @@ exports.findReviewsByUserId = async ({ userId, query }) => {
 
 exports.updateReview = async ({ userId, body, params }) => {
   const { reviewId } = params;
-  return await Review.update(body, {
+  return Review.update(body, {
     where: {reviewId: reviewId, userId: userId},
   });
 };
 
 exports.deleteReview = async ({ userId, params }) => {
   const { reviewId } = params;
-  return await Review.destroy({
-    where: {userId: userId, reviewId: reviewId},
-  });
+  const t = sequelize.transaction();
+  try{
+    const {storeId} = await Review.findOne({where:{reviewId}, transaction: t})
+    await Review.destroy({
+      where: {userId: userId, reviewId: reviewId},
+    });
+    await StoreService.updateReviewCnt(storeId, t);
+    await t.commit();
+  }
+  catch (err){
+    await t.rollback();
+    throw err;
+  }
 };
 
 exports.findListOwnerReview = async ({ userId, query }) => {

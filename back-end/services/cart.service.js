@@ -1,4 +1,4 @@
-const { Store, Cart, CartItem, CartItemOption, Menu, MenuOption } = require("../models");
+const { Store, Cart, CartItem, CartItemOption, Menu, MenuOption, sequelize } = require("../models");
 
 exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
   let cart = await Cart.findOne({
@@ -163,3 +163,26 @@ exports.updateCartItemOption = async (
   const updateOptions = await CartItemOption.bulkCreate(cartItemCreateData);
   return updateOptions;
 };
+
+exports.findMenuDetail = async ({ menuId }) => {
+    const t = sequelize.transaction();
+    try{
+      const cartItem = await CartItem.findOne({where: {menuId}, include:[{model:CartItemOption}, {attributes: ["menuOptionId"]}], transaction: t})
+      const selectedOptionIds = cartItem.CartItemOptions.reduce((acc, item) => {
+        acc.push(item.menuOptionId)
+        return acc
+      },[])
+      const menuData = await Menu.findOne({where:{menuId}, transaction: t})
+      menuData.MenuCategories.forEach(category => {
+        category.MenuOptions.forEach(option => {
+          if (selectedOptionIds.includes(option.menuOptionId)) {
+            option.hasMenu = true;
+          }
+        });
+      });
+    }
+    catch(err){
+      t.rollback();
+      throw err;
+    }
+}

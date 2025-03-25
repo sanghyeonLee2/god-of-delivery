@@ -1,4 +1,4 @@
-const { Dib, Store } = require("../models");
+const { Dib, Store, sequelize } = require("../models");
 const StoreService = require("./store.service");
 
 exports.findUserDibList = async ({ userId }, { page }) => {
@@ -30,24 +30,38 @@ exports.findUserDibList = async ({ userId }, { page }) => {
 };
 
 exports.addDib = async ({ userId }, { storeId }) => {
-  await Dib.create({
-    userId,
-    storeId,
-  });
-  await StoreService.updateDibCnt(storeId, 1);
+  const t = await sequelize.transaction();
+  try{
+    await Dib.create({
+      userId,
+      storeId,
+    });
+    await StoreService.updateDibCnt(storeId, 1, t);
+  }
+  catch (err){
+    await t.rollback();
+    throw err;
+  }
 };
 
 exports.deleteDib = async ({ userId }, { storeId }) => {
-  const deleteCount = await Dib.destroy({
-    where: {
-      userId,
-      storeId,
-    },
-  });
-  if (deleteCount === 0) {
-    throw new Error("삭제할 데이터가 없습니다");
+  const t = await sequelize.transaction();
+  try{
+    const deleteCount = await Dib.destroy({
+      where: {
+        userId,
+        storeId,
+      },
+    });
+    if (deleteCount === 0) {
+      new Error("삭제할 데이터가 없습니다");
+    }
+    await StoreService.updateDibCnt(storeId, 0, t);
   }
-  await StoreService.updateDibCnt(storeId, 0);
+  catch (err){
+    await t.rollback();
+    throw err;
+  }
 };
 
 exports.isDibByUserId = async (userId, storeId) => {

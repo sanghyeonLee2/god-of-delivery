@@ -1,5 +1,4 @@
 const CartService = require("../services/cart.service");
-const MenuService = require("../services/menu.service");
 
 exports.postAddCart = async (req, res) => {
   try {
@@ -29,7 +28,7 @@ exports.getCartData = async (req, res) => {
 
 exports.getCartMenuDetail = async (req, res) => {
   try {
-    const menuData = await MenuService.findById(req.params);
+    const menuData = await CartService.findMenuDetail(req.params);
     res.status(200).send(menuData);
   } catch (err) {
     res.status(500).send({

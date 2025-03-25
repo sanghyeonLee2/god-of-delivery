@@ -132,7 +132,7 @@ exports.findUserOrder = async ({ userId }, { page }) => {
       sortedMenu.length - 1
         ? `${sortedMenu[0].menuNameSnapshot} 외 ${sortedMenu.length - 1}`
         : sortedMenu[0].menuNameSnapshot;
-    const { OrderItems, Store, ...withOutOrderItem } = orderData;
+    const {  OrderItems, Store, ...withOutOrderItem } = orderData;
     return {
       ...withOutOrderItem,
       representativeOrder: representiveMessage,

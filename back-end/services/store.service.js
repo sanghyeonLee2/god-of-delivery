@@ -1,9 +1,7 @@
-const {Store, Menu, CeoReview, Review} = require("../models");
-
-
+const {Store, Menu} = require("../models");
 const DibService = require("../services/dib.service");
 const ReviewService = require("../services/review.service");
-const { Op, Sequelize, fn, col, where } = require("sequelize");
+const { Op, fn, col, where } = require("sequelize");
 
 exports.getStores = async (
   lat,
@@ -150,19 +148,25 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
   };
 };
 
-exports.updateDibCnt = async (storeId, isPlus) => {
+exports.updateDibCnt = async (storeId, isPlus, transaction) => {
   if (isPlus) {
-    const plusDib = await Store.increment("dibs", { where: { storeId } });
-    return plusDib;
+    return await Store.increment("dibs", { where: { storeId }, transaction});
+
   } else {
-    const minusDib = await Store.decrement("dibs", { where: { storeId } });
-    return minusDib;
+    return await Store.decrement("dibs", { where: { storeId }, transaction });
   }
 };
 
 exports.findStoreByUserId = async (userId) => {
-  const store = await Store.findOne({
+  return await Store.findOne({
     where: { userId },
   });
-  return store;
+};
+
+exports.updateReviewCnt = async (storeId, isPlus, transaction) => {
+  if (isPlus) {
+    return await Store.increment("reviewCnt", { where: { storeId }, transaction});
+  } else {
+    return await Store.decrement("reviewCnt", { where: { storeId }, transaction});
+  }
 };

@@ -97,3 +97,47 @@ exports.deleteOwnerReview = async (req, res) => {
     });
   }
 };
+
+exports.postMenu = async (req, res) => {
+  try{
+    await MenuService.addMenu(req.body);
+    res.status(201).send({
+      message: "Success",
+    })
+  }
+  catch (err) {
+    res.status(500).send({
+      status: 500,
+      message: err.message,
+    })
+  }
+}
+exports.putMenu = async (req, res) => {
+  try{
+    await MenuService.updateMenu(req.params.menuId,req.body);
+    res.status(200).send({
+      message: "Success"
+    })
+  }
+  catch (err) {
+    res.status(500).send({
+      status: 500,
+      message: err.message,
+    })
+  }
+}
+
+exports.deleteMenu = async (req, res) => {
+  try{
+    await MenuService.deleteMenu(req.params.menuId);
+    res.status(200).send({
+      message: "Success",
+    })
+  }
+  catch (err){
+    res.status(500).send({
+      status: 500,
+      message: err.message,
+    })
+  }
+}
