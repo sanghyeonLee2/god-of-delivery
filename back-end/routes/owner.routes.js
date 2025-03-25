@@ -7,6 +7,9 @@ const {
   patchOwnerReview,
   deleteOwnerReview,
   getOwnerStoreMenus,
+  postMenu,
+  putMenu,
+  deleteMenu
 } = require("../controllers/owner.controller");
 
 const router = express.Router();
@@ -25,5 +28,9 @@ router.delete(
   [middleVerifyTokenIsOwner],
   deleteOwnerReview,
 );
+
+router.post('/me/menus', [middleVerifyTokenIsOwner], postMenu);
+router.put('/me/menus/:menuId', [middleVerifyTokenIsOwner], putMenu);
+router.delete('/me/menus/:menuId', [middleVerifyTokenIsOwner], deleteMenu);
 
 module.exports = router;
