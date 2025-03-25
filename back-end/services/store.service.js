@@ -1,9 +1,7 @@
-const {Store, Menu, CeoReview, Review} = require("../models");
-
-
+const {Store, Menu} = require("../models");
 const DibService = require("../services/dib.service");
 const ReviewService = require("../services/review.service");
-const { Op, Sequelize, fn, col, where } = require("sequelize");
+const { Op, fn, col, where } = require("sequelize");
 
 exports.getStores = async (
   lat,
