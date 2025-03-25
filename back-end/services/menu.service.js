@@ -25,12 +25,12 @@ exports.addMenu = async (body) => {
   try {
     // 1. menus 테이블에 삽입
     const menu = await Menu.create({
-      store_id: body.storeId,
+      storeId: body.storeId,
       category: body.category,
       name: body.name,
       price: body.price,
       description: body.description,
-      img_url: body.imgUrl,
+      imgUrl: body.imgUrl,
     }, {transaction: t});
 
     // 2. menu_category 및 menu_options 삽입
