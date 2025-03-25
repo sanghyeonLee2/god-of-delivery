@@ -1,7 +1,8 @@
 const { Menu, MenuOption, MenuCategory } = require("../models");
+const { sequelize } = require('../models');
 
-exports.findById = async ({ menuId }) => {
-  const menuData = await Menu.findOne({
+exports.findById = async ({ menuId }, transaction) => {
+  return await Menu.findOne({
     where: { menuId: menuId },
     include: [
       {
@@ -9,8 +10,7 @@ exports.findById = async ({ menuId }) => {
         include: MenuOption,
       },
     ],
-  });
-  return menuData;
+  }, {transaction});
 };
 
 exports.findByStoreId = async (storeId) => {
@@ -19,5 +19,4 @@ exports.findByStoreId = async (storeId) => {
     where: { storeId },
     include: [{ model: MenuCategory, include: MenuOption }],
   });
-  return menus;
 };
