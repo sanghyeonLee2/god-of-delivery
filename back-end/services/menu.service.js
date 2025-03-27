@@ -14,7 +14,7 @@ exports.findById = async ({ menuId }, transaction) => {
 };
 
 exports.findByStoreId = async (storeId) => {
-  return await Menu.findAll({
+  return await Menu.findOne({
     where: { storeId },
     include: [{ model: MenuCategory, include: MenuOption }],
   });
