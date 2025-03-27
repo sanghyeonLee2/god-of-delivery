@@ -56,7 +56,7 @@ export const useGetStores = (isEnabled) => {
     navigate(`/stores/${categoryId}?page=${page}&sorting=${newSorting}${hasKeyword}`);
   };
   return {
-    storesData: data?.storesData,
+    storesData: data?.storesData || [],
     totalPages: data?.totalPages,
     searchForm: {
       handleSubmit,

@@ -34,7 +34,7 @@ const useGetOrders = () => {
   };
 
   return {
-    ordersData: data?.userOrderList,
+    ordersData: data?.userOrderList || [],
     totalPages: data?.totalPages,
     isError,
     status,

@@ -27,7 +27,7 @@ function MenuForm({ form, onSubmit, isLoading, submitText = "저장하기" }) {
           placeholder={field.placeholder}
         />
       ))}
-      <CommonBorder $hasAddBtn={true}>
+      <CommonBorder $hasAddBtn={true} style={{ padding: "15px 25px 65px 25px" }}>
         {form.categoryFields.map((field, categoryIdx) => (
           <MenuCategory
             minCategoryLength={form.categoryFields.length}

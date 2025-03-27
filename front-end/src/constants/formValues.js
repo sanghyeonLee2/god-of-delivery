@@ -2,7 +2,7 @@ export const DEFAULT_CATEGORY = {
   title: "",
   isEssential: true,
   maxQuantity: 1,
-  menuOptions: [{ content: "", price: 0 }],
+  MenuOptions: [{ content: "", price: 0 }],
 };
 export const DEFAULT_VALUES = {
   MENU_MANAGEMENT: {
@@ -12,12 +12,12 @@ export const DEFAULT_VALUES = {
     price: 0,
     description: "",
     imgUrl: "",
-    menuCategories: [
+    MenuCategories: [
       {
         title: "",
         isEssential: true,
         maxQuantity: 1,
-        menuOptions: [{ content: "", price: 0 }],
+        MenuOptions: [{ content: "", price: 0 }],
       },
     ],
   },

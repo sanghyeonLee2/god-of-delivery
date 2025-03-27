@@ -17,11 +17,13 @@ export const Font = styled.p`
   font-size: ${({ size }) => {
     switch (size) {
       case "small":
-        return "smaller";
+        return "small";
       case "large":
         return "20px";
       case "x-large":
         return "28px";
+      case "x-small":
+        return "x-small";
       default:
         return "medium";
     }
@@ -76,7 +78,7 @@ export const CommonPageHeader = styled.div`
 export const CommonBorder = styled.div`
   position: relative;
   ${setBorder()};
-  padding: 15px 25px ${({ $hasAddBtn }) => ($hasAddBtn ? "55px" : "25px")} 25px;
+  padding: ${({ $hasAddBtn }) => ($hasAddBtn ? "0 0 50px 0" : "15px 25px")};
   margin: 10px 0;
 `;
 export const CommonPageWrap = styled.ul`

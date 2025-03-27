@@ -9,7 +9,7 @@ export const useAuth = () => {
   const setUserInfo = useSetRecoilState(userInfoState);
   const accessToken = localStorage.getItem("access-token");
   return useQuery(
-    [QUERY_KEYS.ME], // 쿼리 키를 고유하게 만들기 위해 url 포함
+    QUERY_KEYS.ME, // 쿼리 키를 고유하게 만들기 위해 url 포함
     () => authGetApi(API_URLS.USER.ME),
     {
       enabled: !!accessToken,

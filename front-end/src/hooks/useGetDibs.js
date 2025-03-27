@@ -31,7 +31,7 @@ export const useGetDibs = () => {
   );
   return {
     totalPages: data?.totalPages,
-    dibList: data?.dibList,
+    dibList: data?.dibList || [],
     page,
     setPage: (newPage) => navigate(`?page=${newPage}`),
     isLoading,

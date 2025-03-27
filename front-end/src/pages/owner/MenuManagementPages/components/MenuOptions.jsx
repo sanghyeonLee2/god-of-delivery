@@ -16,7 +16,7 @@ function MenuOptions({ categoryIdx, control, register }) {
     name: `MenuCategories.${categoryIdx}.MenuOptions`,
   });
   return (
-    <CommonBorder $hasAddBtn={true}>
+    <CommonBorder $hasAddBtn={true} style={{ padding: "15px 25px 65px 25px" }}>
       <Font size={"large"}>메뉴 옵션 선택</Font>
       {optionFields.map((field, optionIdx) => (
         <div key={field.id}>

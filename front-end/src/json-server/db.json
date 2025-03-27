@@ -431,103 +431,337 @@
       "quantity": 2
     }
   ],
-  "cart-details": [
-    {
-      "title": "치킨 선택",
-      "isEssential": true,
-      "maxQuantity": 1,
-      "options": [
+  "cart-details": {
+    "menuId": 1,
+    "category": "Burger",
+    "name": "Menu 1",
+    "price": 15000,
+    "description": "Delicious Menu 1",
+    "imgUrl": null,
+    "createdAt": "2024-03-20T00:00:00.000Z",
+    "updatedAt": "2025-03-21T00:00:00.000Z",
+    "storeId": 1,
+    "MenuCategories": [
+      {
+        "menuCategoryId": 1,
+        "title": "Category 1",
+        "isEssential": true,
+        "maxQuantity": 2,
+        "createdAt": "2024-03-20T00:00:00.000Z",
+        "updatedAt": "2025-03-21T00:00:00.000Z",
+        "menuId": 1,
+        "MenuOptions": [
+          {
+            "menuOptionId": 4,
+            "content": "Option 4",
+            "price": 1800,
+            "createdAt": "2024-03-10T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          },
+          {
+            "menuOptionId": 3,
+            "content": "Option 3",
+            "price": 3000,
+            "createdAt": "2024-01-15T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 2,
+            "content": "Option 2",
+            "price": 2500,
+            "createdAt": "2024-02-18T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 1,
+            "content": "Option 1",
+            "price": 2000,
+            "createdAt": "2024-03-20T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          }
+        ]
+      },
+
         {
-          "content": "후라이드",
-          "price": 1000
+          "menuCategoryId": 2,
+          "title": "Category 1",
+          "isEssential": false,
+          "maxQuantity": 2,
+          "createdAt": "2024-03-20T00:00:00.000Z",
+          "updatedAt": "2025-03-21T00:00:00.000Z",
+          "menuId": 1,
+          "MenuOptions": [
+            {
+              "menuOptionId": 5,
+              "content": "Option 5",
+              "price": 1800,
+              "createdAt": "2024-03-10T00:00:00.000Z",
+              "updatedAt": "2025-03-21T00:00:00.000Z",
+              "menuCategoryId": 1
+            },
+            {
+              "menuOptionId": 6,
+              "content": "Option 6",
+              "price": 3000,
+              "createdAt": "2024-01-15T00:00:00.000Z",
+              "updatedAt": "2025-03-21T00:00:00.000Z",
+              "menuCategoryId": 1,
+              "hasMenu": true
+            },
+            {
+              "menuOptionId": 7,
+              "content": "Option 7",
+              "price": 2500,
+              "createdAt": "2024-02-18T00:00:00.000Z",
+              "updatedAt": "2025-03-21T00:00:00.000Z",
+              "menuCategoryId": 1,
+              "hasMenu": true
+            },
+            {
+              "menuOptionId": 8,
+              "content": "Option 8",
+              "price": 2000,
+              "createdAt": "2024-03-20T00:00:00.000Z",
+              "updatedAt": "2025-03-21T00:00:00.000Z",
+              "menuCategoryId": 1
+            }
+          ]
         },
-        {
-          "content": "앙념",
-          "price": 2000
-        },
-        {
-          "content": "간장",
-          "price": 1000
-        }
+      {
+        "menuCategoryId": 12312,
+        "title": "Category 1",
+        "isEssential": true,
+        "maxQuantity": 1,
+        "createdAt": "2024-03-20T00:00:00.000Z",
+        "updatedAt": "2025-03-21T00:00:00.000Z",
+        "menuId": 1,
+        "MenuOptions": [
+          {
+            "menuOptionId": 121,
+            "content": "Option 5",
+            "price": 1800,
+            "createdAt": "2024-03-10T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          },
+          {
+            "menuOptionId": 144,
+            "content": "Option 6",
+            "price": 3000,
+            "createdAt": "2024-01-15T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 436,
+            "content": "Option 7",
+            "price": 2500,
+            "createdAt": "2024-02-18T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          },
+          {
+            "menuOptionId": 2345,
+            "content": "Option 8",
+            "price": 2000,
+            "createdAt": "2024-03-20T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          }
+        ]
+      },
+      {
+        "menuCategoryId": 1241234,
+        "title": "Category 1",
+        "isEssential": true,
+        "maxQuantity": 1,
+        "createdAt": "2024-03-20T00:00:00.000Z",
+        "updatedAt": "2025-03-21T00:00:00.000Z",
+        "menuId": 1,
+        "MenuOptions": [
+          {
+            "menuOptionId": 12512,
+            "content": "Option 5",
+            "price": 1800,
+            "createdAt": "2024-03-10T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          },
+          {
+            "menuOptionId": 12351,
+            "content": "Option 6",
+            "price": 3000,
+            "createdAt": "2024-01-15T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1235
+          },
+          {
+            "menuOptionId": 66612,
+            "content": "Option 7",
+            "price": 2500,
+            "createdAt": "2024-02-18T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 8453,
+            "content": "Option 8",
+            "price": 2000,
+            "createdAt": "2024-03-20T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          }
+        ]
+      }
       ]
-    },
-    {
-      "title": "추가",
-      "isEssential": false,
-      "maxQuantity": 2,
-      "options": [
-        {
-          "content": "감자",
-          "price": 1000
-        },
-        {
-          "content": "샐러드",
-          "price": 2000
-        },
-        {
-          "content": "소스",
-          "price": 1000
-        }
-      ]
-    }
-  ],
+
+  },
   "cart-delete": [],
   "cart": {
-    "cartId": 3,
-    "createdAt": "2025-03-06T02:48:57.000Z",
-    "updatedAt": "2025-03-06T02:48:57.000Z",
+    "cartId": 7,
+    "createdAt": "2025-03-10T07:31:17.000Z",
+    "updatedAt": "2025-03-10T07:31:17.000Z",
     "storeId": 31,
     "userId": "user123",
-    "store": {
+    "Store": {
       "storeId": 31,
       "storeName": "브루클린버거",
       "deliveryTime": "45분",
-      "tips": 1000
+      "deliveryTip": 2500
     },
-    "cartItems": [
+    "CartItems": [
       {
-        "content": "치킨",
-        "price": 4000,
-        "description": "치킨+카레",
-        "cartItemId": 16,
-        "quantity": 2,
-        "createdAt": "2025-03-06T02:48:57.000Z",
-        "updatedAt": "2025-03-06T02:52:46.000Z",
-        "cartId": 3,
+        "imgUrl": "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+        "cartItemId": 25,
+        "quantity": 1,
+        "createdAt": "2025-03-10T07:31:17.000Z",
+        "updatedAt": "2025-03-10T07:31:17.000Z",
+        "cartId": 7,
         "menuId": 10,
-        "cartItemOptions": [
+        "Menu": {
+          "name": "양꼬치",
+          "price": 10000,
+          "description": "치킨+카레"
+        },
+        "CartItemOptions": [
           {
-            "cartItemOptionId": 36,
-            "createdAt": "2025-03-06T02:48:57.000Z",
-            "updatedAt": "2025-03-06T02:48:57.000Z",
-            "cartItemId": 16,
+            "price": 1000,
+            "cartItemOptionId": 57,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 32
+          },
+          {
+            "price": 2000,
+            "cartItemOptionId": 56,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
             "menuOptionId": 30
           }
         ]
       },
       {
-        "cartItemId": 17,
+        "imgUrl": "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+        "cartItemId": 25,
         "quantity": 1,
-        "content": "버거",
-        "price": 3000,
-        "description": "치킨+카레",
-        "createdAt": "2025-03-06T02:53:06.000Z",
-        "updatedAt": "2025-03-06T02:53:06.000Z",
-        "cartId": 3,
+        "createdAt": "2025-03-10T07:31:17.000Z",
+        "updatedAt": "2025-03-10T07:31:17.000Z",
+        "cartId": 7,
         "menuId": 10,
-        "cartItemOptions": [
+        "Menu": {
+          "name": "양꼬치",
+          "price": 10000,
+          "description": "치킨+카레"
+        },
+        "CartItemOptions": [
           {
-            "cartItemOptionId": 38,
-            "createdAt": "2025-03-06T02:53:06.000Z",
-            "updatedAt": "2025-03-06T02:53:06.000Z",
-            "cartItemId": 17,
-            "menuOptionId": 36
+            "price": 1000,
+            "cartItemOptionId": 57,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 32
           },
           {
-            "cartItemOptionId": 37,
-            "createdAt": "2025-03-06T02:53:06.000Z",
-            "updatedAt": "2025-03-06T02:53:06.000Z",
-            "cartItemId": 17,
+            "price": 2000,
+            "cartItemOptionId": 56,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 30
+          }
+        ]
+      },
+      {
+        "imgUrl": "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+        "cartItemId": 25,
+        "quantity": 1,
+        "createdAt": "2025-03-10T07:31:17.000Z",
+        "updatedAt": "2025-03-10T07:31:17.000Z",
+        "cartId": 7,
+        "menuId": 10,
+        "Menu": {
+          "name": "양꼬치",
+          "price": 10000,
+          "description": "치킨+카레"
+        },
+        "CartItemOptions": [
+          {
+            "price": 1000,
+            "cartItemOptionId": 57,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 32
+          },
+          {
+            "price": 2000,
+            "cartItemOptionId": 56,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 30
+          }
+        ]
+      },
+      {
+        "imgUrl": "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+        "cartItemId": 25,
+        "quantity": 1,
+        "createdAt": "2025-03-10T07:31:17.000Z",
+        "updatedAt": "2025-03-10T07:31:17.000Z",
+        "cartId": 7,
+        "menuId": 10,
+        "Menu": {
+          "name": "양꼬치",
+          "price": 10000,
+          "description": "치킨+카레"
+        },
+        "CartItemOptions": [
+          {
+            "price": 1000,
+            "cartItemOptionId": 57,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
+            "menuOptionId": 32
+          },
+          {
+            "price": 2000,
+            "cartItemOptionId": 56,
+            "createdAt": "2025-03-10T07:31:17.000Z",
+            "updatedAt": "2025-03-10T07:31:17.000Z",
+            "cartItemId": 25,
             "menuOptionId": 30
           }
         ]
@@ -537,7 +771,6 @@
   "menu-details": {
     "menuId": 10,
     "category": "메인요리",
-    "imgUrl": "data:image/jpeg;base64,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",
     "name": "양꼬치",
     "price": 10000,
     "description": "치킨+카레",
@@ -545,7 +778,8 @@
     "createdAt": "2025-02-20T23:27:22.000Z",
     "updatedAt": "2025-02-20T23:27:22.000Z",
     "storeId": 1,
-    "menuCategories": [
+    "imgUrl" : "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+    "MenuCategories": [
       {
         "menuCategoryId": 20,
         "title": "치킨 선택",
@@ -554,7 +788,7 @@
         "createdAt": "2025-02-20T23:27:22.000Z",
         "updatedAt": "2025-02-20T23:27:22.000Z",
         "menuId": 10,
-        "menuOptions": [
+        "MenuOptions": [
           {
             "menuOptionId": 32,
             "content": "간장",
@@ -589,7 +823,7 @@
         "createdAt": "2025-02-20T23:27:22.000Z",
         "updatedAt": "2025-02-20T23:27:22.000Z",
         "menuId": 10,
-        "menuOptions": [
+        "MenuOptions": [
           {
             "menuOptionId": 35,
             "content": "소스",
@@ -608,6 +842,41 @@
           },
           {
             "menuOptionId": 33,
+            "content": "감자",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          }
+        ]
+      },
+      {
+        "menuCategoryId": 125,
+        "title": "추가",
+        "isEssential": true,
+        "maxQuantity": 1,
+        "createdAt": "2025-02-20T23:27:22.000Z",
+        "updatedAt": "2025-02-20T23:27:22.000Z",
+        "menuId": 10,
+        "MenuOptions": [
+          {
+            "menuOptionId": 12312,
+            "content": "소스",
+            "price": 1000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          },
+          {
+            "menuOptionId": 12,
+            "content": "샐러드",
+            "price": 2000,
+            "createdAt": "2025-02-20T23:27:22.000Z",
+            "updatedAt": "2025-02-20T23:27:22.000Z",
+            "menuCategoryId": 21
+          },
+          {
+            "menuOptionId": 1235,
             "content": "감자",
             "price": 1000,
             "createdAt": "2025-02-20T23:27:22.000Z",
@@ -1658,13 +1927,13 @@
     "price": 3500,
     "description": "수정된 설명: 산미가 강한 아메리카노",
     "imgUrl": "https://example.com/image-updated.jpg",
-    "menuCategories": [
+    "MenuCategories": [
       {
         "menuCategoryId": 31,
         "title": "사이즈 선택",
         "isEssential": true,
         "maxQuantity": 1,
-        "menuOptions": [
+        "MenuOptions": [
           {
             "menuOptionId": 45,
             "content": "Small",

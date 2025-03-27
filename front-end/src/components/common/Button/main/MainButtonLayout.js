@@ -6,7 +6,12 @@ export const MainButtonWrap = styled.button`
   height: 40px;
   width: ${({ $width }) => $width || "100%"};
   background-color: white;
-  border: 1px solid ${COLORS.BTN.MAIN};
+
+  &:hover {
+    background-color: #f2f3f7;
+  }
+
+  border: 1px solid rgb(218, 219, 223);
   border-radius: 4px;
 `;
 export const ModalButtonWrap = styled.button`
@@ -15,6 +20,9 @@ export const ModalButtonWrap = styled.button`
   z-index: 10;
   ${elementSize("100%", "60px")};
   background-color: ${COLORS.BTN.SUB};
+  &:hover {
+    background-color: #0e5fc1;
+  }
   border-radius: 0 0 4px 4px;
 `;
 export const AddBtnWrap = styled.button`
@@ -24,7 +32,7 @@ export const AddBtnWrap = styled.button`
   right: 0;
   border-top: 1px solid;
   &:hover {
-    background-color: lightgray;
+    background-color: #f2f3f7;
   }
   background-color: white;
   ${elementSize("100%", "50px")};
@@ -42,6 +50,9 @@ export const SubButtonWrap = styled.button`
   height: ${({ $height }) => $height || "40px"};
   background-color: ${COLORS.BTN.SUB};
   border-radius: 4px;
+  &:hover {
+    background-color: #0e5fc1;
+  }
 `;
 
 export const TransButtonWrap = styled.button`

@@ -38,7 +38,7 @@ export const useGetReviews = (reviewType) => {
   );
 
   return {
-    reviews: data?.reviews,
+    reviews: data?.reviews || [],
     totalPages: data?.totalPages,
     reviewStat: data?.reviewStat,
     isLoading,

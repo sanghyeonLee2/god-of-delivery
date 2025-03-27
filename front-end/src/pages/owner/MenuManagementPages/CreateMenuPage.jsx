@@ -8,7 +8,7 @@ function CreateMenuPage(props) {
   const { form, createMenu, isCreating } = useCreateMenu();
   return (
     <CommonPageWrap>
-      <Title text="메뉴 추가하기" size="x-large" />
+      <Title text="메뉴 추가" size="x-large" />
       <MenuForm form={form} onSubmit={createMenu} isLoading={isCreating} submitText="메뉴 추가" />
     </CommonPageWrap>
   );

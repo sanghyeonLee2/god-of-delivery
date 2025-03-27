@@ -5,7 +5,6 @@ import { useSetRecoilState } from "recoil";
 import { isModalOpenState } from "../../../../recoil/flag/atoms";
 import Title from "components/common/Title/Title";
 import { TabWrap } from "../StorePageLayout";
-import { API_URLS } from "../../../../constants/urls";
 import Image from "components/common/Image/Image";
 
 function StoreMenu({ notice, menuInfo }) {
@@ -26,7 +25,7 @@ function StoreMenu({ notice, menuInfo }) {
                   setIsModalOpen({
                     modalType: "메뉴상세",
                     flag: true,
-                    modalData: { api: API_URLS.MENU.GET(menu?.menuId), menuId: menu?.menuId },
+                    modalData: { menuId: menu?.menuId },
                   });
                 }}
               >

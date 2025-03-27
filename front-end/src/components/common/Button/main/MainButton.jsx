@@ -12,7 +12,7 @@ import MutateLoading from "components/common/Loading/MutateLoading";
 export const MainBtn = forwardRef(({ type, text, onClick, width }, ref) => {
   return (
     <MainButtonWrap $width={width} type={type} onClick={onClick} ref={ref}>
-      <Font>{text}</Font>
+      <Font size={"small"}>{text}</Font>
     </MainButtonWrap>
   );
 });
@@ -36,7 +36,13 @@ export const AddBtn = forwardRef(({ type, text, onClick }, ref) => {
 export function SubBtn({ type, text, onClick, height, isLoading }) {
   return (
     <SubButtonWrap type={type} onClick={onClick} $height={height} $isLoading={isLoading}>
-      {isLoading ? <MutateLoading /> : <Font color={"white"}>{text}</Font>}
+      {isLoading ? (
+        <MutateLoading />
+      ) : (
+        <Font size={"small"} color={"white"}>
+          {text}
+        </Font>
+      )}
     </SubButtonWrap>
   );
 }
