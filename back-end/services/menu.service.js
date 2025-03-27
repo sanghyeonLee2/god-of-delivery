@@ -19,6 +19,11 @@ exports.findByStoreId = async (storeId) => {
     include: [{ model: MenuCategory, include: MenuOption }],
   });
 };
+exports.findOnlyMenuByStoreId = async (storeId) => {
+  return await Menu.findAll({
+    where: { storeId },
+  });
+};
 
 exports.addMenu = async (body) => {
   const t = await sequelize.transaction();

@@ -9,7 +9,8 @@ const {
   getOwnerStoreMenus,
   postMenu,
   putMenu,
-  deleteMenu
+  deleteMenu,
+  getOwnerMenu
 } = require("../controllers/owner.controller");
 
 const router = express.Router();
@@ -28,7 +29,7 @@ router.delete(
   [middleVerifyTokenIsOwner],
   deleteOwnerReview,
 );
-
+router.get("/me/menus/:menuId", [middleVerifyTokenIsOwner], getOwnerMenu);
 router.post('/me/menus', [middleVerifyTokenIsOwner], postMenu);
 router.put('/me/menus/:menuId', [middleVerifyTokenIsOwner], putMenu);
 router.delete('/me/menus/:menuId', [middleVerifyTokenIsOwner], deleteMenu);
