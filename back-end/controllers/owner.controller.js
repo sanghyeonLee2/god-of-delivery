@@ -33,7 +33,7 @@ exports.getOwnerReview = async (req, res) => {
 exports.getOwnerStoreMenus = async (req, res) => {
   try {
     const store = await StoreService.findStoreByUserId(req.userId);
-    const menus = await MenuService.findByStoreId(store.storeId);
+    const menus = await MenuService.findOnlyMenuByStoreId(store.storeId);
     res.status(200).send(menus);
   } catch (err) {
     res.status(500).send({
@@ -42,6 +42,19 @@ exports.getOwnerStoreMenus = async (req, res) => {
     });
   }
 };
+exports.getOwnerMenu = async (req, res) => {
+  try{
+    const store = await StoreService.findStoreByUserId(req.userId);
+    const menu = await MenuService.findByStoreId(store.storeId);
+    res.status(200).send(menu);
+  }
+  catch (err) {
+    res.status(500).send({
+      status: 500,
+      message: err.message,
+    })
+  }
+}
 
 exports.postOwnerReview = async (req, res) => {
   try {
