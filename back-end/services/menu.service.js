@@ -14,7 +14,7 @@ exports.findById = async ({ menuId }, transaction) => {
 };
 
 exports.findByStoreId = async (storeId) => {
-  return await Menu.findAll({
+  return await Menu.findOne({
     where: { storeId },
     include: [{ model: MenuCategory, include: MenuOption }],
   });
@@ -55,10 +55,9 @@ exports.addMenu = async (body) => {
           price: optionData.price,
         }, {transaction: t});
       }
-      // 3. 커밋
-      await t.commit();
-      return menu;
     }
+    await t.commit();
+    return menu;
   }
   catch(err)
     {
