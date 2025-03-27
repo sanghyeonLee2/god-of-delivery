@@ -32,7 +32,7 @@ const useUpdateMenu = () => {
     remove: removeCategory,
   } = useFieldArray({
     control,
-    name: "menuCategories",
+    name: "MenuCategories",
   });
 
   const { mutate: updateMenu, isLoading: isUpdating } = useMutation(

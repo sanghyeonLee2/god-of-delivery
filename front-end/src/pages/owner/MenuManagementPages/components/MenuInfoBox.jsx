@@ -36,10 +36,6 @@ function MenuInfoBox({ menu }) {
         <Font size={"large"}>메뉴 설명</Font>
         <Font>{menu.description}</Font>
       </CommonPageHeader>
-      <CommonPageHeader>
-        <Font>리뷰 수</Font>
-        <Font>{menu.menuReviewCnt}개</Font>
-      </CommonPageHeader>
       <ColumnFlex $height={"95px"}>
         <SubBtn
           text={"메뉴정보 조회 / 수정"}

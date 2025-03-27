@@ -18,7 +18,7 @@ const useCreateMenu = () => {
     remove: removeCategory,
   } = useFieldArray({
     control,
-    name: "menuCategories",
+    name: "MenuCategories",
   });
 
   const queryClient = useQueryClient();

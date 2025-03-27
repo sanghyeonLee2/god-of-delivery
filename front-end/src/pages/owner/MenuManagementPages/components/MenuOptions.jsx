@@ -13,7 +13,7 @@ function MenuOptions({ categoryIdx, control, register }) {
     remove: removeOption,
   } = useFieldArray({
     control,
-    name: `menuCategories.${categoryIdx}.menuOptions`,
+    name: `MenuCategories.${categoryIdx}.MenuOptions`,
   });
   return (
     <CommonBorder $hasAddBtn={true}>
@@ -34,7 +34,7 @@ function MenuOptions({ categoryIdx, control, register }) {
               title={field.title}
               type={field.type}
               {...register(
-                `menuCategories.${categoryIdx}.menuOptions.${optionIdx}.${field.element}`,
+                `MenuCategories.${categoryIdx}.MenuOptions.${optionIdx}.${field.element}`,
                 { valueAsNumber: field.isNumber }
               )}
               placeholder={field.placeholder}

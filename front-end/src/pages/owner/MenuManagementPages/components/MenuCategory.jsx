@@ -20,14 +20,14 @@ function MenuCategory({ categoryIdx, control, register, removeCategory, minCateg
         title={"필수 여부 체크"}
         defaultValue={true}
         control={control}
-        name={`menuCategories.${categoryIdx}.isEssential`}
+        name={`MenuCategories.${categoryIdx}.isEssential`}
         radioFormFields={CREATE_MENU_CATEGORY_RADIO_FIELDS}
       />
       {CREATE_MENU_CATEGORY_FIELDS.map((field) => (
         <LabeledTextInput
           defaultValue={field.defaultValue}
           key={field.key}
-          {...register(`menuCategories.${categoryIdx}.${field.element}`, {
+          {...register(`MenuCategories.${categoryIdx}.${field.element}`, {
             valueAsNumber: field.isNumber,
           })}
           title={field.title}
