@@ -31,7 +31,8 @@ export const API_URLS = {
   MENU: {
     GET: (menuId) => `menus/${menuId}`,
     OWNER: {
-      MENU: (menuId) => `owners/me/menus/${menuId}`,
+      BASE: "owners/me/menus",
+      BY_ID: (menuId) => `owners/me/menus/${menuId}`,
       CATEGORY: (menuId) => `owners/me/menus/${menuId}/category`,
       OPTION: (menuId, categoryId) => `owners/me/menus/${menuId}/categories/${categoryId}/option`,
     },

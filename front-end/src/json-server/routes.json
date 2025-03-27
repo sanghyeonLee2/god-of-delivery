@@ -14,6 +14,7 @@
   "/auth/sign-up": "/signUp",
   "/owners/me/reviews/:reviewId": "/owner-review-patch?reviewId=:reviewId",
   "/owners/me/stores": "/store-get",
+  "/owners/me/menus/2": "/owner-menu-get",
   "/owners/me/menus": "/owner-menus",
   "/owners/me/reviews?page=:page": "/owner-review",
   "/users/me/dibs?page=:page": "/get-dibs",

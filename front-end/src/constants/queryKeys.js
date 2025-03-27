@@ -20,5 +20,6 @@ export const QUERY_KEYS = {
   ORDERS: (page) => ["orders", page],
   MENU_CATEGORY: ["menuCategory"],
   MENU_OPTION: ["menuOption"],
-  OWNER_MENU: ["ownerCart"],
+  OWNER_MENUS: ["ownerMenus"],
+  OWNER_MENU: ["ownerMenu"],
 };

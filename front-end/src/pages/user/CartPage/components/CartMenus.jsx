@@ -10,7 +10,7 @@ import Image from "components/common/Image/Image";
 function CartMenus({ cartItems, orderPrice, handleDeleteCartItem }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
   return (
-    <S.CartMenuBox>
+    <>
       {cartItems?.map((cartItem) => (
         <S.MenuOptionWrap key={cartItem.cartItemId}>
           <li>
@@ -55,7 +55,7 @@ function CartMenus({ cartItems, orderPrice, handleDeleteCartItem }) {
           </li>
         </S.MenuOptionWrap>
       ))}
-    </S.CartMenuBox>
+    </>
   );
 }
 

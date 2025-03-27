@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./CartLayout";
-import { CommonPageWrap, Font } from "../../../assets/styles/CommonStyle";
-import { SubBtn, TransBtn } from "components/common/Button/main/MainButton";
+import { CommonBorder, CommonPageWrap, Font } from "../../../assets/styles/CommonStyle";
+import { AddBtn, SubBtn } from "components/common/Button/main/MainButton";
 import { OrderBtnWrap } from "components/common/Button/main/MainButtonLayout";
 import { useCart } from "../../../hooks/useCart";
 import Loading from "components/common/Loading/Loading";
@@ -14,7 +14,6 @@ function CartPage(props) {
   const navigate = useNavigate();
   return (
     <CommonPageWrap style={{ minHeight: "calc(100vh - 200px)" }}>
-      {" "}
       {/* ✅ CLS 방지 */}
       {isLoading && <Loading />}
       <S.CartHeader>
@@ -26,17 +25,17 @@ function CartPage(props) {
         </S.MinStoreInfoWrap>
       </S.CartHeader>
       <form onSubmit={handleSubmit}>
-        <CartMenus
-          handleDeleteCartItem={handleDeleteCartItem}
-          orderPrice={cartData?.totalCartMenuPrice}
-          cartItems={cartData?.CartItems}
-        />
-        <S.MenuAddBtnWrap>
-          <TransBtn
+        <CommonBorder $hasAddBtn={true}>
+          <CartMenus
+            handleDeleteCartItem={handleDeleteCartItem}
+            orderPrice={cartData?.totalCartMenuPrice}
+            cartItems={cartData?.CartItems}
+          />
+          <AddBtn
             text={"메뉴 추가"}
             onClick={() => navigate(`/stores/info/${cartData?.storeId}`)}
           />
-        </S.MenuAddBtnWrap>
+        </CommonBorder>
         <CartPayment tips={cartData?.Store.deliveryTip} orderPrice={cartData?.totalCartMenuPrice} />
         <OrderBtnWrap>
           <SubBtn type={"submit"} text={"결제하기"} />
