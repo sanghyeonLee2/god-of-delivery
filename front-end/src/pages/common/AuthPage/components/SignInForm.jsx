@@ -2,7 +2,7 @@ import React from "react";
 import { SubBtn } from "components/common/Button/main/MainButton";
 import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import { ErrorMsg } from "../../../../assets/styles/CommonStyle";
-import { useSignIn } from "../../../../hooks/useSignIn";
+import { useSignIn } from "../hooks/useSignIn";
 
 function SignInForm(props) {
   const { register, handleSubmit, handleSignIn, isLoggingIn, errors } = useSignIn();

@@ -3,7 +3,7 @@ import { CommonBorder, FlexOnly, Font } from "../../../../assets/styles/CommonSt
 
 function CartPayment({ cartTotalPrice, tips }) {
   return (
-    <>
+    <div>
       <Font size={"large"}>결제금액을 확인해주세요</Font>
       <CommonBorder>
         <FlexOnly justify={"space-between"}>
@@ -19,7 +19,7 @@ function CartPayment({ cartTotalPrice, tips }) {
           <Font size={"large"}>배달 {(cartTotalPrice + tips).toLocaleString()}원</Font>
         </FlexOnly>
       </CommonBorder>
-    </>
+    </div>
   );
 }
 

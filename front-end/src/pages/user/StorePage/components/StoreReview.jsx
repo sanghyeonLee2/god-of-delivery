@@ -3,14 +3,13 @@ import { VerticalSpace } from "../../../../assets/styles/CommonStyle";
 import { TabWrap } from "../StorePageLayout";
 import Loading from "components/common/Loading/Loading";
 import Pagination from "components/common/Pagination/Pagination";
-import useGetReviews from "../../../../hooks/useGetReviews";
 import Review from "components/common/Review/Review";
 import StoreReviewHeader from "pages/user/StorePage/components/StoreReviewHeader";
 import Empty from "components/common/Empty/Empty";
+import useGetStoreReviews from "../hooks/useGetStoreReviews";
 
 function StoreReview({ rating }) {
-  const { reviews, totalPages, isLoading, page, reviewStat, setPage } =
-    useGetReviews("storeReviews");
+  const { reviews, totalPages, isLoading, page, reviewStat, setPage } = useGetStoreReviews();
   if (isLoading) {
     return <Loading />;
   }

@@ -41,7 +41,7 @@
   ],
   "me": {
     "address": "주례로 47",
-    "role": "owner",
+    "role": "user",
     "userId": "asd"
   },
   "coords": {
@@ -487,52 +487,51 @@
           }
         ]
       },
-
-        {
-          "menuCategoryId": 2,
-          "title": "Category 1",
-          "isEssential": false,
-          "maxQuantity": 2,
-          "createdAt": "2024-03-20T00:00:00.000Z",
-          "updatedAt": "2025-03-21T00:00:00.000Z",
-          "menuId": 1,
-          "MenuOptions": [
-            {
-              "menuOptionId": 5,
-              "content": "Option 5",
-              "price": 1800,
-              "createdAt": "2024-03-10T00:00:00.000Z",
-              "updatedAt": "2025-03-21T00:00:00.000Z",
-              "menuCategoryId": 1
-            },
-            {
-              "menuOptionId": 6,
-              "content": "Option 6",
-              "price": 3000,
-              "createdAt": "2024-01-15T00:00:00.000Z",
-              "updatedAt": "2025-03-21T00:00:00.000Z",
-              "menuCategoryId": 1,
-              "hasMenu": true
-            },
-            {
-              "menuOptionId": 7,
-              "content": "Option 7",
-              "price": 2500,
-              "createdAt": "2024-02-18T00:00:00.000Z",
-              "updatedAt": "2025-03-21T00:00:00.000Z",
-              "menuCategoryId": 1,
-              "hasMenu": true
-            },
-            {
-              "menuOptionId": 8,
-              "content": "Option 8",
-              "price": 2000,
-              "createdAt": "2024-03-20T00:00:00.000Z",
-              "updatedAt": "2025-03-21T00:00:00.000Z",
-              "menuCategoryId": 1
-            }
-          ]
-        },
+      {
+        "menuCategoryId": 2,
+        "title": "Category 1",
+        "isEssential": false,
+        "maxQuantity": 2,
+        "createdAt": "2024-03-20T00:00:00.000Z",
+        "updatedAt": "2025-03-21T00:00:00.000Z",
+        "menuId": 1,
+        "MenuOptions": [
+          {
+            "menuOptionId": 5,
+            "content": "Option 5",
+            "price": 1800,
+            "createdAt": "2024-03-10T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          },
+          {
+            "menuOptionId": 6,
+            "content": "Option 6",
+            "price": 3000,
+            "createdAt": "2024-01-15T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 7,
+            "content": "Option 7",
+            "price": 2500,
+            "createdAt": "2024-02-18T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1,
+            "hasMenu": true
+          },
+          {
+            "menuOptionId": 8,
+            "content": "Option 8",
+            "price": 2000,
+            "createdAt": "2024-03-20T00:00:00.000Z",
+            "updatedAt": "2025-03-21T00:00:00.000Z",
+            "menuCategoryId": 1
+          }
+        ]
+      },
       {
         "menuCategoryId": 12312,
         "title": "Category 1",
@@ -621,8 +620,7 @@
           }
         ]
       }
-      ]
-
+    ]
   },
   "cart-delete": [],
   "cart": {
@@ -778,7 +776,7 @@
     "createdAt": "2025-02-20T23:27:22.000Z",
     "updatedAt": "2025-02-20T23:27:22.000Z",
     "storeId": 1,
-    "imgUrl" : "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
+    "imgUrl": "https://namu.wiki/w/%EB%9D%BC%EB%A9%B4",
     "MenuCategories": [
       {
         "menuCategoryId": 20,
@@ -888,88 +886,9 @@
     ]
   },
   "reviews": {
-    "totalItems": 6,
-    "pageSize": 10,
-    "reviewStat": [
-      1,
-      1,
-      1,
-      1,
-      2
-    ],
-    "reviewList": [
-      {
-        "reviewId": 4,
-        "rating": 4,
-        "content": "맛있었어요! 양도 많고 좋아요.",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-21T10:55:46.000Z",
-        "updatedAt": "2025-02-21T10:55:46.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "asd",
-        "owner": {
-          "id": 1,
-          "content": "감사합니다.",
-          "createdAt": "2025-02-21T10:55:46.000Z"
-        }
-      },
-      {
-        "reviewId": 7,
-        "rating": 3,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:04.000Z",
-        "updatedAt": "2025-02-25T19:28:06.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "asd"
-      },
-      {
-        "reviewId": 8,
-        "rating": 2,
-        "content": "g",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:06.000Z",
-        "updatedAt": "2025-02-25T19:28:07.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      },
-      {
-        "reviewId": 9,
-        "rating": 1,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:07.000Z",
-        "updatedAt": "2025-02-25T19:28:08.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      },
-      {
-        "reviewId": 10,
-        "rating": 5,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:09.000Z",
-        "updatedAt": "2025-02-25T19:28:09.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      },
-      {
-        "reviewId": 11,
-        "rating": 5,
-        "content": "dd",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-27T17:24:20.000Z",
-        "updatedAt": "2025-02-27T17:24:21.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      }
-    ]
+    "content": "asd",
+    "reviewId": 13,
+    "ownerId": "me"
   },
   "review-post": [],
   "review-patch": [],
@@ -1435,7 +1354,7 @@
         "menuId": 1,
         "storeId": 29,
         "userId": "qwe",
-        "owner": {
+        "CeoReview": {
           "id": 1,
           "content": "감사합니다.",
           "createdAt": "2025-02-21T10:55:46.000Z"
@@ -1593,85 +1512,39 @@
     }
   ],
   "owner-review": {
-    "totalItems": 6,
-    "pageSize": 10,
+    "totalItems": 1,
     "reviewStat": [
-      1,
-      1,
-      1,
-      1,
-      2
+      1
     ],
     "reviewList": [
       {
-        "reviewId": 4,
-        "rating": 4,
-        "content": "맛있었어요! 양도 많고 좋아요.",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-21T10:55:46.000Z",
-        "updatedAt": "2025-02-21T10:55:46.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "asd",
-        "owner": {
-          "id": 1,
-          "content": "감사합니다.",
-          "createdAt": "2025-02-21T10:55:46.000Z"
-        }
-      },
-      {
-        "reviewId": 7,
-        "rating": 3,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:04.000Z",
-        "updatedAt": "2025-02-25T19:28:06.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "asd"
-      },
-      {
-        "reviewId": 8,
-        "rating": 2,
-        "content": "g",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:06.000Z",
-        "updatedAt": "2025-02-25T19:28:07.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      },
-      {
-        "reviewId": 9,
-        "rating": 1,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:07.000Z",
-        "updatedAt": "2025-02-25T19:28:08.000Z",
-        "menuId": 1,
-        "storeId": 29,
-        "userId": "user123"
-      },
-      {
-        "reviewId": 10,
+        "reviewId": 13,
         "rating": 5,
-        "content": "good",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-25T19:28:09.000Z",
-        "updatedAt": "2025-02-25T19:28:09.000Z",
-        "menuId": 1,
+        "content": "asd",
+        "img": null,
+        "createdAt": "2025-03-06T09:52:50.000Z",
+        "updatedAt": "2025-03-06T09:52:50.000Z",
+        "orderId": 11,
         "storeId": 29,
-        "userId": "user123"
+        "userId": "user123",
+        "CeoReview": {
+          "ceoReviewId": 1,
+          "content": "123",
+          "createdAt": "2025-03-19T14:48:50.000Z",
+          "updatedAt": "2025-03-19T14:48:50.000Z",
+          "reviewId": 13,
+          "userId": "123"
+        }
       },
       {
         "reviewId": 11,
         "rating": 5,
-        "content": "dd",
-        "img": "image1.jpg",
-        "createdAt": "2025-02-27T17:24:20.000Z",
-        "updatedAt": "2025-02-27T17:24:21.000Z",
-        "menuId": 1,
-        "storeId": 29,
+        "content": "asd",
+        "img": null,
+        "createdAt": "2025-03-06T09:52:50.000Z",
+        "updatedAt": "2025-03-06T09:52:50.000Z",
+        "orderId": 1,
+        "storeId": 1,
         "userId": "user123"
       }
     ]
@@ -1947,5 +1820,38 @@
         ]
       }
     ]
+  },
+  "owner-store": {
+    "storeId": 29,
+    "storeName": "맛있는김밥집",
+    "storeCategory": "한식",
+    "storeAddress": "서울 강남구 OO동 123-4",
+    "storeLogoImage": null,
+    "latitude": 37.497898,
+    "longitude": 127.027603,
+    "operationHour": "10:00-21:00",
+    "dayOff": "일요일",
+    "storeNumber": "02-1234-5678",
+    "area": "강남구",
+    "introduction": "신선한 재료",
+    "deliveryTipInfo": "무료배송",
+    "owner": "김철수",
+    "businessNum": "123-45-67890",
+    "origin": "국내산",
+    "takeoutMinPrice": "10000",
+    "takeoutDiscount": 10,
+    "takeoutPickupTime": 30,
+    "takeoutPayment": "현금, 카드",
+    "deliveryTime": 40,
+    "minDeliveryPrice": 15000,
+    "deliveryTip": 2000,
+    "deliveryPayment": "카드, 현금",
+    "notice": "연말할인 이벤트",
+    "rating": "0.0",
+    "reviewCnt": 0,
+    "dips": 0,
+    "createdAt": "2025-02-19T16:04:47.000Z",
+    "updatedAt": "2025-02-19T16:04:47.000Z",
+    "userId": "123"
   }
 }

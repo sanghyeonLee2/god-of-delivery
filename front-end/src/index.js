@@ -13,11 +13,11 @@ import StorePage from "pages/user/StorePage/StorePage";
 import CartPage from "pages/user/CartPage/CartPage";
 import PaymentPage from "pages/user/PaymentPage/PaymentPage";
 import OrderStatusPage from "pages/user/OrderStatusPage/OrderStatusPage";
-import OrdersPage from "pages/user/ManagementPage/OrdersPage";
+import MyOrdersPage from "pages/user/ManagementPages/MyOrdersPage";
 import OwnerHomePage from "pages/owner/OwnerHomePage/OwnerHomePage";
 import StoreManagementPage from "pages/owner/StoreManagementPage/StoreManagementPage";
 import ErrorPage from "pages/common/ErrorPage/ErrorPage";
-import ReviewManagementPage from "pages/user/ManagementPage/ReviewManagementPage";
+import MyReviewsPage from "pages/user/ManagementPages/MyReviewsPage";
 import customQueryClient from "./react-query/queryClient";
 import { ToastContainer } from "react-toastify";
 import DibsPage from "pages/user/DibsPage/DibsPage";
@@ -70,11 +70,11 @@ const router = createBrowserRouter([
       },
       {
         path: "users/me/orders",
-        element: <OrdersPage />,
+        element: <MyOrdersPage />,
       },
       {
         path: "users/me/reviews",
-        element: <ReviewManagementPage />,
+        element: <MyReviewsPage />,
       },
       {
         path: "users/me/dibs",

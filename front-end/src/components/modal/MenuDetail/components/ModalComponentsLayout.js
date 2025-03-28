@@ -1,44 +1,44 @@
 import styled from "styled-components";
-import {exampleColor, innerPadding} from "../../../../assets/styles/CommonStyle";
-import {flexLayout} from "../../../../assets/styles/Mixin";
-import {COLORS} from "../../../../assets/styles/colors";
+import { innerPadding } from "../../../../assets/styles/CommonStyle";
+import { flexLayout } from "../../../../assets/styles/Mixin";
+import { COLORS } from "../../../../assets/styles/colors";
 
 export const ModalHeaderWrap = styled.div`
-    position: relative;
-    height: 10%;
-    padding-top: 14px;
-    text-align: center;
+  position: relative;
+  height: 10%;
+  padding-top: 14px;
+  text-align: center;
 
-    svg {
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-`
+  svg {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+`;
 export const MenuDetailPrologWrap = styled.div`
-    min-height: 300px;
-    border-bottom: 1px solid ${COLORS.BORDER};
+  min-height: 300px;
+  border-bottom: 1px solid ${COLORS.BORDER};
 
-    img {
-        width: 100%;
-    }
-`
+  img {
+    width: 100%;
+  }
+`;
 export const MenuDetailOptionsWrap = styled.div`
-    border-bottom: 1px solid ${COLORS.BORDER};
+  border-bottom: 1px solid ${COLORS.BORDER};
 
-    label {
-        display: block;
-    }
-`
+  label {
+    display: block;
+  }
+`;
 export const OptionWrap = styled.div`
-    height: 45px;
-    ${innerPadding()};
-    ${flexLayout("space-between", "center")};
-`
+  height: 45px;
+  ${innerPadding()};
+  ${flexLayout("space-between", "center")};
+`;
 export const OrderPriceWrap = styled.div`
-    ${exampleColor()};
-    ${innerPadding()};
-    ${flexLayout("space-between")};
-    height: 60px;
-`
+  background-color: lightgray;
+  ${innerPadding()};
+  ${flexLayout("space-between")};
+  height: 60px;
+`;

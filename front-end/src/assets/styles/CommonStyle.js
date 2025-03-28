@@ -2,9 +2,6 @@ import styled, { css } from "styled-components";
 import { flexLayout, setBorder } from "./Mixin";
 import { COLORS } from "./colors";
 
-export const exampleColor = () => css`
-  background-color: lightgray;
-`;
 export const outerPadding = () => css`
   padding: 15px 25px;
 `;
@@ -105,12 +102,12 @@ export const FixedTextInterval = styled.ul`
 
   p:nth-child(1) {
     display: inline-block;
-    width: 35%;
+    width: 50%;
   }
 
   p:nth-child(2) {
     display: inline-block;
-    width: 65%;
+    width: 50%;
   }
 `;
 export const FlexOnly = styled(({ element: Element = "div", ...props }) => <Element {...props} />)`
@@ -119,4 +116,3 @@ export const FlexOnly = styled(({ element: Element = "div", ...props }) => <Elem
   width: ${({ width }) => width || "auto"};
   justify-content: ${({ justify }) => justify || "start"};
 `;
-//기본적으로 전달되는 props가 있음

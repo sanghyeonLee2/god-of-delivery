@@ -1,5 +1,3 @@
-// menuFormFields.js
-
 export const CREATE_MENU_FIELDS = [
   {
     key: 1,
@@ -96,10 +94,60 @@ export const CREATE_MENU_CATEGORY_SELECT_FIELDS = [
   { key: 12, value: "convenienceStoreAndMart", text: "편의점/마트" },
 ];
 
-export const MENU_MANAGEMENT_FIELDS = [
-  { key: 1, name: "카테고리" },
-  { key: 2, name: "메뉴 이름" },
-  { key: 3, name: "메뉴 금액" },
-  { key: 4, name: "메뉴 설명" },
-  { key: 5, name: "리뷰 수" },
+export const OWNER_STORES_INFO_DISABLE = [
+  { key: 1, title: "평점", name: "rating" },
+  { key: 2, title: "리뷰 수", name: "reviewCnt" },
+  { key: 3, title: "찜 수", name: "dibs" },
 ];
+
+export const OWNER_STORES_INFO = [
+  { key: 1, title: "가게 이름", name: "storeName" },
+  { key: 2, title: "카테고리", name: "storeCategory" },
+  { key: 3, title: "공지사항", name: "notice" },
+  { key: 4, title: "주소", name: "area" },
+  { key: 5, title: "운영시간", name: "operationHour" },
+  { key: 6, title: "휴무일", name: "dayOff" },
+  { key: 7, title: "가게 번호", name: "storeNumber" },
+  { key: 8, title: "지역", name: "area" },
+  { key: 9, title: "소개", name: "introduction" },
+  { key: 10, title: "배달 팁 정보", name: "deliveryTipInfo" },
+  { key: 11, title: "사장님", name: "owner" },
+  { key: 12, title: "사업자 등록번호", name: "businessNum" },
+  { key: 13, title: "원산지", name: "origin" },
+  { key: 14, title: "포장 할인 금액", name: "takeoutDiscount" },
+  { key: 15, title: "포장 대기 시간", name: "takeoutPickupTime" },
+  { key: 16, title: "포장 최소주문금액", name: "takeoutMinPrice" },
+  { key: 17, title: "포장 결제방법", name: "takeoutPayment" },
+  { key: 18, title: "배달 시간", name: "deliveryTime" },
+  { key: 19, title: "배달 최소주문금액", name: "minDeliveryPrice" },
+  { key: 20, title: "배달 팁", name: "deliveryTip" },
+  { key: 21, title: "배달 결제방법", name: "deliveryPayment" },
+];
+
+export const PAYMENT_METHODS = {
+  methodsName: "paymentMethod",
+  methods: [
+    {
+      content: "만나서 카드 결제",
+      method: "card",
+    },
+    {
+      content: "만나서 현금 결제",
+      method: "cash",
+    },
+  ],
+};
+
+export const ORDER_METHODS = {
+  methodsName: "orderType",
+  methods: [
+    {
+      content: "포장 주문 후 픽업",
+      method: "takeOut",
+    },
+    {
+      content: "배달 주문",
+      method: "delivery",
+    },
+  ],
+};

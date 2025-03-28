@@ -1,7 +1,7 @@
 import React from "react";
 import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
 import Title from "components/common/Title/Title";
-import useGetDibs from "../../../hooks/useGetDibs";
+import useGetDibs from "./hooks/useGetDibs";
 import Loading from "components/common/Loading/Loading";
 import Pagination from "components/common/Pagination/Pagination";
 import StoreList from "components/common/StoreList/StoreList";

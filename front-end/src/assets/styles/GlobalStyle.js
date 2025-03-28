@@ -1,9 +1,9 @@
-import {createGlobalStyle} from "styled-components";
-import {COLORS} from "./colors";
-import {innerPadding} from "./CommonStyle";
+import { createGlobalStyle } from "styled-components";
+import { COLORS } from "./colors";
+import { innerPadding } from "./CommonStyle";
 
-/*const HOVER_COLOR = "#F5F5F5"*/
-const FONT_FAMILY = "LINESeedKR"
+const FONT_FAMILY = "LINESeedKR";
+
 export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
@@ -50,7 +50,7 @@ export const GlobalStyle = createGlobalStyle`
     #root {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; /* 전체 뷰포트 높이 설정 */
+        min-height: 100vh; 
         padding-top: 92px;
     }
 
@@ -65,16 +65,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${FONT_FAMILY};
         line-height: 2;
     }
-
-    .common-text {
-        color: white;
-        font-size: 15px
-    }
+    
 
     .App {
         position: relative;
         flex-grow: 1;
     }
 
-
-`
+`;

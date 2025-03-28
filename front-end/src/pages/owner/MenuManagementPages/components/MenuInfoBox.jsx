@@ -7,7 +7,7 @@ import {
   Font,
 } from "../../../../assets/styles/CommonStyle";
 import { MainBtn, SubBtn } from "components/common/Button/main/MainButton";
-import { useDeleteMenu } from "../../../../hooks/useDeleteMenu";
+import { useDeleteMenu } from "../hooks/useDeleteMenu";
 import Image from "components/common/Image/Image";
 import { useNavigate } from "react-router-dom";
 

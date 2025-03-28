@@ -3,7 +3,7 @@ import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import { SubBtn } from "components/common/Button/main/MainButton";
 import { ErrorMsg, Font } from "../../../../assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
-import { useSignUp } from "../../../../hooks/useSignUp";
+import { useSignUp } from "../hooks/useSignUp";
 
 function SignUpForm(props) {
   const { register, handleSubmit, handleSignUp, isSigningUp, errors } = useSignUp();

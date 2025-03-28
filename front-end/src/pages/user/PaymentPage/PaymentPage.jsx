@@ -2,38 +2,11 @@ import React from "react";
 import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
 import { SubBtn } from "components/common/Button/main/MainButton";
 import PaymentAmount from "./components/PaymentAmount";
-import { usePayment } from "../../../hooks/usePayment";
+import { usePayment } from "./hooks/usePayment";
 import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import PaymentMethods from "./components/PaymentMethods";
 import Title from "components/common/Title/Title";
-
-const paymentMethods = {
-  methodsName: "paymentMethod",
-  methods: [
-    {
-      content: "만나서 카드 결제",
-      method: "card",
-    },
-    {
-      content: "만나서 현금 결제",
-      method: "cash",
-    },
-  ],
-};
-
-const orderMethods = {
-  methodsName: "orderType",
-  methods: [
-    {
-      content: "포장 주문 후 픽업",
-      method: "takeOut",
-    },
-    {
-      content: "배달 주문",
-      method: "delivery",
-    },
-  ],
-};
+import { ORDER_METHODS, PAYMENT_METHODS } from "../../../constants/formFields";
 
 function PaymentPage(props) {
   const { paymentInfo, isOrderPosting, control, register, handleSubmit } = usePayment();
@@ -41,8 +14,8 @@ function PaymentPage(props) {
   return (
     <CommonPageWrap>
       <Title text={"주문하기"} size={"x-large"} />
-      <PaymentMethods control={control} toSelectMethods={paymentMethods} tips={paymentInfo.tips} />
-      <PaymentMethods control={control} toSelectMethods={orderMethods} tips={paymentInfo.tips} />
+      <PaymentMethods control={control} toSelectMethods={PAYMENT_METHODS} tips={paymentInfo.tips} />
+      <PaymentMethods control={control} toSelectMethods={ORDER_METHODS} tips={paymentInfo.tips} />
       <form onSubmit={handleSubmit}>
         <LabeledTextInput title={"배달 주소"} {...register("address")} disabled={true} />
         <LabeledTextInput

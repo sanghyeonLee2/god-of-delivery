@@ -11,3 +11,6 @@ export const cartTotalPrice = (cartData) =>
         cartItem.CartItemOptions.reduce((acc, { price }) => acc + price, 0)),
     cartData.Store.deliveryTip
   );
+export const orderTotalPrice = ({ menuPriceSnapshot, OrderItemOptions }) =>
+  menuPriceSnapshot +
+  OrderItemOptions.reduce((optionAcc, option) => optionAcc + option.optionPriceSnapshot, 0);

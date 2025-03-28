@@ -1,12 +1,11 @@
 import React from "react";
 import { ModalBtn } from "components/common/Button/main/MainButton";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import useCreateReview from "../../../hooks/useCreateReview";
+import useCreateReview from "./hooks/useCreateReview";
 import Textarea from "components/common/TextArea/TextArea";
 import { ModalContentWrap, ModalTitleDescriptionWrap } from "components/modal/ModalLayout";
 import { ModalReviewForm } from "components/modal/CreateReview/CreateReviewLayout";
 import { Font } from "../../../assets/styles/CommonStyle";
-import FileInput from "components/common/Input/FileInput";
 
 function CreateReview({ modalData }) {
   const { form, mutation } = useCreateReview({
@@ -14,7 +13,7 @@ function CreateReview({ modalData }) {
     storeId: modalData.storeId,
   });
   return (
-    <>
+    <div>
       <ModalContentWrap>
         <ModalTitleDescriptionWrap>
           <Font size={"large"}>{modalData.storeName}</Font>
@@ -25,13 +24,11 @@ function CreateReview({ modalData }) {
             rating={form.watch("rating")}
             starRatedColor="gold"
             starHoverColor="gold"
-            changeRating={form.handleRatingChange} // 별점 선택 시 업데이트
-            numberOfStars={5}
+            changeRating={form.handleRatingChange}
             name="rating"
             starDimension="30px"
             starSpacing="5px"
           />
-          <FileInput name={"img"} register={form.register} />
           <Textarea
             {...form.register("content")}
             placeholder={"리뷰를 작성해보세요"}
@@ -44,7 +41,7 @@ function CreateReview({ modalData }) {
         isLoading={mutation.isCreatingReview}
         onClick={form.handleSubmit((data) => mutation.handleCreateReview(data))}
       />
-    </>
+    </div>
   );
 }
 

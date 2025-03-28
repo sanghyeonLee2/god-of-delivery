@@ -3,7 +3,7 @@ import CategoryList from "./components/CategoryList";
 import SortingSection from "./components/SortingSection";
 import StoreList from "components/common/StoreList/StoreList";
 import Pagination from "components/common/Pagination/Pagination";
-import useGetStores from "../../../hooks/useGetStores";
+import useGetStores from "./hooks/useGetStores";
 import HomeBoard from "components/common/HomeBoard/HomeBoard";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "components/common/Loading/Loading";
@@ -21,9 +21,6 @@ function StoresPage(props) {
     setSorting,
     sorting,
   } = useGetStores(true);
-  /*  if (!isLoading) {
-        return <Loading/>
-    }*/
 
   return (
     <div>

@@ -1,14 +1,14 @@
 import React from "react";
 import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
 import Title from "components/common/Title/Title";
-import { useMenuManagement } from "../../../hooks/useMenuManagement";
+import { useGetOwnerStoreMenus } from "./hooks/useGetOwnerStoreMenus";
 import Loading from "components/common/Loading/Loading";
 import MenuInfoBox from "pages/owner/MenuManagementPages/components/MenuInfoBox";
 import Empty from "components/common/Empty/Empty";
 import { MainBtn } from "components/common/Button/main/MainButton";
 
 function MenuManagementPage(props) {
-  const { menuData, isLoading, navigateCreateMenu } = useMenuManagement();
+  const { menuData, isLoading, navigateCreateMenu } = useGetOwnerStoreMenus();
   if (isLoading) {
     return <Loading />;
   }
