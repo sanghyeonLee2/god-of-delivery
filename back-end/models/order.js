@@ -31,8 +31,8 @@ class Order extends Sequelize.Model {
           allowNull: false,
         },
         status: {
-          type: Sequelize.ENUM("접수 중", "준비 중", "완료", "취소"),
-          defaultValue: "접수 중",
+          type: Sequelize.ENUM("접수 중", "준비 중", "주문 완료", "취소"),
+          defaultValue: "주문 완료",
           allowNull: false,
         },
         detailAddress: {
