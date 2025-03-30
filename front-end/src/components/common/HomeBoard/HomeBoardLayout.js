@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { flexLayout } from "../../../assets/styles/Mixin";
+import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const HomeBoardOuter = styled.div`
-  height: 170px;
+  height: 190px;
   border-bottom: 1px solid #ddd;
 `;
 
 export const HomeBoardInner = styled.div`
+  ${innerPadding()};
   margin: 0 auto;
   max-width: 500px;
   height: 100%;

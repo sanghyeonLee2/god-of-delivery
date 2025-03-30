@@ -9,6 +9,5 @@ export const ImageWrap = styled.div`
 export const ImageTag = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
   overflow: hidden;
 `;

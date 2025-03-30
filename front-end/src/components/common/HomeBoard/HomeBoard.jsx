@@ -23,8 +23,8 @@ function HomeBoard() {
           <S.KeywordLine>
             <S.KeywordWrap>
               <S.KeywordSlider $index={index} $animate={isAnimating}>
-                {duplicatedList.map((item) => (
-                  <S.KeywordItem key={item.text} $color={item.color}>
+                {duplicatedList.map((item, idx) => (
+                  <S.KeywordItem key={`${item.text + idx}`} $color={item.color}>
                     {item.emoji} {item.text}
                   </S.KeywordItem>
                 ))}

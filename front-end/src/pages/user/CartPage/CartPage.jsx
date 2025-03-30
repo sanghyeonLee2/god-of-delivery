@@ -11,7 +11,7 @@ function CartPage() {
   return (
     <CommonPageWrap>
       {isLoading && <Loading />}
-      {cartData ? (
+      {cartData?.CartItems?.length === 0 ? (
         <>
           <CartHeader
             storeName={cartData?.Store?.storeName}

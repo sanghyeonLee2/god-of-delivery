@@ -6,12 +6,12 @@ import Footer from "./components/common/Footer/Footer";
 import { useRecoilValue } from "recoil";
 import { isModalOpenState } from "./recoil/flag/atoms";
 import DefaultModal from "./components/modal/DefaultModal";
-import GlobalErrorBoundary from "components/common/ErrorBoundary/GlobalErrorBoundary";
 
 function App() {
   const isModalOpen = useRecoilValue(isModalOpenState);
   return (
-    <GlobalErrorBoundary>
+    <>
+      {/*<GlobalErrorBoundary>*/}
       <div className="App">
         <Header />
         <GlobalStyle />
@@ -21,7 +21,8 @@ function App() {
       {isModalOpen.flag && (
         <DefaultModal modalType={isModalOpen.modalType} modalData={isModalOpen.modalData} />
       )}
-    </GlobalErrorBoundary>
+      {/*</GlobalErrorBoundary>*/}
+    </>
   );
 }
 

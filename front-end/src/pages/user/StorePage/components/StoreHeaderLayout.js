@@ -16,6 +16,6 @@ export const ReviewWrap = styled.div`
   }
 
   button {
-    margin-bottom: 2px;
+    margin-top: 4px;
   }
 `;

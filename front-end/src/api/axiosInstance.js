@@ -2,8 +2,8 @@ import axios from "axios";
 import reissue from "./reissueApi";
 import { API_URLS } from "../constants/urls";
 
-//const API_KEY = process.env.REACT_APP_API;
-const API_KEY = process.env.REACT_APP_JSON_SERVER; // 테스트 용
+const API_KEY = process.env.REACT_APP_API;
+//const API_KEY = process.env.REACT_APP_JSON_SERVER;
 
 const axiosInstance = axios.create({
   baseURL: API_KEY,

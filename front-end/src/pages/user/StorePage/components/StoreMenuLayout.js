@@ -17,7 +17,4 @@ export const MenuInfoInner = styled.div`
     background-color: #f9f9f9;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
-  img {
-    border-radius: 10px;
-  }
 `;

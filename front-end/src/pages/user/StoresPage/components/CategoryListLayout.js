@@ -6,7 +6,7 @@ export const CategoryListWrap = styled.ul`
   @media (max-width: 880px) {
     display: none;
   }
-  padding: 0 25px;
+  padding: 0 15px;
   height: 75px;
   margin: 0 auto;
   max-width: 1100px;

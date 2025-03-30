@@ -3,8 +3,9 @@ import { flexLayout } from "../../../../assets/styles/Mixin";
 import { innerPadding } from "../../../../assets/styles/CommonStyle";
 
 export const SortingOuter = styled.div`
-  border-bottom: lightgray 1px solid;
+  border-bottom: #ddd 1px solid;
   height: 60px;
+  border-top: 1px solid #ddd;
 `;
 
 export const SortingInner = styled.div`
@@ -17,14 +18,21 @@ export const SortingInner = styled.div`
   gap: 12px;
 
   select {
-    flex: 0.49;
+    flex: 1;
     height: 38px;
   }
 
   select:nth-child(2) {
     display: none;
+
     @media (max-width: 768px) {
       display: inline-block;
+    }
+  }
+
+  select:nth-child(1) {
+    @media (min-width: 768px) {
+      flex: 0.49;
     }
   }
 `;

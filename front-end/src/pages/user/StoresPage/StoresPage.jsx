@@ -7,7 +7,6 @@ import useGetStores from "./hooks/useGetStores";
 import HomeBoard from "components/common/HomeBoard/HomeBoard";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "components/common/Loading/Loading";
-import Empty from "components/common/Empty/Empty";
 
 function StoresPage() {
   const {
@@ -27,20 +26,17 @@ function StoresPage() {
       {isLoading && <Loading />}
       <HomeBoard />
       <CategoryList categoryId={categoryId} setCategory={setCategory} />
-      {storesData.length > 0 ? (
-        <>
-          <SortingSection
-            category={categoryId}
-            setCategory={setCategory}
-            setSorting={setSorting}
-            sorting={sorting}
-          />
-          <StoreList storesData={storesData} isDibs={false} />
-          <Pagination totalPages={totalPages} page={page} setPage={setPage} />
-        </>
-      ) : (
-        <Empty pageName={"가게 목록이 없어요"} />
-      )}
+      <>
+        <SortingSection
+          category={categoryId}
+          setCategory={setCategory}
+          setSorting={setSorting}
+          sorting={sorting}
+        />
+        <StoreList storesData={storesData} isDibs={false} />
+        <Pagination totalPages={totalPages} page={page} setPage={setPage} />
+      </>
+      )
     </div>
   );
 }

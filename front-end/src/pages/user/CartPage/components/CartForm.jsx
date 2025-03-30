@@ -20,7 +20,7 @@ function CartForm({ handleSubmit, handleDeleteCartItem, cartData }) {
         <AddBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/info/${cartData?.storeId}`)} />
       </CommonBorder>
       <CartPayment
-        tips={cartData?.Store.deliveryTip}
+        tips={cartData?.Store?.deliveryTip}
         cartMenuTotalPrice={cartData?.cartMenuTotalPrice}
       />
       <OrderBtnWrap>

@@ -15,7 +15,7 @@ export const useCart = () => {
     cacheTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
     select: (res) => ({
       ...res.data,
-      cartMenuTotalPrice: cartMenuTotalPrice(res.data.CartItems),
+      cartMenuTotalPrice: cartMenuTotalPrice(res.data?.CartItems),
     }),
   });
   const { mutate: handleDeleteCartItem } = useMutation(

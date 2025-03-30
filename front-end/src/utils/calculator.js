@@ -3,7 +3,7 @@ const PAGE_SIZE = 10;
 export const pageCalculator = (totalItems) => Math.ceil(totalItems / PAGE_SIZE);
 
 export const cartMenuTotalPrice = (cartItems) =>
-  cartItems.reduce(
+  cartItems?.reduce(
     (acc, cartItem) =>
       cartItem.quantity *
       (acc +
