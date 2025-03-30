@@ -1,31 +1,30 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../../assets/styles/Mixin";
-import {outerPadding} from "../../../../assets/styles/CommonStyle";
-
+import { flexLayout } from "../../../../assets/styles/Mixin";
+import { innerPadding } from "../../../../assets/styles/CommonStyle";
 
 export const SortingOuter = styled.div`
-    border-bottom: lightgray 1px solid;
-    border-top: lightgray 1px solid;
-    height: 72px;
-`
+  border-bottom: lightgray 1px solid;
+  height: 60px;
+`;
 
 export const SortingInner = styled.div`
-    ${outerPadding()};
-    ${flexLayout("space-between", "center")};
-    flex-direction: row-reverse;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1100px;
-    height: 100%;
+  ${innerPadding()};
+  ${flexLayout("flex-start", "center")};
+  flex-direction: row-reverse;
+  margin: 0 auto;
+  max-width: 1100px;
+  height: 100%;
+  gap: 12px;
 
-    select {
-        ${elementSize("49%", "100%")}
-    }
+  select {
+    flex: 0.49;
+    height: 38px;
+  }
 
-    select:nth-child(2) {
-        display: none;
-        @media (max-width: 880px ) {
-            display: inline-block;
-        }
+  select:nth-child(2) {
+    display: none;
+    @media (max-width: 768px) {
+      display: inline-block;
     }
-`
+  }
+`;

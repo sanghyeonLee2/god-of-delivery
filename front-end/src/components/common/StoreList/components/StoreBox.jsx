@@ -21,15 +21,15 @@ function StoreBox({ storeInfo }) {
           &nbsp;|&nbsp;
           <Font size={"small"}>리뷰 {storeInfo?.reviewCnt}</Font>
         </FlexOnly>
-        <FlexOnly>
+        <FlexOnly justify={"space-between"}>
           <Font size={"small"} color={"gray"}>
             {storeInfo?.minDeliveryPrice}원 이상 배달
           </Font>
-          <S.AverageTimeWrap>
+          <S.OperationHourWrap>
             <Font size={"small"} color={"gray"}>
-              운영시간 : {storeInfo?.operationHour}
+              {storeInfo?.operationHour}
             </Font>
-          </S.AverageTimeWrap>
+          </S.OperationHourWrap>
         </FlexOnly>
       </S.StoreInfoWrap>
     </S.StoreOuter>

@@ -2,24 +2,13 @@ import React from "react";
 import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
 import { omittedDate } from "../../../../utils/transducer";
 import { OwnerReviewWrap } from "components/common/Review/ReviewLayout";
-import { useOwnerReview } from "../../../../hooks/useOwnerReview";
-import ReviewUpdateMode from "components/common/Review/components/ReviewUpdateMode";
-import Textarea from "components/common/TextArea/TextArea";
+import { useDeleteOwnerReview } from "pages/owner/OwnerReviewPage/hooks/useDeleteOwnerReview";
+import { MainBtn } from "components/common/Button/main/MainButton";
 
 function OwnerReview({ ownerReview, isOwner }) {
-  const {
-    updateMode,
-    setUpdateMode,
-    cancelUpdateMode,
-    register,
-    deleteReview,
-    updateReview,
-    handleSubmit,
-  } = useOwnerReview(ownerReview);
+  const deleteOwnerReview = useDeleteOwnerReview();
   return (
-    <OwnerReviewWrap
-      onSubmit={handleSubmit((data) => updateReview({ id: ownerReview.id, content: data.content }))}
-    >
+    <OwnerReviewWrap>
       <FlexOnly justify={"space-between"}>
         <Font>사장님</Font>
         <Font size={"small"} color={"gray"}>
@@ -28,14 +17,11 @@ function OwnerReview({ ownerReview, isOwner }) {
       </FlexOnly>
       <Font size={"small"}>{ownerReview.content}</Font>
       {isOwner && (
-        <ReviewUpdateMode
-          updateMode={updateMode}
-          cancelUpdateMode={cancelUpdateMode}
-          setUpdateMode={setUpdateMode}
-          deleteReview={deleteReview}
-        >
-          <Textarea {...register("content")} defaultValue={ownerReview?.content} />
-        </ReviewUpdateMode>
+        <MainBtn
+          text={"리뷰삭제"}
+          type={"button"}
+          onClick={() => deleteOwnerReview.mutate(ownerReview.ceoReviewId)}
+        />
       )}
     </OwnerReviewWrap>
   );

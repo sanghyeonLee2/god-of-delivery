@@ -15,7 +15,7 @@ function HomePage() {
           <S.CategoryBoxOuter key={category.id} onClick={() => navigate(`stores/${category.id}`)}>
             <S.CategoryBoxInner>
               <S.CategoryText>{category.name}</S.CategoryText>
-              <category.icon size={90} />
+              <category.icon size={80} />
             </S.CategoryBoxInner>
           </S.CategoryBoxOuter>
         ))}

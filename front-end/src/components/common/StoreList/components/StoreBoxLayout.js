@@ -1,25 +1,26 @@
 import styled from "styled-components";
-import {flexLayout} from "../../../../assets/styles/Mixin";
+import { flexLayout } from "../../../../assets/styles/Mixin";
+import { innerPadding } from "../../../../assets/styles/CommonStyle";
 
 export const StoreOuter = styled.li`
-    height: 135px;
-    margin-bottom: 14px;
-    box-sizing: border-box;
-    padding: 0 20px;
-    border: lightgray 1px solid;
-    ${flexLayout("stretch", "center")}
-    position: relative;
-`
+  ${innerPadding()};
+  margin-bottom: 14px;
+  box-sizing: border-box;
+  border: lightgray 1px solid;
+  ${flexLayout("flex-start", "center")};
+`;
 
 export const StoreInfoWrap = styled.div`
-    padding: 8px 20px;
+  padding-left: 10px;
+  flex: 1;
 
-    svg {
-        color: #FFD700;
-        margin-bottom: 4px;
-    }
-`
-export const AverageTimeWrap = styled.div`
-    position: absolute;
-    right: 12px;
-`
+  svg {
+    color: #ffd700;
+    margin-bottom: 4px;
+  }
+`;
+export const OperationHourWrap = styled.div`
+  ${flexLayout("space-between")};
+  flex-wrap: wrap;
+  gap: 4px 10px;
+`;

@@ -9,5 +9,4 @@ export const authPutApi = (url, data = {}, config = {}) => axiosInstance.put(url
 
 export const authPatchApi = (url, data = {}, config = {}) => axiosInstance.patch(url, data, config);
 
-export const getApi = (url, config = {}) => axiosInstance.get(url, config);
 export const postApi = (url, data = {}, config = {}) => axiosInstance.post(url, data, config);

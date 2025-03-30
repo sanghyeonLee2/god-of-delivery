@@ -11,8 +11,7 @@ import GlobalErrorBoundary from "components/common/ErrorBoundary/GlobalErrorBoun
 function App() {
   const isModalOpen = useRecoilValue(isModalOpenState);
   return (
-      <>
-  {/* <GlobalErrorBoundary>*/}
+    <GlobalErrorBoundary>
       <div className="App">
         <Header />
         <GlobalStyle />
@@ -20,12 +19,9 @@ function App() {
       </div>
       <Footer />
       {isModalOpen.flag && (
-        <DefaultModal
-          modalType={isModalOpen.modalType}
-          modalData={isModalOpen.modalData}
-        />
+        <DefaultModal modalType={isModalOpen.modalType} modalData={isModalOpen.modalData} />
       )}
-    </>//</GlobalErrorBoundary>
+    </GlobalErrorBoundary>
   );
 }
 

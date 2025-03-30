@@ -10,10 +10,6 @@ const reissue = async (originalRequest) => {
       accessToken: localStorage.getItem("access-token"),
     });
 
-    /*    if (reissueResult.status >= 300) {
-      return Promise.reject(reissueResult);
-    }*/
-
     const { accessToken } = reissueResult.data;
     localStorage.setItem("access-token", accessToken);
 
