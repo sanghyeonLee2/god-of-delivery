@@ -1,6 +1,6 @@
 import React from "react";
 import Radio from "components/common/RadioGroup/Radio/Radio";
-import { Font, SelectTwoTypes } from "../../../assets/styles/CommonStyle";
+import { Font, SelectTwoTypes } from "../../../../assets/styles/CommonStyle";
 import RadioGroup from "components/common/RadioGroup/RadioGroup";
 import { Controller } from "react-hook-form";
 

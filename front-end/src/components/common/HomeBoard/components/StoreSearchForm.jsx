@@ -1,8 +1,9 @@
 import React from "react";
-import Input from "../../common/Input/Input";
-import { SubBtn } from "../../common/Button/main/MainButton";
-import { SearchInputForm } from "./SearchFormLayout";
+import Input from "../../Input/Input";
+import { SearchInputForm } from "./StoreSearchFormLayout";
 import useGetStores from "pages/user/StoresPage/hooks/useGetStores";
+import IconBtn from "components/common/Button/icon/IconBtn";
+import { CiSearch } from "react-icons/ci";
 
 function StoreSearchForm() {
   const { setKeyword, searchForm } = useGetStores(false);
@@ -14,7 +15,9 @@ function StoreSearchForm() {
         register={searchForm.register("keyword")}
         placeholder={"음식점을 검색해 보세요"}
       />
-      <SubBtn type={"submit"} text={"검색"} />
+      <IconBtn type={"submit"}>
+        <CiSearch size={30} />
+      </IconBtn>
     </SearchInputForm>
   );
 }
