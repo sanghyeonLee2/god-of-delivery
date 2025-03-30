@@ -8,7 +8,7 @@ import PaymentMethods from "./components/PaymentMethods";
 import Title from "components/common/Title/Title";
 import { ORDER_METHODS, PAYMENT_METHODS } from "../../../constants/formFields";
 
-function PaymentPage(props) {
+function PaymentPage() {
   const { paymentInfo, isOrderPosting, control, register, handleSubmit } = usePayment();
 
   return (

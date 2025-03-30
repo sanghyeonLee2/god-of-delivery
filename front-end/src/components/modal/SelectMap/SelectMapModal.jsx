@@ -8,7 +8,7 @@ import { useKakaoLoader } from "react-kakao-maps-sdk";
 import Loading from "components/common/Loading/Loading";
 import { MapAddressWrap } from "components/modal/SelectMap/SelectMapModalLayout";
 
-function SelectMapModal(props) {
+function SelectMapModal() {
   const [loading, error] = useKakaoLoader({
     appkey: process.env.REACT_APP_KAKAO_API, // 발급 받은 APPKEY
     libraries: ["services"],

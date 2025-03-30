@@ -3,7 +3,7 @@ import { FooterInner, FooterWrap } from "./FooterLayout";
 import { FlexOnly, Font } from "../../../assets/styles/CommonStyle";
 import Logo from "components/common/Logo/Logo";
 
-function Footer(props) {
+function Footer() {
   return (
     <FooterWrap>
       <FooterInner>

@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loading from "components/common/Loading/Loading";
 import Empty from "components/common/Empty/Empty";
 
-function StoresPage(props) {
+function StoresPage() {
   const {
     storesData,
     totalPages,

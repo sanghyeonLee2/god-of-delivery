@@ -6,7 +6,7 @@ import CartHeader from "pages/user/CartPage/components/CartHeader";
 import Empty from "components/common/Empty/Empty";
 import CartForm from "pages/user/CartPage/components/CartForm";
 
-function CartPage(props) {
+function CartPage() {
   const { cartData, isLoading, handleDeleteCartItem, handleSubmit } = useCart();
   return (
     <CommonPageWrap>

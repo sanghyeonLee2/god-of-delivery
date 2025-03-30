@@ -4,7 +4,7 @@ import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import { ErrorMsg } from "../../../../assets/styles/CommonStyle";
 import { useSignIn } from "../hooks/useSignIn";
 
-function SignInForm(props) {
+function SignInForm() {
   const { register, handleSubmit, handleSignIn, isLoggingIn, errors } = useSignIn();
   return (
     <form onSubmit={handleSubmit((data) => handleSignIn(data))}>

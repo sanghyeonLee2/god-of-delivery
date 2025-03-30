@@ -8,7 +8,7 @@ import Title from "components/common/Title/Title";
 import { OWNER_STORES_INFO, OWNER_STORES_INFO_DISABLE } from "../../../constants/formFields";
 import Image from "components/common/Image/Image";
 
-function StoreManagementPage(props) {
+function StoreManagementPage() {
   const { isUpdating, handleSubmit, isLoading, register, storeData } = useOwnerStore();
   if (isLoading) {
     return <Loading />;

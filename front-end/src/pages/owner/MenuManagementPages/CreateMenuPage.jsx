@@ -4,7 +4,7 @@ import Title from "components/common/Title/Title";
 import useCreateMenu from "./hooks/useCreateMenu";
 import MenuForm from "pages/owner/MenuManagementPages/components/MenuForm";
 
-function CreateMenuPage(props) {
+function CreateMenuPage() {
   const { form, createMenu, isCreating } = useCreateMenu();
   return (
     <CommonPageWrap>

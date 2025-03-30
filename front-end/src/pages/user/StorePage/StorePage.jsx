@@ -11,7 +11,7 @@ import Loading from "components/common/Loading/Loading";
 import { TAB_CONTENTS } from "../../../assets/data/tabData";
 import useGetStore from "./hooks/useGetStore";
 
-function StorePage(props) {
+function StorePage() {
   const { currentItem, setCurrentItem } = useTab(0, TAB_CONTENTS.STORE);
   const { storeData, isLoading } = useGetStore();
 

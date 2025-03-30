@@ -7,7 +7,7 @@ import Pagination from "components/common/Pagination/Pagination";
 import StoreList from "components/common/StoreList/StoreList";
 import Empty from "components/common/Empty/Empty";
 
-function DibsPage(props) {
+function DibsPage() {
   const { dibList, totalPages, setPage, page, isLoading } = useGetDibs();
   if (isLoading) {
     return <Loading />;

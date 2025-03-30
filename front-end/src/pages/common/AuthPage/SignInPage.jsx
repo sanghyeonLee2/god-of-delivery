@@ -4,7 +4,7 @@ import SignInForm from "./components/SignInForm";
 import { Font } from "../../../assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
 
-function SignInPage(props) {
+function SignInPage() {
   return (
     <AuthPageOuter>
       <AuthPageInner>

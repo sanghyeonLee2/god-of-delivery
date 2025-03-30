@@ -7,7 +7,7 @@ import Title from "components/common/Title/Title";
 import useGetMyReviews from "./hooks/useGetMyReviews";
 import Empty from "components/common/Empty/Empty";
 
-function MyReviewsPage(props) {
+function MyReviewsPage() {
   const { reviews, totalPages, isLoading, page, setPage } = useGetMyReviews();
   return (
     <>

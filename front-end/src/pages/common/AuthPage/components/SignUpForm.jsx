@@ -5,7 +5,7 @@ import { ErrorMsg, Font } from "../../../../assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
 import { useSignUp } from "../hooks/useSignUp";
 
-function SignUpForm(props) {
+function SignUpForm() {
   const { register, handleSubmit, handleSignUp, isSigningUp, errors } = useSignUp();
   return (
     <form onSubmit={handleSubmit((data) => handleSignUp(data))}>

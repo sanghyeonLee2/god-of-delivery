@@ -4,7 +4,7 @@ import useSearchLocation from "../hooks/useSearchLocation";
 import LocationSearchInput from "components/modal/SelectMap/components/LocationSearchInput";
 
 function LocationSearchForm() {
-  const { locationInfo, setLocationInfo, register, isTyped } = useSearchLocation();
+  const { locationInfo, setLocationInfo, register } = useSearchLocation();
   return (
     <div>
       <LocationSearchInput

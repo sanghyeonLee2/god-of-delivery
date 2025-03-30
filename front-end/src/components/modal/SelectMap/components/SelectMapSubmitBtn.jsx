@@ -4,7 +4,7 @@ import { usePatchAddress } from "../hooks/usePatchAddress";
 import { useRecoilValue } from "recoil";
 import { isSearchLoadingState } from "../../../../recoil/flag/atoms";
 
-function SelectMapSubmitBtn(props) {
+function SelectMapSubmitBtn() {
   const { handlePostAddress, isPostingAddress, addressesState } = usePatchAddress();
   const isLoading = useRecoilValue(isSearchLoadingState);
   if (addressesState === "hasError") return <ModalBtn text={"에러가 발생했습니다"} />;

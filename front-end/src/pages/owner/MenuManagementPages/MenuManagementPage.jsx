@@ -7,7 +7,7 @@ import MenuInfoBox from "pages/owner/MenuManagementPages/components/MenuInfoBox"
 import Empty from "components/common/Empty/Empty";
 import { MainBtn } from "components/common/Button/main/MainButton";
 
-function MenuManagementPage(props) {
+function MenuManagementPage() {
   const { menuData, isLoading, navigateCreateMenu } = useGetOwnerStoreMenus();
   if (isLoading) {
     return <Loading />;

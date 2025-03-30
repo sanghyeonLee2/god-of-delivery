@@ -6,7 +6,7 @@ import useGetOrders from "./hooks/useGetOrders";
 import Pagination from "components/common/Pagination/Pagination";
 import Empty from "components/common/Empty/Empty";
 
-function MyOrdersPage(props) {
+function MyOrdersPage() {
   const { ordersData, totalPages, isLoading, page, setPage } = useGetOrders();
 
   if (isLoading) {

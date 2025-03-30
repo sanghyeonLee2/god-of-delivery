@@ -5,7 +5,7 @@ import MenuForm from "pages/owner/MenuManagementPages/components/MenuForm";
 import useUpdateMenu from "./hooks/useUpdateMenu";
 import Loading from "components/common/Loading/Loading";
 
-function UpdateMenuPage(props) {
+function UpdateMenuPage() {
   const { updateMenu, isFetching, isUpdating, form } = useUpdateMenu();
   if (isFetching) {
     return <Loading />;

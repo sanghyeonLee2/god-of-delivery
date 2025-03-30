@@ -7,7 +7,7 @@ import Review from "components/common/Review/Review";
 import Pagination from "components/common/Pagination/Pagination";
 import Empty from "components/common/Empty/Empty";
 
-function OwnerReviewPage(props) {
+function OwnerReviewPage() {
   const { reviews, totalPages, isLoading, page, setPage } = useGetOwnerReviews();
   if (isLoading) {
     return <Loading />;

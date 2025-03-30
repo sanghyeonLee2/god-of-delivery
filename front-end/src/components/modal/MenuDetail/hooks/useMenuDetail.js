@@ -36,7 +36,7 @@ export const useMenuDetail = (modalData) => {
         options: setCartOptions(data.MenuCategories),
       });
     }
-  }, [data]);
+  }, [data, reset]);
 
   const { mutate: mutateMenuDetail, isLoading: isCartPosting } = useMutation(
     () =>

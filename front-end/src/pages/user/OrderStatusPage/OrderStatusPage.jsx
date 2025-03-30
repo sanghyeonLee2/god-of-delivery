@@ -14,7 +14,7 @@ import UserPaymentInfo from "pages/user/OrderStatusPage/components/UserPaymentIn
 import { SubBtn } from "components/common/Button/main/MainButton";
 import { detailDate } from "../../../utils/transducer";
 
-function OrderStatusPage(props) {
+function OrderStatusPage() {
   const { orderData, navigateOrders, isLoading } = useGetOrder();
   if (isLoading) {
     return <Loading />;
