@@ -1,9 +1,10 @@
-import {createGlobalStyle} from "styled-components";
-import {COLORS} from "./colors";
-import {innerPadding} from "./CommonStyle";
+import { createGlobalStyle } from "styled-components";
+import { COLORS } from "./colors";
+import { innerPadding } from "./CommonStyle";
+import { textHover } from "./Mixin";
 
-/*const HOVER_COLOR = "#F5F5F5"*/
-const FONT_FAMILY = "LINESeedKR"
+const FONT_FAMILY = "LINESeedKR";
+
 export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
@@ -17,7 +18,15 @@ export const GlobalStyle = createGlobalStyle`
         font-style: normal;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+        ${textHover()};
+    }
+
     input {
+        border: none;
+
         &:focus {
             outline: none;
         }
@@ -26,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
             background-color: ${COLORS.HOVER};
         }
 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         padding: 0 20px;
         border-radius: 4px;
     }
@@ -50,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
     #root {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; /* 전체 뷰포트 높이 설정 */
+        min-height: 100vh;
         padding-top: 92px;
     }
 
@@ -66,15 +76,10 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 2;
     }
 
-    .common-text {
-        color: white;
-        font-size: 15px
-    }
 
     .App {
         position: relative;
         flex-grow: 1;
     }
 
-
-`
+`;

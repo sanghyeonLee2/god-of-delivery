@@ -1,41 +1,39 @@
 import styled from "styled-components";
-import {elementSize, flexLayout} from "../../../assets/styles/Mixin";
-
+import { boxHover, elementSize, flexLayout } from "../../../assets/styles/Mixin";
+import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const CategoryWrap = styled.div`
-    max-width: 1180px;
-    margin: 0 auto;
-    ${flexLayout("start")};
-    flex-wrap: wrap;
-    padding: 10px 0;
-`
+  max-width: 1100px;
+  margin: 0 auto;
+  ${flexLayout("flex-start")};
+  flex-wrap: wrap;
+  ${innerPadding()};
+`;
 export const CategoryBoxOuter = styled.div`
-    ${elementSize("25%", "255px")};
+  ${elementSize("25%", "200px")};
+  @media (max-width: 1200px) {
+    width: 33.3%;
+  }
+  @media (max-width: 1100px) {
+    width: 50%;
+  }
 
-    @media (max-width: 1200px) {
-        width: 33.3%;
-    }
-    @media (max-width: 1100px) {
-        width: 50%;
-    }
-
-    padding: 5px 5px;
-    cursor: pointer;
-    box-sizing: border-box;
-`
+  padding: 5px 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+`;
 export const CategoryBoxInner = styled.div`
-    border: lightgray 1px solid;
-    height: 100%;
-    position: relative;
-    cursor: pointer;
+  ${boxHover()};
+  border: lightgray 1px solid;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  ${innerPadding()};
 
-    svg {
-        position: absolute;
-        right: 30px;
-        bottom: 30px;
-    }
-`
-export const CategoryText = styled.p`
-    margin-top: 25px;
-    margin-left: 25px;
-`
+  svg {
+    position: absolute;
+    right: 13px;
+    bottom: 13px;
+  }
+`;
+export const CategoryText = styled.p``;

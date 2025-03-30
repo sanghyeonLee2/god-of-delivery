@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUpPage from "pages/common/AuthPage/SignUpPage";
-import SignInPage from "pages/common/AuthPage/SIgnInPage";
+import SignInPage from "pages/common/AuthPage/SignInPage";
 import HomePage from "pages/user/HomePage/HomePage";
 import StoresPage from "pages/user/StoresPage/StoresPage";
 import { QueryClientProvider } from "react-query";
@@ -13,17 +13,18 @@ import StorePage from "pages/user/StorePage/StorePage";
 import CartPage from "pages/user/CartPage/CartPage";
 import PaymentPage from "pages/user/PaymentPage/PaymentPage";
 import OrderStatusPage from "pages/user/OrderStatusPage/OrderStatusPage";
-import OrdersPage from "pages/user/ManagementPage/OrdersPage";
+import MyOrdersPage from "pages/user/ManagementPages/MyOrdersPage";
 import OwnerHomePage from "pages/owner/OwnerHomePage/OwnerHomePage";
 import StoreManagementPage from "pages/owner/StoreManagementPage/StoreManagementPage";
 import ErrorPage from "pages/common/ErrorPage/ErrorPage";
-import ReviewManagementPage from "pages/user/ManagementPage/ReviewManagementPage";
+import MyReviewsPage from "pages/user/ManagementPages/MyReviewsPage";
 import customQueryClient from "./react-query/queryClient";
 import { ToastContainer } from "react-toastify";
 import DibsPage from "pages/user/DibsPage/DibsPage";
-import MenuCategoryManagementPage from "pages/owner/ManuCategoryManagementPage/MenuCategoryManagementPage";
 import OwnerReviewPage from "pages/owner/OwnerReviewPage/OwnerReviewPage";
-import MenuManagementPage from "pages/owner/MenuManagementPage/MenuManagementPage";
+import MenuManagementPage from "pages/owner/MenuManagementPages/MenuManagementPage";
+import CreateMenuPage from "pages/owner/MenuManagementPages/CreateMenuPage";
+import UpdateMenuPage from "pages/owner/MenuManagementPages/UpdateMenuPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -69,11 +70,11 @@ const router = createBrowserRouter([
       },
       {
         path: "users/me/orders",
-        element: <OrdersPage />,
+        element: <MyOrdersPage />,
       },
       {
         path: "users/me/reviews",
-        element: <ReviewManagementPage />,
+        element: <MyReviewsPage />,
       },
       {
         path: "users/me/dibs",
@@ -96,8 +97,12 @@ const router = createBrowserRouter([
         element: <MenuManagementPage />,
       },
       {
-        path: "owners/me/menus/:menuId/options",
-        element: <MenuCategoryManagementPage />,
+        path: "owners/me/menus/create",
+        element: <CreateMenuPage />,
+      },
+      {
+        path: "owners/me/menus/:menuId/update",
+        element: <UpdateMenuPage />,
       },
     ],
   },

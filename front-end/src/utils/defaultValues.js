@@ -1,7 +1,12 @@
-export const setMenuOptions = (menuCategories = []) => {
-    const options = []
-    menuCategories
-        .filter((e) => e.isEssential)
-        .map(e => options.push(e.menuOptions[0].menuOptionId))
-    return options
-}
+export const setCartOptions = (menuCategories = []) =>
+  menuCategories.reduce((acc, category) => {
+    acc[category.menuCategoryId] = (category.MenuOptions || [])
+      .filter((option) => option.hasMenu)
+      .map((option) => option.menuOptionId);
+    return acc;
+  }, {});
+
+export const setMenuOptions = (menuCategories) =>
+  menuCategories
+    ?.filter(({ isEssential, MenuOptions }) => isEssential && MenuOptions.length > 0)
+    .map(({ MenuOptions }) => MenuOptions[0].menuOptionId);

@@ -2,12 +2,11 @@ import React from "react";
 import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
 import { omittedDate } from "../../../../utils/transducer";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import Image from "components/common/Image/Image";
-import { ReviewImgWrap } from "components/common/Review/ReviewLayout";
+import { ReviewMainWrap } from "components/common/Review/components/ReviewMainLayout";
 
-function ReviewMain({ review, watch, updateMode, handleRatingChange }) {
+function ReviewMain({ review }) {
   return (
-    <>
+    <ReviewMainWrap>
       <FlexOnly justify={"space-between"}>
         <Font>{review?.userId}</Font>
         <Font size={"small"} color={"gray"}>
@@ -15,21 +14,15 @@ function ReviewMain({ review, watch, updateMode, handleRatingChange }) {
         </Font>
       </FlexOnly>
       <StarRatings
-        rating={updateMode ? watch("rating") : review?.rating}
+        rating={review?.rating}
         starRatedColor={"gold"}
         name="rating"
         starHoverColor="gold"
-        changeRating={updateMode ? handleRatingChange : undefined}
-        starDimension={updateMode ? "30px" : "20px"}
+        starDimension={"20px"}
         starSpacing={"2px"}
       />
-      {review?.img && !updateMode && (
-        <ReviewImgWrap>
-          <Image src={review.img} height={"150px"} width={"150px"} />
-        </ReviewImgWrap>
-      )}
       <Font size={"small"}>{review.content}</Font>
-    </>
+    </ReviewMainWrap>
   );
 }
 

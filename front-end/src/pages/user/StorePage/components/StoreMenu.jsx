@@ -5,7 +5,6 @@ import { useSetRecoilState } from "recoil";
 import { isModalOpenState } from "../../../../recoil/flag/atoms";
 import Title from "components/common/Title/Title";
 import { TabWrap } from "../StorePageLayout";
-import { API_URLS } from "../../../../constants/urls";
 import Image from "components/common/Image/Image";
 
 function StoreMenu({ notice, menuInfo }) {
@@ -26,18 +25,18 @@ function StoreMenu({ notice, menuInfo }) {
                   setIsModalOpen({
                     modalType: "메뉴상세",
                     flag: true,
-                    modalData: { api: API_URLS.MENU.GET(menu?.menuId), menuId: menu?.menuId },
+                    modalData: { menuId: menu?.menuId },
                   });
                 }}
               >
-                <S.MenuInfoWrap>
+                <S.MenuInfoInner>
                   <div>
                     <Font size={"large"}>{menu?.name}</Font>
                     <Font color={"gray"}>{menu?.description}</Font>
                     <Font>{menu?.price.toLocaleString()}원</Font>
                   </div>
                   <Image src={menu?.imgUrl} width={"140px"} height={"140px"} />
-                </S.MenuInfoWrap>
+                </S.MenuInfoInner>
                 <DividingLine />
               </div>
             ))}

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-const Select = React.forwardRef(({children, defaultValue, name, onChange}, ref) => {
-    return (
-        <select name={name} ref={ref} onChange={onChange} defaultValue={defaultValue}>
-            {children}
-        </select>
-    );
+const Select = forwardRef(({ children, defaultValue, ...rest }, ref) => {
+  return (
+    <select ref={ref} defaultValue={defaultValue} {...rest}>
+      {children}
+    </select>
+  );
 });
 
 export default Select;

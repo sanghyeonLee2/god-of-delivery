@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./StoreHeaderLayout";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import { Font } from "../../../../assets/styles/CommonStyle";
-import { useDibs } from "../../../../hooks/useDibs";
+import { useDibs } from "../hooks/useDibs";
 import IconBtn from "components/common/Button/icon/IconBtn";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
