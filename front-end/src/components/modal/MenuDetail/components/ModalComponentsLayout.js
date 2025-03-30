@@ -5,7 +5,7 @@ import { COLORS } from "../../../../assets/styles/colors";
 
 export const ModalHeaderWrap = styled.div`
   position: relative;
-  height: 10%;
+  height: 60px;
   padding-top: 14px;
   text-align: center;
 
@@ -40,5 +40,5 @@ export const OrderPriceWrap = styled.div`
   background-color: lightgray;
   ${innerPadding()};
   ${flexLayout("space-between")};
-  height: 60px;
+  height: 55px;
 `;

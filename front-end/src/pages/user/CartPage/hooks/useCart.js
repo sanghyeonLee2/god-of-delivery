@@ -4,7 +4,7 @@ import { QUERY_KEYS } from "../../../../constants/queryKeys";
 import { API_URLS } from "../../../../constants/urls";
 import { useNavigate } from "react-router-dom";
 import { showSuccess } from "../../../../utils/toasts";
-import { cartTotalPrice } from "../../../../utils/calculator";
+import { cartMenuTotalPrice } from "../../../../utils/calculator";
 
 export const useCart = () => {
   const queryClient = useQueryClient();
@@ -15,7 +15,7 @@ export const useCart = () => {
     cacheTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
     select: (res) => ({
       ...res.data,
-      cartTotalPrice: cartTotalPrice(res.data),
+      cartMenuTotalPrice: cartMenuTotalPrice(res.data.CartItems),
     }),
   });
   const { mutate: handleDeleteCartItem } = useMutation(
@@ -35,7 +35,7 @@ export const useCart = () => {
       navigate("/payment", {
         state: {
           paymentInfo: {
-            cartTotalPrice: data?.cartTotalPrice,
+            cartMenuTotalPrice: data?.cartMenuTotalPrice,
             tips: data?.Store.deliveryTip,
           },
         },

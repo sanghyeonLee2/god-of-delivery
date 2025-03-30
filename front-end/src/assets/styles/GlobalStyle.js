@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { COLORS } from "./colors";
 import { innerPadding } from "./CommonStyle";
+import { textHover } from "./Mixin";
 
 const FONT_FAMILY = "LINESeedKR";
 
@@ -17,7 +18,15 @@ export const GlobalStyle = createGlobalStyle`
         font-style: normal;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+        ${textHover()};
+    }
+
     input {
+        border: none;
+
         &:focus {
             outline: none;
         }
@@ -26,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
             background-color: ${COLORS.HOVER};
         }
 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         padding: 0 20px;
         border-radius: 4px;
     }
@@ -50,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
     #root {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; 
+        min-height: 100vh;
         padding-top: 92px;
     }
 
@@ -65,7 +75,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${FONT_FAMILY};
         line-height: 2;
     }
-    
+
 
     .App {
         position: relative;

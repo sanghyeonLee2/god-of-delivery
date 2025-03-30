@@ -8,7 +8,7 @@
   "/stores/info/:storeId": "/store?storeId=:storeId",
   "/menus/:menuId": "/menu-details",
   "/cart/item/:cartItemId": "/cart-delete",
-  "/cart/25": "/cart-details",
+  "/cart/:menuId": "/cart-details",
   "/users/me/location": "/coords",
   "/users/me/address": "/address",
   "/dibs": "/dib-post",

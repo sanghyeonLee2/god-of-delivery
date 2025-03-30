@@ -15,7 +15,6 @@ export const usePayment = () => {
     defaultValues: {
       paymentMethod: "card",
       requests: "",
-      /* status: "접수 중",*/
       address,
       detailAddress: "",
       orderType: "takeOut",

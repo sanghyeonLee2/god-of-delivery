@@ -2,22 +2,19 @@ import React from "react";
 import { useWatch } from "react-hook-form";
 import { Font } from "../../../../assets/styles/CommonStyle";
 import { OrderPriceWrap } from "./ModalComponentsLayout";
+import { menuDetailTotalPrice } from "../../../../utils/calculator";
+import { extractSelectedOptionIds } from "../../../../utils/transducer";
 
 function OrderPrice({ control, menuCategories, defaultPrice = 0 }) {
   const { quantity = 1, options = {} } = useWatch({ control });
-  // 선택된 옵션 ID들 모두 펼치기
-  const selectedOptionIds = Object.values(options).flat();
+  const selectedOptionIds = extractSelectedOptionIds(options);
 
-  const optionsTotalPrice = menuCategories.reduce((total, { MenuOptions }) => {
-    return (
-      total +
-      MenuOptions.reduce((sum, option) => {
-        return selectedOptionIds.includes(option.menuOptionId) ? sum + option.price : sum;
-      }, 0)
-    );
-  }, 0);
-
-  const orderPrice = quantity * (defaultPrice + optionsTotalPrice);
+  const orderPrice = menuDetailTotalPrice({
+    quantity,
+    defaultPrice,
+    menuCategories,
+    selectedOptionIds,
+  });
 
   return (
     <OrderPriceWrap>

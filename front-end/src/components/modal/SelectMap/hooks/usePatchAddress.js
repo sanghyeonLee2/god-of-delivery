@@ -21,7 +21,7 @@ export const usePatchAddress = () => {
     {
       onSuccess: async () => {
         showSuccess("주소가 등록 되었습니다");
-        await queryClient.invalidateQueries([QUERY_KEYS.ME]);
+        await queryClient.invalidateQueries(QUERY_KEYS.ME);
         setIsModalOpen({ flag: false, modalData: null, modalType: "" });
       },
     }

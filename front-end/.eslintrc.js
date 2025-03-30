@@ -17,15 +17,30 @@ module.exports = {
   },
   rules: {
     "prettier/prettier": "off",
+
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".js"] }],
-    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "**/*.test.js",
+          "**/*.test.jsx",
+          "**/*.spec.js",
+          "**/*.spec.jsx",
+          "**/*.stories.js",
+          "**/setupTests.js",
+          "**/webpack.config.js",
+          "**/vite.config.js",
+        ],
+      },
+    ],
     "import/prefer-default-export": "off",
     "no-return-assign": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
     "no-shadow": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": "warn", // ❗ 경고만 표시
     "no-return-await": "off",
     "prefer-template": "off",
     "sort-imports": "off",

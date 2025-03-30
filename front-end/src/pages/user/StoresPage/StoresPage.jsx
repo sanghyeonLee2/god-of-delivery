@@ -36,7 +36,7 @@ function StoresPage(props) {
             sorting={sorting}
           />
           <StoreList storesData={storesData} isDibs={false} />
-          <Pagination totalPages={totalPages} page={page} setPage={setPage} />;
+          <Pagination totalPages={totalPages} page={page} setPage={setPage} />
         </>
       ) : (
         <Empty pageName={"가게 목록이 없어요"} />

@@ -9,11 +9,13 @@ function PaymentAmount({ paymentInfo }) {
     <CommonBorder>
       <FlexOnly justify={"space-between"}>
         <Font size={"large"}>결제 금액</Font>
-        <Font size={"large"}>{paymentInfo.cartTotalPrice.toLocaleString()}원</Font>
+        <Font size={"large"}>
+          {(paymentInfo.cartMenuTotalPrice + paymentTip).toLocaleString()}원
+        </Font>
       </FlexOnly>
       <FlexOnly justify={"space-between"}>
         <Font size={"small"}>메뉴 금액</Font>
-        <Font size={"small"}>{(paymentInfo.cartTotalPrice + paymentTip).toLocaleString()}원</Font>
+        <Font size={"small"}>{paymentInfo.cartMenuTotalPrice.toLocaleString()}원</Font>
       </FlexOnly>
       <FlexOnly justify={"space-between"}>
         <Font size={"small"}>배달 팁</Font>

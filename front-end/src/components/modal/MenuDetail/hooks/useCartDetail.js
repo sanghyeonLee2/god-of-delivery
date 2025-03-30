@@ -7,6 +7,7 @@ import { isModalOpenState } from "../../../../recoil/flag/atoms";
 import { setCartOptions } from "../../../../utils/defaultValues";
 import { API_URLS } from "../../../../constants/urls";
 import { showSuccess } from "../../../../utils/toasts";
+import { extractSelectedOptionIds } from "../../../../utils/transducer";
 
 const useCartDetail = (modalData) => {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
@@ -27,21 +28,20 @@ const useCartDetail = (modalData) => {
     {
       staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
       cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지,
-      onSuccess: (res) => {
+      onSuccess: (res) =>
         reset({
           quantity: modalData.quantity,
           menuId: res?.data.menuId,
           storeId: res?.data.storeId,
           options: setCartOptions(res.data?.MenuCategories),
-        });
-      },
+        }),
     }
   );
   const { mutate: updateCart, isLoading: isUpdatingCart } = useMutation(
     () =>
       authPutApi(API_URLS.CART.PUT_ITEM(modalData.cartItemId), {
         ...getValues(),
-        options: Object.values(getValues("options")).flat(),
+        options: extractSelectedOptionIds(getValues("options")),
       }),
     {
       onSuccess: async () => {

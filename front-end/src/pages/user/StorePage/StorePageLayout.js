@@ -8,6 +8,7 @@ export const StoreOuter = styled.div`
   margin: 0 auto;
 `;
 export const MenuTab = styled.div`
+  cursor: pointer;
   ${elementSize("33.33%", "60px")};
   ${flexLayout("center", "center")};
   border-right: ${({ $isOn }) => $isOn && "grey 1px solid"};

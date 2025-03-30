@@ -29,14 +29,14 @@ function StoreMenu({ notice, menuInfo }) {
                   });
                 }}
               >
-                <S.MenuInfoWrap>
+                <S.MenuInfoInner>
                   <div>
                     <Font size={"large"}>{menu?.name}</Font>
                     <Font color={"gray"}>{menu?.description}</Font>
                     <Font>{menu?.price.toLocaleString()}원</Font>
                   </div>
                   <Image src={menu?.imgUrl} width={"140px"} height={"140px"} />
-                </S.MenuInfoWrap>
+                </S.MenuInfoInner>
                 <DividingLine />
               </div>
             ))}

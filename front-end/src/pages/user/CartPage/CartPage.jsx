@@ -8,7 +8,6 @@ import CartForm from "pages/user/CartPage/components/CartForm";
 
 function CartPage(props) {
   const { cartData, isLoading, handleDeleteCartItem, handleSubmit } = useCart();
-
   return (
     <CommonPageWrap>
       {isLoading && <Loading />}

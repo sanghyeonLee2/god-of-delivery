@@ -1,12 +1,8 @@
 export const setCartOptions = (menuCategories = []) =>
   menuCategories.reduce((acc, category) => {
-    const selectedOptions = (category.MenuOptions || [])
+    acc[category.menuCategoryId] = (category.MenuOptions || [])
       .filter((option) => option.hasMenu)
       .map((option) => option.menuOptionId);
-
-    if (selectedOptions.length > 0) {
-      acc[category.menuCategoryId] = selectedOptions;
-    }
     return acc;
   }, {});
 

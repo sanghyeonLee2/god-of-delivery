@@ -12,3 +12,22 @@ export const tipOnchange = (e, onChange, method, setPaymentTip, tips) => {
   }
   onChange(method);
 };
+export const handleCheckLimit = (e, maxQuantity, menuOptionId, field) => {
+  const checkedCnt = field.value.length;
+  if (e.target.checked && checkedCnt >= maxQuantity) {
+    e.preventDefault();
+    return;
+  }
+
+  const updated = e.target.checked
+    ? [...field.value, menuOptionId]
+    : field.value.filter((id) => id !== menuOptionId);
+
+  field.onChange(updated);
+};
+export const isChecked = (field, menuOptionId) => field.value.includes(menuOptionId);
+export const onClickLocation = (x, y, setCoords, setLocationInfo) => {
+  const latLng = { lng: Number(x), lat: Number(y) };
+  setCoords(latLng);
+  setLocationInfo([]);
+};

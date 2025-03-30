@@ -2,7 +2,7 @@ import React from "react";
 import { CommonPageHeader, Font } from "../../../../assets/styles/CommonStyle";
 import LabeledTextInput from "components/common/Input/LabeledTextInput";
 import MenuOptions from "pages/owner/MenuManagementPages/components/MenuOptions";
-import RadioController from "components/common/FormController/RadioController";
+import RadioController from "pages/owner/MenuManagementPages/components/RadioController";
 import {
   CREATE_MENU_CATEGORY_FIELDS,
   CREATE_MENU_CATEGORY_RADIO_FIELDS,

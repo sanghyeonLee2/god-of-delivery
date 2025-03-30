@@ -14,12 +14,15 @@ function CartForm({ handleSubmit, handleDeleteCartItem, cartData }) {
       <CommonBorder $hasAddBtn={true}>
         <CartMenus
           handleDeleteCartItem={handleDeleteCartItem}
-          cartTotalPrice={cartData?.cartTotalPrice}
+          cartMenuTotalPrice={cartData?.cartMenuTotalPrice}
           cartItems={cartData?.CartItems}
         />
         <AddBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/info/${cartData?.storeId}`)} />
       </CommonBorder>
-      <CartPayment tips={cartData?.Store.deliveryTip} cartTotalPrice={cartData?.cartTotalPrice} />
+      <CartPayment
+        tips={cartData?.Store.deliveryTip}
+        cartMenuTotalPrice={cartData?.cartMenuTotalPrice}
+      />
       <OrderBtnWrap>
         <SubBtn type={"submit"} text={"결제하기"} />
       </OrderBtnWrap>

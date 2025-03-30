@@ -6,7 +6,7 @@ import { MainBtn } from "components/common/Button/main/MainButton";
 import Image from "components/common/Image/Image";
 import { CartMenusWrap } from "pages/user/CartPage/CartLayout";
 
-function CartMenus({ cartItems, cartTotalPrice, handleDeleteCartItem }) {
+function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
   return (
     <CartMenusWrap>
@@ -18,7 +18,7 @@ function CartMenus({ cartItems, cartTotalPrice, handleDeleteCartItem }) {
               <Font size={"small"} color={"gray"}>
                 {cartItem?.Menu.description}
               </Font>
-              <Font>{cartTotalPrice.toLocaleString()}원</Font>
+              <Font>{cartMenuTotalPrice.toLocaleString()}원</Font>
             </div>
             <Image width={"80px"} height={"80px"} src={cartItems.imgUrl} />
           </FlexOnly>

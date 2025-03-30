@@ -15,15 +15,14 @@ export const MainButtonWrap = styled.button`
   border-radius: 4px;
 `;
 export const ModalButtonWrap = styled.button`
-  position: sticky;
+  position: absolute;
   bottom: 0;
   z-index: 10;
   ${elementSize("100%", "60px")};
-  background-color: ${COLORS.BTN.SUB};
+  background-color: ${COLORS.BTN.THIRD};
   &:hover {
-    background-color: #0e5fc1;
+    background-color: #666666;
   }
-  border-radius: 0 0 4px 4px;
 `;
 export const AddBtnWrap = styled.button`
   position: absolute;

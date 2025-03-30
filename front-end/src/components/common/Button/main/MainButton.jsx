@@ -9,17 +9,17 @@ import {
 import { Font } from "../../../../assets/styles/CommonStyle";
 import MutateLoading from "components/common/Loading/MutateLoading";
 
-export const MainBtn = forwardRef(({ text, ...rest }, ref) => {
+export const MainBtn = forwardRef(({ text, width, ...rest }, ref) => {
   return (
-    <MainButtonWrap {...rest} ref={ref}>
+    <MainButtonWrap {...rest} $width={width} ref={ref}>
       <Font size={"small"}>{text}</Font>
     </MainButtonWrap>
   );
 });
 
-export const ModalBtn = forwardRef(({ text, isLoading, ...rest }, ref) => {
+export const ModalBtn = forwardRef(({ text, isUpdate, isLoading, ...rest }, ref) => {
   return (
-    <ModalButtonWrap {...rest} ref={ref}>
+    <ModalButtonWrap $isUpdate={isUpdate} {...rest} ref={ref}>
       {isLoading ? <MutateLoading /> : <Font color={"white"}>{text}</Font>}
     </ModalButtonWrap>
   );
@@ -50,7 +50,7 @@ export function SubBtn({ type, text, onClick, height, isLoading }) {
 export const TransBtn = forwardRef(({ type, text, onClick }, ref) => {
   return (
     <TransButtonWrap type={type} onClick={onClick} ref={ref}>
-      <Font>{text}</Font>
+      <Font size={"small"}>{text}</Font>
     </TransButtonWrap>
   );
 });

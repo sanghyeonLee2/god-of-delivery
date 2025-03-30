@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUpPage from "pages/common/AuthPage/SignUpPage";
-import SignInPage from "pages/common/AuthPage/SIgnInPage";
+import SignInPage from "pages/common/AuthPage/SignInPage";
 import HomePage from "pages/user/HomePage/HomePage";
 import StoresPage from "pages/user/StoresPage/StoresPage";
 import { QueryClientProvider } from "react-query";
