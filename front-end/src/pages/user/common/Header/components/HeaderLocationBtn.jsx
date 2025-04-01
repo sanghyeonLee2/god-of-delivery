@@ -1,8 +1,8 @@
 import React from "react";
 import { IoLocationOutline } from "react-icons/io5";
-import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
+import { FlexOnly, Font } from "../../../../../assets/styles/CommonStyle";
 import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
+import { isModalOpenState } from "../../../../../recoil/flag/atoms";
 import IconBtn from "components/common/Button/icon/IconBtn";
 
 function HeaderLocationBtn({ text }) {

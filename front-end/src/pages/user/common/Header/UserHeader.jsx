@@ -2,27 +2,25 @@ import React from "react";
 import * as S from "./HeaderLayout";
 import { Link } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isSignInState } from "../../../recoil/user/atoms";
-import useAuth from "./hooks/useAuth";
+import { isSignInState } from "../../../../recoil/user/atoms";
 import Logo from "components/common/Logo/Logo";
 import StoreSearchForm from "components/common/HomeBoard/components/StoreSearchForm";
-import { isModalOpenState } from "../../../recoil/flag/atoms";
+import { isModalOpenState } from "../../../../recoil/flag/atoms";
 import { CiLogin } from "react-icons/ci";
-import useSearchBoxSlide from "components/common/Header/hooks/useSearchBoxSlide";
-import HeaderSignUserRight from "components/common/Header/components/HeaderSignUserRight";
+import useSearchBoxSlide from "pages/user/common/Header/hooks/useSearchBoxSlide";
+import HeaderSignUserRight from "pages/user/common/Header/components/HeaderSignUserRight";
+import { HeaderInner, HeaderOuter } from "../../../../assets/styles/CommonStyle";
 
-export function Header() {
-  useAuth();
+export function UserHeader() {
   const isSignIn = useRecoilValue(isSignInState);
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
   const { searchSlideRef, searchBtnRef, isSearchOpen, setIsSearchOpen } = useSearchBoxSlide();
-
   return (
-    <S.HeaderOuter>
+    <HeaderOuter>
       <S.SearchSlide $open={isSearchOpen} ref={searchSlideRef}>
         <StoreSearchForm />
       </S.SearchSlide>
-      <S.HeaderInner>
+      <HeaderInner>
         <S.HeaderLeft>
           <Logo />
           <StoreSearchForm />
@@ -38,7 +36,7 @@ export function Header() {
             <CiLogin size={33} />
           </Link>
         )}
-      </S.HeaderInner>
-    </S.HeaderOuter>
+      </HeaderInner>
+    </HeaderOuter>
   );
 }

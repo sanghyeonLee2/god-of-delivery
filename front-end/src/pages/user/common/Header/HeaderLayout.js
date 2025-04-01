@@ -1,19 +1,7 @@
 import styled from "styled-components";
-import { flexLayout, setBorder, textHover } from "../../../assets/styles/Mixin";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
-import { COLORS } from "../../../assets/styles/colors";
+import { flexLayout, setBorder } from "../../../../assets/styles/Mixin";
+import { COLORS } from "../../../../assets/styles/colors";
 
-export const HeaderInner = styled.div`
-  margin: 0 auto;
-  ${flexLayout("space-between", "center")};
-  max-width: 1100px;
-  height: 92px;
-  ${innerPadding()};
-
-  button {
-    ${textHover()};
-  }
-`;
 export const HeaderLeft = styled.div`
   ${flexLayout("space-between", "center")};
   @media (max-width: 700px) {
@@ -39,16 +27,6 @@ export const SearchSlide = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${({ $open }) => ($open ? "0 15px" : "0 15px")};
-`;
-
-export const HeaderOuter = styled.div`
-  border-bottom: 1px solid #d9d9d9;
-  background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
 `;
 
 export const UserMenuWrap = styled.div`

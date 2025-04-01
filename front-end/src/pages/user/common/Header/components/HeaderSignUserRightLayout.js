@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexLayout, setBorder } from "../../../../assets/styles/Mixin";
+import { flexLayout, setBorder } from "../../../../../assets/styles/Mixin";
 
 export const HeaderRight = styled.div`
   > *:first-child {

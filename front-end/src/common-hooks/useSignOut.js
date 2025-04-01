@@ -1,8 +1,8 @@
 import { useSetRecoilState } from "recoil";
-import { isSignInState } from "../../../../recoil/user/atoms";
+import { isSignInState } from "../recoil/user/atoms";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "react-query";
-import { showSuccess } from "../../../../utils/toasts";
+import { showSuccess } from "../utils/toasts";
 
 const useSignOut = () => {
   const queryClient = useQueryClient();

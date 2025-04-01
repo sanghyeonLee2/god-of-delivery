@@ -1,8 +1,8 @@
 import React from "react";
-import { FlexOnly } from "../../../../assets/styles/CommonStyle";
+import { FlexOnly } from "../../../../../assets/styles/CommonStyle";
 import { useRecoilValue } from "recoil";
-import { userInfoState } from "../../../../recoil/user/atoms";
-import HeaderLocationBtn from "components/common/Header/components/HeaderLocationBtn";
+import { userInfoState } from "../../../../../recoil/user/atoms";
+import HeaderLocationBtn from "pages/user/common/Header/components/HeaderLocationBtn";
 
 function HeaderLocation() {
   const { address } = useRecoilValue(userInfoState);

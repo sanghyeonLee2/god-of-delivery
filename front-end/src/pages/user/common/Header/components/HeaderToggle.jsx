@@ -1,9 +1,9 @@
 import React from "react";
-import { UserMenuWrap } from "components/common/Header/HeaderLayout";
+import { UserMenuWrap } from "pages/user/common/Header/HeaderLayout";
 import { Link } from "react-router-dom";
-import { Font } from "../../../../assets/styles/CommonStyle";
+import { Font } from "../../../../../assets/styles/CommonStyle";
 import useToggleDisplay from "../hooks/useToggleDisplay";
-import useSignOut from "../hooks/useSignOut";
+import useSignOut from "../../../../../common-hooks/useSignOut";
 import { CiUser } from "react-icons/ci";
 
 function HeaderToggle() {
