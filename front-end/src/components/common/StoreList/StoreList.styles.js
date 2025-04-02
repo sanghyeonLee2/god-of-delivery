@@ -3,14 +3,11 @@ import { boxHover, flexLayout } from "../../../assets/styles/Mixin";
 import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const StoresOuter = styled.div`
-  margin: 0 auto;
-  max-width: 1100px;
-
   li {
     ${boxHover()}
     width: ${({ $isDibs }) => ($isDibs ? "100%" : "49.5%")};
 
-    @media (max-width: ${({ $isDibs }) => ($isDibs ? "0px" : "880px")}) {
+    @media (max-width: ${({ $isDibs }) => ($isDibs ? "0" : "88rem")}) {
       width: 100%;
     }
   }
@@ -19,7 +16,6 @@ export const StoresOuter = styled.div`
 `;
 
 export const StoresInner = styled.ul`
-    ${flexLayout("space-between")};
-    flex-wrap: wrap;
-}
+  ${flexLayout("space-between")};
+  flex-wrap: wrap;
 `;

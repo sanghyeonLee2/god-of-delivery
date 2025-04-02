@@ -4,17 +4,17 @@ import { flexLayout } from "../../../../assets/styles/Mixin";
 
 export const InfoBox = styled.div`
   ${innerPadding()};
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #f6f6f6;
 `;
 
 export const MenuInfoInner = styled.div`
-  padding: 15px 0;
+  padding: 1.5rem 0;
   ${flexLayout("space-between")};
   transition: all 0.2s ease;
 
   &:hover {
     background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.06);
   }
 `;

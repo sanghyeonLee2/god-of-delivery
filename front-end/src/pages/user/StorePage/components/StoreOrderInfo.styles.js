@@ -3,18 +3,19 @@ import { elementSize } from "../../../../assets/styles/Mixin";
 
 export const OrderTabWrap = styled.ul`
   display: flex;
-  border-bottom: lightgray 1px solid;
-  margin-top: 20px;
+  border-bottom: lightgray 0.1rem solid;
+  margin-top: 2rem;
 
   li {
     text-align: center;
-    ${elementSize("50%", "40px")}
+    ${elementSize("50%", "4rem")}
   }
 `;
 
 export const OrderTypeText = styled.span`
+  font-size: 1.6rem;
   display: inline-block;
-  border-bottom: ${({ $isOn }) => ($isOn ? "black 5px solid" : "transparent 5px solid")};
+  border-bottom: ${({ $isOn }) => ($isOn ? "black 0.5rem solid" : "transparent 0.5rem solid")};
   box-sizing: border-box;
   height: 100%;
 `;

@@ -3,24 +3,32 @@ import { flexLayout } from "../../../../assets/styles/Mixin";
 import { innerPadding } from "../../../../assets/styles/CommonStyle";
 
 export const StoreOuter = styled.li`
+  button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+  }
+
+  position: relative;
   ${innerPadding()};
-  margin-bottom: 14px;
+  margin-bottom: 1.4rem;
   box-sizing: border-box;
   border: lightgray 1px solid;
   ${flexLayout("flex-start", "center")};
 `;
 
 export const StoreInfoWrap = styled.div`
-  padding-left: 10px;
+  padding-left: 1rem;
   flex: 1;
 
   svg {
     color: #ffd700;
-    margin-bottom: 4px;
+    margin-bottom: 0.4rem;
   }
 `;
+
 export const OperationHourWrap = styled.div`
   ${flexLayout("space-between")};
   flex-wrap: wrap;
-  gap: 4px 10px;
+  gap: 0.4rem 1rem;
 `;

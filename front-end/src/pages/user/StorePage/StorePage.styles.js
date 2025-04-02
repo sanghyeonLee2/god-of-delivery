@@ -4,13 +4,14 @@ import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const MenuTab = styled.div`
   cursor: pointer;
-  ${elementSize("33.33%", "60px")};
+  ${elementSize("33.33%", "6rem")};
   ${flexLayout("center", "center")};
-  border-right: ${({ $isOn }) => $isOn && "grey 1px solid"};
-  border-left: ${({ $isOn }) => $isOn && "grey 1px solid"};
-  border-top: ${({ $isOn }) => ($isOn ? "black 3px solid" : "transparent 3px solid ")};
-  border-bottom: ${({ $isOn }) => ($isOn ? "transparent 1px solid" : "grey 1px solid")};
+  border-right: ${({ $isOn }) => $isOn && "grey 0.1rem solid"};
+  border-left: ${({ $isOn }) => $isOn && "grey 0.1rem solid"};
+  border-top: ${({ $isOn }) => ($isOn ? "black 0.3rem solid" : "transparent 0.3rem solid")};
+  border-bottom: ${({ $isOn }) => ($isOn ? "transparent 0.1rem solid" : "grey 0.1rem solid")};
 `;
+
 export const TabWrap = styled.div`
   ${innerPadding()}
 `;

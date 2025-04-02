@@ -4,5 +4,5 @@ import { innerPadding } from "../../../../assets/styles/CommonStyle";
 
 export const SelectWrap = styled.select`
   ${innerPadding()};
-  ${elementSize("100%", "45px")};
+  ${elementSize("100%", "4.5rem")};
 `;

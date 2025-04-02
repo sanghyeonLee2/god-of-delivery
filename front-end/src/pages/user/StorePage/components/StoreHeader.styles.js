@@ -1,21 +1,22 @@
-import { flexLayout } from "../../../../assets/styles/Mixin";
+import { elementSize, flexLayout } from "../../../../assets/styles/Mixin";
 import styled from "styled-components";
 
 export const StoreHeaderWrap = styled.div`
   text-align: center;
-
-  > div {
-    margin-bottom: 18px;
-  }
+  height: 22rem;
+  align-content: center;
 `;
 export const ReviewWrap = styled.div`
-  ${flexLayout("center")}
-  svg:hover {
+  margin: 0 auto;
+
+  ${flexLayout("space-between", "center")}
+  ${elementSize("24rem", "5.5rem")}
+    svg:hover {
     transition: all 0.2s ease;
-    transform: translateY(-4px);
+    transform: translateY(-0.4rem);
   }
 
   button {
-    margin-top: 4px;
+    margin-bottom: 0.3rem;
   }
 `;

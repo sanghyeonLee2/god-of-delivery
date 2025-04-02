@@ -8,32 +8,34 @@ export const HeaderRight = styled.div`
 
   ${flexLayout("space-between", "center")};
   flex-direction: row;
-  @media (max-width: 700px) {
+
+  @media (max-width: 70rem) {
     > *:first-child {
       display: block;
     }
 
-    width: 160px;
+    width: 16rem;
   }
 
-  width: 130px;
+  width: 13rem;
 `;
+
 export const LocationBtnWrap = styled.div`
   position: relative;
 
   div:last-child {
-    min-height: 60px;
+    min-height: 6rem;
     position: absolute;
     top: 100%;
     right: 0;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.3);
     overflow: hidden;
     ${setBorder()};
     background: white;
     display: none;
     z-index: 101;
     white-space: nowrap;
-    padding: 0 10px;
+    padding: 0 1rem;
     align-content: center;
   }
 `;

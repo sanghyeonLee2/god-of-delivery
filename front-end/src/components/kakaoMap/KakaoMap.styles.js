@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const MapWrap = styled.div`
-  height: 350px;
-  margin-top: 10px;
+  height: 35rem;
+  margin-top: 1rem;
   position: relative;
 
   button {
     position: absolute;
-    right: 55px;
-    bottom: 5px;
+    right: 5.5rem;
+    bottom: 0.5rem;
     z-index: 10;
     background: none;
   }

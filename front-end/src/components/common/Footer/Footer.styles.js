@@ -5,11 +5,12 @@ import { innerPadding } from "../../../assets/styles/CommonStyle";
 export const FooterWrap = styled.footer`
   ${innerPadding()};
   position: relative;
-  border-top: 1px solid #d9d9d9;
-  height: 92px;
+  border-top: 0.1rem solid #d9d9d9;
+  height: 9.2rem;
 `;
+
 export const FooterInner = styled.div`
-  max-width: 1100px;
+  max-width: 110rem;
   margin: 0 auto;
   height: 100%;
   ${flexLayout("space-between", "center")};

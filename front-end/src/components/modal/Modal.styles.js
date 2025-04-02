@@ -9,22 +9,20 @@ export const ModalOuter = styled.div`
   z-index: 111;
   top: 0;
   left: 0;
-  padding-top: 50px;
+  padding-top: 5rem;
   ${flexLayout("center", "flex-start")};
 `;
+
 export const ModalInner = styled.div`
   max-width: 100vw;
-  border-radius: 10px;
+  border-radius: 1rem;
   position: relative;
-  ${elementSize("460px", "600px")};
+  ${elementSize("46rem", "65rem")};
   background-color: white;
   overflow-y: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
-  @media (max-height: 780px) {
-    height: 500px;
-  }
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
 `;
+
 export const ModalTitleDescriptionWrap = styled.div`
   ${innerPadding()};
 
@@ -32,7 +30,8 @@ export const ModalTitleDescriptionWrap = styled.div`
     text-align: center;
   }
 `;
+
 export const ModalContentWrap = styled.div`
   overflow-y: auto;
-  max-height: calc(100% - ${({ $isNeedSpace }) => ($isNeedSpace ? "230px" : "120px")});
+  max-height: calc(100% - ${({ $isNeedSpace }) => ($isNeedSpace ? "23rem" : "12rem")});
 `;

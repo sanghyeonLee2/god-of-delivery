@@ -7,6 +7,6 @@ export const CartMenusWrap = styled.div`
   }
 
   > div:not(:last-child) {
-    border-bottom: 1px solid;
+    border-bottom: 0.1rem solid;
   }
 `;

@@ -3,20 +3,21 @@ import { elementSize, flexLayout } from "../../../assets/styles/Mixin";
 import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const HomeBoardOuter = styled.div`
-  height: 190px;
-  padding-bottom: 2px;
+  height: 19rem;
+  padding-bottom: 0.2rem;
 `;
 
 export const HomeBoardInner = styled.div`
   ${innerPadding()};
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 50rem;
   height: 100%;
   flex-direction: column;
   ${flexLayout("center", "center")};
 `;
+
 export const FullWidthLine = styled.hr`
-  ${elementSize("100vw", "1px")}
+  ${elementSize("100vw", "0.1rem")};
   background-color: #ddd;
   border: none;
   margin: 0;
@@ -26,14 +27,7 @@ export const FullWidthLine = styled.hr`
 `;
 
 export const HomeBoardLocation = styled.h1`
-  font-size: 2rem;
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.6rem;
-  }
+  font-size: 3rem;
 `;
 
 export const TitleFont = styled.h1`
@@ -41,15 +35,7 @@ export const TitleFont = styled.h1`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.4rem;
-  }
+  gap: 0.8rem;
 `;
 
 export const KeywordLine = styled.div`
