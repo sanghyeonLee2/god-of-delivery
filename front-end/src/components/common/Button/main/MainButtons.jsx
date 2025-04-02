@@ -5,7 +5,7 @@ import {
   ModalButtonWrap,
   SubButtonWrap,
   TransButtonWrap,
-} from "./MainButtonLayout";
+} from "./MainButtons.styles";
 import { Font } from "../../../../assets/styles/CommonStyle";
 import MutateLoading from "components/common/Loading/MutateLoading";
 

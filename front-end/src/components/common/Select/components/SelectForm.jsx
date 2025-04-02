@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
-import { Font } from "../../../assets/styles/CommonStyle";
-import { SelectWrap } from "components/common/Select/SelectFormLayout";
+import { Font } from "../../../../assets/styles/CommonStyle";
+import { SelectWrap } from "components/common/Select/components/SelectForm.styles";
 
 const SelectForm = forwardRef(function SelectForm({ title, formFields, ...rest }, ref) {
   return (

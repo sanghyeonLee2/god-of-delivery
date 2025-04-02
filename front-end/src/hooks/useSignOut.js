@@ -14,7 +14,7 @@ const useSignOut = () => {
     localStorage.removeItem("refresh-token");
     queryClient.clear();
     setIsSignIn(false);
-    navigate("/");
+    navigate("/auth/sign-in", { replace: true });
   };
 };
 
