@@ -5,15 +5,13 @@ import { innerPadding } from "../../../../assets/styles/CommonStyle";
 export const SortingOuter = styled.div`
   border-bottom: #ddd 1px solid;
   height: 60px;
-  border-top: 1px solid #ddd;
+  z-index: 10;
+  ${innerPadding()};
 `;
 
 export const SortingInner = styled.div`
-  ${innerPadding()};
   ${flexLayout("flex-start", "center")};
   flex-direction: row-reverse;
-  margin: 0 auto;
-  max-width: 1100px;
   height: 100%;
   gap: 12px;
 
@@ -25,13 +23,13 @@ export const SortingInner = styled.div`
   select:nth-child(2) {
     display: none;
 
-    @media (max-width: 768px) {
+    @media (max-width: 880px) {
       display: inline-block;
     }
   }
 
   select:nth-child(1) {
-    @media (min-width: 768px) {
+    @media (min-width: 880px) {
       flex: 0.49;
     }
   }

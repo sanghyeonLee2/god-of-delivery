@@ -10,22 +10,21 @@ export const HeaderLeft = styled.div`
       display: none;
     }
   }
-  width: 420px;
+  width: 400px;
 `;
 export const SearchSlide = styled.div`
+  background-color: white;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   height: ${({ $open }) => ($open ? "80px" : "0px")};
   overflow: hidden;
-  background-color: white;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   transition: height 0.3s ease-in-out;
   z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${flexLayout("center", "center")};
   padding: ${({ $open }) => ($open ? "0 15px" : "0 15px")};
 `;
 
@@ -56,6 +55,7 @@ export const UserMenuWrap = styled.div`
   }
 
   li {
+    align-content: center;
     text-align: center;
     height: 60px;
   }

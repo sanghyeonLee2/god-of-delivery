@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { flexLayout } from "../../../assets/styles/Mixin";
+import { elementSize, flexLayout } from "../../../assets/styles/Mixin";
 import { innerPadding } from "../../../assets/styles/CommonStyle";
 
 export const HomeBoardOuter = styled.div`
   height: 190px;
-  border-bottom: 1px solid #ddd;
+  padding-bottom: 2px;
 `;
 
 export const HomeBoardInner = styled.div`
@@ -14,6 +14,15 @@ export const HomeBoardInner = styled.div`
   height: 100%;
   flex-direction: column;
   ${flexLayout("center", "center")};
+`;
+export const FullWidthLine = styled.hr`
+  ${elementSize("100vw", "1px")}
+  background-color: #ddd;
+  border: none;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const HomeBoardLocation = styled.h1`
