@@ -1,5 +1,6 @@
 import React from "react";
-import { CommonSectionWrap, DividingLine, Font } from "../../../../assets/styles/CommonStyle";
+import { CommonSectionWrap, DividingLine, Font } from "@assets/styles/CommonStyle";
+import { COLORS } from "@assets/data/colors";
 
 function UserPaymentInfo({ userPaymentInfo }) {
   return (
@@ -8,10 +9,10 @@ function UserPaymentInfo({ userPaymentInfo }) {
         {userPaymentInfo?.orderType === "Delivery" ? (
           <>
             <Font>배달 주소</Font>
-            <Font size={"small"} color={"gray"}>
+            <Font size={"small"} color={COLORS.FONT.SUB}>
               {userPaymentInfo?.addressSnapshot}
             </Font>
-            <Font size={"small"} color={"gray"}>
+            <Font size={"small"} color={COLORS.FONT.SUB}>
               {userPaymentInfo?.detailAddressSnapshot}
             </Font>
           </>
@@ -22,14 +23,14 @@ function UserPaymentInfo({ userPaymentInfo }) {
       <DividingLine />
       <CommonSectionWrap>
         <Font>전화번호</Font>
-        <Font size={"small"} color={"gray"}>
+        <Font size={"small"} color={COLORS.FONT.SUB}>
           {userPaymentInfo?.contact}
         </Font>
       </CommonSectionWrap>
       <DividingLine />
       <CommonSectionWrap>
         <Font>주문시 요청사항</Font>
-        <Font size={"small"} color={"gray"}>
+        <Font size={"small"} color={COLORS.FONT.SUB}>
           {userPaymentInfo?.requests}
         </Font>
       </CommonSectionWrap>

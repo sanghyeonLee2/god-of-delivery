@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { authPostApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { authPostApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
 import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
-import { showSuccess } from "../../../../utils/toasts";
-import useCustomQueryParams from "../../../../common-hooks/useCustomQueryParams";
+import { isModalOpenState } from "@recoil/flag/atoms";
+import { showSuccess } from "@utils/toasts";
+import useCustomQueryParams from "../../../../hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
 
 export const useCreateReview = ({ orderId, storeId }) => {

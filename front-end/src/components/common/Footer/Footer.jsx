@@ -1,23 +1,24 @@
 import React from "react";
-import { FooterInner, FooterWrap } from "./FooterLayout";
-import { FlexOnly, Font } from "../../../assets/styles/CommonStyle";
-import Logo from "components/common/Logo/Logo";
+import * as S from "./Footer.styles";
+import { FlexOnly, Font } from "@assets/styles/CommonStyle";
+import Logo from "@components/common/Logo/Logo";
+import { COLORS } from "@assets/data/colors";
 
 function Footer() {
   return (
-    <FooterWrap>
-      <FooterInner>
+    <S.FooterWrap>
+      <S.FooterInner>
         <Logo />
-        <FlexOnly justify={"space-between"} width="90px">
-          <Font size={"small"} color={"gray"}>
+        <FlexOnly justify={"space-between"} width="9rem">
+          <Font size={"small"} color={COLORS.FONT.SUB}>
             깃허브
           </Font>
-          <Font size={"small"} color={"gray"}>
+          <Font size={"small"} color={COLORS.FONT.SUB}>
             블로그
           </Font>
         </FlexOnly>
-      </FooterInner>
-    </FooterWrap>
+      </S.FooterInner>
+    </S.FooterWrap>
   );
 }
 

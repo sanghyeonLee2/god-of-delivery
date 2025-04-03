@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { boxHover, flexLayout } from "../../../assets/styles/Mixin";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
+import { boxHover, flexLayout } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
 
 export const StoresOuter = styled.div`
   li {

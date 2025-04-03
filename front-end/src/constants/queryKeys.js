@@ -9,7 +9,7 @@ export const QUERY_KEYS = {
     categoryId,
   ],
   STORE_DETAIL: (storeId) => ["store", storeId],
-  DIBS: ["dibs"],
+  DIBS: (page) => ["dibs", page],
   MENU_DETAIL: (menuId) => ["menuDetail", menuId],
   CART_DETAIL: (menuId) => ["cartDetail", menuId],
   MY_REVIEWS: (page) => ["myReviews", page],

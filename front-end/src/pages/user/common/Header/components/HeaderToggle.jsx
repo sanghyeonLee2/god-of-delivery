@@ -1,10 +1,10 @@
 import React from "react";
-import { UserMenuWrap } from "pages/user/common/Header/HeaderLayout";
+import { UserMenuWrap } from "@pages/user/common/Header/UserHeader.styles";
 import { Link } from "react-router-dom";
-import { Font } from "../../../../../assets/styles/CommonStyle";
-import useToggleDisplay from "../hooks/useToggleDisplay";
-import useSignOut from "../../../../../common-hooks/useSignOut";
+import { Font } from "@assets/styles/CommonStyle";
 import { CiUser } from "react-icons/ci";
+import useSignOut from "@hooks/useSignOut";
+import useToggleDisplay from "@pages/user/common/Header/hooks/useToggleDisplay";
 
 function HeaderToggle() {
   const [menuRef, showMenu, hideMenu] = useToggleDisplay();
@@ -19,17 +19,17 @@ function HeaderToggle() {
           </Link>
         </li>
         <li>
-          <Link to={"users/me/reviews"}>
+          <Link to={"/reviews"}>
             <Font size={"small"}>리뷰 관리</Font>
           </Link>
         </li>
         <li>
-          <Link to={"users/me/dibs"}>
+          <Link to={"/dibs"}>
             <Font size={"small"}>찜</Font>
           </Link>
         </li>
         <li>
-          <Link to={"users/me/orders"}>
+          <Link to={"/orders"}>
             <Font size={"small"}>주문 관리</Font>
           </Link>
         </li>

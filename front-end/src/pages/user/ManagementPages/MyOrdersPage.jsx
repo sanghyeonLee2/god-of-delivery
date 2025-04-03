@@ -1,18 +1,16 @@
 import React from "react";
-import { CommonPageWrap, Font } from "../../../assets/styles/CommonStyle";
-import Loading from "components/common/Loading/Loading";
-import OrderInfo from "pages/user/ManagementPages/components/OrderInfo";
+import { CommonPageWrap, Font } from "@assets/styles/CommonStyle";
+import Loading from "@components/common/Loading/Loading";
+import OrderInfo from "@pages/user/ManagementPages/components/OrderInfo";
 import useGetOrders from "./hooks/useGetOrders";
-import Pagination from "components/common/Pagination/Pagination";
-import Empty from "components/common/Empty/Empty";
+import Pagination from "@components/common/Pagination/Pagination";
+import Empty from "@components/common/Empty/Empty";
 
 function MyOrdersPage() {
   const { ordersData, totalPages, isLoading, page, setPage } = useGetOrders();
-
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <CommonPageWrap>
       {ordersData.length > 0 ? (

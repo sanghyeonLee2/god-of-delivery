@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { flexLayout } from "../../../../assets/styles/Mixin";
-import { innerPadding } from "../../../../assets/styles/CommonStyle";
+import { flexLayout } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { COLORS } from "@assets/data/colors";
 
 export const StoreOuter = styled.li`
   button {
@@ -13,7 +14,7 @@ export const StoreOuter = styled.li`
   ${innerPadding()};
   margin-bottom: 1.4rem;
   box-sizing: border-box;
-  border: lightgray 1px solid;
+  border: ${COLORS.BORDER} 1px solid;
   ${flexLayout("flex-start", "center")};
 `;
 

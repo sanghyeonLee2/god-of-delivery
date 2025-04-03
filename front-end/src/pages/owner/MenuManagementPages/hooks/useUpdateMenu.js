@@ -1,12 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { authGetApi, authPutApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { showSuccess } from "../../../../utils/toasts";
+import { authGetApi, authPutApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { showSuccess } from "@utils/toasts";
 import { useFieldArray, useForm } from "react-hook-form";
-import useCustomParams from "../../../../common-hooks/useCustomParams";
-import { DEFAULT_CATEGORY } from "../../../../constants/formValues";
+import { DEFAULT_CATEGORY } from "@constants/formValues";
 import { useNavigate } from "react-router-dom";
+import useCustomParams from "@hooks/useCustomParams";
 
 const useUpdateMenu = () => {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const useUpdateMenu = () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU);
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENUS);
         showSuccess("메뉴 정보를 수정 했습니다");
-        navigate("owners/me/menus");
+        navigate("/owners/me/menus");
       },
     }
   );

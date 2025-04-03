@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HOME_BOARD_KEYWORDS } from "../../../../constants/formValues";
+import { HOME_BOARD_KEYWORDS } from "@constants/formValues";
 
 const duplicatedList = [...HOME_BOARD_KEYWORDS, ...HOME_BOARD_KEYWORDS];
 

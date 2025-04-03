@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import { authGetApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { authGetApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
 import { useNavigate } from "react-router-dom";
 
 export const useGetOwnerStoreMenus = () => {

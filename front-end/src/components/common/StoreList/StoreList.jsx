@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./StoreListLayout";
+import * as S from "./StoreList.styles";
 import StoreBox from "./components/StoreBox";
 
 function StoreList({ storesData, isDibs }) {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { innerPadding } from "../../../../assets/styles/CommonStyle";
+import { innerPadding } from "@assets/styles/CommonStyle";
 
 export const ReviewMainWrap = styled.div`
   margin: 1rem 0;

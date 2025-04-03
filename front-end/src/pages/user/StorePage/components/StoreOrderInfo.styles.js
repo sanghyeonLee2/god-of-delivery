@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { elementSize } from "../../../../assets/styles/Mixin";
+import { elementSize } from "@assets/styles/Mixin";
+import { COLORS } from "@assets/data/colors";
 
 export const OrderTabWrap = styled.ul`
   display: flex;
-  border-bottom: lightgray 0.1rem solid;
+  border-bottom: ${COLORS.BORDER} 0.1rem solid;
   margin-top: 2rem;
 
   li {

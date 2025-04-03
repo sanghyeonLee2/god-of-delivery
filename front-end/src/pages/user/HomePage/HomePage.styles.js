@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { boxHover } from "../../../assets/styles/Mixin";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
+import { boxHover } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { COLORS } from "@assets/data/colors";
 
 export const CategoryWrap = styled.ul`
   display: grid;
@@ -19,10 +20,10 @@ export const CategoryBoxWrap = styled.li`
   ${boxHover()};
   cursor: pointer;
   box-sizing: border-box;
-  border: lightgray 1px solid;
+  border: ${COLORS.BORDER} 1px solid;
   min-height: 18rem;
 
-  svg {
+  div {
     position: absolute;
     right: 1rem;
     bottom: 1rem;

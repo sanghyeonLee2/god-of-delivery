@@ -1,7 +1,7 @@
 import React from "react";
 import SearchedLocations from "./SearchedLocations";
-import useSearchLocation from "../hooks/useSearchLocation";
-import LocationSearchInput from "components/modal/SelectMap/components/LocationSearchInput";
+import LocationSearchInput from "@components/modal/SelectMap/components/LocationSearchInput";
+import useSearchLocation from "@components/modal/SelectMap/hooks/useSearchLocation";
 
 function LocationSearchForm() {
   const { locationInfo, setLocationInfo, register } = useSearchLocation();

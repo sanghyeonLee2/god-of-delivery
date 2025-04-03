@@ -1,17 +1,19 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import Loading from "components/common/Loading/Loading";
-import Review from "components/common/Review/Review";
-import Pagination from "components/common/Pagination/Pagination";
-import Title from "components/common/Title/Title";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import Loading from "@components/common/Loading/Loading";
+import Review from "@components/common/Review/Review";
+import Pagination from "@components/common/Pagination/Pagination";
+import Title from "@components/common/Title/Title";
 import useGetMyReviews from "./hooks/useGetMyReviews";
-import Empty from "components/common/Empty/Empty";
+import Empty from "@components/common/Empty/Empty";
 
 function MyReviewsPage() {
   const { reviews, totalPages, isLoading, page, setPage } = useGetMyReviews();
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
-      {isLoading && <Loading />}
       {reviews.length > 0 ? (
         <CommonPageWrap>
           <Title text={"리뷰 관리"} size={"x-large"} />

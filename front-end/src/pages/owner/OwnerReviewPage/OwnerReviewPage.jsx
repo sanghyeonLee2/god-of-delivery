@@ -1,11 +1,11 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import Title from "components/common/Title/Title";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import Title from "@components/common/Title/Title";
 import useGetOwnerReviews from "./hooks/useGetOwnerReviews";
-import Loading from "components/common/Loading/Loading";
-import Review from "components/common/Review/Review";
-import Pagination from "components/common/Pagination/Pagination";
-import Empty from "components/common/Empty/Empty";
+import Loading from "@components/common/Loading/Loading";
+import Review from "@components/common/Review/Review";
+import Pagination from "@components/common/Pagination/Pagination";
+import Empty from "@components/common/Empty/Empty";
 
 function OwnerReviewPage() {
   const { reviews, totalPages, isLoading, page, setPage } = useGetOwnerReviews();

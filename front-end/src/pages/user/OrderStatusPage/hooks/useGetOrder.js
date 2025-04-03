@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import { authGetApi } from "../../../../api/request";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { API_URLS } from "../../../../constants/urls";
+import { authGetApi } from "@api/request";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { API_URLS } from "@constants/urls";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const useGetOrder = () => {
@@ -18,6 +18,6 @@ export const useGetOrder = () => {
   return {
     orderData: data?.data,
     isLoading,
-    navigateOrders: () => navigate("/users/me/orders?page=1"),
+    navigateOrders: () => navigate("/orders"),
   };
 };

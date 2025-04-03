@@ -1,13 +1,13 @@
 import React from "react";
 import PaginationBtn from "./components/PaginationBtn";
-import IconBtn from "../Button/icon/IconBtn";
-import { PaginationInner, PaginationWrap } from "components/common/Pagination/PaginationLayout";
 import {
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import * as S from "@components/common/Pagination/Pagination.styles";
+import IconBtn from "@components/common/Button/icon/IconBtn";
 
 const PAGE_BTN_LIMIT = 5;
 
@@ -16,8 +16,8 @@ function Pagination({ page, totalPages, setPage }) {
   const endPage = Math.min(startPage + PAGE_BTN_LIMIT - 1, totalPages);
   const allPages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   return (
-    <PaginationWrap>
-      <PaginationInner>
+    <S.PaginationWrap>
+      <S.PaginationInner>
         <IconBtn isDisable={page === 1} onClick={() => setPage(1)}>
           <MdKeyboardDoubleArrowLeft size={22} />
         </IconBtn>
@@ -39,8 +39,8 @@ function Pagination({ page, totalPages, setPage }) {
         <IconBtn isDisable={endPage === totalPages} onClick={() => setPage(totalPages)}>
           <MdKeyboardDoubleArrowRight size={22} />
         </IconBtn>
-      </PaginationInner>
-    </PaginationWrap>
+      </S.PaginationInner>
+    </S.PaginationWrap>
   );
 }
 

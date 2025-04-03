@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { innerPadding } from "../../../../assets/styles/CommonStyle";
-import { flexLayout } from "../../../../assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { flexLayout } from "@assets/styles/Mixin";
 
 export const InfoBox = styled.div`
   ${innerPadding()};
@@ -15,6 +15,6 @@ export const MenuInfoInner = styled.div`
 
   &:hover {
     background-color: #f9f9f9;
-    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.06);
   }
 `;

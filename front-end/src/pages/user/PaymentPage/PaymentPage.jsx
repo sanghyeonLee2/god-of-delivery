@@ -1,12 +1,12 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import { SubBtn } from "components/common/Button/main/MainButton";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import { SubBtn } from "@components/common/Button/main/MainButtons";
 import PaymentAmount from "./components/PaymentAmount";
 import { usePayment } from "./hooks/usePayment";
-import LabeledTextInput from "components/common/Input/LabeledTextInput";
+import LabeledTextInput from "@components/common/Input/LabeledTextInput";
 import PaymentMethods from "./components/PaymentMethods";
-import Title from "components/common/Title/Title";
-import { ORDER_METHODS, PAYMENT_METHODS } from "../../../constants/formFields";
+import Title from "@components/common/Title/Title";
+import { ORDER_METHODS, PAYMENT_METHODS } from "@constants/formFields";
 
 function PaymentPage() {
   const { paymentInfo, isOrderPosting, control, register, handleSubmit } = usePayment();
@@ -35,7 +35,7 @@ function PaymentPage() {
           {...register("contact")}
         />
         <PaymentAmount paymentInfo={paymentInfo} />
-        <SubBtn text={"결제하기"} type={"submit"} height={"50px"} isLoading={isOrderPosting} />
+        <SubBtn text={"결제하기"} type={"submit"} height={"4.5rem"} isLoading={isOrderPosting} />
       </form>
     </CommonPageWrap>
   );

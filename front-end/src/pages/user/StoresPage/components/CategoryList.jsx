@@ -1,25 +1,22 @@
 import React from "react";
-import categoryDummy from "../../../../assets/data/categoryDummy.json";
-import { Font } from "../../../../assets/styles/CommonStyle";
-import {
-  CategoryElement,
-  CategoryListWrap,
-} from "pages/user/StoresPage/components/CategoryListLayout";
+import categoryDummy from "@assets/data/categoryDummy.json";
+import { Font } from "@assets/styles/CommonStyle";
+import * as S from "@pages/user/StoresPage/components/CategoryList.styles";
 
 function CategoryList({ categoryId, setCategory }) {
   return (
-    <CategoryListWrap>
+    <S.CategoryListWrap>
       {categoryDummy.map((category) => (
-        <CategoryElement
+        <S.CategoryElement
           key={category.id}
           id={category.id}
           $clicked={categoryId}
           onClick={() => setCategory(category.id)}
         >
           <Font size={"small"}>{category.name}</Font>
-        </CategoryElement>
+        </S.CategoryElement>
       ))}
-    </CategoryListWrap>
+    </S.CategoryListWrap>
   );
 }
 

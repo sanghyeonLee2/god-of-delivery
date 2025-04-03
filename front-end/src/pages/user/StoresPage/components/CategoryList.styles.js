@@ -1,5 +1,6 @@
-import { flexLayout } from "../../../../assets/styles/Mixin";
+import { flexLayout } from "@assets/styles/Mixin";
 import styled from "styled-components";
+import { COLORS } from "@assets/data/colors";
 
 export const CategoryListWrap = styled.ul`
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
@@ -8,7 +9,7 @@ export const CategoryListWrap = styled.ul`
     display: none;
   }
 
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${COLORS.BORDER};
   padding: 0 1.5rem;
 
   flex-wrap: wrap;
@@ -16,7 +17,7 @@ export const CategoryListWrap = styled.ul`
 `;
 
 export const CategoryElement = styled.li`
-  border-right: 1px solid ${({ $clicked, id }) => ($clicked === id ? "#333333" : "#ddd")};
+  border-right: 1px solid ${({ $clicked, id }) => ($clicked === id ? "#333333" : COLORS.BORDER)};
 
   align-content: center;
   background-color: ${({ $clicked, id }) => $clicked === id && "#333333"};

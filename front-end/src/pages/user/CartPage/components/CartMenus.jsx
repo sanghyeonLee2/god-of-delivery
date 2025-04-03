@@ -1,10 +1,11 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
-import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
-import { MainBtn } from "components/common/Button/main/MainButton";
-import Image from "components/common/Image/Image";
-import { CartMenusWrap } from "pages/user/CartPage/CartLayout";
+import { isModalOpenState } from "@recoil/flag/atoms";
+import { FlexOnly, Font } from "@assets/styles/CommonStyle";
+import { MainBtn } from "@components/common/Button/main/MainButtons";
+import Image from "@components/common/Image/Image";
+import { CartMenusWrap } from "@pages/user/CartPage/Cart.styles";
+import { COLORS } from "@assets/data/colors";
 
 function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
@@ -12,29 +13,29 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
     <CartMenusWrap>
       {cartItems?.map((cartItem) => (
         <div key={cartItem.cartItemId}>
-          <FlexOnly justify={"space-between"} style={{ alignItems: "start" }}>
+          <FlexOnly justify={"space-between"} style={{ alignItems: "flex-start" }}>
             <div>
-              <Font size={"large"}>{cartItem.Menu.name}</Font>
-              <Font size={"small"} color={"gray"}>
-                {cartItem?.Menu.description}
+              <Font size={"large"}>{cartItem.name}</Font>
+              <Font size={"small"} color={COLORS.FONT.SUB}>
+                {cartItem?.description}
               </Font>
               <Font>{cartMenuTotalPrice.toLocaleString()}원</Font>
             </div>
-            <Image width={"80px"} height={"80px"} src={cartItems.imgUrl} />
+            <Image width={"8rem"} height={"8rem"} src={cartItems.imgUrl} />
           </FlexOnly>
           <FlexOnly justify="space-between">
             <Font>{cartItem.quantity} 개</Font>
-            <FlexOnly width={"265px"} justify="space-between">
+            <FlexOnly width={"230px"} justify="space-between">
               <MainBtn
                 text={"옵션 / 수량 변경"}
-                width={"125px"}
+                width={"11rem"}
                 type={"button"}
                 onClick={() =>
                   setIsModalOpen({
                     modalType: "메뉴수정",
                     flag: true,
                     modalData: {
-                      cartItemId: cartItem.cartItemId,
+                      menuId: cartItem.menuId,
                       quantity: cartItem.quantity,
                     },
                   })
@@ -42,7 +43,7 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
               />
               <MainBtn
                 text={"삭제"}
-                width={"125px"}
+                width={"11rem"}
                 type={"button"}
                 onClick={() => handleDeleteCartItem(cartItem.cartItemId)}
               />

@@ -1,41 +1,35 @@
 import React, { forwardRef } from "react";
-import {
-  AddBtnWrap,
-  MainButtonWrap,
-  ModalButtonWrap,
-  SubButtonWrap,
-  TransButtonWrap,
-} from "./MainButtons.styles";
-import { Font } from "../../../../assets/styles/CommonStyle";
-import MutateLoading from "components/common/Loading/MutateLoading";
+import * as S from "./MainButtons.styles";
+import { Font } from "@assets/styles/CommonStyle";
+import MutateLoading from "@components/common/Loading/MutateLoading";
 
 export const MainBtn = forwardRef(({ text, width, ...rest }, ref) => {
   return (
-    <MainButtonWrap {...rest} $width={width} ref={ref}>
+    <S.MainButtonWrap {...rest} $width={width} ref={ref}>
       <Font size={"small"}>{text}</Font>
-    </MainButtonWrap>
+    </S.MainButtonWrap>
   );
 });
 
 export const ModalBtn = forwardRef(({ text, isUpdate, isLoading, ...rest }, ref) => {
   return (
-    <ModalButtonWrap $isUpdate={isUpdate} {...rest} ref={ref}>
+    <S.ModalButtonWrap $isUpdate={isUpdate} {...rest} ref={ref}>
       {isLoading ? <MutateLoading /> : <Font color={"white"}>{text}</Font>}
-    </ModalButtonWrap>
+    </S.ModalButtonWrap>
   );
 });
 
 export const AddBtn = forwardRef(({ text, ...rest }, ref) => {
   return (
-    <AddBtnWrap {...rest} ref={ref}>
+    <S.AddBtnWrap {...rest} ref={ref}>
       <Font>{text}</Font>
-    </AddBtnWrap>
+    </S.AddBtnWrap>
   );
 });
 
 export function SubBtn({ type, text, onClick, height, isLoading }) {
   return (
-    <SubButtonWrap type={type} onClick={onClick} $height={height} $isLoading={isLoading}>
+    <S.SubButtonWrap type={type} onClick={onClick} $height={height} $isLoading={isLoading}>
       {isLoading ? (
         <MutateLoading />
       ) : (
@@ -43,14 +37,14 @@ export function SubBtn({ type, text, onClick, height, isLoading }) {
           {text}
         </Font>
       )}
-    </SubButtonWrap>
+    </S.SubButtonWrap>
   );
 }
 
 export const TransBtn = forwardRef(({ type, text, onClick }, ref) => {
   return (
-    <TransButtonWrap type={type} onClick={onClick} ref={ref}>
+    <S.TransButtonWrap type={type} onClick={onClick} ref={ref}>
       <Font size={"small"}>{text}</Font>
-    </TransButtonWrap>
+    </S.TransButtonWrap>
   );
 });

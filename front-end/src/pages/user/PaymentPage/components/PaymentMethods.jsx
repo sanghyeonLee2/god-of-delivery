@@ -1,11 +1,11 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import RadioGroup from "components/common/RadioGroup/RadioGroup";
-import Radio from "components/common/RadioGroup/Radio/Radio";
-import { Font, SelectTwoTypes } from "../../../../assets/styles/CommonStyle";
+import RadioGroup from "@components/common/RadioGroup/RadioGroup";
+import Radio from "@components/common/RadioGroup/Radio/Radio";
+import { Font, SelectTwoTypes } from "@assets/styles/CommonStyle";
 import { useSetRecoilState } from "recoil";
-import { paymentTipState } from "../../../../recoil/order/atom";
-import { tipOnchange } from "../../../../utils/clickHandler";
+import { paymentTipState } from "@recoil/order/atom";
+import { tipOnchange } from "@utils/clickHandler";
 
 function PaymentMethods({ control, toSelectMethods, tips }) {
   const setPaymentTip = useSetRecoilState(paymentTipState);

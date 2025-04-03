@@ -1,13 +1,13 @@
 import React from "react";
 import ModalHeader from "./components/ModalHeader";
-import { ModalInner, ModalOuter } from "./ModalLayout";
+import { ModalInner, ModalOuter } from "./Modal.styles";
 import SelectMapModal from "./SelectMap/SelectMapModal";
-import CreateReview from "components/modal/CreateReview/CreateReview";
-import CreateOwnerReview from "components/modal/CreateOwnerReview/CreateOwnerReview";
-import CartMenuDetailModal from "components/modal/MenuDetail/CartMenuDetailModal";
-import MenuDetailModal from "components/modal/MenuDetail/MenuDetailModal";
+import CreateReview from "@components/modal/CreateReview/CreateReview";
+import CreateOwnerReview from "@components/modal/CreateOwnerReview/CreateOwnerReview";
+import CartMenuDetailModal from "@components/modal/MenuDetail/CartMenuDetailModal";
+import MenuDetailModal from "@components/modal/MenuDetail/MenuDetailModal";
 
-function DefaultModal({ modalType, modalData }) {
+function ModalLayout({ modalType, modalData }) {
   return (
     <ModalOuter>
       <ModalInner>
@@ -16,10 +16,10 @@ function DefaultModal({ modalType, modalData }) {
         {modalType === "주소설정" && <SelectMapModal />}
         {modalType === "메뉴수정" && <CartMenuDetailModal modalData={modalData} />}
         {modalType === "리뷰작성" && <CreateReview modalData={modalData} />}
-        {modalType === "사장님 리뷰작성" && <CreateOwnerReview modalData={modalData} />}
+        {modalType === "사장님 리뷰 작성" && <CreateOwnerReview modalData={modalData} />}
       </ModalInner>
     </ModalOuter>
   );
 }
 
-export default DefaultModal;
+export default ModalLayout;

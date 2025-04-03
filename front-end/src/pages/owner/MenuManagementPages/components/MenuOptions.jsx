@@ -1,10 +1,10 @@
 import React from "react";
-import { CommonBorder, CommonPageHeader, Font } from "../../../../assets/styles/CommonStyle";
-import LabeledTextInput from "components/common/Input/LabeledTextInput";
-import { AddBtn } from "components/common/Button/main/MainButton";
+import { CommonBorder, CommonPageHeader, Font } from "@assets/styles/CommonStyle";
+import LabeledTextInput from "@components/common/Input/LabeledTextInput";
+import { AddBtn } from "@components/common/Button/main/MainButtons";
 import { useFieldArray } from "react-hook-form";
-import { CREATE_MENU_OPTION_FIELDS } from "../../../../constants/formFields";
-import CancelIconBtn from "components/common/Button/icon/CancelIconBtn";
+import { CREATE_MENU_OPTION_FIELDS } from "@constants/formFields";
+import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
 
 function MenuOptions({ categoryIdx, control, register }) {
   const {
@@ -16,7 +16,7 @@ function MenuOptions({ categoryIdx, control, register }) {
     name: `MenuCategories.${categoryIdx}.MenuOptions`,
   });
   return (
-    <CommonBorder $hasAddBtn={true} style={{ padding: "15px 25px 65px 25px" }}>
+    <CommonBorder $hasAddBtn={true} style={{ padding: "1.5rem 2.5rem 6.5rem 2.5rem" }}>
       <Font size={"large"}>메뉴 옵션 선택</Font>
       {optionFields.map((field, optionIdx) => (
         <div key={field.id}>

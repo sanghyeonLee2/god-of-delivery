@@ -1,5 +1,5 @@
 import React from "react";
-import { CommonBorder, FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
+import { CommonBorder, FlexOnly, Font } from "@assets/styles/CommonStyle";
 
 function CartPayment({ cartMenuTotalPrice, tips }) {
   return (

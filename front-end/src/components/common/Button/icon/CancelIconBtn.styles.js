@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexLayout } from "../../../../assets/styles/Mixin";
+import { flexLayout } from "@assets/styles/Mixin";
 
 export const CancelIconBtnWrap = styled.button`
   top: 1.5rem;

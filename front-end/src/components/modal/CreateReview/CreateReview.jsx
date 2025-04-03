@@ -1,11 +1,12 @@
 import React from "react";
-import { ModalBtn } from "components/common/Button/main/MainButton";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import useCreateReview from "./hooks/useCreateReview";
-import Textarea from "components/common/TextArea/TextArea";
-import { ModalContentWrap, ModalTitleDescriptionWrap } from "components/modal/ModalLayout";
-import { ModalReviewForm } from "components/modal/CreateReview/CreateReviewLayout";
-import { Font } from "../../../assets/styles/CommonStyle";
+import { ModalContentWrap, ModalTitleDescriptionWrap } from "@components/modal/Modal.styles";
+import { Font } from "@assets/styles/CommonStyle";
+import { ModalReviewForm } from "@components/modal/CreateReview/CreateReview.styles";
+import Textarea from "@components/common/TextArea/TextArea";
+import { ModalBtn } from "@components/common/Button/main/MainButtons";
+import { COLORS } from "@assets/data/colors";
 
 function CreateReview({ modalData }) {
   const { form, mutation } = useCreateReview({
@@ -17,7 +18,7 @@ function CreateReview({ modalData }) {
       <ModalContentWrap>
         <ModalTitleDescriptionWrap>
           <Font size={"large"}>{modalData.storeName}</Font>
-          <Font color={"gray"}>{modalData.representativeOrder}</Font>
+          <Font color={COLORS.FONT.SUB}>{modalData.representativeOrder}</Font>
         </ModalTitleDescriptionWrap>
         <ModalReviewForm>
           <StarRatings
@@ -26,8 +27,8 @@ function CreateReview({ modalData }) {
             starHoverColor="gold"
             changeRating={form.handleRatingChange}
             name="rating"
-            starDimension="30px"
-            starSpacing="5px"
+            starDimension="3rem"
+            starSpacing="0.5rem"
           />
           <Textarea
             {...form.register("content")}

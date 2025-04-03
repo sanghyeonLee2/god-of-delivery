@@ -1,27 +1,6 @@
 import styled from "styled-components";
-import { elementSize, flexLayout } from "../../../../assets/styles/Mixin";
-import { COLORS } from "../../../../assets/styles/colors";
-
-export const CancelIconBtnWrap = styled.button`
-  top: 1.5rem;
-  right: 1.5rem;
-  background-color: transparent;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-  border: 0;
-  padding: 0;
-  pointer-events: ${({ $isDisable }) => $isDisable && "none"};
-  opacity: ${({ $isDisable }) => $isDisable && "0.25"};
-  ${flexLayout("center", "center")};
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  &:active {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-`;
+import { elementSize } from "@assets/styles/Mixin";
+import { COLORS } from "@assets/data/colors";
 
 export const MainButtonWrap = styled.button`
   height: 4rem;
@@ -53,18 +32,16 @@ export const AddBtnWrap = styled.button`
   left: 0;
   bottom: 0;
   right: 0;
-  border-top: 0.1rem solid;
+  border-top: 0.1rem solid ${COLORS.BORDER};
 
   &:hover {
-    background-color: #f2f3f7;
+    background-color: ${COLORS.HOVER};
   }
 
   background-color: white;
   ${elementSize("100%", "5rem")};
-  box-sizing: initial;
   text-align: center;
   align-content: center;
-  font-size: inherit;
   border-radius: 0 0 1rem 1rem;
 `;
 

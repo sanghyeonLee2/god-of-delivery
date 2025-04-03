@@ -5,14 +5,14 @@ import {
   CommonSectionWrap,
   Font,
   VerticalSpace,
-} from "../../../assets/styles/CommonStyle";
-import Loading from "components/common/Loading/Loading";
+} from "@assets/styles/CommonStyle";
+import Loading from "@components/common/Loading/Loading";
 import { useGetOrder } from "./hooks/useGetOrder";
-import OrderMenusDetail from "pages/user/OrderStatusPage/components/OrderMenusDetail";
-import OrderAmount from "pages/user/OrderStatusPage/components/OrderAmount";
-import UserPaymentInfo from "pages/user/OrderStatusPage/components/UserPaymentInfo";
-import { SubBtn } from "components/common/Button/main/MainButton";
-import { detailDate } from "../../../utils/transducer";
+import OrderMenusDetail from "@pages/user/OrderStatusPage/components/OrderMenusDetail";
+import OrderAmount from "@pages/user/OrderStatusPage/components/OrderAmount";
+import UserPaymentInfo from "@pages/user/OrderStatusPage/components/UserPaymentInfo";
+import { SubBtn } from "@components/common/Button/main/MainButtons";
+import { detailDate } from "@utils/transducer";
 
 function OrderStatusPage() {
   const { orderData, navigateOrders, isLoading } = useGetOrder();
@@ -41,7 +41,7 @@ function OrderStatusPage() {
       <UserPaymentInfo userPaymentInfo={orderData?.userPaymentInfo} />
       <VerticalSpace />
       <CommonSectionWrap>
-        <SubBtn text={"주문목록 보기"} height={"50px"} onClick={navigateOrders} />
+        <SubBtn text={"주문목록 보기"} height={"5rem"} onClick={navigateOrders} />
       </CommonSectionWrap>
     </CommonPageWrap>
   );

@@ -1,38 +1,42 @@
 import styled from "styled-components";
-import { innerPadding } from "../../../../assets/styles/CommonStyle";
-import { flexLayout } from "../../../../assets/styles/Mixin";
-import { COLORS } from "../../../../assets/styles/colors";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { flexLayout } from "@assets/styles/Mixin";
 
 export const ModalHeaderWrap = styled.div`
   position: relative;
-  height: 60px;
-  padding-top: 14px;
+  height: 6rem;
+  padding-top: 1.4rem;
   text-align: center;
 
-  svg {
+  button {
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 1.1rem;
+    right: 1.1rem;
   }
 `;
 export const MenuDetailPrologWrap = styled.div`
-  min-height: 300px;
-  border-bottom: 1px solid ${COLORS.BORDER};
+  min-height: 30rem;
 
   img {
     width: 100%;
   }
 `;
 export const MenuDetailOptionsWrap = styled.div`
-  border-bottom: 1px solid ${COLORS.BORDER};
-
   label {
     display: block;
   }
 `;
 export const OptionWrap = styled.div`
-  height: 45px;
+  label {
+    ${flexLayout("space-between", "center")};
+  }
+
+  input {
+    margin-right: 1rem;
+  }
+
+  height: 4.5rem;
   ${innerPadding()};
   ${flexLayout("space-between", "center")};
 `;
@@ -40,5 +44,5 @@ export const OrderPriceWrap = styled.div`
   background-color: lightgray;
   ${innerPadding()};
   ${flexLayout("space-between")};
-  height: 55px;
+  height: 5.5rem;
 `;

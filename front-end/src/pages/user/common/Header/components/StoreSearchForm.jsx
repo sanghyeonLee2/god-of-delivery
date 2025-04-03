@@ -1,8 +1,8 @@
 import React from "react";
-import Input from "components/common/Input/Input";
+import Input from "@components/common/Input/Input";
 import { SearchInputForm } from "./StoreSearchForm.styles";
-import useGetStores from "pages/user/StoresPage/hooks/useGetStores";
-import IconBtn from "components/common/Button/icon/IconBtn";
+import useGetStores from "@pages/user/StoresPage/hooks/useGetStores";
+import IconBtn from "@components/common/Button/icon/IconBtn";
 import { CiSearch } from "react-icons/ci";
 
 function StoreSearchForm() {

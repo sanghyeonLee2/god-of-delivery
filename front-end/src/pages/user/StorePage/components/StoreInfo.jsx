@@ -1,6 +1,6 @@
 import React from "react";
-import { FixedTextInterval, Font, VerticalSpace } from "../../../../assets/styles/CommonStyle";
-import { TabWrap } from "../StorePageLayout";
+import { FixedTextInterval, Font, VerticalSpace } from "@assets/styles/CommonStyle";
+import { TabWrap } from "@pages/user/StorePage/StorePage.styles";
 
 function StoreInfo({ storeInfo }) {
   return (

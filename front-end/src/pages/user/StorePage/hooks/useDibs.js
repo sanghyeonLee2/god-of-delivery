@@ -1,18 +1,18 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authDeleteApi, authPostApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { showSuccess } from "../../../../utils/toasts";
+import { authDeleteApi, authPostApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { showSuccess } from "@utils/toasts";
 
 export const useDibs = (storeId) => {
   const queryClient = useQueryClient();
   return useMutation(
-    async (isDib) =>
+    async (isDib = true) =>
       isDib
         ? await authDeleteApi(API_URLS.DIB.DELETE(storeId))
         : await authPostApi(API_URLS.DIB.POST, { storeId }),
     {
-      onMutate: async ({ storeId }) => {
+      onMutate: async () => {
         const previousStoreData = queryClient.getQueryData(QUERY_KEYS.STORE_DETAIL(storeId));
         queryClient.setQueryData(QUERY_KEYS.STORE_DETAIL(storeId), (oldData) => {
           if (!oldData) return oldData;
@@ -33,7 +33,7 @@ export const useDibs = (storeId) => {
         return { previousStoreData };
       },
       onSuccess: async (res) => {
-        await queryClient.invalidateQueries(QUERY_KEYS.DIBS);
+        await queryClient.invalidateQueries(QUERY_KEYS.DIBS(1));
         if (res.data.message === "Success") {
           showSuccess("찜 목록에 추가 되었습니다.");
         }

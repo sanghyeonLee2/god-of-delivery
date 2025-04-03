@@ -1,15 +1,15 @@
 import React from "react";
-import * as S from "./HeaderLayout";
+import * as S from "./UserHeader.styles";
 import { Link } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isSignInState } from "../../../../recoil/user/atoms";
-import Logo from "components/common/Logo/Logo";
-import StoreSearchForm from "components/common/HomeBoard/components/StoreSearchForm";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
+import { isSignInState } from "@recoil/user/atoms";
+import Logo from "@components/common/Logo/Logo";
+import StoreSearchForm from "@pages/user/common/Header/components/StoreSearchForm";
+import { isModalOpenState } from "@recoil/flag/atoms";
 import { CiLogin } from "react-icons/ci";
-import useSearchBoxSlide from "pages/user/common/Header/hooks/useSearchBoxSlide";
-import HeaderSignUserRight from "pages/user/common/Header/components/HeaderSignUserRight";
-import { HeaderInner, HeaderOuter } from "../../../../assets/styles/CommonStyle";
+import useSearchBoxSlide from "@pages/user/common/Header/hooks/useSearchBoxSlide";
+import HeaderSignUserRight from "@pages/user/common/Header/components/HeaderSignUserRight";
+import { HeaderInner, HeaderOuter } from "@assets/styles/CommonStyle";
 
 export function UserHeader() {
   const isSignIn = useRecoilValue(isSignInState);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { elementSize, flexLayout } from "../../../assets/styles/Mixin";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
+import { elementSize, flexLayout } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
 
 export const MenuTab = styled.div`
   cursor: pointer;

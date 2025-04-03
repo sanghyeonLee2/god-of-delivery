@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authPatchApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
+import { authPatchApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { addressState } from "../../../../recoil/map/atoms";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
-import { showSuccess } from "../../../../utils/toasts";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { addressState } from "@recoil/map/atoms";
+import { isModalOpenState } from "@recoil/flag/atoms";
+import { showSuccess } from "@utils/toasts";
+import { QUERY_KEYS } from "@constants/queryKeys";
 
 export const usePatchAddress = () => {
   const queryClient = useQueryClient();

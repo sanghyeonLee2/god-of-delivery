@@ -1,20 +1,20 @@
 import React from "react";
-import IconBtn from "components/common/Button/icon/IconBtn";
+import IconBtn from "@components/common/Button/icon/IconBtn";
 import { CiLocationOn, CiSearch, CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import HeaderToggle from "pages/user/common/Header/components/HeaderToggle";
-import useToggleDisplay from "pages/user/common/Header/hooks/useToggleDisplay";
+import HeaderToggle from "@pages/user/common/Header/components/HeaderToggle";
+import useToggleDisplay from "@pages/user/common/Header/hooks/useToggleDisplay";
 import { useRecoilValue } from "recoil";
-import { userInfoState } from "../../../../../recoil/user/atoms";
+import { userAddressState } from "@recoil/user/atoms";
 import {
   HeaderRight,
   LocationBtnWrap,
-} from "pages/user/common/Header/components/HeaderSignUserRightLayout";
-import { Font } from "../../../../../assets/styles/CommonStyle";
+} from "@pages/user/common/Header/components/HeaderSignUserRight.styles";
+import { Font } from "@assets/styles/CommonStyle";
 
 function HeaderSignUserRight({ setIsModalOpen, setIsSearchOpen, searchBtnRef }) {
   const [menuRef, showMenu, hideMenu] = useToggleDisplay();
-  const { address } = useRecoilValue(userInfoState);
+  const address = useRecoilValue(userAddressState);
 
   return (
     <HeaderRight>
@@ -33,7 +33,7 @@ function HeaderSignUserRight({ setIsModalOpen, setIsSearchOpen, searchBtnRef }) 
           <Font size={"small"}>{address}</Font>
         </div>
       </LocationBtnWrap>
-      <Link to={"/cart"}>
+      <Link to={"cart"}>
         <CiShoppingCart size={33} />
       </Link>
       <HeaderToggle />

@@ -1,13 +1,13 @@
 import React from "react";
-import { CommonPageHeader, Font } from "../../../../assets/styles/CommonStyle";
-import LabeledTextInput from "components/common/Input/LabeledTextInput";
-import MenuOptions from "pages/owner/MenuManagementPages/components/MenuOptions";
-import RadioController from "pages/owner/MenuManagementPages/components/RadioController";
+import { CommonPageHeader, Font } from "@assets/styles/CommonStyle";
+import LabeledTextInput from "@components/common/Input/LabeledTextInput";
+import MenuOptions from "@pages/owner/MenuManagementPages/components/MenuOptions";
+import RadioController from "@pages/owner/MenuManagementPages/components/RadioController";
 import {
   CREATE_MENU_CATEGORY_FIELDS,
   CREATE_MENU_CATEGORY_RADIO_FIELDS,
-} from "../../../../constants/formFields";
-import CancelIconBtn from "components/common/Button/icon/CancelIconBtn";
+} from "@constants/formFields";
+import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
 
 function MenuCategory({ categoryIdx, control, register, removeCategory, minCategoryLength }) {
   return (

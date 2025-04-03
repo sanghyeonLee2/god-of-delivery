@@ -5,11 +5,11 @@ import {
   CommonPageHeader,
   FlexOnly,
   Font,
-} from "../../../../assets/styles/CommonStyle";
-import { MainBtn, SubBtn } from "components/common/Button/main/MainButton";
-import { useDeleteMenu } from "../hooks/useDeleteMenu";
-import Image from "components/common/Image/Image";
+} from "@assets/styles/CommonStyle";
+import { MainBtn, SubBtn } from "@components/common/Button/main/MainButtons";
+import Image from "@components/common/Image/Image";
 import { useNavigate } from "react-router-dom";
+import { useDeleteMenu } from "@pages/owner/MenuManagementPages/hooks/useDeleteMenu";
 
 function MenuInfoBox({ menu }) {
   const deleteMenu = useDeleteMenu();
@@ -18,7 +18,7 @@ function MenuInfoBox({ menu }) {
   return (
     <CommonBorder key={menu.menuId}>
       <FlexOnly justify={"center"}>
-        <Image src={menu.imgUrl} width={"180px"} height={"180px"} />
+        <Image src={menu.imgUrl} width={"18rem"} height={"18rem"} />
       </FlexOnly>
       <CommonPageHeader>
         <Font size={"large"}>카테고리</Font>
@@ -36,7 +36,7 @@ function MenuInfoBox({ menu }) {
         <Font size={"large"}>메뉴 설명</Font>
         <Font>{menu.description}</Font>
       </CommonPageHeader>
-      <ColumnFlex $height={"95px"}>
+      <ColumnFlex $height={"9.5rem"}>
         <SubBtn
           text={"메뉴정보 조회 / 수정"}
           type={"button"}

@@ -1,9 +1,9 @@
 import React from "react";
-import { LocationsInfoItem, LocationsInfoWrap } from "./SearchedLocationsLayout";
-import { Font } from "../../../../assets/styles/CommonStyle";
+import { LocationsInfoItem, LocationsInfoWrap } from "./SearchedLocations.styles";
+import { Font } from "@assets/styles/CommonStyle";
 import { useSetRecoilState } from "recoil";
-import { coordsState } from "../../../../recoil/map/atoms";
-import { onClickLocation } from "../../../../utils/clickHandler";
+import { coordsState } from "@recoil/map/atoms";
+import { onClickLocation } from "@utils/clickHandler";
 
 function SearchedLocations({ locationInfo, setLocationInfo }) {
   const setCoords = useSetRecoilState(coordsState);

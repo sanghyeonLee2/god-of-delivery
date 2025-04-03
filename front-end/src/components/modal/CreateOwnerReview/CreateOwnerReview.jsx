@@ -1,10 +1,10 @@
 import React from "react";
-import { ModalContentWrap } from "components/modal/ModalLayout";
-import { ModalReviewForm } from "components/modal/CreateReview/CreateReviewLayout";
-import { ModalBtn } from "components/common/Button/main/MainButton";
-import ReviewMain from "components/common/Review/components/ReviewMain";
-import Textarea from "components/common/TextArea/TextArea";
 import { useCreateOwnerReview } from "./hooks/useCreateOwnerReview";
+import { ModalReviewForm } from "@components/modal/CreateReview/CreateReview.styles";
+import { ModalContentWrap } from "@components/modal/Modal.styles";
+import Textarea from "@components/common/TextArea/TextArea";
+import ReviewMain from "@components/common/Review/components/ReviewMain";
+import { ModalBtn } from "@components/common/Button/main/MainButtons";
 
 function CreateOwnerReview({ modalData }) {
   const { register, createOwnerReview, isCreatingOwnerReview } = useCreateOwnerReview(

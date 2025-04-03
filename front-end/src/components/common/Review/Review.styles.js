@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
-import { flexLayout } from "../../../assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { flexLayout } from "@assets/styles/Mixin";
 
 export const OwnerReviewWrap = styled.form`
   margin: 1.5rem 0;

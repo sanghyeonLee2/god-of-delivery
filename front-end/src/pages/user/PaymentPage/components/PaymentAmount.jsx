@@ -1,7 +1,7 @@
 import React from "react";
-import { CommonBorder, FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
+import { CommonBorder, FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { useRecoilValue } from "recoil";
-import { paymentTipState } from "../../../../recoil/order/atom";
+import { paymentTipState } from "@recoil/order/atom";
 
 function PaymentAmount({ paymentInfo }) {
   const paymentTip = useRecoilValue(paymentTipState);

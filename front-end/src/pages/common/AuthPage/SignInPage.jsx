@@ -1,18 +1,20 @@
 import React from "react";
-import { AuthPageInner, AuthPageOuter } from "./AuthPageLayout";
+import { AuthPageInner, AuthPageOuter } from "./AuthPage.styles";
 import SignInForm from "./components/SignInForm";
-import { Font } from "../../../assets/styles/CommonStyle";
+import { Font } from "@assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
+import { Title } from "chart.js";
+import { COLORS } from "@assets/data/colors";
 
 function SignInPage() {
   return (
     <AuthPageOuter>
       <AuthPageInner>
-        <h1>로그인</h1>
+        <Title size={"x-large"} text={"로그인"} />
         <SignInForm />
         <div>
-          <Font color={"gray"}>계정이 없으신가요?</Font>
-          <Link to="/sign-up">
+          <Font color={COLORS.FONT.SUB}>계정이 없으신가요?</Font>
+          <Link to="/auth/sign-up">
             <Font>회원가입</Font>
           </Link>
         </div>

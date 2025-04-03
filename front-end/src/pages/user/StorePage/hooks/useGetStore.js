@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import { authGetApi } from "../../../../api/request";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { API_URLS } from "../../../../constants/urls";
-import useCustomParams from "../../../../common-hooks/useCustomParams";
+import { authGetApi } from "@api/request";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { API_URLS } from "@constants/urls";
+import useCustomParams from "@hooks/useCustomParams";
 
 export const useGetStore = () => {
   const { storeId } = useCustomParams();

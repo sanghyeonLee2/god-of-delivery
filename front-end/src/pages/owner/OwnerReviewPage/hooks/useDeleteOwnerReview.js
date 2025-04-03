@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authDeleteApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { showSuccess } from "../../../../utils/toasts";
-import useCustomQueryParams from "../../../../common-hooks/useCustomQueryParams";
-import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
+import { authDeleteApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { showSuccess } from "@utils/toasts";
+import useCustomQueryParams from "@hooks/useCustomQueryParams";
+import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
 
 export const useDeleteOwnerReview = () => {
   const queryClient = useQueryClient();

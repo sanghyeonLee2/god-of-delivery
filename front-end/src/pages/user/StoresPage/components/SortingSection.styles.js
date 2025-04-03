@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { flexLayout } from "../../../../assets/styles/Mixin";
-import { innerPadding } from "../../../../assets/styles/CommonStyle";
+import { flexLayout } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
 
 export const SortingOuter = styled.div`
   border-bottom: #ddd 0.1rem solid;

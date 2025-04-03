@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authDeleteApi, authPatchApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { showSuccess } from "../../../../utils/toasts";
-import useCustomQueryParams from "../../../../common-hooks/useCustomQueryParams";
-import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
+import { authDeleteApi, authPatchApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { showSuccess } from "@utils/toasts";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
+import useCustomQueryParams from "@hooks/useCustomQueryParams";
 
 const useMyReviewActions = (rating, content) => {
   const [updateMode, setUpdateMode] = useState(false);

@@ -1,5 +1,5 @@
-import { flexLayout } from "../../../../assets/styles/Mixin";
-import { COLORS } from "../../../../assets/styles/colors";
+import { flexLayout } from "@assets/styles/Mixin";
+import { COLORS } from "@assets/data/colors";
 import styled from "styled-components";
 
 export const PageButton = styled.button`

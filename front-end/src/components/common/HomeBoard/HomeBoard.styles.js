@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { elementSize, flexLayout } from "../../../assets/styles/Mixin";
-import { innerPadding } from "../../../assets/styles/CommonStyle";
+import { elementSize, flexLayout } from "@assets/styles/Mixin";
+import { innerPadding } from "@assets/styles/CommonStyle";
+import { COLORS } from "@assets/data/colors";
 
 export const HomeBoardOuter = styled.div`
   height: 19rem;
@@ -17,8 +18,8 @@ export const HomeBoardInner = styled.div`
 `;
 
 export const FullWidthLine = styled.hr`
-  ${elementSize("100vw", "0.1rem")};
-  background-color: #ddd;
+  ${elementSize("100vw", "0.09rem")};
+  background-color: ${COLORS.BORDER};
   border: none;
   margin: 0;
   position: relative;

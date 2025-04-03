@@ -1,18 +1,18 @@
 import { useQuery } from "react-query";
-import { authGetApi } from "../../../../api/request";
+import { authGetApi } from "@api/request";
 import { useNavigate } from "react-router-dom";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { API_URLS } from "../../../../constants/urls";
-import { pageCalculator } from "../../../../utils/calculator";
-import useCustomQueryParams from "../../../../common-hooks/useCustomQueryParams";
-import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { API_URLS } from "@constants/urls";
+import { pageCalculator } from "@utils/calculator";
+import useCustomQueryParams from "@hooks/useCustomQueryParams";
+import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
 
 export const useGetDibs = () => {
   const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
   const navigate = useNavigate();
 
   const { data, isLoading } = useQuery(
-    QUERY_KEYS.DIBS, // 쿼리 키를 고유하게 만들기 위해 url 포함
+    QUERY_KEYS.DIBS(page),
     () =>
       authGetApi(API_URLS.USER.DIBS, {
         params: {
@@ -30,7 +30,7 @@ export const useGetDibs = () => {
   );
   return {
     totalPages: data?.totalPages,
-    dibList: data?.dibList || [],
+    dibList: data?.dibList,
     page,
     setPage: (newPage) => navigate(`?page=${newPage}`),
     isLoading,

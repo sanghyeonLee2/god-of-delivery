@@ -1,4 +1,4 @@
-import { elementSize, flexLayout } from "../../../../assets/styles/Mixin";
+import { elementSize, flexLayout } from "@assets/styles/Mixin";
 import styled from "styled-components";
 
 export const StoreHeaderWrap = styled.div`

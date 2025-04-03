@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { flexLayout, setBorder } from "../../../../assets/styles/Mixin";
-import { COLORS } from "../../../../assets/styles/colors";
+import { flexLayout, setBorder } from "@assets/styles/Mixin";
+import { COLORS } from "@assets/data/colors";
 
 export const HeaderLeft = styled.div`
   ${flexLayout("space-between", "center")};
@@ -24,8 +24,8 @@ export const SearchSlide = styled.div`
   right: 0;
   height: ${({ $open }) => ($open ? "8rem" : "0rem")};
   overflow: hidden;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid ${({ $open }) => ($open ? COLORS.BORDER : "0rem")};
+  border-top: 1px solid ${({ $open }) => ($open ? COLORS.BORDER : "0rem")};
   transition: height 0.3s ease-in-out;
   z-index: 99;
   ${flexLayout("center", "center")};

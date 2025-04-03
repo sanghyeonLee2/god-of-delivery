@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { isSearchLoadingState } from "../../../../recoil/flag/atoms";
+import { isSearchLoadingState } from "@recoil/flag/atoms";
 
 const useSearchLocation = () => {
   const [locationInfo, setLocationInfo] = useState({ status: "", locations: [] });

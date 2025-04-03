@@ -1,8 +1,8 @@
 import React from "react";
-import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
+import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import { BarChart } from "components/charts/BarChart";
-import { TabWrap } from "pages/user/StorePage/StorePageLayout";
+import { BarChart } from "@components/charts/BarChart";
+import { TabWrap } from "@pages/user/StorePage/StorePage.styles";
 
 function StoreReviewHeader({ rating, reviewStat }) {
   return (
@@ -13,7 +13,7 @@ function StoreReviewHeader({ rating, reviewStat }) {
           <Font size={"x-large"} style={{ textAlign: "center" }}>
             {rating.toFixed(1)}
           </Font>
-          <StarRatings rating={rating} starRatedColor={"gold"} starDimension={"20px"} />
+          <StarRatings rating={rating} starRatedColor={"gold"} starDimension={"2rem"} />
         </div>
         <div style={{ width: "60%" }}>
           <BarChart reviewStat={reviewStat} />
