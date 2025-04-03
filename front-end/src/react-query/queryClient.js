@@ -10,7 +10,7 @@ const customQueryClient = new QueryClient({
       onError: (error) => errorHandler(error),
     },
     mutations: {
-      /*  onError: (error) => errorHandler(error),*/
+      onError: (error) => errorHandler(error),
     },
   },
 });

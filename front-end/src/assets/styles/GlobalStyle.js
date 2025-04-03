@@ -8,6 +8,11 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
 
+    .Toastify__toast {
+        font-size: 1.6rem;
+        font-family: ${FONT_STYLE.FAMILY}, sans-serif;
+    }
+
     * {
         margin: 0;
         box-sizing: border-box;
