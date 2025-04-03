@@ -5,5 +5,8 @@ export const COLORS = {
     MAIN: "#F5F5F5",
     THIRD: "#555555",
   },
-  BORDER: "#F6F6F6",
+  BORDER: "#ddd",
+  FONT: {
+    SUB: "gray",
+  },
 };
