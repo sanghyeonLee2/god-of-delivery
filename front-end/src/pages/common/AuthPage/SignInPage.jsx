@@ -1,15 +1,15 @@
 import React from "react";
-import { AuthPageInner, AuthPageOuter } from "./AuthPage.styles";
+import * as S from "./AuthPage.styles";
 import SignInForm from "./components/SignInForm";
 import { Font } from "@assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
-import { Title } from "chart.js";
 import { COLORS } from "@constants/style";
+import Title from "@components/common/Title/Title";
 
 function SignInPage() {
   return (
-    <AuthPageOuter>
-      <AuthPageInner>
+    <S.AuthPageOuter>
+      <S.AuthPageInner>
         <Title size={"x-large"} text={"로그인"} />
         <SignInForm />
         <div>
@@ -18,8 +18,8 @@ function SignInPage() {
             <Font>회원가입</Font>
           </Link>
         </div>
-      </AuthPageInner>
-    </AuthPageOuter>
+      </S.AuthPageInner>
+    </S.AuthPageOuter>
   );
 }
 
