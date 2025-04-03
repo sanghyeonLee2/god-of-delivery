@@ -9,11 +9,14 @@ export const useAuth = () => {
   const setUserInfo = useSetRecoilState(userInfoState);
   const isSignIn = useRecoilValue(isSignInState);
   const accessToken = localStorage.getItem("access-token");
+
   const { data, isLoading } = useQuery(QUERY_KEYS.ME, () => authGetApi(API_URLS.USER.ME), {
     enabled: isSignIn && !!accessToken,
     onSuccess: (res) => setUserInfo(res.data),
   });
-  return { isLoading, isSignIn, role: data?.data.role };
+  const isAuthorized = isSignIn && !!data?.data.role && !!accessToken;
+
+  return { isLoading, role: data?.data.role, isAuthorized };
 };
 
 export default useAuth;

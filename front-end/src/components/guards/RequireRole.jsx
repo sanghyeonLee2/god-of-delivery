@@ -4,12 +4,13 @@ import useAuth from "@hooks/useAuth";
 import Loading from "@components/common/Loading/Loading";
 
 const RequireRole = ({ allowedRole }) => {
-  const { isLoading, isSignIn, role } = useAuth();
-  if (!isSignIn || role === null) {
-    return <Navigate to="/auth/sign-in" replace />;
-  }
+  const { isLoading, role, isAuthorized } = useAuth();
+
   if (isLoading) {
     return <Loading />;
+  }
+  if (!isAuthorized) {
+    return <Navigate to="/auth/sign-in" replace />;
   }
   if (role === allowedRole) {
     return <Outlet />;
