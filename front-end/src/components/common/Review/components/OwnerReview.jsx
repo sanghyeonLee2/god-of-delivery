@@ -4,7 +4,7 @@ import { omittedDate } from "@utils/transducer";
 import { OwnerReviewWrap } from "@components/common/Review/Review.styles";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
 import { useDeleteOwnerReview } from "@pages/owner/OwnerReviewPage/hooks/useDeleteOwnerReview";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 function OwnerReview({ ownerReview, isOwner }) {
   const deleteOwnerReview = useDeleteOwnerReview();

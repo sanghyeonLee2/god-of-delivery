@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { elementSize, flexLayout } from "@assets/styles/Mixin";
 import { innerPadding } from "@assets/styles/CommonStyle";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 export const HomeBoardOuter = styled.div`
   height: 19rem;

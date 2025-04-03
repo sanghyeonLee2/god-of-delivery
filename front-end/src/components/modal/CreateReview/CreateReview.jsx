@@ -6,7 +6,7 @@ import { Font } from "@assets/styles/CommonStyle";
 import { ModalReviewForm } from "@components/modal/CreateReview/CreateReview.styles";
 import Textarea from "@components/common/TextArea/TextArea";
 import { ModalBtn } from "@components/common/Button/main/MainButtons";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 function CreateReview({ modalData }) {
   const { form, mutation } = useCreateReview({

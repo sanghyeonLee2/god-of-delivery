@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Font } from "@assets/styles/CommonStyle";
 import HomeBoard from "@components/common/HomeBoard/HomeBoard";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 import { HOME_MENUS } from "@constants/dummyData";
 
 function HomePage() {

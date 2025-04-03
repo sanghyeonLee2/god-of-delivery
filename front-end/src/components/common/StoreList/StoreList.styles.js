@@ -7,7 +7,7 @@ export const StoresOuter = styled.div`
     ${boxHover()}
     width: ${({ $isDibs }) => ($isDibs ? "100%" : "49.5%")};
 
-    @media (max-width: ${({ $isDibs }) => ($isDibs ? "0" : "88rem")}) {
+    @media (max-width: ${({ $isDibs }) => ($isDibs ? "0" : "48rem")}) {
       width: 100%;
     }
   }

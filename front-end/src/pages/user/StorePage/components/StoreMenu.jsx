@@ -1,17 +1,17 @@
 import React from "react";
 import * as S from "./StoreMenu.styles";
-import { DividingLine, Font, VerticalSpace } from "@assets/styles/CommonStyle";
+import { Font, VerticalSpace } from "@assets/styles/CommonStyle";
 import { useSetRecoilState } from "recoil";
 import { isModalOpenState } from "@recoil/flag/atoms";
 import Title from "@components/common/Title/Title";
 import { TabWrap } from "../StorePage.styles";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 function StoreMenu({ notice, menuInfo }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
   return (
-    <TabWrap style={{ paddingTop: "0.1rem" }}>
+    <TabWrap>
       <S.InfoBox>
         <Font>{notice}</Font>
       </S.InfoBox>
@@ -38,7 +38,6 @@ function StoreMenu({ notice, menuInfo }) {
                   </div>
                   <Image src={menu?.imgUrl} width={"14rem"} height={"14rem"} />
                 </S.MenuInfoInner>
-                <DividingLine />
               </div>
             ))}
             <VerticalSpace />

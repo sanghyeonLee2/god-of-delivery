@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 import { innerPadding } from "@assets/styles/CommonStyle";
 import { elementSize, flexLayout } from "@assets/styles/Mixin";
 

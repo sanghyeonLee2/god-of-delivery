@@ -1233,11 +1233,11 @@
   ],
   "dib-delete": [],
   "orders": {
-    "paymentMethod": "card",
+    "paymentMethod": "cash",
     "requests": "",
     "address": "주례로 47",
     "detailAddress": "",
-    "orderType": "takeOut",
+    "orderType": "delivery",
     "contact": ""
   },
   "my-orders": {

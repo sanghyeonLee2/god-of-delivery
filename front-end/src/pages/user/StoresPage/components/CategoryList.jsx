@@ -5,18 +5,20 @@ import { CATEGORIES } from "@constants/dummyData";
 
 function CategoryList({ categoryId, setCategory }) {
   return (
-    <S.CategoryListWrap>
-      {CATEGORIES.map((category) => (
-        <S.CategoryElement
-          key={category.id}
-          id={category.id}
-          $clicked={categoryId}
-          onClick={() => setCategory(category.id)}
-        >
-          <Font size={"small"}>{category.name}</Font>
-        </S.CategoryElement>
-      ))}
-    </S.CategoryListWrap>
+    <S.CategoryListOuter>
+      <S.CategoryListWrap>
+        {CATEGORIES.map((category) => (
+          <S.CategoryElement
+            key={category.id}
+            id={category.id}
+            $clicked={categoryId}
+            onClick={() => setCategory(category.id)}
+          >
+            <Font size={"small"}>{category.name}</Font>
+          </S.CategoryElement>
+        ))}
+      </S.CategoryListWrap>
+    </S.CategoryListOuter>
   );
 }
 

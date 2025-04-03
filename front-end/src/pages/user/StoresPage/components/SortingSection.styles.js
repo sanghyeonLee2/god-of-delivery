@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { flexLayout } from "@assets/styles/Mixin";
 import { innerPadding } from "@assets/styles/CommonStyle";
+import { COLORS } from "@constants/style";
 
 export const SortingOuter = styled.div`
-  border-bottom: #ddd 0.1rem solid;
+  border-bottom: ${COLORS.BORDER} 0.1rem solid;
   height: 6rem;
   z-index: 10;
   ${innerPadding()};
@@ -12,7 +13,6 @@ export const SortingOuter = styled.div`
 export const SortingInner = styled.div`
   ${flexLayout("flex-start", "center")};
   flex-direction: row-reverse;
-  height: 100%;
   gap: 1.2rem;
 
   select {
@@ -30,7 +30,7 @@ export const SortingInner = styled.div`
 
   select:nth-child(1) {
     @media (min-width: 88rem) {
-      flex: 0.49;
+      flex: 0.46;
     }
   }
 `;

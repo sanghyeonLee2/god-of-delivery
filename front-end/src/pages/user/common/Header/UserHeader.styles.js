@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { flexLayout, setBorder } from "@assets/styles/Mixin";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 export const HeaderLeft = styled.div`
   ${flexLayout("space-between", "center")};
@@ -17,7 +17,7 @@ export const HeaderLeft = styled.div`
 `;
 
 export const SearchSlide = styled.div`
-  background-color: white;
+  background-color: ${COLORS.BACKGROUND};
   position: absolute;
   top: 100%;
   left: 0;

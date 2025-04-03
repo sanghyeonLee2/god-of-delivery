@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { elementSize, flexLayout } from "../../../assets/styles/Mixin";
+import { elementSize, flexLayout } from "@assets/styles/Mixin";
 
 export const PaginationWrap = styled.div`
   height: 6rem;

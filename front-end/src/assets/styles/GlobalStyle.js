@@ -1,9 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import { COLORS } from "@constants/colors";
+import { COLORS, FONT_STYLE, SELECT_STYLE_URL } from "@constants/style";
 import { innerPadding } from "./CommonStyle";
 import { textHover } from "./Mixin";
-
-const FONT_FAMILY = "LINESeedKR";
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -27,20 +25,45 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @font-face {
-        font-family: ${FONT_FAMILY};
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+        font-family: ${FONT_STYLE.FAMILY};
+        src: url(${FONT_STYLE.FACE}) format('woff2');
         font-weight: 700;
         font-style: normal;
     }
 
-    option {
-        font-family: "LINESeedKR", sans-serif;
+    select, option {
+        font-family: ${FONT_STYLE.FAMILY}, sans-serif;
         font-size: 1.2rem;
     }
 
 
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        border: 0.1rem solid ${COLORS.BORDER};
+        padding: 1rem 4rem 1rem 1.2rem;
+        border-radius: 0.8rem;
+
+        background-image: url(${SELECT_STYLE_URL});
+        background-repeat: no-repeat;
+        background-position: right 1.2rem center;
+        background-size: 1.6rem;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: ${COLORS.HOVER};
+            box-shadow: 0 0 0 0.3rem ${COLORS.BORDER};
+        }
+    }
+
+
     input, textarea, button {
-        font-family: "LINESeedKR", sans-serif;
+        font-family: ${FONT_STYLE.FAMILY}, sans-serif;
         font-size: 1.5rem;
         letter-spacing: -0.03rem;
         line-height: 1.4;
@@ -87,7 +110,7 @@ export const GlobalStyle = createGlobalStyle`
 
     #root {
         position: relative;
-        background-color: #f9f9f9;
+        background-color: ${COLORS.BACKGROUND};
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -102,7 +125,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p, li, h1, strong, span, label, textarea {
-        font-family: ${FONT_FAMILY};
+        font-family: ${FONT_STYLE.FAMILY};
         line-height: 2;
     }
 `;

@@ -5,7 +5,7 @@ import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
 import Image from "@components/common/Image/Image";
 import { CartMenusWrap } from "@pages/user/CartPage/Cart.styles";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Font } from "@assets/styles/CommonStyle";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 function CartHeader({ storeName, deliveryTime }) {
   return (

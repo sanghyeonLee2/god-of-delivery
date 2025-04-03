@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { flexLayout, setBorder, textHover } from "./Mixin";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 export const outerPadding = () => css`
   padding: 1.5rem 2.5rem;

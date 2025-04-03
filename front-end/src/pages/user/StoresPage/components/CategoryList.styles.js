@@ -1,6 +1,6 @@
 import { flexLayout } from "@assets/styles/Mixin";
 import styled from "styled-components";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 export const CategoryListWrap = styled.ul`
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
@@ -10,12 +10,13 @@ export const CategoryListWrap = styled.ul`
   }
 
   border-bottom: 1px solid ${COLORS.BORDER};
-  padding: 0 1.5rem;
 
   flex-wrap: wrap;
   ${flexLayout("space-between", "center")}
 `;
-
+export const CategoryListOuter = styled.div`
+  padding: 0 1.5rem;
+`;
 export const CategoryElement = styled.li`
   border-right: 1px solid ${({ $clicked, id }) => ($clicked === id ? "#333333" : COLORS.BORDER)};
 

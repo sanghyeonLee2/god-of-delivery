@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { elementSize } from "@assets/styles/Mixin";
-import { COLORS } from "@constants/colors";
+import { COLORS } from "@constants/style";
 
 export const MainButtonWrap = styled.button`
   height: 4rem;
