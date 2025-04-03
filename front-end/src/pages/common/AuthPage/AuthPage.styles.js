@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { outerPadding } from "../../../assets/styles/CommonStyle";
+import { outerPadding } from "@assets/styles/CommonStyle";
 
 export const AuthPageOuter = styled.div`
   ${outerPadding()};
