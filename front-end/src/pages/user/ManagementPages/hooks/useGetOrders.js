@@ -24,8 +24,6 @@ const useGetOrders = () => {
         userOrderList: res.data.userOrderList,
         totalPages: pageCalculator(res.data.totalItems),
       }),
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
     }
   );
 

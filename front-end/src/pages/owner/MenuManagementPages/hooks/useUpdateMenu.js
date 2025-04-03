@@ -20,8 +20,6 @@ const useUpdateMenu = () => {
     QUERY_KEYS.OWNER_MENU,
     () => authGetApi(API_URLS.MENU.OWNER.BY_ID(menuId)),
     {
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
       onSuccess: ({ data }) => reset(data),
     }
   );

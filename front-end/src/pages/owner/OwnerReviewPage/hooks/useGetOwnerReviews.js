@@ -22,8 +22,6 @@ export const useGetOwnerReviews = () => {
           totalPages: pageCalculator(res.data.totalItems),
         };
       },
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
     }
   );
 

@@ -10,8 +10,6 @@ export const useCart = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { data, isLoading } = useQuery(QUERY_KEYS.CART, () => authGetApi(API_URLS.CART.BASE), {
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
     select: (res) => ({
       ...res.data,
       cartMenuTotalPrice: cartMenuTotalPrice(res.data?.CartItems),

@@ -1,14 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { authGetApi, authPostApi } from "../../../../api/request";
+import { authGetApi, authPostApi } from "@api/request";
 import { useForm } from "react-hook-form";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { QUERY_KEYS } from "@constants/queryKeys";
 import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
-import { setCartOptions } from "../../../../utils/defaultValues";
-import { API_URLS } from "../../../../constants/urls";
-import { showSuccess } from "../../../../utils/toasts";
+import { isModalOpenState } from "@recoil/flag/atoms";
+import { setCartOptions } from "@utils/defaultValues";
+import { API_URLS } from "@constants/urls";
+import { showSuccess } from "@utils/toasts";
 import { useEffect } from "react";
-import { extractSelectedOptionIds, menuDetailOptionsTrans } from "../../../../utils/transducer";
+import { extractSelectedOptionIds, menuDetailOptionsTrans } from "@utils/transducer";
 
 export const useMenuDetail = (modalData) => {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
@@ -18,8 +18,6 @@ export const useMenuDetail = (modalData) => {
     QUERY_KEYS.MENU_DETAIL(modalData.menuId),
     () => authGetApi(API_URLS.MENU.GET(modalData.menuId)),
     {
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
       select: (res) => ({
         ...res.data,
         MenuCategories: menuDetailOptionsTrans(res.data.MenuCategories),

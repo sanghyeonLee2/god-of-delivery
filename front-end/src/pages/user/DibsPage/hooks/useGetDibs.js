@@ -24,8 +24,6 @@ export const useGetDibs = () => {
         dibList: res.data?.dibList,
         totalPages: pageCalculator(res.data.totalItems),
       }),
-      staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
-      cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지
     }
   );
   return {

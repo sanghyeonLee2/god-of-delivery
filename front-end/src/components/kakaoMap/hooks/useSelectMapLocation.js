@@ -14,9 +14,6 @@ export const useSelectMapLocation = () => {
     });
   };
 
-  const { isLoading } = useQuery([QUERY_KEYS.LOCATION], () => authGetApi(API_URLS.USER.LOCATION), {
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
-  });
+  const { isLoading } = useQuery([QUERY_KEYS.LOCATION], () => authGetApi(API_URLS.USER.LOCATION));
   return { isLoading, coords, onClickCurrentLocation, setCoords };
 };

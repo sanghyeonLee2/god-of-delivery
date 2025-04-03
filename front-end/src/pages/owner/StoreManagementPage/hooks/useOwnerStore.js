@@ -7,13 +7,8 @@ import { QUERY_KEYS } from "@constants/queryKeys";
 
 export const useOwnerStore = () => {
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery(
-    QUERY_KEYS.OWNER_STORES,
-    () => authGetApi(API_URLS.STORE.OWNER_STORE),
-    {
-      staleTime: 1000 * 60 * 5, // 5분 동안 신선한 데이터 유지
-      cacheTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
-    }
+  const { data, isLoading } = useQuery(QUERY_KEYS.OWNER_STORES, () =>
+    authGetApi(API_URLS.STORE.OWNER_STORE)
   );
 
   const { register, getValues, handleSubmit } = useForm();

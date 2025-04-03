@@ -31,8 +31,6 @@ export const useGetStores = (isEnabled) => {
         storesData: res.data?.storeList,
         totalPages: pageCalculator(res.data.totalItems),
       }),
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
       enabled: isEnabled,
     }
   );

@@ -42,11 +42,11 @@ export const UserMenuWrap = styled.div`
 
   ul {
     li:not(:last-child) {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid ${COLORS.BORDER};
     }
 
     display: none;
-    border: 1px solid black;
+    border: 1px solid ${COLORS.BORDER};
     right: 0;
     width: 13rem;
     background-color: white;
@@ -65,7 +65,7 @@ export const UserMenuWrap = styled.div`
   }
 
   li:hover {
-    background-color: #f0f0f0;
+    background-color: ${COLORS.HOVER};
     color: ${COLORS.BTN.SUB};
   }
 `;

@@ -26,8 +26,6 @@ const useCartDetail = (modalData) => {
     QUERY_KEYS.CART_DETAIL(modalData.menuId),
     () => authGetApi(API_URLS.CART.DETAIL(modalData.menuId)),
     {
-      staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선한 상태로 유지됨
-      cacheTime: 1000 * 60 * 10, // 10분 동안 캐시에 유지,
       onSuccess: (res) =>
         reset({
           quantity: modalData.quantity,

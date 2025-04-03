@@ -19,8 +19,6 @@ export const useGetStoreReviews = () => {
         reviewStat: res.data?.reviewStat,
         totalPages: pageCalculator(res.data.totalItems),
       }),
-      staleTime: 1000 * 60 * 5,
-      cacheTime: 1000 * 60 * 10,
     }
   );
 

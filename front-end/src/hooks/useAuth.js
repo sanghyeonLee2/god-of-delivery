@@ -11,8 +11,6 @@ export const useAuth = () => {
   const accessToken = localStorage.getItem("access-token");
   const { data, isLoading } = useQuery(QUERY_KEYS.ME, () => authGetApi(API_URLS.USER.ME), {
     enabled: isSignIn && !!accessToken,
-    staleTime: 5 * 60 * 1000,
-    cacheTime: 30 * 60 * 1000,
     onSuccess: (res) => setUserInfo(res.data),
   });
   return { isLoading, isSignIn, role: data?.data.role };
