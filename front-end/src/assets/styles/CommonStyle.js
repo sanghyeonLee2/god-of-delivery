@@ -29,7 +29,7 @@ export const Font = styled.p`
 
 export const HeaderOuter = styled.header`
   border-bottom: 0.1rem solid ${COLORS.BORDER};
-  background-color: white;
+  background-color: ${COLORS.BACKGROUND};
   position: fixed;
   top: 0;
   left: 0;
@@ -124,14 +124,14 @@ export const CommonPageWrap = styled.ul`
 export const VerticalSpace = styled.div`
   height: 1rem;
   background-color: #f6f6f6;
-  margin: 0 -2.5rem;
+  margin: 0 -1.5rem;
 `;
 
 export const DividingLine = styled.div`
   flex: none;
-  height: 0.1rem;
-  margin: 0 -2.5rem;
-  background-color: COLORS.BORDER;
+  height: 0.08rem;
+  margin: 0 -1.5rem;
+  background-color: ${COLORS.BORDER};
 `;
 
 export const FixedTextInterval = styled.ul`
