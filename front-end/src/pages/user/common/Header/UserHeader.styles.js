@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { flexLayout, setBorder } from "@assets/styles/Mixin";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 export const HeaderLeft = styled.div`
   ${flexLayout("space-between", "center")};

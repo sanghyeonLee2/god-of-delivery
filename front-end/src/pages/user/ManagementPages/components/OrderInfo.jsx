@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isModalOpenState } from "@recoil/flag/atoms";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function OrderInfo({ order }) {
   const navigate = useNavigate();

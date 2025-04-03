@@ -3,7 +3,7 @@ import { MenuDetailPrologWrap } from "./ModalComponents.styles";
 import { Font } from "@assets/styles/CommonStyle";
 import { ModalTitleDescriptionWrap } from "@components/modal/Modal.styles";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function MenuDetailProlog({ name, description, imgUrl }) {
   return (

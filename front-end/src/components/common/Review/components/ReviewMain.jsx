@@ -3,7 +3,7 @@ import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { omittedDate } from "@utils/transducer";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import * as S from "@components/common/Review/components/ReviewMain.styles";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function ReviewMain({ review }) {
   return (

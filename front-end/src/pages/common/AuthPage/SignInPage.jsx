@@ -4,7 +4,7 @@ import SignInForm from "./components/SignInForm";
 import { Font } from "@assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
 import { Title } from "chart.js";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function SignInPage() {
   return (

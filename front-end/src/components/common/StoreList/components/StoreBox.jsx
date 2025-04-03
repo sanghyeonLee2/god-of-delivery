@@ -6,7 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import useDeleteMyDibs from "@components/common/StoreList/hooks/useDeleteMyDibs";
 import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function StoreBox({ storeInfo }) {
   const { deleteDibs, isDibsPage } = useDeleteMyDibs();

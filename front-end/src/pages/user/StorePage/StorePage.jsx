@@ -6,10 +6,10 @@ import StoreHeader from "./components/StoreHeader";
 import StoreOrderInfo from "./components/StoreOrderInfo";
 import StoreMenu from "./components/StoreMenu";
 import useTab from "../../../hooks/useTab";
-import { TAB_CONTENTS } from "@assets/data/tabData";
 import useGetStore from "./hooks/useGetStore";
 import Loading from "@components/common/Loading/Loading";
 import { MenuTab } from "@pages/user/StorePage/StorePage.styles";
+import { TAB_CONTENTS } from "@constants/formFields";
 
 function StorePage() {
   const { currentItem, setCurrentItem } = useTab(0, TAB_CONTENTS.STORE);

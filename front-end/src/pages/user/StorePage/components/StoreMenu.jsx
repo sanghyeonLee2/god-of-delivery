@@ -6,7 +6,7 @@ import { isModalOpenState } from "@recoil/flag/atoms";
 import Title from "@components/common/Title/Title";
 import { TabWrap } from "../StorePage.styles";
 import Image from "@components/common/Image/Image";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function StoreMenu({ notice, menuInfo }) {
   const setIsModalOpen = useSetRecoilState(isModalOpenState);

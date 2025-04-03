@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { boxHover } from "@assets/styles/Mixin";
 import { innerPadding } from "@assets/styles/CommonStyle";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 export const CategoryWrap = styled.ul`
   display: grid;

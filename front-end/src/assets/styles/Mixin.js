@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { COLORS } from "../data/colors";
+import { COLORS } from "@constants/colors";
 
 export const flexLayout = (justify = "flex-start", align = "flex-start") => css`
   display: flex;

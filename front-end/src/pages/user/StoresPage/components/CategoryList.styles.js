@@ -1,6 +1,6 @@
 import { flexLayout } from "@assets/styles/Mixin";
 import styled from "styled-components";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 export const CategoryListWrap = styled.ul`
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);

@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./StoreOrderInfo.styles";
-import { TAB_CONTENTS } from "@assets/data/tabData";
 import { FixedTextInterval, Font } from "@assets/styles/CommonStyle";
 import useTab from "@hooks/useTab";
+import { TAB_CONTENTS } from "@constants/formFields";
 
 function StoreOrderInfo({ deliveryInfo, takeoutInfo, address }) {
   const { currentItem, setCurrentItem } = useTab(0, TAB_CONTENTS.ORDER_INFO);

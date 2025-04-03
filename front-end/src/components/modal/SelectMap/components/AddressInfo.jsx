@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValueLoadable } from "recoil";
 import { Font } from "@assets/styles/CommonStyle";
 import { addressState } from "@recoil/map/atoms";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function AddressInfo() {
   const addressValue = useRecoilValueLoadable(addressState);

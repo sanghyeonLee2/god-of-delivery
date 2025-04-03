@@ -1,6 +1,6 @@
 import React from "react";
 import { CommonSectionWrap, DividingLine, Font } from "@assets/styles/CommonStyle";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function UserPaymentInfo({ userPaymentInfo }) {
   return (

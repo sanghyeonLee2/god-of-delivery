@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { COLORS } from "../data/colors";
+import { COLORS } from "@constants/colors";
 import { innerPadding } from "./CommonStyle";
 import { textHover } from "./Mixin";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { CommonSectionWrap, DividingLine, Font } from "@assets/styles/CommonStyle";
 import { orderTotalPrice } from "@utils/calculator";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function OrderMenusDetail({ menus }) {
   return (

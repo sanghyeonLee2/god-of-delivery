@@ -4,7 +4,7 @@ import { SubBtn } from "@components/common/Button/main/MainButtons";
 import { ErrorMsg, Font } from "@assets/styles/CommonStyle";
 import { Link } from "react-router-dom";
 import { useSignUp } from "@pages/common/AuthPage/hooks/useSignUp";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function SignUpForm() {
   const { register, handleSubmit, handleSignUp, isSigningUp, errors } = useSignUp();

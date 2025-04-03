@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./Footer.styles";
 import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import Logo from "@components/common/Logo/Logo";
-import { COLORS } from "@assets/data/colors";
+import { COLORS } from "@constants/colors";
 
 function Footer() {
   return (
