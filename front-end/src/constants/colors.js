@@ -9,4 +9,5 @@ export const COLORS = {
   FONT: {
     SUB: "gray",
   },
+  BACKGROUND: "#f9f9f9",
 };
