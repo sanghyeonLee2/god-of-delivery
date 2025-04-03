@@ -37,6 +37,12 @@
       "userPw": "123123123",
       "pwCheck": "123123123",
       "id": 9
+    },
+    {
+      "userId": "123",
+      "userPw": "123123123",
+      "pwCheck": "123123123",
+      "id": 10
     }
   ],
   "me": {
@@ -644,11 +650,9 @@
         "updatedAt": "2025-03-10T07:31:17.000Z",
         "cartId": 7,
         "menuId": 10,
-        "Menu": {
-          "name": "양꼬치",
-          "price": 10000,
-          "description": "치킨+카레"
-        },
+        "name": "양꼬치",
+        "price": 10000,
+        "description": "치킨+카레",
         "CartItemOptions": [
           {
             "price": 1000,
@@ -1596,20 +1600,17 @@
   ],
   "test": [],
   "get-dibs": {
-    "totalItems": 10,
-    "pageSize": 5,
-    "storeList": [
+    "totalItems": 3,
+    "dibList": [
       {
         "storeId": 29,
         "storeName": "맛있는김밥집",
         "storeCategory": "한식",
         "storeLogoImage": null,
         "operationHour": "10:00-21:00",
-        "dibs": 0,
         "rating": "0.0",
         "reviewCnt": 0,
-        "minDeliveryPrice": 15000,
-        "distance": 0.00526869521453601
+        "minDeliveryPrice": 15000
       },
       {
         "storeId": 30,
@@ -1617,11 +1618,9 @@
         "storeCategory": "일식/돈까스",
         "storeLogoImage": null,
         "operationHour": "11:00-22:00",
-        "dibs": 0,
-        "rating": "0.0",
+        "rating": "0.2",
         "reviewCnt": 0,
-        "minDeliveryPrice": 18000,
-        "distance": 0.00526869521453601
+        "minDeliveryPrice": 18000
       },
       {
         "storeId": 31,
@@ -1629,107 +1628,9 @@
         "storeCategory": "피자/양식",
         "storeLogoImage": null,
         "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
+        "rating": "0.1",
         "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 32,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 33,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 34,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 35,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 36,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 37,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 38,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
-      },
-      {
-        "storeId": 39,
-        "storeName": "브루클린버거",
-        "storeCategory": "피자/양식",
-        "storeLogoImage": null,
-        "operationHour": "10:30-23:00",
-        "dibs": 0,
-        "rating": "0.0",
-        "reviewCnt": 0,
-        "minDeliveryPrice": 20000,
-        "distance": 0.00526869521453601
+        "minDeliveryPrice": 20000
       }
     ]
   },
