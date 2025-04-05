@@ -23,10 +23,10 @@ function ReviewMain({ review }) {
         starSpacing={"0.2rem"}
       />
       <S.ReviewContentWrap>
-        <Font size={"small"}>{review.content}</Font>
+        <Font>{review.content}</Font>
       </S.ReviewContentWrap>
     </S.ReviewMainWrap>
   );
 }
 
-export default ReviewMain;
+export default React.memo(ReviewMain);
