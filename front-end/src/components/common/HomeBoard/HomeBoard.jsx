@@ -38,4 +38,4 @@ function HomeBoard() {
   );
 }
 
-export default HomeBoard;
+export default React.memo(HomeBoard);
