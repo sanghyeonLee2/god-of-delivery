@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { HOME_BOARD_KEYWORDS } from "@constants/formValues";
-
-const duplicatedList = [...HOME_BOARD_KEYWORDS, ...HOME_BOARD_KEYWORDS];
 
 function useAniTitle() {
   const [index, setIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
-  const fullLength = HOME_BOARD_KEYWORDS.length * 2;
+
+  const duplicatedList = useMemo(() => [...HOME_BOARD_KEYWORDS, ...HOME_BOARD_KEYWORDS], []);
+
+  const fullLength = duplicatedList.length;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => {
         if (prev + 1 === fullLength) {
-          setIsAnimating(false); // 애니메이션 끄고 리셋
+          setIsAnimating(false);
           return 0;
         }
-        setIsAnimating(true); // 애니메이션 켜기
+        setIsAnimating(true);
         return prev + 1;
       });
     }, 2500);
