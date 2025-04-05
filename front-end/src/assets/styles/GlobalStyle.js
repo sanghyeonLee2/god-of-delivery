@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import { COLORS, FONT_STYLE, SELECT_STYLE_URL } from "@constants/style";
-import { innerPadding } from "./CommonStyle";
 import { textHover } from "./Mixin";
 
 export const GlobalStyle = createGlobalStyle`
@@ -96,14 +95,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0 2rem;
         border-radius: 0.4rem;
     }
-
-    textarea {
-        resize: none;
-        width: 100%;
-        margin-bottom: 0.4rem;
-        ${innerPadding()};
-    }
-
+    
     li {
         list-style: none;
         cursor: pointer;
