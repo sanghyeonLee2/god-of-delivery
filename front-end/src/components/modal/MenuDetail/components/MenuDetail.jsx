@@ -69,4 +69,4 @@ function MenuDetail({ menuData, form, isFetching, isSubmitting, handleMutate, bt
   );
 }
 
-export default MenuDetail;
+export default React.memo(MenuDetail);
