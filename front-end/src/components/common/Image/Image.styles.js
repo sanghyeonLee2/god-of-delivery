@@ -9,7 +9,7 @@ export const ImageWrap = styled.div`
 `;
 
 export const ImageTag = styled.img`
+  object-fit: cover;
   border-radius: 10px;
   ${elementSize("100%", "100%")};
-  overflow: hidden;
 `;
