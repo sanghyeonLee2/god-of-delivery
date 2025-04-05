@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useWatch } from "react-hook-form";
 import { Font } from "@assets/styles/CommonStyle";
 import { OrderPriceWrap } from "./ModalComponents.styles";
@@ -9,12 +9,14 @@ function OrderPrice({ control, menuCategories, defaultPrice = 0 }) {
   const { quantity = 1, options = {} } = useWatch({ control });
   const selectedOptionIds = extractSelectedOptionIds(options);
 
-  const orderPrice = menuDetailTotalPrice({
-    quantity,
-    defaultPrice,
-    menuCategories,
-    selectedOptionIds,
-  });
+  const orderPrice = useMemo(() => {
+    return menuDetailTotalPrice({
+      quantity,
+      defaultPrice,
+      menuCategories,
+      selectedOptionIds,
+    });
+  }, [quantity, defaultPrice, menuCategories, selectedOptionIds]);
 
   return (
     <OrderPriceWrap>
