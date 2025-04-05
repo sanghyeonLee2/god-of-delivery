@@ -29,4 +29,4 @@ function CreateOwnerReview({ modalData }) {
   );
 }
 
-export default CreateOwnerReview;
+export default React.memo(CreateOwnerReview);

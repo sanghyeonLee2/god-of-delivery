@@ -33,4 +33,4 @@ function SelectMapModal() {
   );
 }
 
-export default SelectMapModal;
+export default React.memo(SelectMapModal);
