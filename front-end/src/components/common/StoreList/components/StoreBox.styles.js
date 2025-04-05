@@ -12,7 +12,7 @@ export const StoreOuter = styled.li`
 
   position: relative;
   ${innerPadding()};
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
   box-sizing: border-box;
   border: ${COLORS.BORDER} 1px solid;
   ${flexLayout("flex-start", "center")};
@@ -24,7 +24,7 @@ export const StoreInfoWrap = styled.div`
 
   svg {
     color: #ffd700;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
