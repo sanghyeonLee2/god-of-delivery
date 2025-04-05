@@ -8,26 +8,26 @@ export const HOME_MENUS = [
   {
     id: "fastFood",
     name: "패스트푸드",
-    url: "https://img.icons8.com/arcade/64/fast-food-drive-thru.png",
-    alt: "fast-food-drive-thru",
+    url: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-fast-food-lifestyles-flaticons-flat-flat-icons-2.png",
+    alt: "external-fast-food-lifestyles-flaticons-flat-flat-icons-2",
   },
   {
     id: "chicken",
     name: "치킨",
-    url: "https://img.icons8.com/external-others-zufarizal-robiyanto/64/external-fast-fast-food-filled-others-zufarizal-robiyanto-11.png",
-    alt: "external-fast-fast-food-filled-others-zufarizal-robiyanto-11",
+    url: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-fried-chicken-street-food-flaticons-flat-flat-icons.png",
+    alt: "external-fried-chicken-street-food-flaticons-flat-flat-icons",
   },
   {
     id: "western",
     name: "피자/양식",
-    url: "https://img.icons8.com/papercut/60/pizza.png",
-    alt: "pizza",
+    url: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-pizza-world-cuisine-flaticons-flat-flat-icons.png",
+    alt: "external-pizza-world-cuisine-flaticons-flat-flat-icons",
   },
   {
     id: "soup",
     name: "찜/탕",
-    url: "https://img.icons8.com/external-flat-icon-mangsaabguru-/64/external-chinese-chinese-foods-flat-flat-icon-mangsaabguru-.png",
-    alt: "external-chinese-chinese-foods-flat-flat-icon-mangsaabguru-",
+    url: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-goulash-world-cuisine-flaticons-flat-flat-icons.png",
+    alt: "external-goulash-world-cuisine-flaticons-flat-flat-icons",
   },
   {
     id: "chinese",
@@ -62,8 +62,8 @@ export const HOME_MENUS = [
   {
     id: "cafeAndDessert",
     name: "카페/디저트",
-    url: "https://img.icons8.com/external-justicon-flat-justicon/64/external-coffee-coffee-shop-justicon-flat-justicon-2.png",
-    alt: "external-coffee-coffee-shop-justicon-flat-justicon-2",
+    url: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-coffee-cup-coffee-flaticons-flat-flat-icons-2.png",
+    alt: "external-coffee-cup-coffee-flaticons-flat-flat-icons-2",
   },
   {
     id: "convenienceStoreAndMart",
