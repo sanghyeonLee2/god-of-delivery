@@ -794,9 +794,82 @@
     ]
   },
   "reviews": {
-    "content": "asd",
-    "reviewId": 13,
-    "ownerId": "me"
+    "totalItems": 6,
+    "reviewStat": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "reviewList": [
+      {
+        "reviewId": 4,
+        "rating": 4,
+        "content": "맛있었어요! 양도 많고 좋아요.",
+        "img": "image1.jpg",
+        "createdAt": "2025-02-21T10:55:46.000Z",
+        "updatedAt": "2025-02-21T10:55:46.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123",
+        "owner": {
+          "id": 1,
+          "content": "감사합니다.",
+          "createdAt": "2025-02-21T10:55:46.000Z"
+        }
+      },
+      {
+        "reviewId": 7,
+        "rating": 3,
+        "content": "good",
+        "createdAt": "2025-02-25T19:28:04.000Z",
+        "updatedAt": "2025-02-25T19:28:06.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 8,
+        "rating": 2,
+        "content": "g",
+        "createdAt": "2025-02-25T19:28:06.000Z",
+        "updatedAt": "2025-02-25T19:28:07.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 9,
+        "rating": 1,
+        "content": "good",
+        "createdAt": "2025-02-25T19:28:07.000Z",
+        "updatedAt": "2025-02-25T19:28:08.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 10,
+        "rating": 5,
+        "content": "good",
+        "createdAt": "2025-02-25T19:28:09.000Z",
+        "updatedAt": "2025-02-25T19:28:09.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      },
+      {
+        "reviewId": 11,
+        "rating": 5,
+        "content": "dd",
+        "createdAt": "2025-02-27T17:24:20.000Z",
+        "updatedAt": "2025-02-27T17:24:21.000Z",
+        "menuId": 1,
+        "storeId": 29,
+        "userId": "user123"
+      }
+    ]
   },
   "review-post": [],
   "review-patch": [],
@@ -1229,15 +1302,23 @@
     {
       "storeId": 29,
       "id": 55
+    },
+    {
+      "storeId": 29,
+      "id": 56
+    },
+    {
+      "storeId": 29,
+      "id": 57
     }
   ],
   "dib-delete": [],
   "orders": {
-    "paymentMethod": "cash",
+    "paymentMethod": "card",
     "requests": "",
     "address": "주례로 47",
     "detailAddress": "",
-    "orderType": "delivery",
+    "orderType": "takeOut",
     "contact": ""
   },
   "my-orders": {
