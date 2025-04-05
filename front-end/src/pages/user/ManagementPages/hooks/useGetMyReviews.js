@@ -23,7 +23,7 @@ export const useGetMyReviews = () => {
   );
 
   return {
-    reviews: data?.reviews || [],
+    reviews: data?.reviews,
     totalPages: data?.totalPages,
     isLoading,
     page,

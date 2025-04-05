@@ -43,9 +43,7 @@ const useMyReviewActions = (rating, content) => {
       watch,
       setValue,
       control,
-      handleRatingChange: (newRating) => {
-        setValue("rating", newRating);
-      },
+      handleRatingChange: (newRating) => setValue("rating", newRating),
     },
     deleteReview,
     updateReview,

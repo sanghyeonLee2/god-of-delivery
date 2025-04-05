@@ -6,13 +6,15 @@ import IconBtn from "@components/common/Button/icon/IconBtn";
 import { CiSearch } from "react-icons/ci";
 
 function StoreSearchForm() {
-  const { setKeyword, searchForm } = useGetStores(false);
+  const {
+    searchForm: { handleSubmit, onSubmit, register, urlKeyword },
+  } = useGetStores(false);
   return (
-    <SearchInputForm onSubmit={searchForm.handleSubmit((data) => setKeyword(data.keyword))}>
+    <SearchInputForm onSubmit={handleSubmit(onSubmit)}>
       <Input
         type={"text"}
-        defaultValue={searchForm.urlKeyword}
-        register={searchForm.register("keyword")}
+        defaultValue={urlKeyword}
+        {...register("keyword")}
         placeholder={"음식점을 검색해 보세요"}
       />
       <IconBtn type={"submit"}>

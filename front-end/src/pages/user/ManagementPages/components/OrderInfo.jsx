@@ -3,14 +3,14 @@ import { CommonBorder, CommonPageHeader, FlexOnly, Font } from "@assets/styles/C
 import { omittedDate } from "@utils/transducer";
 import { MainBtn, SubBtn } from "@components/common/Button/main/MainButtons";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "@recoil/flag/atoms";
 import Image from "@components/common/Image/Image";
 import { COLORS } from "@constants/style";
+import useOpenModal from "@hooks/useOpenModal";
+import { MODAL_TYPES } from "@constants/modalTypes";
 
 function OrderInfo({ order }) {
   const navigate = useNavigate();
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
+  const openModal = useOpenModal();
   return (
     <CommonBorder>
       <CommonPageHeader>
@@ -44,18 +44,14 @@ function OrderInfo({ order }) {
         <div style={{ marginTop: "1rem" }}>
           <SubBtn
             type={"button"}
-            text={"리뷰 작성하기"}
+            text={MODAL_TYPES.CREATE_REVIEW}
             height={"4rem"}
             onClick={() =>
-              setIsModalOpen({
-                modalType: "리뷰작성",
-                flag: true,
-                modalData: {
-                  storeName: order.storeName,
-                  orderId: order.orderId,
-                  storeId: order.storeId,
-                  representativeOrder: order.representativeOrder,
-                },
+              openModal(MODAL_TYPES.CREATE_REVIEW, {
+                storeName: order.storeName,
+                orderId: order.orderId,
+                storeId: order.storeId,
+                representativeOrder: order.representativeOrder,
               })
             }
           />
@@ -65,4 +61,4 @@ function OrderInfo({ order }) {
   );
 }
 
-export default OrderInfo;
+export default React.memo(OrderInfo);

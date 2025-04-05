@@ -1,7 +1,7 @@
 import React from "react";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import useCreateReview from "./hooks/useCreateReview";
-import { ModalContentWrap, ModalTitleDescriptionWrap } from "@components/modal/Modal.styles";
+import * as S from "@components/modal/Modal.styles";
 import { Font } from "@assets/styles/CommonStyle";
 import { ModalReviewForm } from "@components/modal/CreateReview/CreateReview.styles";
 import Textarea from "@components/common/TextArea/TextArea";
@@ -15,11 +15,11 @@ function CreateReview({ modalData }) {
   });
   return (
     <div>
-      <ModalContentWrap>
-        <ModalTitleDescriptionWrap>
+      <S.ModalContentWrap>
+        <S.ModalTitleDescriptionWrap>
           <Font size={"large"}>{modalData.storeName}</Font>
           <Font color={COLORS.FONT.SUB}>{modalData.representativeOrder}</Font>
-        </ModalTitleDescriptionWrap>
+        </S.ModalTitleDescriptionWrap>
         <ModalReviewForm>
           <StarRatings
             rating={form.watch("rating")}
@@ -36,7 +36,7 @@ function CreateReview({ modalData }) {
             style={{ width: "80%" }}
           />
         </ModalReviewForm>
-      </ModalContentWrap>
+      </S.ModalContentWrap>
       <ModalBtn
         text={"등록"}
         isLoading={mutation.isCreatingReview}
@@ -46,4 +46,4 @@ function CreateReview({ modalData }) {
   );
 }
 
-export default CreateReview;
+export default React.memo(CreateReview);

@@ -2,16 +2,15 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { authGetApi, authPostApi } from "@api/request";
 import { useForm } from "react-hook-form";
 import { QUERY_KEYS } from "@constants/queryKeys";
-import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "@recoil/flag/atoms";
 import { setCartOptions } from "@utils/defaultValues";
 import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
 import { useEffect } from "react";
 import { extractSelectedOptionIds, menuDetailOptionsTrans } from "@utils/transducer";
+import useCloseModal from "@hooks/useCloseModal";
 
 export const useMenuDetail = (modalData) => {
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
+  const closeModal = useCloseModal();
   const queryClient = useQueryClient();
   const { handleSubmit, control, register, reset, watch, getValues, setValue } = useForm();
   const { data, isLoading: isFetching } = useQuery(
@@ -46,7 +45,7 @@ export const useMenuDetail = (modalData) => {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
         showSuccess("장바구니에 담았습니다");
-        setIsModalOpen({ modalType: "", flag: false, modalData: null });
+        closeModal();
       },
     }
   );

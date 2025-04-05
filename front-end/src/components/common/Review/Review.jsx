@@ -1,14 +1,15 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isModalOpenState } from "@recoil/flag/atoms";
+import { useRecoilValue } from "recoil";
 import { userRoleState } from "@recoil/user/atoms";
 import ReviewMain from "@components/common/Review/components/ReviewMain";
 import ReviewAction from "@components/common/Review/components/ReviewAction";
 import OwnerReview from "@components/common/Review/components/OwnerReview";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
+import useOpenModal from "@hooks/useOpenModal";
+import { MODAL_TYPES } from "@constants/modalTypes";
 
 function Review({ review }) {
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
+  const openModal = useOpenModal();
   const role = useRecoilValue(userRoleState);
   return (
     <div>
@@ -19,14 +20,8 @@ function Review({ review }) {
       )}
       {role === "owner" && !review.CeoReview && (
         <MainBtn
-          text={"사장님 리뷰 작성"}
-          onClick={() =>
-            setIsModalOpen({
-              modalType: "사장님 리뷰 작성",
-              flag: true,
-              modalData: review,
-            })
-          }
+          text={MODAL_TYPES.OWNER_CREATE_REVIEW}
+          onClick={() => openModal(MODAL_TYPES.OWNER_CREATE_REVIEW, review)}
         />
       )}
     </div>

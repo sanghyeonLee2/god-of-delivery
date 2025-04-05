@@ -2,15 +2,14 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { authGetApi, authPutApi } from "@api/request";
 import { useForm } from "react-hook-form";
 import { QUERY_KEYS } from "@constants/queryKeys";
-import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "@recoil/flag/atoms";
 import { setCartOptions } from "@utils/defaultValues";
 import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
 import { extractSelectedOptionIds } from "@utils/transducer";
+import useCloseModal from "@hooks/useCloseModal";
 
 const useCartDetail = (modalData) => {
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
+  const closeModal = useCloseModal();
   const queryClient = useQueryClient();
   const cachedData = queryClient.getQueryData(QUERY_KEYS.CART_DETAIL(modalData.menuId));
   const { handleSubmit, control, register, reset, watch, getValues, setValue } = useForm({
@@ -45,7 +44,7 @@ const useCartDetail = (modalData) => {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.CART_DETAIL(modalData.menuId));
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
-        setIsModalOpen({ modalType: "", flag: false, modalData: null });
+        closeModal();
         showSuccess("수정 되었습니다");
       },
     }

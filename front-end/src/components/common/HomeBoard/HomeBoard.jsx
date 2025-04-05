@@ -10,7 +10,6 @@ const DEFAULT_ADDRESS = "해운대로 34";
 function HomeBoard() {
   const { index, isAnimating, duplicatedList } = useAniTitle();
   const address = useRecoilValue(userAddressState);
-
   return (
     <S.HomeBoardOuter>
       <S.HomeBoardInner>

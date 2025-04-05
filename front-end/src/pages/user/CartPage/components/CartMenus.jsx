@@ -1,14 +1,14 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
-import { isModalOpenState } from "@recoil/flag/atoms";
 import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
 import Image from "@components/common/Image/Image";
 import { CartMenusWrap } from "@pages/user/CartPage/Cart.styles";
 import { COLORS } from "@constants/style";
+import useOpenModal from "@hooks/useOpenModal";
+import { MODAL_TYPES } from "@constants/modalTypes";
 
 function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
+  const openModal = useOpenModal();
   return (
     <CartMenusWrap>
       {cartItems?.map((cartItem) => (
@@ -17,7 +17,7 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
             <div>
               <Font size={"large"}>{cartItem.name}</Font>
               <Font size={"small"} color={COLORS.FONT.SUB}>
-                {cartItem?.description}
+                {cartItem.description}
               </Font>
               <Font>{cartMenuTotalPrice.toLocaleString()}원</Font>
             </div>
@@ -31,13 +31,9 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
                 width={"11rem"}
                 type={"button"}
                 onClick={() =>
-                  setIsModalOpen({
-                    modalType: "메뉴수정",
-                    flag: true,
-                    modalData: {
-                      menuId: cartItem.menuId,
-                      quantity: cartItem.quantity,
-                    },
+                  openModal(MODAL_TYPES.UPDATE_MENU, {
+                    menuId: cartItem.menuId,
+                    quantity: cartItem.quantity,
                   })
                 }
               />

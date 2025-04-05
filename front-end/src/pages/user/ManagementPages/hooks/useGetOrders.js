@@ -27,18 +27,14 @@ const useGetOrders = () => {
     }
   );
 
-  const setPage = (newPage) => {
-    navigate(`?page=${newPage}`);
-  };
-
   return {
-    ordersData: data?.userOrderList || [],
+    ordersData: data?.userOrderList,
     totalPages: data?.totalPages,
     isError,
     status,
     isLoading,
     page,
-    setPage,
+    setPage: (newPage) => navigate(`?page=${newPage}`),
   };
 };
 export default useGetOrders;

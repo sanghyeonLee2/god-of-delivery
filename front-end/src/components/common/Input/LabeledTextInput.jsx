@@ -1,18 +1,20 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 import { CommonSectionWrap, Font } from "@assets/styles/CommonStyle";
-import { PaymentInputTextWrap } from "@pages/user/PaymentPage/PaymentPage.styles";
+import { LabeledTextInputTextWrap } from "@components/common/Input/LabeledTextInput.styles";
 
-const LabeledTextInput = forwardRef(function LabeledTextInput({ title, ...rest }, ref) {
-  return (
-    <CommonSectionWrap>
-      <label>
-        <Font>{title}</Font>
-        <PaymentInputTextWrap>
-          <input ref={ref} {...rest} />
-        </PaymentInputTextWrap>
-      </label>
-    </CommonSectionWrap>
-  );
-});
+const LabeledTextInput = memo(
+  forwardRef(function LabeledTextInput({ title, ...rest }, ref) {
+    return (
+      <CommonSectionWrap>
+        <label>
+          <Font>{title}</Font>
+          <LabeledTextInputTextWrap>
+            <input ref={ref} {...rest} />
+          </LabeledTextInputTextWrap>
+        </label>
+      </CommonSectionWrap>
+    );
+  })
+);
 
 export default LabeledTextInput;

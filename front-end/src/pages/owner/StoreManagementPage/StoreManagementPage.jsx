@@ -16,7 +16,6 @@ function StoreManagementPage() {
   return (
     <CommonPageWrap>
       <Title text={"가게 정보 관리"} size={"x-large"} />
-
       <form onSubmit={handleSubmit}>
         <Font size={"large"}>배달 정보</Font>
         <Font>가게 사진</Font>

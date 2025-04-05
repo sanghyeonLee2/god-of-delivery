@@ -14,7 +14,6 @@ function ReviewUpdate({ review, form }) {
         name="rating"
         starHoverColor="gold"
         starDimension={"3rem"}
-        starSpacing={"2rem"}
       />
       <Textarea {...form.register("content")} defaultValue={review?.content} />
     </div>

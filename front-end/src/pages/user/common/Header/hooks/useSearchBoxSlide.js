@@ -9,24 +9,16 @@ const useSearchBoxSlide = () => {
     if (!isSearchOpen) return;
 
     const handleClickOutside = (e) => {
-      const clickedOutsideSearch =
-        searchSlideRef.current && !searchSlideRef.current.contains(e.target);
-      const clickedOutsideButton = searchBtnRef.current && !searchBtnRef.current.contains(e.target);
+      const isOutsideSearch = !searchSlideRef.current?.contains(e.target);
+      const isOutsideButton = !searchBtnRef.current?.contains(e.target);
 
-      if (clickedOutsideSearch && clickedOutsideButton) {
+      if (isOutsideSearch && isOutsideButton) {
         setIsSearchOpen(false);
       }
     };
 
-    const handleResize = () => {
-      if (window.innerWidth > 700) {
-        setIsSearchOpen(false);
-      }
-    };
-
-    const handleScroll = () => {
-      setIsSearchOpen(false);
-    };
+    const handleResize = () => window.innerWidth > 700 && setIsSearchOpen(false);
+    const handleScroll = () => setIsSearchOpen(false);
 
     document.addEventListener("mousedown", handleClickOutside);
     window.addEventListener("resize", handleResize);
@@ -38,6 +30,7 @@ const useSearchBoxSlide = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isSearchOpen]);
+
   return { searchSlideRef, searchBtnRef, isSearchOpen, setIsSearchOpen };
 };
 export default useSearchBoxSlide;

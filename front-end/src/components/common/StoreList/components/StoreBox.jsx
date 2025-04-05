@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./StoreBox.styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { IoIosStar } from "react-icons/io";
 import useDeleteMyDibs from "@components/common/StoreList/hooks/useDeleteMyDibs";
@@ -11,8 +11,9 @@ import { COLORS } from "@constants/style";
 function StoreBox({ storeInfo }) {
   const { deleteDibs, isDibsPage } = useDeleteMyDibs();
   const navigate = useNavigate();
+  const { categoryId } = useParams();
   return (
-    <S.StoreOuter onClick={() => navigate(`${storeInfo?.storeId}`)}>
+    <S.StoreOuter onClick={() => navigate(`/stores/${categoryId || "all"}/${storeInfo?.storeId}`)}>
       <Image src={storeInfo} width={"9.5rem"} height={"9.5rem"} />
       <S.StoreInfoWrap>
         <Font size={"large"}>{storeInfo?.storeName}</Font>
@@ -48,4 +49,4 @@ function StoreBox({ storeInfo }) {
   );
 }
 
-export default StoreBox;
+export default React.memo(StoreBox);
