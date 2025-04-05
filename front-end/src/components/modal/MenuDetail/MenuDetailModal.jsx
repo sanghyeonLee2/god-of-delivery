@@ -17,4 +17,4 @@ function MenuDetailModal({ modalData }) {
   );
 }
 
-export default MenuDetailModal;
+export default React.memo(MenuDetailModal);
