@@ -1,4 +1,13 @@
-const { Store, Cart, CartItem, CartItemOption, Menu, MenuCategory, MenuOption, sequelize } = require("../models");
+const {
+  Store,
+  Cart,
+  CartItem,
+  CartItemOption,
+  Menu,
+  MenuCategory,
+  MenuOption,
+  sequelize,
+} = require("../models");
 
 exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
   let cart = await Cart.findOne({
@@ -6,7 +15,11 @@ exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
   });
   if (cart) {
     if (cart.storeId !== storeId) {
-      throw new Error("한 장바구니에는 한 가게의 상품만 담을 수 있습니다.");
+      const err = new Error(
+        "한 장바구니에는 한 가게의 상품만 담을 수 있습니다.",
+      );
+      err.status = 422; // Conflict 상태 코드 설정
+      throw err;
     }
   } else {
     cart = await Cart.create({
@@ -71,7 +84,7 @@ exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
 exports.findCartDataByUserId = async (userId) => {
   const myCartData = await Cart.findOne({
     where: { userId },
-    attributes: ["cartId", "storeId", "userId"], // Cart 테이블의 필요한 컬럼만 선택
+    attributes: ["cartId", "storeId", "userId"],
     include: [
       {
         model: Store,
@@ -79,19 +92,26 @@ exports.findCartDataByUserId = async (userId) => {
       },
       {
         model: CartItem,
-        attributes: ["cartItemId", "quantity", "cartId", "menuId"], // CartItem 테이블의 필요한 컬럼 선택
+        attributes: ["cartItemId", "quantity", "cartId", "menuId"],
         include: [
           {
             model: Menu,
-            attributes: ["name", "price", "description"], // Menu 테이블의 필요한 속성
+            attributes: ["name", "price", "description"],
           },
           {
             model: CartItemOption,
-            attributes: ["cartItemOptionId", "cartItemId"], // CartItemOption의 필요한 속성
+            attributes: ["cartItemOptionId", "cartItemId"],
             include: [
               {
                 model: MenuOption,
-                attributes: ["menuOptionId", "content", "price", "menuCategoryId"], // MenuOption의 필요한 속성
+                attributes: [
+                  "menuOptionId",
+                  "content",
+                  "price",
+                  "menuCategoryId",
+                  "createdAt",
+                  "updatedAt",
+                ],
               },
             ],
           },
@@ -100,17 +120,24 @@ exports.findCartDataByUserId = async (userId) => {
     ],
   });
 
-  if (!myCartData) return null;
+  if (!myCartData) {
+    return {
+      cartId: null,
+      storeId: null,
+      userId: userId,
+      Store: null,
+      CartItems: [],
+    };
+  }
 
-  // ✅ 데이터 변환: attributes와 map을 활용하여 원하는 형태로 가공
   const formattedCartData = {
-    ...myCartData.get(), // Sequelize 객체에서 JSON 변환
+    ...myCartData.get(),
     CartItems: myCartData.CartItems.map((cartItem) => ({
       ...cartItem.get(),
-      name: cartItem.Menu?.name || null, // Menu 데이터를 평탄화
+      name: cartItem.Menu?.name || null,
       price: cartItem.Menu?.price || null,
       description: cartItem.Menu?.description || null,
-      Menu: undefined, // 기존 Menu 객체 제거
+      Menu: undefined,
       CartItemOptions: cartItem.CartItemOptions.map((option) => ({
         ...option.get(),
         menuOptionId: option.MenuOption?.menuOptionId || null,
@@ -119,7 +146,7 @@ exports.findCartDataByUserId = async (userId) => {
         createdAt: option.MenuOption?.createdAt || null,
         updatedAt: option.MenuOption?.updatedAt || null,
         menuCategoryId: option.MenuOption?.menuCategoryId || null,
-        MenuOption: undefined, // 기존 MenuOption 객체 제거
+        MenuOption: undefined,
       })),
     })),
   };
@@ -152,7 +179,8 @@ exports.updateCartItemOption = async (
 ) => {
   await CartItem.update(
     {
-      quantity,options
+      quantity,
+      options,
     },
     { where: { cartItemId } },
   );
@@ -165,26 +193,33 @@ exports.updateCartItemOption = async (
 };
 
 exports.findMenuDetail = async ({ menuId }) => {
-    const t = await sequelize.transaction();
-    try{
-      const cartItem = await CartItem.findOne({where: {menuId}, include:[{model:CartItemOption}], transaction: t})
-      const selectedOptionIds = cartItem.CartItemOptions.reduce((acc, item) => {
-        acc.push(item.menuOptionId)
-        return acc
-      },[])
-      const menuData = await Menu.findOne({where:{menuId},include:[{model:MenuCategory, include:[{model:MenuOption}]}], transaction: t})
-      const plainMenuData = menuData.get({plain:true})
-      plainMenuData.MenuCategories.forEach(category => {
-        category.MenuOptions.forEach(option => {
-          if (selectedOptionIds.includes(option.menuOptionId)) {
-            option.hasMenu = true;
-          }
-        });
+  const t = await sequelize.transaction();
+  try {
+    const cartItem = await CartItem.findOne({
+      where: { menuId },
+      include: [{ model: CartItemOption }],
+      transaction: t,
+    });
+    const selectedOptionIds = cartItem.CartItemOptions.reduce((acc, item) => {
+      acc.push(item.menuOptionId);
+      return acc;
+    }, []);
+    const menuData = await Menu.findOne({
+      where: { menuId },
+      include: [{ model: MenuCategory, include: [{ model: MenuOption }] }],
+      transaction: t,
+    });
+    const plainMenuData = menuData.get({ plain: true });
+    plainMenuData.MenuCategories.forEach((category) => {
+      category.MenuOptions.forEach((option) => {
+        if (selectedOptionIds.includes(option.menuOptionId)) {
+          option.hasMenu = true;
+        }
       });
-      return plainMenuData
-    }
-    catch(err){
-      await t.rollback();
-      throw err;
-    }
-}
+    });
+    return plainMenuData;
+  } catch (err) {
+    await t.rollback();
+    throw err;
+  }
+};
