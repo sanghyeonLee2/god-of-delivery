@@ -32,9 +32,9 @@ export const errorHandler = (error) => {
       saveErrorToSession(status, "요청한 페이지를 찾을 수 없습니다.");
       return (window.location.href = "/error");
     case 409:
-      return error.config.url === "cart"
-        ? showError("한 가게만 장바구니에 담을 수 있습니다")
-        : showError("중복된 데이터입니다.");
+      return showError("중복된 데이터입니다.");
+    case 422:
+      return showError("한 가게만 장바구니에 담을 수 있습니다");
     default:
       saveErrorToSession(status, "알 수 없는 오류가 발생했습니다.");
       return (window.location.href = "/error");
