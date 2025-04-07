@@ -1,9 +1,9 @@
 import axios from "axios";
 import reissue from "./reissueApi";
-import { API_URLS } from "@constants/urls";
+import { NON_AUTH_URLS } from "@constants/urls";
 
-//const API_KEY = process.env.REACT_APP_API;
-const API_KEY = process.env.REACT_APP_JSON_SERVER;
+const API_KEY = process.env.REACT_APP_API;
+//const API_KEY = process.env.REACT_APP_JSON_SERVER;
 
 const axiosInstance = axios.create({
   baseURL: API_KEY,
@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  if (config.url === API_URLS.AUTH.REISSUE) {
+  if (NON_AUTH_URLS.includes(config.url)) {
     return config;
   }
 

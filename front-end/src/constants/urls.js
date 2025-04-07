@@ -57,3 +57,4 @@ export const API_URLS = {
     DELETE: (storeId) => `dibs/${storeId}`,
   },
 };
+export const NON_AUTH_URLS = [API_URLS.AUTH.SIGN_IN, API_URLS.AUTH.SIGN_UP, API_URLS.AUTH.REISSUE];
