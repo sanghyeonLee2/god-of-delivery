@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { COLORS } from "./colors";
+import { COLORS } from "@constants/style";
 
 export const flexLayout = (justify = "flex-start", align = "flex-start") => css`
   display: flex;
@@ -11,19 +11,19 @@ export const elementSize = (width = "auto", height = "auto") => css`
   width: ${width};
   height: ${height};
 `;
+
 export const setBorder = () => css`
-  border: 1px solid gray;
-  border-radius: 10px;
+  border: 0.1rem solid ${COLORS.BORDER};
+  border-radius: 1rem;
 `;
 
 export const boxHover = () => css`
   transition: all 0.2s ease;
-  transform: translateY(0);
   box-shadow: none;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-0.4rem);
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
   }
 `;
 

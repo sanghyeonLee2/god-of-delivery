@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  CommonSectionWrap,
-  DividingLine,
-  FlexOnly,
-  Font,
-} from "../../../../assets/styles/CommonStyle";
+import { CommonSectionWrap, DividingLine, FlexOnly, Font } from "@assets/styles/CommonStyle";
 
 function OrderAmount({ totalPrice, paymentMethod, tips }) {
   const menuPrice = (totalPrice - tips)?.toLocaleString();

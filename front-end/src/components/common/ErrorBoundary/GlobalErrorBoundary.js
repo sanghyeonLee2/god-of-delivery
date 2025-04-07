@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "components/common/ErrorBoundary/ErrorFallback";
-import Loading from "components/common/Loading/Loading";
+import ErrorFallback from "@components/common/ErrorBoundary/ErrorFallback";
+import Loading from "@components/common/Loading/Loading";
 
 function GlobalErrorBoundary({ children }) {
   return (

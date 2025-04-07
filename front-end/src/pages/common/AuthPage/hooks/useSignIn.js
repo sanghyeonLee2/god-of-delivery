@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "react-query";
-import { postApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
+import { postApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signInValid } from "../../../../validation/userSchema";
+import { signInValid } from "@validation/userSchema";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { isSignInState } from "../../../../recoil/user/atoms";
-import { showSuccess } from "../../../../utils/toasts";
+import { isSignInState } from "@recoil/user/atoms";
+import { showSuccess } from "@utils/toasts";
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
@@ -27,11 +27,15 @@ export const useSignIn = () => {
       onSuccess: (res) => {
         showSuccess("로그인에 성공 했습니다");
         queryClient.clear();
-        const { accessToken, refreshToken } = res.data;
+        const { accessToken, refreshToken, role = "user" } = res.data;
         localStorage.setItem("access-token", accessToken);
         localStorage.setItem("refresh-token", refreshToken);
         setSignIn(true);
-        navigate("/");
+
+        if (role === "user") {
+          return navigate("/", { replace: true });
+        }
+        return navigate("/owners/me", { replace: true });
       },
     }
   );

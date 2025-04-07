@@ -1,13 +1,10 @@
 import React from "react";
-import SelectForm from "components/common/Select/SelectForm";
-import {
-  CREATE_MENU_CATEGORY_SELECT_FIELDS,
-  CREATE_MENU_FIELDS,
-} from "../../../../constants/formFields";
-import LabeledTextInput from "components/common/Input/LabeledTextInput";
-import { CommonBorder } from "../../../../assets/styles/CommonStyle";
-import MenuCategory from "pages/owner/MenuManagementPages/components/MenuCategory";
-import { AddBtn, SubBtn } from "components/common/Button/main/MainButton";
+import SelectForm from "@components/common/Select/components/SelectForm";
+import { CREATE_MENU_CATEGORY_SELECT_FIELDS, CREATE_MENU_FIELDS } from "@constants/formFields";
+import LabeledTextInput from "@components/common/Input/LabeledTextInput";
+import { CommonBorder } from "@assets/styles/CommonStyle";
+import MenuCategory from "@pages/owner/MenuManagementPages/components/MenuCategory";
+import { AddBtn, SubBtn } from "@components/common/Button/main/MainButtons";
 
 function MenuForm({ form, onSubmit, isLoading, submitText = "저장하기" }) {
   return (
@@ -27,7 +24,7 @@ function MenuForm({ form, onSubmit, isLoading, submitText = "저장하기" }) {
           placeholder={field.placeholder}
         />
       ))}
-      <CommonBorder $hasAddBtn={true} style={{ padding: "15px 25px 65px 25px" }}>
+      <CommonBorder $hasAddBtn={true} style={{ padding: "1.5rem 2.5rem 6.5rem 2.5rem" }}>
         {form.categoryFields.map((field, categoryIdx) => (
           <MenuCategory
             minCategoryLength={form.categoryFields.length}

@@ -1,12 +1,12 @@
 import React from "react";
 import LocationSearchForm from "./components/LocationSearchForm";
 import AddressInfo from "./components/AddressInfo";
-import { ModalContentWrap } from "../ModalLayout";
-import KakaoMap from "../../kakaoMap/KakaoMap";
-import SelectMapSubmitBtn from "components/modal/SelectMap/components/SelectMapSubmitBtn";
+import SelectMapSubmitBtn from "@components/modal/SelectMap/components/SelectMapSubmitBtn";
 import { useKakaoLoader } from "react-kakao-maps-sdk";
-import Loading from "components/common/Loading/Loading";
-import { MapAddressWrap } from "components/modal/SelectMap/SelectMapModalLayout";
+import Loading from "@components/common/Loading/Loading";
+import { MapAddressWrap } from "@components/modal/SelectMap/SelectMapModal.styles";
+import { ModalContentWrap } from "@components/modal/Modal.styles";
+import KakaoMap from "@components/kakaoMap/KakaoMap";
 
 function SelectMapModal() {
   const [loading, error] = useKakaoLoader({
@@ -33,4 +33,4 @@ function SelectMapModal() {
   );
 }
 
-export default SelectMapModal;
+export default React.memo(SelectMapModal);

@@ -1,6 +1,6 @@
 import React from "react";
 import useCartDetail from "./hooks/useCartDetail";
-import MenuDetail from "components/modal/MenuDetail/components/MenuDetail";
+import MenuDetail from "@components/modal/MenuDetail/components/MenuDetail";
 
 function CartMenuDetailModal({ modalData }) {
   const { form, cartItemData, isFetching, isUpdatingCart, updateCart } = useCartDetail(modalData);

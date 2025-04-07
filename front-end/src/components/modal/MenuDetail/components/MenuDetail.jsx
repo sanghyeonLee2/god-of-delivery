@@ -1,13 +1,13 @@
 import React from "react";
-import { ModalContentWrap } from "../../ModalLayout";
-import { Font } from "../../../../assets/styles/CommonStyle";
-import { ModalBtn, TransBtn } from "../../../common/Button/main/MainButton";
+import { ModalContentWrap } from "../../Modal.styles";
+import { Font } from "@assets/styles/CommonStyle";
+import { ModalBtn, TransBtn } from "../../../common/Button/main/MainButtons";
 import MenuDetailOptions from "./MenuDetailOptions";
-import * as S from "../MenuDetailModalLayout";
 import MenuDetailProlog from "./MenuDetailProlog";
-import Loading from "../../../common/Loading/Loading";
-import OrderPrice from "components/modal/MenuDetail/components/OrderPrice";
-import { quantityOnChg } from "../../../../utils/clickHandler";
+import { quantityOnChg } from "@utils/clickHandler";
+import Loading from "@components/common/Loading/Loading";
+import * as S from "@components/modal/MenuDetail/MenuDetailModal.styles";
+import OrderPrice from "@components/modal/MenuDetail/components/OrderPrice";
 
 function MenuDetail({ menuData, form, isFetching, isSubmitting, handleMutate, btnText }) {
   if (isFetching) {
@@ -42,7 +42,7 @@ function MenuDetail({ menuData, form, isFetching, isSubmitting, handleMutate, bt
                   text={"-"}
                   onClick={() => quantityOnChg(-1, form.getValues, form.setValue, "quantity")}
                 />
-                <div>{form.watch("quantity")}</div>
+                <Font size={"small"}> {form.watch("quantity")}</Font>
                 <TransBtn
                   type={"button"}
                   text={"+"}
@@ -69,4 +69,4 @@ function MenuDetail({ menuData, form, isFetching, isSubmitting, handleMutate, bt
   );
 }
 
-export default MenuDetail;
+export default React.memo(MenuDetail);

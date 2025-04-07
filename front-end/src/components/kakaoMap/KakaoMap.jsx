@@ -1,10 +1,10 @@
 import React from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { MapWrap } from "./KakaoMapLayout";
+import { MapWrap } from "./KakaoMap.styles";
 import IconBtn from "../common/Button/icon/IconBtn";
-import Loading from "components/common/Loading/Loading";
 import { useSelectMapLocation } from "./hooks/useSelectMapLocation";
 import { MdOutlineLocationSearching } from "react-icons/md";
+import Loading from "@components/common/Loading/Loading";
 
 function KakaoMap() {
   const { isLoading, onClickCurrentLocation, coords, setCoords } = useSelectMapLocation();

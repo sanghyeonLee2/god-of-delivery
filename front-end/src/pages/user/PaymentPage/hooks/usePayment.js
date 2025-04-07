@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import { userInfoState } from "../../../../recoil/user/atoms";
+import { userAddressState } from "@recoil/user/atoms";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { authPostApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { showSuccess } from "../../../../utils/toasts";
+import { authPostApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { showSuccess } from "@utils/toasts";
 
 export const usePayment = () => {
   const location = useLocation();
-  const { address } = useRecoilValue(userInfoState);
+  const address = useRecoilValue(userAddressState);
   const navigate = useNavigate();
   const { handleSubmit, control, register } = useForm({
     defaultValues: {

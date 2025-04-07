@@ -1,8 +1,8 @@
 import React from "react";
-import { ModalBtn } from "components/common/Button/main/MainButton";
 import { usePatchAddress } from "../hooks/usePatchAddress";
 import { useRecoilValue } from "recoil";
-import { isSearchLoadingState } from "../../../../recoil/flag/atoms";
+import { isSearchLoadingState } from "@recoil/flag/atoms";
+import { ModalBtn } from "@components/common/Button/main/MainButtons";
 
 function SelectMapSubmitBtn() {
   const { handlePostAddress, isPostingAddress, addressesState } = usePatchAddress();

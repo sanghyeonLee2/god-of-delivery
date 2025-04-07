@@ -1,9 +1,9 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import Title from "components/common/Title/Title";
-import MenuForm from "pages/owner/MenuManagementPages/components/MenuForm";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import Title from "@components/common/Title/Title";
+import MenuForm from "@pages/owner/MenuManagementPages/components/MenuForm";
 import useUpdateMenu from "./hooks/useUpdateMenu";
-import Loading from "components/common/Loading/Loading";
+import Loading from "@components/common/Loading/Loading";
 
 function UpdateMenuPage() {
   const { updateMenu, isFetching, isUpdating, form } = useUpdateMenu();

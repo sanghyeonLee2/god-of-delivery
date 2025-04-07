@@ -1,8 +1,8 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 export const { persistAtom: signInPersist } = recoilPersist({
-  key: "is-sign-in",
+  key: "sign-in-persist",
 });
 export const isSignInState = atom({
   key: "isSignIn",
@@ -10,27 +10,39 @@ export const isSignInState = atom({
   effects_UNSTABLE: [signInPersist],
 });
 
-// 세션 스토리지에서 address 값을 불러오는 함수
-const getStoredAddress = () => {
+/*const getStoredAddress = () => {
   const storedAddress = sessionStorage.getItem("address");
   return storedAddress ? JSON.parse(storedAddress) : null;
-};
+};*/
 
-// userInfo 상태 정의
 export const userInfoState = atom({
   key: "userInfo",
   default: {
     userId: "",
-    address: getStoredAddress(), // address만 세션 스토리지에서 불러오기
-    role: "",
+    address: null,
+    role: null,
   },
-  effects: [
-    ({ onSet }) => {
-      onSet((newValue) => {
-        if (newValue?.address) {
-          sessionStorage.setItem("address", JSON.stringify(newValue.address)); // address 값만 세션 스토리지에 저장
-        }
-      });
-    },
-  ],
+  /* effects: [
+     ({ onSet }) => {
+       onSet((newValue) => {
+         if (newValue?.address) {
+           sessionStorage.setItem("address", JSON.stringify(newValue.address));
+         }
+       });
+     },
+   ],*/
+});
+export const userRoleState = selector({
+  key: "userRole",
+  get: ({ get }) => {
+    const userInfo = get(userInfoState);
+    return userInfo.role;
+  },
+});
+export const userAddressState = selector({
+  key: "userAddress",
+  get: ({ get }) => {
+    const userInfo = get(userInfoState);
+    return userInfo.address;
+  },
 });

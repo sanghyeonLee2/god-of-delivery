@@ -1,16 +1,16 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authPatchApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { addressState } from "../../../../recoil/map/atoms";
-import { isModalOpenState } from "../../../../recoil/flag/atoms";
-import { showSuccess } from "../../../../utils/toasts";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { authPatchApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { useRecoilValueLoadable } from "recoil";
+import { addressState } from "@recoil/map/atoms";
+import { showSuccess } from "@utils/toasts";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import useCloseModal from "@hooks/useCloseModal";
 
 export const usePatchAddress = () => {
   const queryClient = useQueryClient();
+  const closeModal = useCloseModal();
   const addresses = useRecoilValueLoadable(addressState);
-  const setIsModalOpen = useSetRecoilState(isModalOpenState);
   const { mutate: handlePostAddress, isLoading: isPostingAddress } = useMutation(
     () =>
       authPatchApi(API_URLS.USER.ADDRESS, {
@@ -22,7 +22,7 @@ export const usePatchAddress = () => {
       onSuccess: async () => {
         showSuccess("주소가 등록 되었습니다");
         await queryClient.invalidateQueries(QUERY_KEYS.ME);
-        setIsModalOpen({ flag: false, modalData: null, modalType: "" });
+        closeModal();
       },
     }
   );

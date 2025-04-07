@@ -1,15 +1,20 @@
 import React from "react";
-import * as S from "./StoreBoxLayout";
-import { useNavigate } from "react-router-dom";
-import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
+import * as S from "./StoreBox.styles";
+import { useNavigate, useParams } from "react-router-dom";
+import { FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { IoIosStar } from "react-icons/io";
-import Image from "components/common/Image/Image";
+import useDeleteMyDibs from "@components/common/StoreList/hooks/useDeleteMyDibs";
+import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
+import Image from "@components/common/Image/Image";
+import { COLORS } from "@constants/style";
 
 function StoreBox({ storeInfo }) {
+  const { deleteDibs, isDibsPage } = useDeleteMyDibs();
   const navigate = useNavigate();
+  const { categoryId } = useParams();
   return (
-    <S.StoreOuter onClick={() => navigate(`/stores/info/${storeInfo?.storeId}`)}>
-      <Image src={storeInfo} width={"95px"} height={"95px"} />
+    <S.StoreOuter onClick={() => navigate(`/stores/${categoryId || "all"}/${storeInfo?.storeId}`)}>
+      <Image src={storeInfo} width={"9.5rem"} height={"9.5rem"} />
       <S.StoreInfoWrap>
         <Font size={"large"}>{storeInfo?.storeName}</Font>
         <FlexOnly>
@@ -22,18 +27,26 @@ function StoreBox({ storeInfo }) {
           <Font size={"small"}>리뷰 {storeInfo?.reviewCnt}</Font>
         </FlexOnly>
         <FlexOnly justify={"space-between"}>
-          <Font size={"small"} color={"gray"}>
+          <Font size={"small"} color={COLORS.FONT.SUB}>
             {storeInfo?.minDeliveryPrice}원 이상 배달
           </Font>
           <S.OperationHourWrap>
-            <Font size={"small"} color={"gray"}>
+            <Font size={"small"} color={COLORS.FONT.SUB}>
               {storeInfo?.operationHour}
             </Font>
           </S.OperationHourWrap>
         </FlexOnly>
       </S.StoreInfoWrap>
+      {isDibsPage && (
+        <CancelIconBtn
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteDibs(storeInfo.storeId);
+          }}
+        />
+      )}
     </S.StoreOuter>
   );
 }
 
-export default StoreBox;
+export default React.memo(StoreBox);

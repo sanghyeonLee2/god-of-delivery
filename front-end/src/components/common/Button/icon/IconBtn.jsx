@@ -1,5 +1,5 @@
-import { IconBtnWrap } from "./IconBtnLayout";
 import React, { forwardRef } from "react";
+import { IconBtnWrap } from "@components/common/Button/icon/IconBtn.styles";
 
 const IconBtn = forwardRef(({ children, isDisable, ...rest }, ref) => {
   return (

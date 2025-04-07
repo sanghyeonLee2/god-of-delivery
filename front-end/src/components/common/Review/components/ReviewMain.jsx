@@ -1,18 +1,16 @@
 import React from "react";
-import { FlexOnly, Font } from "../../../../assets/styles/CommonStyle";
-import { omittedDate } from "../../../../utils/transducer";
+import { FlexOnly, Font } from "@assets/styles/CommonStyle";
+import { omittedDate } from "@utils/transducer";
 import StarRatings from "react-star-ratings/build/star-ratings";
-import {
-  ReviewContentWrap,
-  ReviewMainWrap,
-} from "components/common/Review/components/ReviewMainLayout";
+import * as S from "@components/common/Review/components/ReviewMain.styles";
+import { COLORS } from "@constants/style";
 
 function ReviewMain({ review }) {
   return (
-    <ReviewMainWrap>
+    <S.ReviewMainWrap>
       <FlexOnly justify={"space-between"}>
         <Font>{review?.userId}</Font>
-        <Font size={"small"} color={"gray"}>
+        <Font size={"small"} color={COLORS.FONT.SUB}>
           {omittedDate(review?.createdAt)}
         </Font>
       </FlexOnly>
@@ -21,14 +19,14 @@ function ReviewMain({ review }) {
         starRatedColor={"gold"}
         name="rating"
         starHoverColor="gold"
-        starDimension={"20px"}
-        starSpacing={"2px"}
+        starDimension={"2rem"}
+        starSpacing={"0.2rem"}
       />
-      <ReviewContentWrap>
-        <Font size={"small"}>{review.content}</Font>
-      </ReviewContentWrap>
-    </ReviewMainWrap>
+      <S.ReviewContentWrap>
+        <Font>{review.content}</Font>
+      </S.ReviewContentWrap>
+    </S.ReviewMainWrap>
   );
 }
 
-export default ReviewMain;
+export default React.memo(ReviewMain);

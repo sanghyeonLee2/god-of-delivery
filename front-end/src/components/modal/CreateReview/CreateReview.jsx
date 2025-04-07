@@ -1,11 +1,12 @@
 import React from "react";
-import { ModalBtn } from "components/common/Button/main/MainButton";
 import StarRatings from "react-star-ratings/build/star-ratings";
 import useCreateReview from "./hooks/useCreateReview";
-import Textarea from "components/common/TextArea/TextArea";
-import { ModalContentWrap, ModalTitleDescriptionWrap } from "components/modal/ModalLayout";
-import { ModalReviewForm } from "components/modal/CreateReview/CreateReviewLayout";
-import { Font } from "../../../assets/styles/CommonStyle";
+import * as S from "@components/modal/Modal.styles";
+import { Font } from "@assets/styles/CommonStyle";
+import { ModalReviewForm } from "@components/modal/CreateReview/CreateReview.styles";
+import Textarea from "@components/common/TextArea/TextArea";
+import { ModalBtn } from "@components/common/Button/main/MainButtons";
+import { COLORS } from "@constants/style";
 
 function CreateReview({ modalData }) {
   const { form, mutation } = useCreateReview({
@@ -14,11 +15,11 @@ function CreateReview({ modalData }) {
   });
   return (
     <div>
-      <ModalContentWrap>
-        <ModalTitleDescriptionWrap>
+      <S.ModalContentWrap>
+        <S.ModalTitleDescriptionWrap>
           <Font size={"large"}>{modalData.storeName}</Font>
-          <Font color={"gray"}>{modalData.representativeOrder}</Font>
-        </ModalTitleDescriptionWrap>
+          <Font color={COLORS.FONT.SUB}>{modalData.representativeOrder}</Font>
+        </S.ModalTitleDescriptionWrap>
         <ModalReviewForm>
           <StarRatings
             rating={form.watch("rating")}
@@ -26,8 +27,8 @@ function CreateReview({ modalData }) {
             starHoverColor="gold"
             changeRating={form.handleRatingChange}
             name="rating"
-            starDimension="30px"
-            starSpacing="5px"
+            starDimension="3rem"
+            starSpacing="0.5rem"
           />
           <Textarea
             {...form.register("content")}
@@ -35,7 +36,7 @@ function CreateReview({ modalData }) {
             style={{ width: "80%" }}
           />
         </ModalReviewForm>
-      </ModalContentWrap>
+      </S.ModalContentWrap>
       <ModalBtn
         text={"등록"}
         isLoading={mutation.isCreatingReview}
@@ -45,4 +46,4 @@ function CreateReview({ modalData }) {
   );
 }
 
-export default CreateReview;
+export default React.memo(CreateReview);

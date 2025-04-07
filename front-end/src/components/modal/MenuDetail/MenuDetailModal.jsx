@@ -1,5 +1,5 @@
 import React from "react";
-import MenuDetail from "components/modal/MenuDetail/components/MenuDetail";
+import MenuDetail from "@components/modal/MenuDetail/components/MenuDetail";
 import useMenuDetail from "./hooks/useMenuDetail";
 
 function MenuDetailModal({ modalData }) {
@@ -17,4 +17,4 @@ function MenuDetailModal({ modalData }) {
   );
 }
 
-export default MenuDetailModal;
+export default React.memo(MenuDetailModal);

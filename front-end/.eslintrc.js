@@ -40,7 +40,7 @@ module.exports = {
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
     "no-shadow": "off",
-    "no-unused-vars": "warn", // ❗ 경고만 표시
+    "no-unused-vars": "warn",
     "no-return-await": "off",
     "prefer-template": "off",
     "sort-imports": "off",
@@ -52,7 +52,6 @@ module.exports = {
     "consistent-return": "off",
     "no-else-return": "off",
 
-    // React-specific
     "react/prop-types": "off",
     "react/jsx-sort-props": "off",
     "react/jsx-curly-brace-presence": "off",
@@ -61,7 +60,6 @@ module.exports = {
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-boolean-value": "off",
 
-    // Accessibility (a11y)
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
@@ -71,8 +69,16 @@ module.exports = {
     "import/resolver": {
       alias: {
         map: [
-          ["components", "./src/components"],
-          ["pages", "./src/pages"],
+          ["@components", "./src/components"],
+          ["@pages", "./src/pages"],
+          ["@hooks", "./src/hooks"],
+          ["@api", "./src/api"],
+          ["@assets", "./src/assets"],
+          ["@utils", "./src/utils"],
+          ["@constants", "./src/constants"],
+          ["@recoil", "./src/recoil"],
+          ["@validation", "./src/validation"],
+          ["@react-query", "./src/react-query"],
         ],
         extensions: [".js", ".jsx", ".ts", ".tsx"],
       },

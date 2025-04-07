@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authDeleteApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { showSuccess } from "../../../../utils/toasts";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { authDeleteApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { showSuccess } from "@utils/toasts";
+import { QUERY_KEYS } from "@constants/queryKeys";
 
 export const useDeleteMenu = () => {
   const queryClient = useQueryClient();

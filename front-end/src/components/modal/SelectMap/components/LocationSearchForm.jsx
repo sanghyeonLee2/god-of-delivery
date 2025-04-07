@@ -1,10 +1,10 @@
 import React from "react";
 import SearchedLocations from "./SearchedLocations";
-import useSearchLocation from "../hooks/useSearchLocation";
-import LocationSearchInput from "components/modal/SelectMap/components/LocationSearchInput";
+import LocationSearchInput from "@components/modal/SelectMap/components/LocationSearchInput";
+import useSearchLocation from "@components/modal/SelectMap/hooks/useSearchLocation";
 
 function LocationSearchForm() {
-  const { locationInfo, setLocationInfo, register } = useSearchLocation();
+  const { locations, setLocations, register } = useSearchLocation();
   return (
     <div>
       <LocationSearchInput
@@ -12,8 +12,8 @@ function LocationSearchForm() {
         {...register("searchKeyword")}
         placeholder={"주소를 검색해 보세요"}
       />
-      {locationInfo.locations.length > 0 && (
-        <SearchedLocations locationInfo={locationInfo} setLocationInfo={setLocationInfo} />
+      {locations.length > 0 && (
+        <SearchedLocations locations={locations} setLocations={setLocations} />
       )}
     </div>
   );

@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "react-query";
-import { authPostApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
-import { showSuccess } from "../../../../utils/toasts";
+import { authPostApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { QUERY_KEYS } from "@constants/queryKeys";
+import { showSuccess } from "@utils/toasts";
 import { useFieldArray, useForm } from "react-hook-form";
-import { DEFAULT_CATEGORY, DEFAULT_VALUES } from "../../../../constants/formValues";
+import { DEFAULT_CATEGORY, DEFAULT_VALUES } from "@constants/formValues";
 import { useNavigate } from "react-router-dom";
 
 const useCreateMenu = () => {
@@ -29,7 +29,7 @@ const useCreateMenu = () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU);
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENUS);
         showSuccess("메뉴 정보를 추가 했습니다");
-        navigate("owners/me/menus");
+        navigate("/owners/me/menus");
       },
     }
   );

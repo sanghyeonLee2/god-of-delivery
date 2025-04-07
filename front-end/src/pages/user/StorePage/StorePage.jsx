@@ -1,22 +1,22 @@
 import React from "react";
-import { MenuTab, StoreOuter } from "./StorePageLayout";
-import { FlexOnly, Font, VerticalSpace } from "../../../assets/styles/CommonStyle";
+import { FlexOnly, Font, VerticalSpace } from "@assets/styles/CommonStyle";
 import StoreInfo from "./components/StoreInfo";
 import StoreReview from "./components/StoreReview";
 import StoreHeader from "./components/StoreHeader";
 import StoreOrderInfo from "./components/StoreOrderInfo";
 import StoreMenu from "./components/StoreMenu";
-import useTab from "../../../common-hooks/useTab";
-import Loading from "components/common/Loading/Loading";
-import { TAB_CONTENTS } from "../../../assets/data/tabData";
+import useTab from "../../../hooks/useTab";
 import useGetStore from "./hooks/useGetStore";
+import Loading from "@components/common/Loading/Loading";
+import { MenuTab } from "@pages/user/StorePage/StorePage.styles";
+import { TAB_CONTENTS } from "@constants/formFields";
 
 function StorePage() {
   const { currentItem, setCurrentItem } = useTab(0, TAB_CONTENTS.STORE);
   const { storeData, isLoading } = useGetStore();
 
   return (
-    <StoreOuter>
+    <div>
       {isLoading && <Loading />}
       <StoreHeader storeHeader={storeData?.storeHeader} storeId={storeData?.storeId} />
       <StoreOrderInfo
@@ -25,7 +25,7 @@ function StorePage() {
         takeoutInfo={storeData?.orderMethod.takeout}
       />
       <VerticalSpace />
-      <FlexOnly>
+      <FlexOnly width={"100%"}>
         {TAB_CONTENTS.STORE.map((content, idx) => (
           <MenuTab
             key={content.key}
@@ -43,7 +43,7 @@ function StorePage() {
       {currentItem.key === 2 && (
         <StoreReview rating={storeData.storeHeader.rating} storeId={storeData?.storeId} />
       )}
-    </StoreOuter>
+    </div>
   );
 }
 

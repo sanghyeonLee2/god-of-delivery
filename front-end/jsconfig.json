@@ -2,11 +2,35 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "components/*": [
+      "@components/*": [
         "components/*"
       ],
-      "pages/*": [
+      "@pages/*": [
         "pages/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@api/*": [
+        "api/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@recoil/*": [
+        "recoil/*"
+      ],
+      "@validation/*": [
+        "validation/*"
+      ],
+      "@react-query/*": [
+        "react-query/*"
       ]
     }
   },

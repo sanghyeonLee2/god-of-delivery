@@ -1,11 +1,11 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import Title from "components/common/Title/Title";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import Title from "@components/common/Title/Title";
 import { useGetOwnerStoreMenus } from "./hooks/useGetOwnerStoreMenus";
-import Loading from "components/common/Loading/Loading";
-import MenuInfoBox from "pages/owner/MenuManagementPages/components/MenuInfoBox";
-import Empty from "components/common/Empty/Empty";
-import { MainBtn } from "components/common/Button/main/MainButton";
+import Loading from "@components/common/Loading/Loading";
+import MenuInfoBox from "@pages/owner/MenuManagementPages/components/MenuInfoBox";
+import Empty from "@components/common/Empty/Empty";
+import { MainBtn } from "@components/common/Button/main/MainButtons";
 
 function MenuManagementPage() {
   const { menuData, isLoading, navigateCreateMenu } = useGetOwnerStoreMenus();

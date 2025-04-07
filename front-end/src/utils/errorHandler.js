@@ -1,5 +1,5 @@
 import { showError } from "./toasts";
-import { API_URLS } from "../constants/urls";
+import { API_URLS } from "@constants/urls";
 import { saveErrorToSession } from "./storage";
 
 export const errorHandler = (error) => {
@@ -15,7 +15,6 @@ export const errorHandler = (error) => {
     localStorage.clear();
     return showError("토큰이 유효하지 않습니다");
   }
-
   if (status >= 500) {
     saveErrorToSession(status, "서버 오류가 발생했습니다.");
     return (window.location.href = "/error");
@@ -34,6 +33,8 @@ export const errorHandler = (error) => {
       return (window.location.href = "/error");
     case 409:
       return showError("중복된 데이터입니다.");
+    case 422:
+      return showError("한 가게만 장바구니에 담을 수 있습니다");
     default:
       saveErrorToSession(status, "알 수 없는 오류가 발생했습니다.");
       return (window.location.href = "/error");

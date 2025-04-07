@@ -1,16 +1,14 @@
 const PAGE_SIZE = 10;
 
-export const pageCalculator = (totalItems) => Math.ceil(totalItems / PAGE_SIZE);
+export const pageCalculator = (totalItems) => Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
 
 export const cartMenuTotalPrice = (cartItems) =>
-  cartItems?.reduce(
-    (acc, cartItem) =>
-      cartItem.quantity *
-      (acc +
-        cartItem.Menu.price +
-        cartItem.CartItemOptions.reduce((acc, { price }) => acc + price, 0)),
-    0
-  );
+  cartItems?.reduce((acc, item) => {
+    const optionTotal = item.CartItemOptions.reduce((sum, opt) => sum + opt.price, 0);
+    const itemTotal = (item.price + optionTotal) * item.quantity;
+    return acc + itemTotal;
+  }, 0);
+
 export const menuDetailTotalPrice = ({
   quantity,
   defaultPrice,

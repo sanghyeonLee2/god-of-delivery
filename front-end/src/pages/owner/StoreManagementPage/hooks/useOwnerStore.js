@@ -1,21 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { authGetApi, authPutApi } from "../../../../api/request";
-import { API_URLS } from "../../../../constants/urls";
-import { showSuccess } from "../../../../utils/toasts";
-import { useNavigate } from "react-router-dom";
-import { QUERY_KEYS } from "../../../../constants/queryKeys";
+import { authGetApi, authPutApi } from "@api/request";
+import { API_URLS } from "@constants/urls";
+import { showSuccess } from "@utils/toasts";
+import { QUERY_KEYS } from "@constants/queryKeys";
 
 export const useOwnerStore = () => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery(
-    QUERY_KEYS.OWNER_STORES,
-    () => authGetApi(API_URLS.STORE.OWNER_STORE),
-    {
-      staleTime: 1000 * 60 * 5, // 5분 동안 신선한 데이터 유지
-      cacheTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
-    }
+  const { data, isLoading } = useQuery(QUERY_KEYS.OWNER_STORES, () =>
+    authGetApi(API_URLS.STORE.OWNER_STORE)
   );
 
   const { register, getValues, handleSubmit } = useForm();
@@ -26,7 +19,6 @@ export const useOwnerStore = () => {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_STORES);
         showSuccess("가게 정보를 수정했습니다");
-        navigate("/owners/me");
       },
     }
   );

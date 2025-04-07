@@ -1,12 +1,12 @@
 import React from "react";
-import LabeledTextInput from "components/common/Input/LabeledTextInput";
-import { SubBtn } from "components/common/Button/main/MainButton";
-import { CommonPageWrap, Font } from "../../../assets/styles/CommonStyle";
+import LabeledTextInput from "@components/common/Input/LabeledTextInput";
+import { SubBtn } from "@components/common/Button/main/MainButtons";
+import { CommonPageWrap, Font } from "@assets/styles/CommonStyle";
 import { useOwnerStore } from "./hooks/useOwnerStore";
-import Loading from "components/common/Loading/Loading";
-import Title from "components/common/Title/Title";
-import { OWNER_STORES_INFO, OWNER_STORES_INFO_DISABLE } from "../../../constants/formFields";
-import Image from "components/common/Image/Image";
+import Loading from "@components/common/Loading/Loading";
+import Title from "@components/common/Title/Title";
+import { OWNER_STORES_INFO, OWNER_STORES_INFO_DISABLE } from "@constants/formFields";
+import Image from "@components/common/Image/Image";
 
 function StoreManagementPage() {
   const { isUpdating, handleSubmit, isLoading, register, storeData } = useOwnerStore();
@@ -16,11 +16,10 @@ function StoreManagementPage() {
   return (
     <CommonPageWrap>
       <Title text={"가게 정보 관리"} size={"x-large"} />
-
       <form onSubmit={handleSubmit}>
         <Font size={"large"}>배달 정보</Font>
         <Font>가게 사진</Font>
-        <Image width={"150px"} height={"150px"} src={storeData.storeLogoImage} />
+        <Image width={"15rem"} height={"15rem"} src={storeData.storeLogoImage} />
         {OWNER_STORES_INFO_DISABLE.map((info) => (
           <LabeledTextInput
             key={info.key}
@@ -37,7 +36,7 @@ function StoreManagementPage() {
             {...register(info.name)}
           />
         ))}
-        <SubBtn text={"수정"} height={"50px"} isLoading={isUpdating} />
+        <SubBtn text={"수정"} height={"5rem"} isLoading={isUpdating} />
       </form>
     </CommonPageWrap>
   );

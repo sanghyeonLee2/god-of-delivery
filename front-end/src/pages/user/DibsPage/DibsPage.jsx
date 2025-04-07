@@ -1,18 +1,17 @@
 import React from "react";
-import { CommonPageWrap } from "../../../assets/styles/CommonStyle";
-import Title from "components/common/Title/Title";
+import { CommonPageWrap } from "@assets/styles/CommonStyle";
+import Title from "@components/common/Title/Title";
 import useGetDibs from "./hooks/useGetDibs";
-import Loading from "components/common/Loading/Loading";
-import Pagination from "components/common/Pagination/Pagination";
-import StoreList from "components/common/StoreList/StoreList";
-import Empty from "components/common/Empty/Empty";
+import Loading from "@components/common/Loading/Loading";
+import Pagination from "@components/common/Pagination/Pagination";
+import StoreList from "@components/common/StoreList/StoreList";
+import Empty from "@components/common/Empty/Empty";
 
 function DibsPage() {
   const { dibList, totalPages, setPage, page, isLoading } = useGetDibs();
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <CommonPageWrap>
       {dibList.length > 0 ? (
