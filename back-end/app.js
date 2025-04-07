@@ -35,9 +35,9 @@ app.set("views", path.join(__dirname, "views"));
 
 /* === ORM을 사용하여 DB연동 및 Model들을 DB에 동기화 === */
 sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
-    console.log("✅ DB 재초기화 및 테이블 재생성 완료");
+    console.log("DB 연결 성공");
   })
   .catch((err) => {
     console.error(err);
