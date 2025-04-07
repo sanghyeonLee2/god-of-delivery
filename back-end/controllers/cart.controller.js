@@ -7,8 +7,8 @@ exports.postAddCart = async (req, res) => {
       message: "Success",
     });
   } catch (err) {
-    res.status(500).send({
-      status: 500,
+    res.status(err.status || 500).send({
+      status: err.status || 500,
       message: err.message,
     });
   }
@@ -39,7 +39,7 @@ exports.getCartMenuDetail = async (req, res) => {
 };
 exports.updateCartItem = async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     await CartService.updateCartItemOption(req.params, req.body);
     res.status(200).send({
       status: 200,
