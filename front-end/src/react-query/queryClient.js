@@ -7,6 +7,7 @@ const customQueryClient = new QueryClient({
       staleTime: 5 * 60 * 1000,
       cacheTime: 30 * 60 * 1000,
       refetchOnWindowFocus: false,
+      retry: 1,
       onError: (error) => errorHandler(error),
     },
     mutations: {
