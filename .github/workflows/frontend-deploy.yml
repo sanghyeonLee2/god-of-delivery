@@ -27,6 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Create .env.production
+        run: |
+          echo "REACT_APP_API=${{ secrets.REACT_APP_API }}" >> .env.production
+          echo "REACT_APP_KAKAO_API=${{ secrets.REACT_APP_KAKAO_API }}" >> .env.production
+        shell: bash
+
       - name: Build project
         run: npm run build
 
