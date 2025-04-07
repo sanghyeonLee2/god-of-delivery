@@ -9,25 +9,27 @@ const UserService = require("../services/user.service");
 exports.getStoresList = async (req, res) => {
   try {
     const { latitude, longitude, address } = await UserService.findById(req);
-    if(!latitude || !longitude || !address ) {
+    if (!latitude || !longitude || !address) {
       return res.status(422).send({
-          message : "위도 경도 주소 값이 없습니다."
-      })
+        message: "위도 경도 주소 값이 없습니다.",
+      });
     }
+
     const storeList = await StoreService.getStores(
       latitude,
       longitude,
       req.params,
       req.query,
     );
-    if (storeList.count === null || storeList.count === 0) {
-      res.status(401).send({
-        status: 401,
-        message: "Not Found",
+
+    if (!storeList.storeList || storeList.storeList.length === 0) {
+      return res.status(200).send({
+        totalItems: 0,
+        storeList: [],
       });
-    } else {
-      res.status(200).send(storeList);
     }
+
+    res.status(200).send(storeList);
   } catch (err) {
     res.status(500).send({
       status: 500,
