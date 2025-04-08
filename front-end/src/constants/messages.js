@@ -21,6 +21,7 @@ export const SUCCESS_MESSAGES = {
   WISHLIST_ADDED: "찜 목록에 추가 되었습니다.",
   WISHLIST_DELETED: "찜 목록에서 삭제 되었습니다.",
 
+  MENU_ADDED: "메뉴 정보를 추가 했습니다.",
   MENU_UPDATED: "메뉴 정보를 수정 했습니다.",
   MENU_DELETED: "메뉴 정보를 삭제 했습니다.",
 
