@@ -18,7 +18,7 @@ exports.addCart = async (userId, { storeId, quantity, options, menuId }) => {
       const err = new Error(
         "한 장바구니에는 한 가게의 상품만 담을 수 있습니다.",
       );
-      err.status = 422; // Conflict 상태 코드 설정
+      err.status = 409; // Conflict 상태 코드 설정
       throw err;
     }
   } else {
