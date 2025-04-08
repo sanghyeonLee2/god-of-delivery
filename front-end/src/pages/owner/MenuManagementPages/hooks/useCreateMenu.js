@@ -6,6 +6,7 @@ import { showSuccess } from "@utils/toasts";
 import { useFieldArray, useForm } from "react-hook-form";
 import { DEFAULT_CATEGORY, DEFAULT_VALUES } from "@constants/formValues";
 import { useNavigate } from "react-router-dom";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 const useCreateMenu = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const useCreateMenu = () => {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU);
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENUS);
-        showSuccess("메뉴 정보를 추가 했습니다");
+        showSuccess(SUCCESS_MESSAGES.MENU_ADDED);
         navigate("/owners/me/menus");
       },
     }

@@ -7,6 +7,7 @@ import { QUERY_KEYS } from "@constants/queryKeys";
 import useCustomQueryParams from "@hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
 import useCloseModal from "@hooks/useCloseModal";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useCreateOwnerReview = (reviewId) => {
   const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
@@ -23,7 +24,7 @@ export const useCreateOwnerReview = (reviewId) => {
     () => authPostApi(API_URLS.REVIEW.OWNER.BASE, { ...getValues(), reviewId }),
     {
       onSuccess: async () => {
-        showSuccess("리뷰가 추가 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.REVIEW_ADDED);
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_STORE_REVIEWS(page));
         closeModal();
       },

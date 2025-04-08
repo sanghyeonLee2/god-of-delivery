@@ -7,6 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { DEFAULT_CATEGORY } from "@constants/formValues";
 import { useNavigate } from "react-router-dom";
 import useCustomParams from "@hooks/useCustomParams";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 const useUpdateMenu = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const useUpdateMenu = () => {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU);
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENUS);
-        showSuccess("메뉴 정보를 수정 했습니다");
+        showSuccess(SUCCESS_MESSAGES.MENU_UPDATED);
         navigate("/owners/me/menus");
       },
     }

@@ -6,6 +6,7 @@ import { addressState } from "@recoil/map/atoms";
 import { showSuccess } from "@utils/toasts";
 import { QUERY_KEYS } from "@constants/queryKeys";
 import useCloseModal from "@hooks/useCloseModal";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const usePatchAddress = () => {
   const queryClient = useQueryClient();
@@ -20,7 +21,7 @@ export const usePatchAddress = () => {
       }),
     {
       onSuccess: async () => {
-        showSuccess("주소가 등록 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.ADDRESS_REGISTERED);
         await queryClient.invalidateQueries(QUERY_KEYS.ME);
         closeModal();
       },

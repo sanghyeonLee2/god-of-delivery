@@ -7,6 +7,7 @@ import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
 import { extractSelectedOptionIds } from "@utils/transducer";
 import useCloseModal from "@hooks/useCloseModal";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 const useCartDetail = (modalData) => {
   const closeModal = useCloseModal();
@@ -45,7 +46,7 @@ const useCartDetail = (modalData) => {
         await queryClient.invalidateQueries(QUERY_KEYS.CART_DETAIL(modalData.menuId));
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
         closeModal();
-        showSuccess("수정 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.CART_UPDATED);
       },
     }
   );

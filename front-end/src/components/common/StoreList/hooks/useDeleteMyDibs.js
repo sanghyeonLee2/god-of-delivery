@@ -6,6 +6,7 @@ import useCustomQueryParams from "../../../../hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
 import { showSuccess } from "@utils/toasts";
 import { useLocation } from "react-router-dom";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 const useDeleteMyDibs = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const useDeleteMyDibs = () => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.DIBS(page));
-        showSuccess("찜 목록에서 삭제 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.WISHLIST_DELETED);
       },
     }
   );

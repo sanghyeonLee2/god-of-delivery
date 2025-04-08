@@ -5,6 +5,7 @@ import { QUERY_KEYS } from "@constants/queryKeys";
 import { showSuccess } from "@utils/toasts";
 import useCustomQueryParams from "@hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useDeleteOwnerReview = () => {
   const queryClient = useQueryClient();
@@ -13,7 +14,7 @@ export const useDeleteOwnerReview = () => {
   return useMutation((reviewId) => authDeleteApi(API_URLS.REVIEW.OWNER.ITEM(reviewId)), {
     onSuccess: async () => {
       await queryClient.invalidateQueries(QUERY_KEYS.OWNER_STORE_REVIEWS(page));
-      showSuccess("리뷰가 삭제되었습니다");
+      showSuccess(SUCCESS_MESSAGES.REVIEW_DELETED);
     },
   });
 };

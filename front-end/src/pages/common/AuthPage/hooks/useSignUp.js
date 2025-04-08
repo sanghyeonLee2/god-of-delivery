@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpValid } from "@validation/userSchema";
 import { useNavigate } from "react-router-dom";
 import { showSuccess } from "@utils/toasts";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useSignUp = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const useSignUp = () => {
     (data = {}) => postApi(API_URLS.AUTH.SIGN_UP, data),
     {
       onSuccess: () => {
-        showSuccess("회원가입에 성공 했습니다");
+        showSuccess(SUCCESS_MESSAGES.SIGNUP_SUCCESS);
         navigate("/auth/sign-in");
       },
     }

@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import { QUERY_KEYS } from "@constants/queryKeys";
 import { setCartOptions } from "@utils/defaultValues";
 import { API_URLS } from "@constants/urls";
-import { showSuccess } from "@utils/toasts";
+import { showError, showSuccess } from "@utils/toasts";
 import { useEffect } from "react";
 import { extractSelectedOptionIds, menuDetailOptionsTrans } from "@utils/transducer";
 import useCloseModal from "@hooks/useCloseModal";
+import { errorHandler } from "@utils/errorHandler";
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useMenuDetail = (modalData) => {
   const closeModal = useCloseModal();
@@ -44,8 +46,14 @@ export const useMenuDetail = (modalData) => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
-        showSuccess("장바구니에 담았습니다");
+        showSuccess(SUCCESS_MESSAGES.ITEM_ADDED_TO_CART);
         closeModal();
+      },
+      onError: (err) => {
+        if (err.status === 409) {
+          return showError(ERROR_MESSAGES.ONLY_ONE_STORE_ALLOWED);
+        }
+        return errorHandler(err);
       },
     }
   );

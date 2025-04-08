@@ -10,9 +10,15 @@ import useCustomQueryParams from "@hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
 import useCustomParams from "@hooks/useCustomParams";
 import { useCallback } from "react";
+import { showError } from "@utils/toasts";
+import useOpenModal from "@hooks/useOpenModal";
+import { MODAL_TYPES } from "@constants/modalTypes";
+import { errorHandler } from "@utils/errorHandler";
+import { ERROR_MESSAGES } from "@constants/messages";
 
 export const useGetStores = (isEnabled) => {
   const navigate = useNavigate();
+  const openModal = useOpenModal();
   const { categoryId = "all" } = useCustomParams();
   const { page, keyword, sorting } = useCustomQueryParams(QUERY_PARAMS_INIT.STORES);
 
@@ -26,7 +32,16 @@ export const useGetStores = (isEnabled) => {
           sorting,
         },
       }),
+
     {
+      onError: (err) => {
+        if (err.status === 422) {
+          navigate("/");
+          showError(ERROR_MESSAGES.ADDRESS_REQUIRED);
+          return openModal(MODAL_TYPES.SELECT_ADDRESS);
+        }
+        return errorHandler(err);
+      },
       select: (res) => ({
         storesData: res.data?.storeList,
         totalPages: pageCalculator(res.data.totalItems),

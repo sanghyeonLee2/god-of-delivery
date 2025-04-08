@@ -6,6 +6,7 @@ import { useMutation } from "react-query";
 import { authPostApi } from "@api/request";
 import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const usePayment = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ export const usePayment = () => {
     (data = {}) => authPostApi(API_URLS.ORDER.BASE, data),
     {
       onSuccess: (res) => {
-        showSuccess("결제가 완료 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.PAYMENT_COMPLETED);
         navigate(`/orders/${res.data?.orderId}`);
       },
     }

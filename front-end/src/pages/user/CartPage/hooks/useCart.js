@@ -5,6 +5,7 @@ import { API_URLS } from "@constants/urls";
 import { useNavigate } from "react-router-dom";
 import { showSuccess } from "@utils/toasts";
 import { cartMenuTotalPrice } from "@utils/calculator";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useCart = () => {
   const queryClient = useQueryClient();
@@ -20,7 +21,7 @@ export const useCart = () => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
-        showSuccess("장바구니 메뉴가 삭제되었습니다");
+        showSuccess(SUCCESS_MESSAGES.CART_ITEM_DELETED);
       },
     }
   );

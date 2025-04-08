@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isSignInState } from "@recoil/user/atoms";
 import { showSuccess } from "@utils/toasts";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
@@ -25,7 +26,7 @@ export const useSignIn = () => {
     (data = {}) => postApi(API_URLS.AUTH.SIGN_IN, data),
     {
       onSuccess: (res) => {
-        showSuccess("로그인에 성공 했습니다");
+        showSuccess(SUCCESS_MESSAGES.LOGIN_SUCCESS);
         queryClient.clear();
         const { accessToken, refreshToken, role = "user" } = res.data;
         localStorage.setItem("access-token", accessToken);

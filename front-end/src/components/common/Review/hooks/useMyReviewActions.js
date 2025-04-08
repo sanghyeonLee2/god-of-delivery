@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import QUERY_PARAMS_INIT from "@constants/queryParamsInit";
 import useCustomQueryParams from "@hooks/useCustomQueryParams";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 const useMyReviewActions = (rating, content) => {
   const [updateMode, setUpdateMode] = useState(false);
@@ -24,7 +25,7 @@ const useMyReviewActions = (rating, content) => {
       onSuccess: async () => {
         setUpdateMode(false);
         await queryClient.invalidateQueries(QUERY_KEYS.MY_REVIEWS(page));
-        showSuccess("리뷰가 수정되었습니다");
+        showSuccess(SUCCESS_MESSAGES.REVIEW_UPDATED);
       },
     }
   );
@@ -33,7 +34,7 @@ const useMyReviewActions = (rating, content) => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.MY_REVIEWS(page));
-        showSuccess("리뷰가 삭제되었습니다");
+        showSuccess(SUCCESS_MESSAGES.REVIEW_DELETED);
       },
     }
   );

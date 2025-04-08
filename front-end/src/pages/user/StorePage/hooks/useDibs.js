@@ -3,6 +3,7 @@ import { authDeleteApi, authPostApi } from "@api/request";
 import { API_URLS } from "@constants/urls";
 import { QUERY_KEYS } from "@constants/queryKeys";
 import { showSuccess } from "@utils/toasts";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useDibs = (storeId) => {
   const queryClient = useQueryClient();
@@ -35,10 +36,10 @@ export const useDibs = (storeId) => {
       onSuccess: async (res) => {
         await queryClient.invalidateQueries(QUERY_KEYS.DIBS(1));
         if (res.data.message === "Success") {
-          showSuccess("찜 목록에 추가 되었습니다.");
+          showSuccess(SUCCESS_MESSAGES.WISHLIST_ADDED);
         }
         if (res.data.message === "Delete") {
-          showSuccess("찜 목록에서 삭제 되었습니다.");
+          showSuccess(SUCCESS_MESSAGES.WISHLIST_DELETED);
         }
       },
       onError: (err, variables, context) => {

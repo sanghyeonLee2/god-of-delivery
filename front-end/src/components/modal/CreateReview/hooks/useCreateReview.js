@@ -7,6 +7,7 @@ import { showSuccess } from "@utils/toasts";
 import useCustomQueryParams from "../../../../hooks/useCustomQueryParams";
 import QUERY_PARAMS_INIT from "../../../../constants/queryParamsInit";
 import useCloseModal from "@hooks/useCloseModal";
+import { SUCCESS_MESSAGES } from "@constants/messages";
 
 export const useCreateReview = ({ orderId, storeId }) => {
   const queryClient = useQueryClient();
@@ -26,7 +27,7 @@ export const useCreateReview = ({ orderId, storeId }) => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.ORDERS(page));
-        showSuccess("리뷰가 추가 되었습니다");
+        showSuccess(SUCCESS_MESSAGES.REVIEW_ADDED);
         closeModal();
       },
     }
