@@ -29,12 +29,17 @@ import RequireRole from "@components/guards/RequireRole";
 import OwnerLayout from "@pages/owner/OwnerLayout";
 import UserLayout from "@pages/user/UserLayout";
 import AuthPageLayout from "@pages/common/AuthPage/AuthPageLayout";
+import GlobalErrorBoundary from "@components/common/ErrorBoundary/GlobalErrorBoundary";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <GlobalErrorBoundary>
+        <App />
+      </GlobalErrorBoundary>
+    ),
     children: [
       {
         path: "",
