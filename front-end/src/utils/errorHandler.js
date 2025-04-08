@@ -4,16 +4,16 @@ import { saveErrorToSession } from "./storage";
 
 export const errorHandler = (error) => {
   if (!error.response) {
-    return showError("네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요");
+    return showError("네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.");
   }
   const { status } = error;
   if (error.config.url === API_URLS.USER.REISSUE && status === 401) {
     localStorage.clear();
-    return showError("토큰 만료로 인해 로그아웃 되었습니다");
+    return showError("토큰 만료로 인해 로그아웃 되었습니다.");
   }
   if (error.config.url === API_URLS.USER.REISSUE && status === 403) {
     localStorage.clear();
-    return showError("토큰이 유효하지 않습니다");
+    return showError("토큰이 유효하지 않습니다.");
   }
   if (status >= 500) {
     saveErrorToSession(status, "서버 오류가 발생했습니다.");
@@ -34,7 +34,7 @@ export const errorHandler = (error) => {
     case 409:
       return showError("중복된 데이터입니다.");
     case 422:
-      return showError("한 가게만 장바구니에 담을 수 있습니다");
+      return showError("한 가게의 메뉴들만 장바구니에 담을 수 있습니다.");
     default:
       saveErrorToSession(status, "알 수 없는 오류가 발생했습니다.");
       return (window.location.href = "/error");
