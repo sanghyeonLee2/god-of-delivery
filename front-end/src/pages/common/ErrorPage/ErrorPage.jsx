@@ -11,6 +11,7 @@ const ErrorPage = () => {
       <div>
         <h1>⚠ 오류 발생</h1>
         <h2>{errorData.status} 에러</h2>
+        {errorData.status === 500 && <Font>railway 서버 요청 횟수 초과</Font>}
         <Font>{errorData.message}</Font>
         <MainBtn text={"뒤로가기"} onClick={navigateBack} />
       </div>
