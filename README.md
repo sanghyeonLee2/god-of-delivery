@@ -73,7 +73,7 @@
 
 ## 🗺️ 배포 아키텍처
 
-![img.png](img.png)
+![배포 아키텍처](assets/architecture.png)
 > AWS S3 + CloudFront로 정적 리소스를 서빙하고, Railway를 통해 API 서버 및 DB를 통합 배포하는 구조입니다.
 
 ---
