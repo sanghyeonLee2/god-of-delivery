@@ -23,12 +23,12 @@
 
 프로젝트는 프론트엔드와 백엔드가 분리되어 있으며, 각 디렉토리별로 세부 내용을 정리한 README가 존재합니다.
 
-### 🟦 프론트엔드
+### 🌐 프론트엔드
 
 - 🔗 [front-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/front-end/README.md)
 - 기술 스택, 주요 라이브러리, CI/CD 파이프라인, 폴더 구조 등
 
-### 🟥 백엔드
+### ⚙️ 백엔드
 
 - 🔗 [back-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/back-end/README.md)
 - 기술 스택, API 구조, DB 설계, 주요 라이브러리, CI/CD 파이프라인 등
@@ -56,13 +56,13 @@
 각 파트의 세부 기술 스택 및 구조는 디렉토리별 README에서 확인할 수 있으며,  
 아래와 같은 방향성을 중심으로 구현하였습니다:
 
-### 🟦 프론트엔드
+### 🌐 프론트엔드
 
 - **반응형 UI 구현**을 통해 사용자 경험 최적화
 - **컴포넌트 재사용성 및 상태 관리 구조 설계**
 - **JWT 기반 인증 흐름 연동 및 토큰 관리**
 
-### 🟥 백엔드
+### ⚙️ 백엔드
 
 - **RESTful API 설계 및 모듈화된 서버 구조 구성**
 - **ORM 기반 DB 모델링 및 데이터 흐름 처리**
