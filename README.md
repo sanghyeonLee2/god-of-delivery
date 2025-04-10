@@ -31,7 +31,7 @@
 ### ⚙️ 백엔드
 
 - 🔗 [back-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/back-end/README.md)
-- 기술 스택, API 구조, DB 설계, 주요 라이브러리, CI/CD 파이프라인 등
+- 기술 스택, API 구조, DB 설계, 주요 라이브러리 등
 
 ---
 
