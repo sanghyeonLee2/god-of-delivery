@@ -74,6 +74,25 @@
 ![배포 아키텍처](assets/architecture.png)
 > AWS S3 + CloudFront로 정적 리소스를 서빙하고, Railway를 통해 API 서버 및 DB를 통합 배포하는 구조입니다.
 
+### 🌐 **프론트엔드 배포**
+프론트엔드는 AWS S3와 CloudFront를 사용하여 정적 리소스를 호스팅하고 있습니다.  
+React 앱은 빌드 후, AWS S3로 배포되어 CloudFront를 통해 빠르게 서빙됩니다.
+
+### ⚙️ **백엔드 배포**
+백엔드는 Railway를 사용하여 API 서버와 데이터베이스를 통합 관리하고, 배포합니다.  
+API 서버는 Express.js로 구축되어, DB와 연동하여 데이터를 처리합니다.
+
+### 🌐 프론트엔드 CI/CD 파이프라인 흐름
+1. **코드 푸시** (GitHub 저장소에 push 이벤트 발생)
+2. **빌드** (React 앱 빌드)
+3. **배포** (AWS S3 + CloudFront로 자동 배포)
+
+### ⚙️ 백엔드 CI/CD 파이프라인 흐름
+1. **코드 푸시** (GitHub 저장소에 push 이벤트 발생)
+2. **빌드** (Node.js 앱 빌드)
+3. **배포** (Railway로 자동 배포)
+4. **DB 마이그레이션** (DB 자동화 스크립트 실행)
+
 ---
 
 ## 🛠️ 로컬 실행 방법
