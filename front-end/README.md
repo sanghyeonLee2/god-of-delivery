@@ -14,6 +14,8 @@
 ---
 
 ## 📌 프로젝트 소개
+> ### 🚀 배포 URL
+> [https://dv19wj9tllwf5.cloudfront.net](https://dv19wj9tllwf5.cloudfront.net)
 
 본 디렉토리는 **배달의 신(God of Delivery)** 프로젝트의 프론트엔드 코드 및 설정을 포함하고 있습니다.  
 사용자가 웹 상에서 배달 서비스를 자연스럽고 직관적으로 이용할 수 있도록,  
