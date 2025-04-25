@@ -25,7 +25,11 @@ function MenuOptions({ categoryIdx, control, register }) {
               {categoryIdx + 1}번째 하위 카테고리의 {optionIdx + 1}번째 옵션
             </Font>
             {optionFields.length > 1 && (
-              <CancelIconBtn type={"button"} onClick={() => removeOption(optionIdx)} />
+              <CancelIconBtn
+                right={"2.5rem"}
+                type={"button"}
+                onClick={() => removeOption(optionIdx)}
+              />
             )}
           </CommonPageHeader>
           {CREATE_MENU_OPTION_FIELDS.map((field) => (
