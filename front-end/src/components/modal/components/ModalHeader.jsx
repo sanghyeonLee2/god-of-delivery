@@ -9,7 +9,7 @@ function ModalHeader({ title }) {
   return (
     <ModalHeaderWrap>
       <Font size={"large"}>{title}</Font>
-      <CancelIconBtn onClick={closeModal} />
+      <CancelIconBtn onClick={closeModal} top={"1.1rem"} right={"1.1rem"} />
     </ModalHeaderWrap>
   );
 }

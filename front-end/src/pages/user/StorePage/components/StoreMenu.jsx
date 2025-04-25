@@ -25,7 +25,7 @@ function StoreMenu({ notice, menuInfo }) {
                 onClick={() => openModal(MODAL_TYPES.MENU_DETAIL, { menuId: menu?.menuId })}
               >
                 <S.MenuInfoInner>
-                  <div>
+                  <div style={{ paddingRight: "10px" }}>
                     <Font size={"large"}>{menu?.name}</Font>
                     <Font color={COLORS.FONT.SUB}>{menu?.description}</Font>
                     <Font>{menu?.price.toLocaleString()}원</Font>

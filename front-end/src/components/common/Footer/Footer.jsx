@@ -10,9 +10,11 @@ function Footer() {
       <S.FooterInner>
         <Logo />
         <FlexOnly justify={"space-between"} width="9rem">
-          <Font size={"small"} color={COLORS.FONT.SUB}>
-            깃허브
-          </Font>
+          <a href="https://github.com/sanghyeonLee2/god-of-delivery">
+            <Font size={"small"} color={COLORS.FONT.SUB}>
+              깃허브
+            </Font>
+          </a>
           <Font size={"small"} color={COLORS.FONT.SUB}>
             블로그
           </Font>

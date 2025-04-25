@@ -4,8 +4,9 @@ import useAniTitle from "./hooks/useAniTitle";
 import { useRecoilValue } from "recoil";
 import { userAddressState } from "@recoil/user/atoms";
 import { FlexOnly, Font } from "@assets/styles/CommonStyle";
+import { MdLocationOn } from "react-icons/md";
 
-const DEFAULT_ADDRESS = "해운대로 34";
+const DEFAULT_ADDRESS = "현재 위치";
 
 function HomeBoard() {
   const { index, isAnimating, duplicatedList } = useAniTitle();
@@ -14,7 +15,8 @@ function HomeBoard() {
     <S.HomeBoardOuter>
       <S.HomeBoardInner>
         <FlexOnly>
-          <S.HomeBoardLocation>{address || DEFAULT_ADDRESS}</S.HomeBoardLocation>{" "}
+          <MdLocationOn size={35} />
+          <S.HomeBoardLocation>{address.split(" ")[1] || DEFAULT_ADDRESS}</S.HomeBoardLocation>{" "}
           <Font size="large">에서</Font>
         </FlexOnly>
         <S.TitleFont>
