@@ -7,14 +7,11 @@ import { useSetRecoilState } from "recoil";
 import { paymentTipState } from "@recoil/order/atom";
 import { tipOnchange } from "@utils/clickHandler";
 
-function PaymentMethods({ control, toSelectMethods, tips }) {
+function PaymentMethods({ control, text, toSelectMethods, tips }) {
   const setPaymentTip = useSetRecoilState(paymentTipState);
-
   return (
     <div>
-      <Font size={"large"}>
-        {toSelectMethods.methodsName === "paymentMethod" ? "결제수단" : "주문방법"}
-      </Font>
+      <Font size={"large"}>{text}</Font>
       <Controller
         control={control}
         name={toSelectMethods.methodsName}
