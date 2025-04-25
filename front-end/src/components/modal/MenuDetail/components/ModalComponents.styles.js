@@ -7,13 +7,6 @@ export const ModalHeaderWrap = styled.div`
   height: 6rem;
   padding-top: 1.4rem;
   text-align: center;
-
-  button {
-    cursor: pointer;
-    position: absolute;
-    top: 1.1rem;
-    right: 1.1rem;
-  }
 `;
 export const MenuDetailPrologWrap = styled.div`
   min-height: 30rem;

@@ -21,4 +21,9 @@ export const MenuInfoInner = styled.div`
       0 0.4rem 0.6rem -0.3rem rgba(0, 0, 0, 0.06),
       0 -0.2rem 0.4rem -0.2rem rgba(0, 0, 0, 0.08);
   }
+
+  p {
+    overflow-wrap: break-word; /* 너무 긴 단어 줄바꿈 허용 */
+    word-break: break-word;
+  }
 `;
