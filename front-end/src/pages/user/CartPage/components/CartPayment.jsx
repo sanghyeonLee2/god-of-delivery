@@ -16,7 +16,7 @@ function CartPayment({ cartMenuTotalPrice, tips }) {
         </FlexOnly>
         <FlexOnly justify={"space-between"}>
           <Font size={"large"}>결제 예정 금액</Font>
-          <Font size={"large"}>배달 {(cartMenuTotalPrice + tips).toLocaleString()}원</Font>
+          <Font size={"large"}>{(cartMenuTotalPrice + tips).toLocaleString()}원</Font>
         </FlexOnly>
       </CommonBorder>
     </div>

@@ -24,7 +24,7 @@ function CartForm({ handleSubmit, handleDeleteCartItem, cartData }) {
         cartMenuTotalPrice={cartData?.cartMenuTotalPrice}
       />
       <OrderBtnWrap>
-        <SubBtn type={"submit"} text={"결제하기"} />
+        <SubBtn type={"submit"} text={"주문하기"} />
       </OrderBtnWrap>
     </form>
   );

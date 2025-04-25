@@ -6,6 +6,7 @@ import { CartMenusWrap } from "@pages/user/CartPage/Cart.styles";
 import { COLORS } from "@constants/style";
 import useOpenModal from "@hooks/useOpenModal";
 import { MODAL_TYPES } from "@constants/modalTypes";
+import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
 
 function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
   const openModal = useOpenModal();
@@ -25,26 +26,24 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
           </FlexOnly>
           <FlexOnly justify="space-between">
             <Font>{cartItem.quantity} 개</Font>
-            <FlexOnly width={"230px"} justify="space-between">
-              <MainBtn
-                text={"옵션 / 수량 변경"}
-                width={"11rem"}
-                type={"button"}
-                onClick={() =>
-                  openModal(MODAL_TYPES.UPDATE_MENU, {
-                    menuId: cartItem.menuId,
-                    quantity: cartItem.quantity,
-                  })
-                }
-              />
-              <MainBtn
-                text={"삭제"}
-                width={"11rem"}
-                type={"button"}
-                onClick={() => handleDeleteCartItem(cartItem.cartItemId)}
-              />
-            </FlexOnly>
+            <MainBtn
+              text={"옵션 / 수량 변경"}
+              width={"11rem"}
+              type={"button"}
+              onClick={() =>
+                openModal(MODAL_TYPES.UPDATE_MENU, {
+                  menuId: cartItem.menuId,
+                  quantity: cartItem.quantity,
+                })
+              }
+            />
           </FlexOnly>
+          <CancelIconBtn
+            top={"0"}
+            right={"0"}
+            type={"button"}
+            onClick={() => handleDeleteCartItem(cartItem.cartItemId)}
+          />
         </div>
       ))}
     </CartMenusWrap>

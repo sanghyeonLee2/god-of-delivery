@@ -19,7 +19,7 @@ const useMyReviewActions = (rating, content) => {
       content,
     },
   });
-  const { mutate: updateReview } = useMutation(
+  const { mutate: updateReview, isLoading: isUpdating } = useMutation(
     (reviewId) => authPatchApi(API_URLS.REVIEW.MY(reviewId), getValues()),
     {
       onSuccess: async () => {
@@ -29,7 +29,7 @@ const useMyReviewActions = (rating, content) => {
       },
     }
   );
-  const { mutate: deleteReview } = useMutation(
+  const { mutate: deleteReview, isLoading: isDeleting } = useMutation(
     (reviewId) => authDeleteApi(API_URLS.REVIEW.MY(reviewId)),
     {
       onSuccess: async () => {
@@ -46,6 +46,8 @@ const useMyReviewActions = (rating, content) => {
       control,
       handleRatingChange: (newRating) => setValue("rating", newRating),
     },
+    isUpdating,
+    isDeleting,
     deleteReview,
     updateReview,
     updateMode,

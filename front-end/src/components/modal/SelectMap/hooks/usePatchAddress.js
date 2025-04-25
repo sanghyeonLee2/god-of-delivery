@@ -12,7 +12,7 @@ export const usePatchAddress = () => {
   const queryClient = useQueryClient();
   const closeModal = useCloseModal();
   const addresses = useRecoilValueLoadable(addressState);
-  const { mutate: handlePostAddress, isLoading: isPostingAddress } = useMutation(
+  const { mutate: updateAddress, isLoading: isUpdatingAddress } = useMutation(
     () =>
       authPatchApi(API_URLS.USER.ADDRESS, {
         address: addresses.contents?.address,
@@ -29,8 +29,8 @@ export const usePatchAddress = () => {
   );
 
   return {
-    handlePostAddress,
-    isPostingAddress,
+    updateAddress,
+    isUpdatingAddress,
     addressesState: addresses.state,
   };
 };

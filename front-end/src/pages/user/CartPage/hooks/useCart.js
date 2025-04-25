@@ -32,10 +32,8 @@ export const useCart = () => {
     handleSubmit: () => {
       navigate("/payment", {
         state: {
-          paymentInfo: {
-            cartMenuTotalPrice: data?.cartMenuTotalPrice,
-            tips: data?.Store.deliveryTip,
-          },
+          cartMenuTotalPrice: data?.cartMenuTotalPrice,
+          tips: data?.Store.deliveryTip,
         },
       });
     },
