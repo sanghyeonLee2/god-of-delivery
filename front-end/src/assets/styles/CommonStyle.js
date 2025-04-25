@@ -28,6 +28,8 @@ export const Font = styled.p`
 `;
 
 export const HeaderOuter = styled.header`
+  ${innerPadding()};
+  height: 9.2rem;
   border-bottom: 0.1rem solid ${COLORS.BORDER};
   background-color: ${COLORS.BACKGROUND};
   position: fixed;
@@ -48,8 +50,8 @@ export const HeaderInner = styled.div`
   margin: 0 auto;
   ${flexLayout("space-between", "center")};
   max-width: 110rem;
-  height: 9.2rem;
-  ${innerPadding()};
+
+  height: 100%;
 
   button {
     ${textHover()};

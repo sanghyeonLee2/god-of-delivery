@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { flexLayout } from "@assets/styles/Mixin";
 import { innerPadding } from "@assets/styles/CommonStyle";
+import { COLORS } from "@constants/style";
 
 export const FooterWrap = styled.footer`
   ${innerPadding()};
   position: relative;
-  border-top: 0.1rem solid #d9d9d9;
+  border-top: 0.1rem solid ${COLORS.BORDER};
   height: 9.2rem;
 `;
 
 export const FooterInner = styled.div`
   max-width: 110rem;
   margin: 0 auto;
-  height: 100%;
   ${flexLayout("space-between", "center")};
 `;
