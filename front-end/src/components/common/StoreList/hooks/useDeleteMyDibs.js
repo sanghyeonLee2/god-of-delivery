@@ -12,7 +12,7 @@ const useDeleteMyDibs = () => {
   const location = useLocation();
   const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
   const queryClient = useQueryClient();
-  const { mutate: deleteDibs } = useMutation(
+  const { mutate: deleteDibs, isLoading: isDeleting } = useMutation(
     async (storeId) => await authDeleteApi(API_URLS.DIB.DELETE(storeId)),
     {
       onSuccess: async () => {
@@ -21,6 +21,6 @@ const useDeleteMyDibs = () => {
       },
     }
   );
-  return { deleteDibs, isDibsPage: location.pathname.includes("/dibs") };
+  return { deleteDibs, isDeleting, isDibsPage: location.pathname.includes("/dibs") };
 };
 export default useDeleteMyDibs;

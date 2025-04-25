@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { flexLayout } from "@assets/styles/Mixin";
 
 export const CancelIconBtnWrap = styled.button`
-  top: 1.5rem;
-  right: 1.5rem;
+  position: absolute;
+  top: ${({ $top }) => $top};
+  bottom: ${({ $bottom }) => $bottom};
+  left: ${({ $left }) => $left};
+  right: ${({ $right }) => $right};
   background-color: transparent;
   border-radius: 50%;
   transition: background-color 0.2s ease;

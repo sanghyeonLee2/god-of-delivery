@@ -4,10 +4,11 @@ import { COLORS } from "@constants/style";
 
 export const CartMenusWrap = styled.div`
   > div {
+    position: relative;
     ${outerPadding()};
   }
 
   > div:not(:last-child) {
-    border-bottom: 0.1rem ${COLORS.BORDER};
+    border-bottom: 0.1rem solid ${COLORS.BORDER};
   }
 `;

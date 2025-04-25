@@ -4,12 +4,6 @@ import { innerPadding } from "@assets/styles/CommonStyle";
 import { COLORS } from "@constants/style";
 
 export const StoreOuter = styled.li`
-  button {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.6rem;
-  }
-
   position: relative;
   ${innerPadding()};
   margin-bottom: 1rem;

@@ -14,8 +14,18 @@ function PaymentPage() {
   return (
     <CommonPageWrap>
       <Title text={"주문하기"} size={"x-large"} />
-      <PaymentMethods control={control} toSelectMethods={PAYMENT_METHODS} tips={paymentInfo.tips} />
-      <PaymentMethods control={control} toSelectMethods={ORDER_METHODS} tips={paymentInfo.tips} />
+      <PaymentMethods
+        control={control}
+        text={"결제수단"}
+        toSelectMethods={PAYMENT_METHODS}
+        tips={paymentInfo.tips}
+      />
+      <PaymentMethods
+        control={control}
+        text={"주문방법"}
+        toSelectMethods={ORDER_METHODS}
+        tips={paymentInfo.tips}
+      />
       <form onSubmit={handleSubmit}>
         <LabeledTextInput title={"배달 주소"} {...register("address")} disabled={true} />
         <LabeledTextInput

@@ -5,9 +5,13 @@ import { OwnerReviewWrap } from "@components/common/Review/Review.styles";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
 import { useDeleteOwnerReview } from "@pages/owner/OwnerReviewPage/hooks/useDeleteOwnerReview";
 import { COLORS } from "@constants/style";
+import Loading from "@components/common/Loading/Loading";
 
 function OwnerReview({ ownerReview, isOwner }) {
   const deleteOwnerReview = useDeleteOwnerReview();
+  if (deleteOwnerReview.isLoading) {
+    return <Loading />;
+  }
   return (
     <OwnerReviewWrap>
       <FlexOnly justify={"space-between"}>

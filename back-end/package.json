@@ -4,7 +4,7 @@
   "description": "god_of_delivery_back-end",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",

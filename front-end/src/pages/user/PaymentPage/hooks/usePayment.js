@@ -18,7 +18,7 @@ export const usePayment = () => {
       requests: "",
       address,
       detailAddress: "",
-      orderType: "takeOut",
+      orderType: "delivery",
       contact: "",
     },
   });
@@ -34,7 +34,7 @@ export const usePayment = () => {
   );
 
   return {
-    paymentInfo: location.state?.paymentInfo,
+    paymentInfo: location.state,
     isOrderPosting,
     handleSubmit: handleSubmit((data) => mutate(data)),
     control,

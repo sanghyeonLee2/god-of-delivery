@@ -6,10 +6,12 @@ export const ImageWrap = styled.div`
   height: ${({ $height }) => $height};
   overflow: hidden;
   border-radius: 10px;
+  flex-shrink: 0;
 `;
 
 export const ImageTag = styled.img`
   object-fit: cover;
   border-radius: 10px;
+
   ${elementSize("100%", "100%")};
 `;

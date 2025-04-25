@@ -142,12 +142,12 @@ export const ORDER_METHODS = {
   methodsName: "orderType",
   methods: [
     {
-      content: "포장 주문 후 픽업",
-      method: "takeOut",
-    },
-    {
       content: "배달 주문",
       method: "delivery",
+    },
+    {
+      content: "포장 주문 후 픽업",
+      method: "takeOut",
     },
   ],
 };

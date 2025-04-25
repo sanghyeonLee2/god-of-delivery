@@ -3,10 +3,22 @@ import useMyReviewActions from "@components/common/Review/hooks/useMyReviewActio
 import ReviewUpdate from "@components/common/Review/components/ReviewUpdate";
 import { ReviewBtnWrap } from "@components/common/Review/Review.styles";
 import { MainBtn } from "@components/common/Button/main/MainButtons";
+import Loading from "@components/common/Loading/Loading";
 
 function ReviewAction({ review }) {
-  const { form, deleteReview, updateReview, cancelUpdateMode, updateMode, setUpdateMode } =
-    useMyReviewActions(review?.rating, review?.content);
+  const {
+    form,
+    isUpdating,
+    isDeleting,
+    deleteReview,
+    updateReview,
+    cancelUpdateMode,
+    updateMode,
+    setUpdateMode,
+  } = useMyReviewActions(review?.rating, review?.content);
+  if (isUpdating || isDeleting) {
+    return <Loading />;
+  }
   return (
     <div>
       {updateMode && <ReviewUpdate review={review} form={form} />}

@@ -7,11 +7,15 @@ import useDeleteMyDibs from "@components/common/StoreList/hooks/useDeleteMyDibs"
 import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
 import Image from "@components/common/Image/Image";
 import { COLORS } from "@constants/style";
+import Loading from "@components/common/Loading/Loading";
 
 function StoreBox({ storeInfo }) {
-  const { deleteDibs, isDibsPage } = useDeleteMyDibs();
+  const { deleteDibs, isDibsPage, isDeleting } = useDeleteMyDibs();
   const navigate = useNavigate();
   const { categoryId } = useParams();
+  if (isDeleting) {
+    return <Loading />;
+  }
   return (
     <S.StoreOuter onClick={() => navigate(`/stores/${categoryId || "all"}/${storeInfo?.storeId}`)}>
       <Image src={storeInfo} width={"9.5rem"} height={"9.5rem"} />
@@ -39,6 +43,8 @@ function StoreBox({ storeInfo }) {
       </S.StoreInfoWrap>
       {isDibsPage && (
         <CancelIconBtn
+          top={"0.5rem"}
+          right={"0.6rem"}
           onClick={(e) => {
             e.stopPropagation();
             deleteDibs(storeInfo.storeId);

@@ -14,7 +14,7 @@ function MenuCategory({ categoryIdx, control, register, removeCategory, minCateg
     <div>
       <CommonPageHeader>
         <Font size={"large"}>{categoryIdx + 1}번째 하위 카테고리</Font>
-        {minCategoryLength > 1 && <CancelIconBtn onClick={removeCategory} />}
+        {minCategoryLength > 1 && <CancelIconBtn onClick={removeCategory} right={"2.5rem"} />}
       </CommonPageHeader>
       <RadioController
         title={"필수 여부 체크"}

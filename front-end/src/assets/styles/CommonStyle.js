@@ -126,13 +126,11 @@ export const CommonPageWrap = styled.ul`
 export const VerticalSpace = styled.div`
   height: 1rem;
   background-color: #f6f6f6;
-  margin: 0 -1.5rem;
 `;
 
 export const DividingLine = styled.div`
   flex: none;
   height: 0.08rem;
-  margin: 0 -1.5rem;
   background-color: ${COLORS.BORDER};
 `;
 
