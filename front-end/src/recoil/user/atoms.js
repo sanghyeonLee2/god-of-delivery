@@ -39,6 +39,13 @@ export const userRoleState = selector({
     return userInfo.role;
   },
 });
+export const userIdState = selector({
+  key: "userId",
+  get: ({ get }) => {
+    const userInfo = get(userInfoState);
+    return userInfo.userId;
+  },
+});
 export const userAddressState = selector({
   key: "userAddress",
   get: ({ get }) => {
