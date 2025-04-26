@@ -7,7 +7,7 @@ function CartHeader({ storeName, deliveryTime }) {
     <div>
       <Font size={"x-large"}>{storeName}</Font>
       <Font size={"small"} color={COLORS.FONT.SUB}>
-        {deliveryTime} 후 도착예정
+        {deliveryTime} 분 후 도착예정
       </Font>
     </div>
   );

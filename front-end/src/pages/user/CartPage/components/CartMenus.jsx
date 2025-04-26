@@ -22,7 +22,7 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
               </Font>
               <Font>{cartMenuTotalPrice.toLocaleString()}원</Font>
             </div>
-            <Image width={"8rem"} height={"8rem"} src={cartItems.imgUrl} />
+            <Image width={"8rem"} height={"8rem"} src={cartItem.imgUrl} />
           </FlexOnly>
           <FlexOnly justify="space-between">
             <Font>{cartItem.quantity} 개</Font>
