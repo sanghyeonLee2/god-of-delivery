@@ -12,7 +12,6 @@ export const MenuDetailPrologWrap = styled.div`
   min-height: 30rem;
 
   img {
-    width: 100%;
     border-radius: 0;
   }
 `;
