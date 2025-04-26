@@ -2,7 +2,7 @@
   "/reviews/:storeId/:page": "/reviews?storeId=:storeId&_page=:page&_limit=10",
   "/users/me/orders?page=:page": "/my-orders",
   "/users/me": "/me",
-  "/orders/:orderId": "/order-detail",
+  "/orders/10": "/order-detail",
   "/my-reviews/:page": "/my-reviews?page=:page",
   "/store-put/:storeId": "/store-put/1",
   "/stores/info/:storeId": "/store?storeId=:storeId",
