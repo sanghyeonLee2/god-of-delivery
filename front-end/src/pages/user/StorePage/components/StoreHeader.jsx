@@ -28,7 +28,7 @@ function StoreHeader({ storeHeader, storeId }) {
           <Font>{storeHeader?.dibs}</Font>
         </FlexOnly>
         <Font>리뷰 수 {storeHeader?.reviewCnt}</Font>
-        <Font>사장님 댓글 수 {storeHeader?.ownerReviewCnt}</Font>
+        <Font>사장님 댓글 수 {storeHeader?.ownerReview}</Font>
       </S.ReviewWrap>
     </S.StoreHeaderWrap>
   );
