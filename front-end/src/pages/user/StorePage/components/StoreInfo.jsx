@@ -1,11 +1,13 @@
 import React from "react";
 import { FixedTextInterval, Font, VerticalSpace } from "@assets/styles/CommonStyle";
 import { TabWrap } from "@pages/user/StorePage/StorePage.styles";
+import Title from "@components/common/Title/Title";
 
 function StoreInfo({ storeInfo }) {
   return (
-    <div>
+    <>
       <TabWrap>
+        <Title size={"x-large"} text={"가게정보"} />
         <Font size={"large"}>{storeInfo?.storeName}</Font>
         <FixedTextInterval>
           <li>
@@ -54,7 +56,7 @@ function StoreInfo({ storeInfo }) {
         </FixedTextInterval>
       </TabWrap>
       <VerticalSpace />
-    </div>
+    </>
   );
 }
 
