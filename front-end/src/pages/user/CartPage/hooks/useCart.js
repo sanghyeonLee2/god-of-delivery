@@ -16,7 +16,7 @@ export const useCart = () => {
       cartMenuTotalPrice: cartMenuTotalPrice(res.data?.CartItems),
     }),
   });
-  const { mutate: handleDeleteCartItem } = useMutation(
+  const { mutate: handleDeleteCartItem, isLoading: isDeleting } = useMutation(
     (cartItemId) => authDeleteApi(API_URLS.CART.ITEM(cartItemId)),
     {
       onSuccess: async () => {
@@ -28,6 +28,7 @@ export const useCart = () => {
   return {
     cartData: data,
     isLoading,
+    isDeleting,
     handleDeleteCartItem,
     handleSubmit: () => {
       navigate("/payment", {
