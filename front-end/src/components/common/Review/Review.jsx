@@ -13,7 +13,7 @@ function Review({ review }) {
   const role = useRecoilValue(userRoleState);
   const currentUserId = useRecoilValue(userIdState);
   return (
-    <div>
+    <>
       <ReviewMain review={review} />
       {currentUserId === review.userId && role === "user" && <ReviewAction review={review} />}
       {review?.CeoReview && (
@@ -25,7 +25,7 @@ function Review({ review }) {
           onClick={() => openModal(MODAL_TYPES.OWNER_CREATE_REVIEW, review)}
         />
       )}
-    </div>
+    </>
   );
 }
 
