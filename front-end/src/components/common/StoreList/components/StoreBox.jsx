@@ -18,7 +18,7 @@ function StoreBox({ storeInfo }) {
   }
   return (
     <S.StoreOuter onClick={() => navigate(`/stores/${categoryId || "all"}/${storeInfo?.storeId}`)}>
-      <Image src={storeInfo} width={"9.5rem"} height={"9.5rem"} />
+      <Image src={storeInfo?.storeLogoImage} width={"9.5rem"} height={"9.5rem"} />
       <S.StoreInfoWrap>
         <Font size={"large"}>{storeInfo?.storeName}</Font>
         <FlexOnly>
