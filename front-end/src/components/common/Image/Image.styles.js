@@ -5,7 +5,6 @@ export const ImageWrap = styled.div`
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
   overflow: hidden;
-  border-radius: 10px;
   flex-shrink: 0;
 `;
 
