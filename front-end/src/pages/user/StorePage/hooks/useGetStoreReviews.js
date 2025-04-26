@@ -16,7 +16,6 @@ export const useGetStoreReviews = () => {
     {
       select: (res) => ({
         reviews: res.data?.reviewList,
-        reviewStat: res.data?.reviewStat,
         totalPages: pageCalculator(res.data.totalItems),
       }),
     }
@@ -25,7 +24,6 @@ export const useGetStoreReviews = () => {
   return {
     reviews: data?.reviews,
     totalPages: data?.totalPages,
-    reviewStat: data?.reviewStat,
     isLoading,
     page,
     setPage,
