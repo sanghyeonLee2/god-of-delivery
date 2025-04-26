@@ -42,7 +42,7 @@ function StoresPage() {
       ) : (
         <Empty text="가게가 없습니다" />
       )}
-      <Pagination totalPages={totalPages} page={page} setPage={setPage} />)
+      <Pagination totalPages={totalPages} page={page} setPage={setPage} />
     </div>
   );
 }
