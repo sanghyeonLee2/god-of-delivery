@@ -7,8 +7,8 @@ import Empty from "@components/common/Empty/Empty";
 import CartForm from "@pages/user/CartPage/components/CartForm";
 
 function CartPage() {
-  const { cartData, isLoading, handleDeleteCartItem, handleSubmit } = useCart();
-  if (isLoading) {
+  const { cartData, isLoading, isDeleting, handleDeleteCartItem, handleSubmit } = useCart();
+  if (isLoading || isDeleting) {
     return <Loading />;
   }
   return (
