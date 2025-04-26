@@ -40,9 +40,7 @@ function StorePage() {
         <StoreMenu notice={storeData?.notice} menuInfo={storeData?.menuInfo} />
       )}
       {currentItem.key === 1 && <StoreInfo storeInfo={storeData?.storeInfo} />}
-      {currentItem.key === 2 && (
-        <StoreReview rating={storeData.storeHeader.rating} storeId={storeData?.storeId} />
-      )}
+      {currentItem.key === 2 && <StoreReview />}
     </div>
   );
 }
