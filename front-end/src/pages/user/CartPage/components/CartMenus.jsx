@@ -7,8 +7,9 @@ import { COLORS } from "@constants/style";
 import useOpenModal from "@hooks/useOpenModal";
 import { MODAL_TYPES } from "@constants/modalTypes";
 import CancelIconBtn from "@components/common/Button/icon/CancelIconBtn";
+import { cartMenuPrice } from "@utils/calculator";
 
-function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
+function CartMenus({ cartItems, handleDeleteCartItem }) {
   const openModal = useOpenModal();
   return (
     <CartMenusWrap>
@@ -20,7 +21,14 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
               <Font size={"small"} color={COLORS.FONT.SUB}>
                 {cartItem.description}
               </Font>
-              <Font>{cartMenuTotalPrice.toLocaleString()}원</Font>
+              <Font>
+                {cartMenuPrice(
+                  cartItem.quantity,
+                  cartItem.price,
+                  cartItem.CartItemOptions
+                ).toLocaleString()}
+                원
+              </Font>
             </div>
             <Image width={"8rem"} height={"8rem"} src={cartItem.imgUrl} />
           </FlexOnly>
@@ -32,6 +40,7 @@ function CartMenus({ cartItems, cartMenuTotalPrice, handleDeleteCartItem }) {
               type={"button"}
               onClick={() =>
                 openModal(MODAL_TYPES.UPDATE_MENU, {
+                  cartItemId: cartItem.cartItemId,
                   menuId: cartItem.menuId,
                   quantity: cartItem.quantity,
                 })

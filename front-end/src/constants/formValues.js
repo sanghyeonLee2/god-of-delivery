@@ -7,7 +7,7 @@ export const DEFAULT_CATEGORY = {
 export const DEFAULT_VALUES = {
   MENU_MANAGEMENT: {
     storeId: 1,
-    category: "notSelected",
+    category: "",
     name: "",
     price: 0,
     description: "",

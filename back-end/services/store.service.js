@@ -1,4 +1,4 @@
-const {Store, Menu} = require("../models");
+const { Store, Menu } = require("../models");
 const DibService = require("../services/dib.service");
 const ReviewService = require("../services/review.service");
 const { Op, fn, col, where } = require("sequelize");
@@ -28,24 +28,21 @@ exports.getStores = async (
   const searchKeyword = keyword || ""; // 예: "Hello World"
   const categoryName = category || "all"; // 예: "fastFood", or "all"
   const keywordCondition = where(
-      fn("REPLACE", fn("LOWER", col("store_name")), " ", ""),
-      {
-        [Op.like]: `%${searchKeyword.toLowerCase().replace(/\s/g, "")}%`
-      }
+    fn("REPLACE", fn("LOWER", col("store_name")), " ", ""),
+    {
+      [Op.like]: `%${searchKeyword.toLowerCase().replace(/\s/g, "")}%`,
+    },
   );
 
-// 카테고리 조건
-  const categoryCondition = categoryName === "all"
+  // 카테고리 조건
+  const categoryCondition =
+    categoryName === "all"
       ? {} // 조건 없음
       : { store_category: categoryName };
 
-
   const data = await Store.findAll({
     where: {
-      [Op.and]: [
-        keywordCondition,
-        categoryCondition
-      ]
+      [Op.and]: [keywordCondition, categoryCondition],
     },
     limit: 10,
     offset: (pageNum - 1) * 10,
@@ -107,7 +104,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
     }, {}),
   );
   const isDib = await DibService.isDibByUserId(userId, storeId);
-  const ceoRvCnt = await ReviewService.countCeoReview(storeId)
+  const ceoRvCnt = await ReviewService.countCeoReview(storeId);
   return {
     storeId: storeData.storeId,
     notice: storeData.notice,
@@ -150,8 +147,7 @@ exports.findStoreInfo = async ({ storeId }, { userId }) => {
 
 exports.updateDibCnt = async (storeId, isPlus, transaction) => {
   if (isPlus) {
-    return await Store.increment("dibs", { where: { storeId }, transaction});
-
+    return await Store.increment("dibs", { where: { storeId }, transaction });
   } else {
     return await Store.decrement("dibs", { where: { storeId }, transaction });
   }
@@ -163,10 +159,27 @@ exports.findStoreByUserId = async (userId) => {
   });
 };
 
+exports.updateStoreByUserId = async (userId, storeData) => {
+  console.log(storeData);
+  const dataToUpdate = {};
+
+  Object.entries(storeData).forEach(([key, value]) => {
+    dataToUpdate[key] = value;
+  });
+
+  return Store.update(dataToUpdate, { where: { userId } });
+};
+
 exports.updateReviewCnt = async (storeId, isPlus, transaction) => {
   if (isPlus) {
-    return await Store.increment("reviewCnt", { where: { storeId }, transaction});
+    return await Store.increment("reviewCnt", {
+      where: { storeId },
+      transaction,
+    });
   } else {
-    return await Store.decrement("reviewCnt", { where: { storeId }, transaction});
+    return await Store.decrement("reviewCnt", {
+      where: { storeId },
+      transaction,
+    });
   }
 };

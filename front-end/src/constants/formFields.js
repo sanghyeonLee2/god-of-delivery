@@ -1,5 +1,13 @@
 export const CREATE_MENU_FIELDS = [
   {
+    key: 0,
+    name: "category",
+    type: "text",
+    title: "메뉴 상위 카테고리",
+    isNumber: false,
+    placeholder: "메뉴 상위 카테고리를 입력하세요 ex) 추천메뉴",
+  },
+  {
     key: 1,
     name: "imgUrl",
     type: "text",
@@ -98,6 +106,7 @@ export const OWNER_STORES_INFO_DISABLE = [
   { key: 1, title: "평점", name: "rating" },
   { key: 2, title: "리뷰 수", name: "reviewCnt" },
   { key: 3, title: "찜 수", name: "dibs" },
+  { key: 4, title: "가게 주소", name: "storeAddress" },
 ];
 
 export const OWNER_STORES_INFO = [

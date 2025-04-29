@@ -13,12 +13,12 @@ const useUpdateMenu = () => {
   const navigate = useNavigate();
   const { menuId } = useCustomParams();
   const queryClient = useQueryClient();
-  const cachedData = queryClient.getQueryData(QUERY_KEYS.OWNER_MENU);
+  const cachedData = queryClient.getQueryData(QUERY_KEYS.OWNER_MENU(menuId));
   const { register, reset, control, handleSubmit } = useForm({
     defaultValues: cachedData?.data || {},
   });
   const { isLoading: isFetching } = useQuery(
-    QUERY_KEYS.OWNER_MENU,
+    QUERY_KEYS.OWNER_MENU(menuId),
     () => authGetApi(API_URLS.MENU.OWNER.BY_ID(menuId)),
     {
       onSuccess: ({ data }) => reset(data),
@@ -38,7 +38,7 @@ const useUpdateMenu = () => {
     (data = {}) => authPutApi(API_URLS.MENU.OWNER.BY_ID(menuId), data),
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU);
+        await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENU(menuId));
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_MENUS);
         showSuccess(SUCCESS_MESSAGES.MENU_UPDATED);
         navigate("/owners/me/menus");

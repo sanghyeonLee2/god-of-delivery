@@ -39,7 +39,6 @@ exports.getCartMenuDetail = async (req, res) => {
 };
 exports.updateCartItem = async (req, res) => {
   try {
-    console.log(req.body);
     await CartService.updateCartItemOption(req.params, req.body);
     res.status(200).send({
       status: 200,

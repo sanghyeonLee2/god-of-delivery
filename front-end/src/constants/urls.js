@@ -18,7 +18,7 @@ export const API_URLS = {
     LIST: (categoryId) => `stores/${categoryId}`,
     DETAIL: (storeId) => `stores/info/${storeId}`,
     REVIEWS: (storeId) => `stores/${storeId}/reviews`,
-    OWNER_STORE: "owners/me/stores",
+    OWNER_STORE: "owners/me/store",
   },
 
   CART: {

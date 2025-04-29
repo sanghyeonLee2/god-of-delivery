@@ -96,7 +96,7 @@ exports.findCartDataByUserId = async (userId) => {
         include: [
           {
             model: Menu,
-            attributes: ["name", "price", "description"],
+            attributes: ["name", "price", "description", "imgUrl"],
           },
           {
             model: CartItemOption,
@@ -137,6 +137,7 @@ exports.findCartDataByUserId = async (userId) => {
       name: cartItem.Menu?.name || null,
       price: cartItem.Menu?.price || null,
       description: cartItem.Menu?.description || null,
+      imgUrl: cartItem.Menu?.imgUrl || null,
       Menu: undefined,
       CartItemOptions: cartItem.CartItemOptions.map((option) => ({
         ...option.get(),
@@ -175,21 +176,37 @@ exports.destroyCartItem = async ({ userId }, { cartItemId }) => {
 
 exports.updateCartItemOption = async (
   { cartItemId },
-  { quantity, options },
+  { quantity = 1, options = [] },
 ) => {
-  await CartItem.update(
-    {
-      quantity,
-      options,
-    },
-    { where: { cartItemId } },
-  );
-  const cartItemCreateData = options.map((optionId) => ({
-    cartItemId,
-    menuOptionId: optionId,
-  }));
-  const updateOptions = await CartItemOption.bulkCreate(cartItemCreateData);
-  return updateOptions;
+  const t = await sequelize.transaction();
+
+  try {
+    await CartItem.update(
+      { quantity },
+      { where: { cartItemId }, transaction: t },
+    );
+    await CartItemOption.destroy({ where: { cartItemId }, transaction: t });
+
+    const updateOptions = [];
+
+    if (options.length > 0) {
+      const cartItemCreateData = options.map((optionId) => ({
+        cartItemId,
+        menuOptionId: optionId,
+      }));
+
+      for (const data of cartItemCreateData) {
+        const created = await CartItemOption.create(data, { transaction: t });
+        updateOptions.push(created);
+      }
+    }
+
+    await t.commit();
+    return updateOptions;
+  } catch (error) {
+    await t.rollback();
+    throw error;
+  }
 };
 
 exports.findMenuDetail = async ({ menuId }) => {

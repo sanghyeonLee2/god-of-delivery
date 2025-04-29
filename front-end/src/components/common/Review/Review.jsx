@@ -19,7 +19,7 @@ function Review({ review }) {
       {review?.CeoReview && (
         <OwnerReview ownerReview={review?.CeoReview} isOwner={role === "owner"} />
       )}
-      {currentUserId === review.userId && role === "owner" && !review.CeoReview && (
+      {role === "owner" && !review.CeoReview && (
         <MainBtn
           text={MODAL_TYPES.OWNER_CREATE_REVIEW}
           onClick={() => openModal(MODAL_TYPES.OWNER_CREATE_REVIEW, review)}

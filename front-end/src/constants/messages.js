@@ -1,4 +1,5 @@
 export const ERROR_MESSAGES = {
+  AUTH_NOT_FOUND: "등록되지 않은 사용자입니다.",
   NETWORK: "네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.",
   TOKEN_EXPIRED: "토큰 만료로 인해 로그아웃 되었습니다.",
   TOKEN_INVALID: "토큰이 유효하지 않습니다.",

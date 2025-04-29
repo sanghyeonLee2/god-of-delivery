@@ -12,7 +12,7 @@ import { SUCCESS_MESSAGES } from "@constants/messages";
 const useCartDetail = (modalData) => {
   const closeModal = useCloseModal();
   const queryClient = useQueryClient();
-  const cachedData = queryClient.getQueryData(QUERY_KEYS.CART_DETAIL(modalData.menuId));
+  const cachedData = queryClient.getQueryData(QUERY_KEYS.CART_DETAIL(modalData.cartItemId));
   const { handleSubmit, control, register, reset, watch, getValues, setValue } = useForm({
     defaultValues: {
       quantity: modalData.quantity,
@@ -23,7 +23,7 @@ const useCartDetail = (modalData) => {
   });
 
   const { data, isLoading: isFetching } = useQuery(
-    QUERY_KEYS.CART_DETAIL(modalData.menuId),
+    QUERY_KEYS.CART_DETAIL(modalData.cartItemId),
     () => authGetApi(API_URLS.CART.DETAIL(modalData.menuId)),
     {
       onSuccess: (res) =>
@@ -37,13 +37,13 @@ const useCartDetail = (modalData) => {
   );
   const { mutate: updateCart, isLoading: isUpdatingCart } = useMutation(
     () =>
-      authPutApi(API_URLS.CART.PUT_ITEM(modalData.menuId), {
+      authPutApi(API_URLS.CART.PUT_ITEM(modalData.cartItemId), {
         ...getValues(),
         options: extractSelectedOptionIds(getValues("options")),
       }),
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries(QUERY_KEYS.CART_DETAIL(modalData.menuId));
+        await queryClient.invalidateQueries(QUERY_KEYS.CART_DETAIL(modalData.cartItemId));
         await queryClient.invalidateQueries(QUERY_KEYS.CART);
         closeModal();
         showSuccess(SUCCESS_MESSAGES.CART_UPDATED);

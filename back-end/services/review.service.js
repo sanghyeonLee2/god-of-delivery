@@ -10,37 +10,32 @@ exports.findReviewsByStoreId = async ({ storeId }, { page }) => {
     limit: 10,
     include: [{ model: CeoReview }],
   });
-  const countReviews = await Review.findAll({
-    attributes: [[sequelize.fn("COUNT", sequelize.col("rating")), "count"]],
-    where: { storeId, rating: [1, 2, 3, 4, 5] },
-    group: ["rating"],
-    order: [["rating", "ASC"]],
-  });
-  const countList = countReviews.map((item) => item.dataValues.count);
+
   return {
     totalItems: data.length,
-    reviewStat: countList,
     reviewList: data,
   };
 };
 
 exports.createReview = async ({ userId, body }) => {
   const t = await sequelize.transaction();
-  try{
-    const createData = await Review.create({
-      userId,
-      storeId: body.storeId,
-      orderId: body.orderId,
-      rating: body.rating,
-      content: body.content,
-      img: body.img,
-    }, {transaction: t});
+  try {
+    const createData = await Review.create(
+      {
+        userId,
+        storeId: body.storeId,
+        orderId: body.orderId,
+        rating: body.rating,
+        content: body.content,
+        img: body.img,
+      },
+      { transaction: t },
+    );
     await StoreService.updateReviewCnt(body.storeId, 1, t);
 
     await t.commit();
-    return  createData;
-  }
-  catch (err){
+    return createData;
+  } catch (err) {
     await t.rollback();
     throw err;
   }
@@ -73,22 +68,24 @@ exports.findReviewsByUserId = async ({ userId, query }) => {
 exports.updateReview = async ({ userId, body, params }) => {
   const { reviewId } = params;
   return Review.update(body, {
-    where: {reviewId: reviewId, userId: userId},
+    where: { reviewId: reviewId, userId: userId },
   });
 };
 
 exports.deleteReview = async ({ userId, params }) => {
   const { reviewId } = params;
   const t = sequelize.transaction();
-  try{
-    const {storeId} = await Review.findOne({where:{reviewId}, transaction: t})
+  try {
+    const { storeId } = await Review.findOne({
+      where: { reviewId },
+      transaction: t,
+    });
     await Review.destroy({
-      where: {userId: userId, reviewId: reviewId},
+      where: { userId: userId, reviewId: reviewId },
     });
     await StoreService.updateReviewCnt(storeId, t);
     await t.commit();
-  }
-  catch (err){
+  } catch (err) {
     await t.rollback();
     throw err;
   }
@@ -103,16 +100,8 @@ exports.findListOwnerReview = async ({ userId, query }) => {
     limit: 10,
     include: [{ model: CeoReview }],
   });
-  const countReviews = await Review.findAll({
-    attributes: [[sequelize.fn("COUNT", sequelize.col("rating")), "count"]],
-    where: { storeId: store.storeId, rating: [1, 2, 3, 4, 5] },
-    group: ["rating"],
-    order: [["rating", "ASC"]],
-  });
-  const countList = countReviews.map((item) => item.dataValues.count);
   return {
     totalItems: data.length,
-    reviewStat: countList,
     reviewList: data,
   };
 };
@@ -125,21 +114,21 @@ exports.createCeoReview = async ({ userId }, { reviewId, content }) => {
   });
 };
 
-exports.updateCeoReview = async ({ params, body }) => {
-  const updateCeoReview = await CeoReview.update(body, {
-    where: { reviewId: params.reviewId },
-  });
-  return updateCeoReview > 0;
-};
-
 exports.deleteCeoReview = async ({ reviewId }) => {
   return await CeoReview.destroy({
-    where: {reviewId},
+    where: { ceoReviewId: reviewId },
   });
 };
 
-exports.countCeoReview = async (storeId ) => {
-    const countCR = await Review.findAll({where: {storeId},
-    include: [{ model: CeoReview }]})
-    return countCR.reduce((acc, item) => {if(item.CeoReview) {acc++} return acc;}, 0)
-}
+exports.countCeoReview = async (storeId) => {
+  const countCR = await Review.findAll({
+    where: { storeId },
+    include: [{ model: CeoReview }],
+  });
+  return countCR.reduce((acc, item) => {
+    if (item.CeoReview) {
+      acc++;
+    }
+    return acc;
+  }, 0);
+};

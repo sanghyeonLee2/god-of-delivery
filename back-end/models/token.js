@@ -9,7 +9,7 @@ class Token extends Sequelize.Model {
           allowNull: false,
           references: {
             model: "users", // User 모델 참조
-            key: "userId",
+            key: "user_id",
           },
           onDelete: "CASCADE",
           onUpdate: "CASCADE",
@@ -32,6 +32,7 @@ class Token extends Sequelize.Model {
       },
     );
   }
+
   static associate(db) {
     db.Token.belongsTo(db.User, {
       foreignKey: "userId",
