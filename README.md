@@ -25,12 +25,12 @@
 
 ### 🌐 프론트엔드
 
-- 🔗 [front-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/front-end/README.md)
+- 🔗 [front-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/main/front-end/README.md)
 - 기술 스택, 주요 라이브러리, 주요기능, 폴더 구조 등
 
 ### ⚙️ 백엔드
 
-- 🔗 [back-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/back-end/README.md)
+- 🔗 [back-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/main/back-end/README.md)
 - 기술 스택, API 구조, DB 설계, 주요 라이브러리 등
 
 ---
