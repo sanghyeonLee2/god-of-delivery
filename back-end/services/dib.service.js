@@ -31,14 +31,14 @@ exports.findUserDibList = async ({ userId }, { page }) => {
 
 exports.addDib = async ({ userId }, { storeId }) => {
   const t = await sequelize.transaction();
-  try{
+  try {
     await Dib.create({
       userId,
       storeId,
     });
     await StoreService.updateDibCnt(storeId, 1, t);
-  }
-  catch (err){
+    await t.commit();
+  } catch (err) {
     await t.rollback();
     throw err;
   }
@@ -46,7 +46,7 @@ exports.addDib = async ({ userId }, { storeId }) => {
 
 exports.deleteDib = async ({ userId }, { storeId }) => {
   const t = await sequelize.transaction();
-  try{
+  try {
     const deleteCount = await Dib.destroy({
       where: {
         userId,
@@ -57,8 +57,9 @@ exports.deleteDib = async ({ userId }, { storeId }) => {
       new Error("삭제할 데이터가 없습니다");
     }
     await StoreService.updateDibCnt(storeId, 0, t);
-  }
-  catch (err){
+
+    await t.commit();
+  } catch (err) {
     await t.rollback();
     throw err;
   }
@@ -68,5 +69,5 @@ exports.isDibByUserId = async (userId, storeId) => {
   const isDip = await Dib.findOne({
     where: { userId, storeId },
   });
-  return (isDip);
+  return isDip;
 };
