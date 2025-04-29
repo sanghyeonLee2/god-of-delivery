@@ -35,13 +35,33 @@ exports.createOrder = async ({ userId, body }) => {
       { transaction: t },
     );
 
+    const menuIds = cartData.CartItems.map((item) => item.menuId);
+    const allMenuOptions = cartData.CartItems.flatMap((item) =>
+      item.CartItemOptions.map((option) => option.menuOptionId),
+    );
+
+    const menus = await Menu.findAll({
+      where: { menuId: menuIds },
+      transaction: t,
+    });
+
+    const menuOptions =
+      allMenuOptions.length > 0
+        ? await MenuOption.findAll({
+            where: { menuOptionId: allMenuOptions },
+            transaction: t,
+          })
+        : [];
+
+    const menuMap = new Map(menus.map((menu) => [menu.menuId, menu]));
+    const optionMap = new Map(
+      menuOptions.map((option) => [option.menuOptionId, option]),
+    );
+
     let orderTotal = 0;
 
     for (const cartItem of cartData.CartItems) {
-      const menuInfo = await Menu.findOne({
-        where: { menuId: cartItem.menuId },
-        transaction: t,
-      });
+      const menuInfo = menuMap.get(cartItem.menuId);
 
       const orderItem = await OrderItem.create(
         {
@@ -57,10 +77,7 @@ exports.createOrder = async ({ userId, body }) => {
       let optionSum = 0;
 
       for (const cartOption of cartItem.CartItemOptions) {
-        const optionInfo = await MenuOption.findOne({
-          where: { menuOptionId: cartOption.menuOptionId },
-          transaction: t,
-        });
+        const optionInfo = optionMap.get(cartOption.menuOptionId);
 
         await OrderItemOption.create(
           {
