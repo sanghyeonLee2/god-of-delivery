@@ -10,7 +10,7 @@ function Empty({ text }) {
     <EmptyWrap>
       <div>
         <Font size={"x-large"}> {text}</Font>
-        {text !== "리뷰가 없습니다" && <SubBtn onClick={() => navigate(-1)} text={"뒤로가기"} />}
+        <SubBtn onClick={() => navigate(-1)} text={"뒤로가기"} />
       </div>
     </EmptyWrap>
   );
