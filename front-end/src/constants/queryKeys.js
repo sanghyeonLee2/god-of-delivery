@@ -17,7 +17,7 @@ export const QUERY_KEYS = {
   STORE_REVIEWS: (storeId, page) => ["storeReviews", storeId, page],
   CART: ["cart"],
   USER: ["user"],
-  ORDER: ["order"],
+  ORDER: (orderId) => ["order", orderId],
   OWNER_STORES: ["ownerStores"],
   ORDERS: (page) => ["orders", page],
   MENU_CATEGORY: ["menuCategory"],
