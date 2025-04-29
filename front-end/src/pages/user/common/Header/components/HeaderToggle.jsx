@@ -5,14 +5,20 @@ import { Font } from "@assets/styles/CommonStyle";
 import { CiUser } from "react-icons/ci";
 import useSignOut from "@hooks/useSignOut";
 import useToggleDisplay from "@pages/user/common/Header/hooks/useToggleDisplay";
+import { useRecoilValue } from "recoil";
+import { userIdState } from "@recoil/user/atoms";
 
 function HeaderToggle() {
   const [menuRef, showMenu, hideMenu] = useToggleDisplay();
   const handleSignOut = useSignOut();
+  const userId = useRecoilValue(userIdState);
   return (
     <UserMenuWrap onMouseEnter={showMenu} onMouseLeave={hideMenu}>
       <CiUser size={35} />
       <ul ref={menuRef}>
+        <li>
+          <Font size={"small"}>ID : {userId}</Font>
+        </li>
         <li>
           <Link to={"/cart"}>
             <Font size={"small"}>장바구니</Font>
