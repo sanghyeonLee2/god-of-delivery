@@ -2,6 +2,11 @@ const PAGE_SIZE = 10;
 
 export const pageCalculator = (totalItems) => Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
 
+export const cartMenuPrice = (quantity, defaultPrice, cartItemOptions) => {
+  const optionPrice = cartItemOptions.reduce((acc, option) => acc + option.price, defaultPrice);
+  return optionPrice * quantity;
+};
+
 export const cartMenuTotalPrice = (cartItems) =>
   cartItems?.reduce((acc, item) => {
     const optionTotal = item.CartItemOptions.reduce((sum, opt) => sum + opt.price, 0);
