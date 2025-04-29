@@ -11,7 +11,7 @@ export const useDeleteOwnerReview = () => {
   const queryClient = useQueryClient();
   const { page } = useCustomQueryParams(QUERY_PARAMS_INIT.ONLY_PAGE);
 
-  return useMutation((reviewId) => authDeleteApi(API_URLS.REVIEW.OWNER.ITEM(reviewId)), {
+  return useMutation((ceoReviewId) => authDeleteApi(API_URLS.REVIEW.OWNER.ITEM(ceoReviewId)), {
     onSuccess: async () => {
       await queryClient.invalidateQueries(QUERY_KEYS.OWNER_STORE_REVIEWS(page));
       showSuccess(SUCCESS_MESSAGES.REVIEW_DELETED);
