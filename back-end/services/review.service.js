@@ -104,15 +104,17 @@ exports.deleteReview = async ({ userId, params }) => {
 exports.findListOwnerReview = async ({ userId, query }) => {
   const store = await StoreService.findStoreByUserId(userId);
   const pageNum = Number(query.page);
-  const data = await Review.findAll({
+
+  const { count, rows } = await Review.findAndCountAll({
     where: { storeId: store.storeId },
     offset: (pageNum - 1) * 10,
     limit: 10,
     include: [{ model: CeoReview }],
   });
+
   return {
-    totalItems: data.length,
-    reviewList: data,
+    totalItems: count,
+    reviewList: rows,
   };
 };
 
