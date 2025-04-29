@@ -17,6 +17,7 @@ function SignInPage() {
           <Link to="/auth/sign-up">
             <Font>회원가입</Font>
           </Link>
+          <Font size={"x-small"}>입력 폼 기본값으로 로그인 가능</Font>
         </div>
       </S.AuthPageInner>
     </S.AuthPageOuter>

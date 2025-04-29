@@ -1,16 +1,15 @@
 import React from "react";
 import { CommonBorder, CommonPageHeader, FlexOnly, Font } from "@assets/styles/CommonStyle";
 import { omittedDate } from "@utils/transducer";
-import { MainBtn, SubBtn } from "@components/common/Button/main/MainButtons";
+import { MainBtn } from "@components/common/Button/main/MainButtons";
 import { useNavigate } from "react-router-dom";
 import Image from "@components/common/Image/Image";
 import { COLORS } from "@constants/style";
-import useOpenModal from "@hooks/useOpenModal";
-import { MODAL_TYPES } from "@constants/modalTypes";
+import CompletionReview from "@pages/user/ManagementPages/components/CompletionReview";
+import CreateReviewSection from "@pages/user/ManagementPages/components/CreateReviewSection";
 
 function OrderInfo({ order }) {
   const navigate = useNavigate();
-  const openModal = useOpenModal();
   return (
     <CommonBorder>
       <CommonPageHeader>
@@ -40,23 +39,7 @@ function OrderInfo({ order }) {
           </Font>
         </div>
       </FlexOnly>
-      {!order.hasReviewed && (
-        <div style={{ marginTop: "1rem" }}>
-          <SubBtn
-            type={"button"}
-            text={MODAL_TYPES.CREATE_REVIEW}
-            height={"4rem"}
-            onClick={() =>
-              openModal(MODAL_TYPES.CREATE_REVIEW, {
-                storeName: order.storeName,
-                orderId: order.orderId,
-                storeId: order.storeId,
-                representativeOrder: order.representativeOrder,
-              })
-            }
-          />
-        </div>
-      )}
+      {order.hasReviewed ? <CompletionReview /> : <CreateReviewSection order={order} />}
     </CommonBorder>
   );
 }

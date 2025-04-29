@@ -12,21 +12,21 @@
 
 ## 👨‍💻 개발 인원 및 역할
 
-| 이름  | 역할                               |
-|:----|----------------------------------|
-| 이상현 | FE 개발 및 배포, 기획 총괄, 퍼블리싱, API 문서화 |
-| 신유성 | BE 개발 및 배포, DB 설계, API 설계 및 문서화  |
+| 이름                                      | 역할                               |
+|:----------------------------------------|----------------------------------|
+| [이상현](https://github.com/sanghyeonLee2) | FE 개발 및 배포, 기획 총괄, 퍼블리싱, API 문서화 |
+| [신유성](https://github.com/Justbeanpole)  | BE 개발 및 배포, DB 설계, API 설계 및 문서화  |
 
 ---
 
 ## 📂 파트별 README
 
- 프로젝트는 프론트엔드와 백엔드가 분리되어 있으며, 각 디렉토리별로 세부 내용을 정리한 README가 존재합니다.
+프로젝트는 프론트엔드와 백엔드가 분리되어 있으며, 각 디렉토리별로 세부 내용을 정리한 README가 존재합니다.
 
 ### 🌐 프론트엔드
 
 - 🔗 [front-end/README.md](https://github.com/sanghyeonLee2/god-of-delivery/blob/develop/front-end/README.md)
-- 기술 스택, 주요 라이브러리, CI/CD 파이프라인, 폴더 구조 등
+- 기술 스택, 주요 라이브러리, 주요기능, 폴더 구조 등
 
 ### ⚙️ 백엔드
 
@@ -50,10 +50,10 @@
 
 ## 🎯 프로젝트 목적
 
- 본 프로젝트는 실제 배달 서비스인 **배달의 민족**과 **요기요**의 흐름을 벤치마킹하여,  
+본 프로젝트는 실제 배달 서비스인 **배달의 민족**과 **요기요**의 흐름을 벤치마킹하여,  
 **프론트엔드와 백엔드를 분리한 협업 기반의 웹 애플리케이션 개발 경험**을 목표로 합니다.
 
- 각 파트의 세부 기술 스택 및 구조는 디렉토리별 README에서 확인할 수 있으며,  
+각 파트의 세부 기술 스택 및 구조는 디렉토리별 README에서 확인할 수 있으며,  
 아래와 같은 방향성을 중심으로 구현하였습니다:
 
 ### 🌐 프론트엔드
@@ -67,6 +67,7 @@
 - **RESTful API 설계 및 모듈화된 서버 구조 구성**
 - **ORM 기반 DB 모델링 및 데이터 흐름 처리**
 - **JWT 기반 인증 로직 구현 (access-token / refresh-token)**
+
 ---
 
 ## 🗺️ 배포 아키텍처
@@ -77,10 +78,14 @@
 
 ## 🛠️ 로컬 실행 방법
 
+`feat/local` 브랜치에서 실행 가능합니다.  
+백엔드는 `.env.example` 파일을 수정하고, 프론트엔드는 `.env.example`을 참고해 `.env` 파일을 생성합니다.
+
 ### 1. 프로젝트 클론
 
 ```
 git clone https://github.com/sanghyeonLee2/god-of-delivery.git
+cd god-of-delivery
 ```
 
 ### 2. 백엔드 실행
@@ -88,17 +93,38 @@ git clone https://github.com/sanghyeonLee2/god-of-delivery.git
 ```
 cd back-end
 npm install
-npm run dev
+```
+
+- `.env.example` 파일에 아래 항목 입력:
+
+```
+DB_USER=your_database_username
+DB_PASS=your_database_password
+DB_NAME=your_database_name
+DB_HOST=your_database_host_address
+```
+
+```
+nodemon app
 ```
 
 ### 3. 프론트엔드 실행
 
 ```
-cd front-end
+cd ../front-end
 npm install
+```
+
+- `.env.example` 파일을 참고해 `.env` 파일 생성
+- 아래 항목 입력:
+
+```
+REACT_APP_KAKAO_API=your_kakao_api_url
+REACT_APP_API=your_local_api_url
+```
+
+```
 npm start
 ```
 
-> 각 디렉토리에 .env 파일이 필요하며, 예시 파일 .env.example을 참고해 설정하세요.
-> 백엔드는 MySQL DB 연결 정보가 필요하며, 프론트엔드는 Kakao API 키를 별도로 발급받아 입력해야 합니다.
 ---

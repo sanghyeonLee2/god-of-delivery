@@ -2,13 +2,15 @@ import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { userAddressState } from "@recoil/user/atoms";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { authPostApi } from "@api/request";
 import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
 import { SUCCESS_MESSAGES } from "@constants/messages";
+import { QUERY_KEYS } from "@constants/queryKeys";
 
 export const usePayment = () => {
+  const queryClient = useQueryClient();
   const location = useLocation();
   const address = useRecoilValue(userAddressState);
   const navigate = useNavigate();
@@ -26,7 +28,8 @@ export const usePayment = () => {
   const { mutate, isLoading: isOrderPosting } = useMutation(
     (data = {}) => authPostApi(API_URLS.ORDER.BASE, data),
     {
-      onSuccess: (res) => {
+      onSuccess: async (res) => {
+        await queryClient.invalidateQueries(QUERY_KEYS.ORDERS(1));
         showSuccess(SUCCESS_MESSAGES.PAYMENT_COMPLETED);
         navigate(`/orders/${res.data?.orderId}`);
       },

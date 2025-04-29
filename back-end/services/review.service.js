@@ -44,12 +44,14 @@ exports.createReview = async ({ userId, body }) => {
 exports.findReviewsByUserId = async ({ userId, query }) => {
   const { page } = query;
   const pageNum = Number(page);
-  const reviews = await Review.findAll({
+
+  const { count, rows: reviews } = await Review.findAndCountAll({
     where: { userId: userId },
     offset: (pageNum - 1) * 10,
     limit: 10,
     include: [{ model: CeoReview }],
   });
+
   const countReviews = await Review.findAll({
     attributes: [[sequelize.fn("COUNT", sequelize.col("rating")), "count"]],
     where: { userId, rating: [1, 2, 3, 4, 5] },
@@ -58,8 +60,9 @@ exports.findReviewsByUserId = async ({ userId, query }) => {
   });
 
   const countList = countReviews.map((item) => item.dataValues.count);
+
   return {
-    totalItems: reviews.length,
+    totalItems: count,
     reviewStat: countList,
     reviewList: reviews,
   };
@@ -74,16 +77,23 @@ exports.updateReview = async ({ userId, body, params }) => {
 
 exports.deleteReview = async ({ userId, params }) => {
   const { reviewId } = params;
-  const t = sequelize.transaction();
+  console.log(reviewId);
+
+  const t = await sequelize.transaction(); // ✅ 수정: await 추가
+
   try {
     const { storeId } = await Review.findOne({
       where: { reviewId },
       transaction: t,
     });
+
     await Review.destroy({
       where: { userId: userId, reviewId: reviewId },
+      transaction: t,
     });
+
     await StoreService.updateReviewCnt(storeId, t);
+
     await t.commit();
   } catch (err) {
     await t.rollback();
@@ -94,15 +104,17 @@ exports.deleteReview = async ({ userId, params }) => {
 exports.findListOwnerReview = async ({ userId, query }) => {
   const store = await StoreService.findStoreByUserId(userId);
   const pageNum = Number(query.page);
-  const data = await Review.findAll({
+
+  const { count, rows } = await Review.findAndCountAll({
     where: { storeId: store.storeId },
     offset: (pageNum - 1) * 10,
     limit: 10,
     include: [{ model: CeoReview }],
   });
+
   return {
-    totalItems: data.length,
-    reviewList: data,
+    totalItems: count,
+    reviewList: rows,
   };
 };
 
