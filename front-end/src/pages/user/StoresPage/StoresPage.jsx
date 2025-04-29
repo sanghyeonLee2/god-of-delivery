@@ -31,7 +31,7 @@ function StoresPage() {
       <StoresSticky>
         <CategoryList categoryId={categoryId} setCategory={setCategory} />
         <SortingSection
-          category={categoryId}
+          categoryId={categoryId}
           setCategory={setCategory}
           setSorting={setSorting}
           sorting={sorting}
