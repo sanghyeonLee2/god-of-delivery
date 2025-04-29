@@ -57,9 +57,13 @@ exports.patchUserAddress = async (req, res) => {
 
 exports.getUserOrders = async (req, res) => {
   try {
-    const userOrderList = await OrderService.findUserOrder(req, req.query);
+    const { totalItems, userOrderList } = await OrderService.findUserOrder(
+      req,
+      req.query,
+    );
+
     res.status(200).send({
-      totalItems: userOrderList.length,
+      totalItems,
       userOrderList,
     });
   } catch (err) {
@@ -73,9 +77,10 @@ exports.getUserOrders = async (req, res) => {
 exports.getUserDibStoreList = async (req, res) => {
   try {
     const dibs = await DibService.findUserDibList(req, req.query);
+
     res.status(200).send({
-      totalItems: dibs.length,
-      dibList: dibs,
+      totalItems: dibs.totalItems,
+      dibList: dibs.storeList,
     });
   } catch (err) {
     res.status(500).send({

@@ -25,8 +25,10 @@ exports.getStores = async (
       // sortType = [Sequelize.literal("distance ASC")]; // 기본: 가까운 순
       break;
   }
+
   const searchKeyword = keyword || ""; // 예: "Hello World"
   const categoryName = category || "all"; // 예: "fastFood", or "all"
+
   const keywordCondition = where(
     fn("REPLACE", fn("LOWER", col("store_name")), " ", ""),
     {
@@ -34,13 +36,12 @@ exports.getStores = async (
     },
   );
 
-  // 카테고리 조건
   const categoryCondition =
     categoryName === "all"
       ? {} // 조건 없음
       : { store_category: categoryName };
 
-  const data = await Store.findAll({
+  const { count, rows } = await Store.findAndCountAll({
     where: {
       [Op.and]: [keywordCondition, categoryCondition],
     },
@@ -63,14 +64,15 @@ exports.getStores = async (
       //   ),
       //   "distance",
       // ],
-    ], // 거리 계산
+    ],
     // having: Sequelize.literal("distance <= 5"), // 5km 이내 필터링
     order: sortType,
   });
+
   return {
     category: category,
-    totalItems: data.length,
-    storeList: data,
+    totalItems: count,
+    storeList: rows,
   };
 };
 

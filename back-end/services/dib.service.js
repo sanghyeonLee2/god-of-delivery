@@ -3,10 +3,9 @@ const StoreService = require("./store.service");
 
 exports.findUserDibList = async ({ userId }, { page }) => {
   const pageNum = Number(page);
-  const storeListWithDib = await Dib.findAll({
-    where: {
-      userId,
-    },
+
+  const { count, rows } = await Dib.findAndCountAll({
+    where: { userId },
     limit: 10,
     offset: (pageNum - 1) * 10,
     include: [
@@ -25,8 +24,13 @@ exports.findUserDibList = async ({ userId }, { page }) => {
       },
     ],
   });
-  const storeList = storeListWithDib.map((item) => item.Store);
-  return storeList;
+
+  const storeList = rows.map((item) => item.Store);
+
+  return {
+    totalItems: count,
+    storeList,
+  };
 };
 
 exports.addDib = async ({ userId }, { storeId }) => {

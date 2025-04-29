@@ -33,6 +33,7 @@ exports.postCreateReview = async (req, res) => {
 exports.getUserReview = async (req, res) => {
   try {
     const userReviews = await ReviewService.findReviewsByUserId(req);
+
     res.status(200).send(userReviews);
   } catch (error) {
     res.status(500).send({
@@ -67,11 +68,11 @@ exports.patchReview = async (req, res) => {
 exports.deleteReview = async (req, res) => {
   try {
     await ReviewService.deleteReview(req);
-      res.status(200).send({
-        status: 200,
-        message: "Success",
-      });
-    }  catch (error) {
+    res.status(200).send({
+      status: 200,
+      message: "Success",
+    });
+  } catch (error) {
     res.status(500).send({
       status: 500,
       message: error.message,
