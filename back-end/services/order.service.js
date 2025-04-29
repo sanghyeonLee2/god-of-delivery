@@ -180,8 +180,13 @@ exports.findUserOrder = async ({ userId }, { page }) => {
     limit: 10,
     order: [["status", "ASC"]],
     include: [
-      { model: Store, attributes: ["storeLogoImage"] },
-      { model: OrderItem },
+      {
+        model: Store,
+        attributes: ["storeLogoImage", "storeName"],
+      },
+      {
+        model: OrderItem,
+      },
     ],
   });
 
@@ -190,40 +195,40 @@ exports.findUserOrder = async ({ userId }, { page }) => {
     attributes: ["orderId"],
   });
 
-  const hasReviewOrderId = hasReview.reduce((acc, item) => {
-    acc.push(item.orderId);
-    return acc;
-  }, []);
+  const hasReviewOrderIdSet = new Set(hasReview.map((item) => item.orderId));
 
   const formattedOrders = orders.map((order) => {
     const orderData = order.get({ plain: true });
-    const imgUrl = orderData.Store ? orderData.Store.storeLogoImage : null;
+    const { Store, OrderItems, ...rest } = orderData;
 
-    if (!order.OrderItems || order.OrderItems.length === 0) {
+    const imgUrl = Store?.storeLogoImage || null;
+    const storeName = Store?.storeName || null;
+
+    if (!OrderItems || OrderItems.length === 0) {
       return {
-        ...orderData,
+        ...rest,
         representativeOrder: "메뉴없음",
-        hasReviewed: hasReviewOrderId.includes(order.orderId),
+        hasReviewed: hasReviewOrderIdSet.has(order.orderId),
         imgUrl,
+        storeName,
       };
     }
 
-    const sortedMenu = order.OrderItems.sort(
+    const sortedMenu = [...OrderItems].sort(
       (a, b) => b.menuPriceSnapshot - a.menuPriceSnapshot,
     );
 
     const representativeMessage =
-      sortedMenu.length - 1
+      sortedMenu.length > 1
         ? `${sortedMenu[0].menuNameSnapshot} 외 ${sortedMenu.length - 1}개`
         : sortedMenu[0].menuNameSnapshot;
 
-    const { OrderItems, Store, ...withOutOrderItem } = orderData;
-
     return {
-      ...withOutOrderItem,
+      ...rest,
       representativeOrder: representativeMessage,
-      hasReviewed: hasReviewOrderId.includes(order.orderId),
+      hasReviewed: hasReviewOrderIdSet.has(order.orderId),
       imgUrl,
+      storeName,
     };
   });
 
