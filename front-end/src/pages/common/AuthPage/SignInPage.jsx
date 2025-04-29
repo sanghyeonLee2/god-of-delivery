@@ -14,6 +14,7 @@ function SignInPage() {
         <SignInForm />
         <div>
           <Font color={COLORS.FONT.SUB}>계정이 없으신가요?</Font>
+          <Font size={"x-small"}>입력 폼 기본값으로 로그인 가능</Font>
           <Link to="/auth/sign-up">
             <Font>회원가입</Font>
           </Link>
