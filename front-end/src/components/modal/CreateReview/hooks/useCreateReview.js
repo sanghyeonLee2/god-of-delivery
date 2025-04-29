@@ -27,6 +27,7 @@ export const useCreateReview = ({ orderId, storeId }) => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.ORDERS(page));
+        await queryClient.invalidateQueries(QUERY_KEYS.MY_REVIEWS(page));
         showSuccess(SUCCESS_MESSAGES.REVIEW_ADDED);
         closeModal();
       },
