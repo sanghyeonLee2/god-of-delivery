@@ -23,5 +23,5 @@ export const QUERY_KEYS = {
   MENU_CATEGORY: ["menuCategory"],
   MENU_OPTION: ["menuOption"],
   OWNER_MENUS: ["ownerMenus"],
-  OWNER_MENU: ["ownerMenu"],
+  OWNER_MENU: (menuId) => ["ownerMenu", menuId],
 };
