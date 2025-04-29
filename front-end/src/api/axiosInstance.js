@@ -2,7 +2,7 @@ import axios from "axios";
 import reissue from "./reissueApi";
 import { NON_AUTH_URLS } from "@constants/urls";
 
-const API_KEY = process.env.REACT_APP_LOCAL_API;
+const API_KEY = process.env.REACT_APP_API;
 
 const axiosInstance = axios.create({
   baseURL: API_KEY,

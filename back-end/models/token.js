@@ -9,7 +9,7 @@ class Token extends Sequelize.Model {
           allowNull: false,
           references: {
             model: "users", // User 모델 참조
-            key: "user_id",
+            key: "userId",
           },
           onDelete: "CASCADE",
           onUpdate: "CASCADE",
