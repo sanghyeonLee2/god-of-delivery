@@ -55,8 +55,8 @@ exports.postSignIn = async (req, res) => {
         refreshToken: refreshToken,
       });
     } else {
-      res.status(403).send({
-        status: 403,
+      res.status(404).send({
+        status: 404,
         message: "Not Found",
       });
     }
