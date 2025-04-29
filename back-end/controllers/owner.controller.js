@@ -1,11 +1,11 @@
 const {
   findListOwnerReview,
   createCeoReview,
-  updateCeoReview,
   deleteCeoReview,
 } = require("../services/review.service");
 const StoreService = require("../services/store.service");
 const MenuService = require("../services/menu.service");
+const { updateStoreByUserId } = require("../services/store.service");
 
 exports.getOwnerStore = async (req, res) => {
   try {
@@ -19,6 +19,24 @@ exports.getOwnerStore = async (req, res) => {
   }
 };
 
+exports.patchOwnerStore = async (req, res) => {
+  try {
+    if (await updateStoreByUserId(req.userId, req.body)) {
+      res.status(200).send({
+        message: "Success",
+      });
+      return;
+    }
+    res.status(204).send({
+      message: "변경점이 없습니다.",
+    });
+  } catch (err) {
+    res.status(500).send({
+      status: 500,
+      message: err.message,
+    });
+  }
+};
 exports.getOwnerReview = async (req, res) => {
   try {
     const reviews = await findListOwnerReview(req);
@@ -43,18 +61,16 @@ exports.getOwnerStoreMenus = async (req, res) => {
   }
 };
 exports.getOwnerMenu = async (req, res) => {
-  try{
-    const store = await StoreService.findStoreByUserId(req.userId);
-    const menu = await MenuService.findByStoreId(store.storeId);
+  try {
+    const menu = await MenuService.findByStoreId(req.params.menuId);
     res.status(200).send(menu);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).send({
       status: 500,
       message: err.message,
-    })
+    });
   }
-}
+};
 
 exports.postOwnerReview = async (req, res) => {
   try {
@@ -64,25 +80,6 @@ exports.postOwnerReview = async (req, res) => {
         message: "Success",
       });
     }
-  } catch (err) {
-    res.status(500).send({
-      status: 500,
-      message: err.message,
-    });
-  }
-};
-
-exports.patchOwnerReview = async (req, res) => {
-  try {
-    if (await updateCeoReview(req)) {
-      res.status(200).send({
-        message: "Success",
-      });
-      return;
-    }
-    res.status(204).send({
-      message: "변경점이 없습니다.",
-    });
   } catch (err) {
     res.status(500).send({
       status: 500,
@@ -112,45 +109,43 @@ exports.deleteOwnerReview = async (req, res) => {
 };
 
 exports.postMenu = async (req, res) => {
-  try{
-    await MenuService.addMenu(req.body);
+  try {
+    await MenuService.addMenu(req.userId, req.body);
     res.status(201).send({
       message: "Success",
-    })
-  }
-  catch (err) {
+    });
+  } catch (err) {
+    console.log(err);
     res.status(500).send({
       status: 500,
       message: err.message,
-    })
+    });
   }
-}
+};
 exports.putMenu = async (req, res) => {
-  try{
-    await MenuService.updateMenu(req.params.menuId,req.body);
+  try {
+    await MenuService.updateMenu(req.params.menuId, req.body);
     res.status(200).send({
-      message: "Success"
-    })
-  }
-  catch (err) {
+      message: "Success",
+    });
+  } catch (err) {
     res.status(500).send({
       status: 500,
       message: err.message,
-    })
+    });
   }
-}
+};
 
 exports.deleteMenu = async (req, res) => {
-  try{
+  try {
     await MenuService.deleteMenu(req.params.menuId);
     res.status(200).send({
       message: "Success",
-    })
-  }
-  catch (err){
+    });
+  } catch (err) {
     res.status(500).send({
       status: 500,
       message: err.message,
-    })
+    });
   }
-}
+};
