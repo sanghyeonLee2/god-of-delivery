@@ -4,7 +4,7 @@ import LocationSearchInput from "@components/modal/SelectMap/components/Location
 import useSearchLocation from "@components/modal/SelectMap/hooks/useSearchLocation";
 
 function LocationSearchForm() {
-  const { locations, setLocations, register } = useSearchLocation();
+  const { locations, setLocations, register, setValue } = useSearchLocation();
   return (
     <div>
       <LocationSearchInput
@@ -13,7 +13,7 @@ function LocationSearchForm() {
         placeholder={"주소를 검색해 보세요"}
       />
       {locations.length > 0 && (
-        <SearchedLocations locations={locations} setLocations={setLocations} />
+        <SearchedLocations locations={locations} setLocations={setLocations} setValue={setValue} />
       )}
     </div>
   );

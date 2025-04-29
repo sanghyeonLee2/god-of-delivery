@@ -26,8 +26,10 @@ export const handleCheckLimit = (e, maxQuantity, menuOptionId, field) => {
   field.onChange(updated);
 };
 export const isChecked = (field, menuOptionId) => field.value.includes(menuOptionId);
-export const onClickLocation = (x, y, setCoords, setLocationInfo) => {
+
+export const onClickLocation = (x, y, setCoords, setLocationInfo, setValue) => {
   const latLng = { lng: Number(x), lat: Number(y) };
-  setCoords(latLng);
   setLocationInfo([]);
+  setValue("searchKeyword", "");
+  setCoords(latLng);
 };
