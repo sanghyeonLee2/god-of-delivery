@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { authGetApi, authPutApi } from "@api/request";
+import { authGetApi, authPatchApi } from "@api/request";
 import { API_URLS } from "@constants/urls";
 import { showSuccess } from "@utils/toasts";
 import { QUERY_KEYS } from "@constants/queryKeys";
@@ -15,7 +15,10 @@ export const useOwnerStore = () => {
   const { register, getValues, handleSubmit } = useForm();
 
   const { mutate: updateStore, isLoading: isUpdating } = useMutation(
-    () => authPutApi(API_URLS.STORE.OWNER_STORE, getValues()),
+    () => {
+      const { updatedAt, createAt, ...cleanedData } = getValues();
+      return authPatchApi(API_URLS.STORE.OWNER_STORE, cleanedData);
+    },
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(QUERY_KEYS.OWNER_STORES);
