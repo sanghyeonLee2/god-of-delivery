@@ -6,7 +6,7 @@ import { isSearchLoadingState } from "@recoil/flag/atoms";
 const useSearchLocation = () => {
   const [locations, setLocations] = useState([]);
   const setIsLoading = useSetRecoilState(isSearchLoadingState);
-  const { register, watch } = useForm();
+  const { register, watch, setValue } = useForm();
   const psRef = useRef(null);
 
   const searchKeyword = watch("searchKeyword");
@@ -48,6 +48,7 @@ const useSearchLocation = () => {
     setLocations,
     register,
     isTyped: searchKeyword !== "",
+    setValue,
   };
 };
 
