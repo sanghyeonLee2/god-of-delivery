@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export const useGetOrder = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
-  const { data, isLoading } = useQuery(QUERY_KEYS.ORDER, () =>
+  const { data, isLoading } = useQuery(QUERY_KEYS.ORDER(orderId), () =>
     authGetApi(API_URLS.ORDER.DETAIL(orderId))
   );
   return {
