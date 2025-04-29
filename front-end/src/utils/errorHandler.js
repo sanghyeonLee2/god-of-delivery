@@ -10,6 +10,10 @@ export const errorHandler = (error) => {
 
   const { status } = error;
 
+  if (error.config.url === API_URLS.AUTH.SIGN_IN && status === 404) {
+    return showError(ERROR_MESSAGES.AUTH_NOT_FOUND);
+  }
+
   if (error.config.url === API_URLS.USER.REISSUE && status === 401) {
     localStorage.clear();
     return showError(ERROR_MESSAGES.TOKEN_EXPIRED);
