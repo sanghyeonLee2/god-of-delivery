@@ -3,17 +3,17 @@
 ## 📚 목차
 
 1. [프로젝트 소개](#프로젝트-소개)
-2. [주요 역할](#주요-역할)
-3. [기술 스택](#기술-스택)
-4. [폴더 구조](#폴더-구조)
-5. [주요 기능](#주요-기능)
-6. [배포 아키텍처](#배포-아키텍처)
-7. [기술적 회고 및 트러블슈팅](#기술적-회고-및-트러블슈팅)
-8. [프로젝트 회고](#프로젝트-회고)
+2. [기술 스택](#기술-스택)
+3. [폴더 구조](#폴더-구조)
+4. [주요 기능](#주요-기능)
+5. [배포 아키텍처](#배포-아키텍처)
+6. [기술적 회고 및 트러블슈팅](#기술적-회고-및-트러블슈팅)
+7. [프로젝트 회고](#프로젝트-회고)
 
 ---
 
-## 📌 프로젝트 소개
+## 프로젝트 소개
+
 > ### 🚀 배포 URL
 > [https://dv19wj9tllwf5.cloudfront.net](https://dv19wj9tllwf5.cloudfront.net)
 
@@ -27,7 +27,7 @@
 백엔드는 RESTful API 설계, DB 모델링 및 서버 배포를 중심으로 역할을 분담하여 개발하였습니다.  
 API 명세 협의 및 응답 포맷 조율, GitHub 기반 협업 경험을 통해 실무와 유사한 개발 흐름을 경험했습니다.
 
-### 📄 디렉토리별 README 안내
+### 디렉토리별 README 안내
 
 본 프로젝트는 프론트엔드(front-end)와 백엔드(back-end)가 분리되어 있으며,  
 각 디렉토리별로 세부 기술 스택, 구조, 실행 방법 등이 작성된 README가 존재합니다.
@@ -38,9 +38,10 @@ API 명세 협의 및 응답 포맷 조율, GitHub 기반 협업 경험을 통�
 
 > ⚙️ 프로젝트 실행 방법은 루트 디렉토리의 [README.md](../README.md)에서 확인할 수 있습니다.  
 > 📘 API 명세는 [back-end/README.md](../back-end/README.md)에 정리되어 있습니다.
+
 ---
 
-## 🛠️ 기술 스택
+## 기술 스택
 
 | 분류            | 기술                                             |
 |---------------|------------------------------------------------|
@@ -49,7 +50,6 @@ API 명세 협의 및 응답 포맷 조율, GitHub 기반 협업 경험을 통�
 | **상태 관리**     | Recoil, TanStack Query (React Query)           |
 | **폼 처리 / 검증** | React Hook Form, Yup                           |
 | **스타일링**      | Styled-components, React Icons                 |
-| **차트 / 시각화**  | Chart.js                                       |
 | **API 통신**    | Axios                                          |
 | **UX 개선**     | React Toastify, React Error Boundary           |
 | **지도 API**    | react-kakao-maps-sdk                           |
@@ -60,7 +60,7 @@ API 명세 협의 및 응답 포맷 조율, GitHub 기반 협업 경험을 통�
 
 ---
 
-## 📁 폴더 구조
+## 폴더 구조
 
 ```
 front-end/
@@ -119,78 +119,136 @@ front-end/
 
 ---
 
-## ✅ 주요 기능
+## 주요 기능
 
-### 🧑 사용자 기능
+### 사용자 기능
 
-- **음식점 목록 조회**
-    - 배달 가능한 음식점 리스트 조회 및 정렬/필터링
-    - (GIF 예시 첨부 예정)
+#### 음식점 목록 조회
 
-- **주소 설정**
-    - 카카오 지도 API를 이용해 배달 가능한 주소 검색 및 설정
-    - 설정된 주소를 기반으로 음식점 목록 필터링
-    - (GIF 예시 첨부 예정)
+- 배달 가능한 음식점 리스트 조회 및 검색/정렬/필터링
 
-- **음식점 상세 페이지**
-    - 가게 정보, 메뉴 및 옵션 확인
-    - 리뷰 조회 기능 포함
-    - (GIF 예시 첨부 예정)
+<div align="center">
+  <img src="../assets/StoreList.gif" width="400" alt="음식점 리스트 조회"/>
+  <img src="../assets/Sorting.gif" width="400" alt="정렬 기능"/>
+</div>
+<div align="center">
+  <img src="../assets/Filter.gif" width="400" alt="필터링 기능"/>
+  <img src="../assets/Search.gif" width="400" alt="검색 기능"/>
+</div>
 
-- **장바구니 기능**
-    - 메뉴 옵션 및 수량 조절 후 장바구니 담기
-    - 장바구니 내에서 수정 및 삭제 가능
-    - (GIF 예시 첨부 예정)
+#### 주소 설정
 
-- **주문하기**
-    - 장바구니에 담긴 메뉴를 한 번에 주문
-    - 주문 성공 시 주문 상태 확인 가능
-    - (GIF 예시 첨부 예정)
+- 카카오 지도 API를 이용해 배달 가능한 주소 검색 및 설정
+- 설정된 주소를 기반으로 음식점 목록 필터링
 
-- **주문 상태 확인**
-    - 사용자가 주문한 내역과 진행 상태 확인
-    - (GIF 예시 첨부 예정)
+<div align="center">
+  <img src="../assets/Kakaomap1.gif" width="400" alt="카카오맵 주소 검색"/>
+  <img src="../assets/Kakaomap2.gif" width="400" alt="카카오맵 주소 선택"/>
+</div>
 
-- **찜하기 기능**
-    - 음식점 찜/취소 및 찜한 목록 확인
-    - (GIF 예시 첨부 예정)
+#### 음식점 상세 페이지
 
-- **리뷰 작성**
-    - 주문 완료한 음식점에 리뷰 등록
-    - 별점 + 텍스트 입력
-    - (GIF 예시 첨부 예정)
+- 가게 정보, 메뉴 및 옵션 확인
+- 리뷰 조회 기능 포함
+
+<div align="center">
+  <img src="../assets/StoreMenuDetail.gif" width="400" alt="음식점 상세 정보"/>
+  <img src="../assets/StoreReview.gif" width="400" alt="리뷰 확인"/>
+</div>
+
+#### 장바구니 기능
+
+- 메뉴 옵션 및 수량 조절 후 장바구니 담기
+- 장바구니 내에서 수정 및 삭제 가능
+
+<div align="center">
+  <img src="../assets/StoreMenuDetailToCart.gif" width="400" alt="장바구니 담기"/>
+  <img src="../assets/CartUpdate.gif" width="400" alt="장바구니 수정"/>
+</div>
+
+#### 주문하기
+
+- 장바구니에 담긴 메뉴를 한 번에 주문
+- 주문 성공 시 주문 상태 확인 가능
+
+<div align="center">
+  <img src="../assets/Order.gif" width="400" alt="주문 기능"/>
+</div>
+
+#### 주문 상태 확인
+
+- 사용자가 주문한 내역과 진행 상태 확인
+
+<div align="center">
+  <img src="../assets/OrderStatus.gif" width="400" alt="주문 상태 확인"/>
+</div>
+
+#### 찜하기 기능
+
+- 음식점 찜/취소 및 찜한 목록 확인
+
+<div align="center">
+  <img src="../assets/Dibs.gif" width="400" alt="찜하기 기능"/>
+</div>
+
+#### 리뷰 관리
+
+- 주문 완료한 음식점에 리뷰 등록/수정/삭제
+- 별점 + 텍스트 입력
+
+<div align="center">
+  <img src="../assets/CreateReview.gif" width="400" alt="리뷰 작성"/>
+  <img src="../assets/DeleteReview.gif" width="400" alt="리뷰 삭제"/>
+</div>
+<div align="center">
+  <img src="../assets/UpdateReview.gif" width="400" alt="리뷰 수정"/>
+</div>
 
 ---
 
-### 👨‍🍳 사장님 기능
+### 사장님 기능
 
-- **메뉴 CRUD**
-    - 음식점별 메뉴 추가 / 수정 / 삭제
-    - 옵션 포함한 복합 구조 메뉴 구성 가능
-    - (GIF 예시 첨부 예정)
+#### 음식점 관리
 
-- **리뷰 관리**
-    - 본인의 가게에 작성된 리뷰 조회 및 삭제
-    - (GIF 예시 첨부 예정)
+- 본인의 음식점 정보 조회
+- 음식점 정보 수정 (가게 이름, 설명, 배달 범위 등)
 
-- **가게 정보 수정**
-    - 가게 이름, 소개, 최소 주문 금액 등 정보 수정
-    - (GIF 예시 첨부 예정)
+<div align="center">
+  <img src="../assets/OwnerStore.gif" width="400" alt="사장님 음식점 관리 화면"/>
+</div>
+
+#### 메뉴 관리 (CRUD)
+
+- 메뉴 등록, 수정, 삭제 기능 제공
+- 메뉴 옵션 및 카테고리 설정 가능
+
+<div align="center">
+  <img src="../assets/OwnerMenu1.gif" width="400" alt="메뉴 등록 화면"/>
+  <img src="../assets/OwnerMenu2.gif" width="400" alt="메뉴 수정 화면"/>
+</div>
+<div align="center">
+  <img src="../assets/OwnerMenu3.gif" width="400" alt="메뉴 삭제 기능"/>
+</div>
+
+#### 리뷰 응답
+
+- 사용자가 작성한 리뷰 확인
+- 리뷰에 대한 사장님 댓글(답글) 작성 및 삭제
+
+<div align="center">
+  <img src="../assets/OwnerReview1.gif" width="400" alt="리뷰 확인 및 답글 작성"/>
+  <img src="../assets/OwnerReview2.gif" width="400" alt="리뷰 답글 삭제"/>
+</div>
 
 ---
 
-### 📌 추후 예정
+## 배포 아키텍처
 
-> 기능별 GIF 또는 이미지 예시 삽입 예정  
-> 예: `![음식점 조회](./assets/gifs/store-list.gif)`
----
+<div align="center">
+  <img src="../assets/architecture.png" width="600" alt="배포 아키텍처 다이어그램"/>
+</div>
 
-## 📦 배포 아키텍처
-
-![배포 아키텍처 다이어그램](../assets/architecture.png)
-> GitHub Actions를 활용한 CI/CD 기반 자동 배포 구조입니다.
-
-### 🌐 프론트엔드
+### 프론트엔드
 
 - **배포 환경**: AWS S3 + CloudFront
 - **CI/CD 흐름**:
@@ -199,10 +257,9 @@ front-end/
     3. S3에 자동 업로드
     4. CloudFront 캐시 무효화로 사용자에게 최신 리소스 제공
 
-> ⚙️ 백엔드 배포 구조는 [back-end/README.md](../back-end/README.md)를 참고해주세요.
 ---
 
-## 🧠 기술적 회고 및 트러블슈팅
+## 기술적 회고 및 트러블슈팅
 
 - [React Query 무한 요청 문제 해결](https://yourblog.com/react-query-loop)
 - [배포 시 CORS 이슈 해결하기 (S3 + CloudFront)](https://yourblog.com/s3-cors)
@@ -210,7 +267,7 @@ front-end/
 
 ---
 
-## 🎯 프로젝트 회고
+## 프로젝트 회고
 
 - 기능 하나하나를 구현하는 것보다, 전체 흐름(UX)을 설계하는 것이 더 어렵고 중요함을 느꼈다.
 - 백엔드와 API 명세를 주고받으며 협업할 때 RESTful 구조를 더 깊이 이해하게 되었다.
