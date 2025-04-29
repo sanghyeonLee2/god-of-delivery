@@ -10,7 +10,7 @@ export const signUpValid = yup.object({
   userPw: yup
     .string()
     .required("비밀번호를 입력해주세요.")
-    .min(8, "8자 이상 입력해주세요.")
+    .min(6, "6자 이상 입력해주세요.")
     .max(20, "20자 이하 입력해주세요."),
   pwCheck: yup
     .string()
@@ -27,7 +27,7 @@ export const signInValid = yup.object({
   userPw: yup
     .string()
     .required("비밀번호를 입력해주세요.")
-    .min(8, "8자 이상 입력해주세요.")
+    .min(6, "6자 이상 입력해주세요.")
     .max(20, "20자 이하 입력해주세요."),
 });
 export const addressValid = yup.object({
