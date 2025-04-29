@@ -12,11 +12,7 @@ function CartForm({ handleSubmit, handleDeleteCartItem, cartData }) {
   return (
     <form onSubmit={handleSubmit}>
       <CommonBorder $hasAddBtn={true}>
-        <CartMenus
-          handleDeleteCartItem={handleDeleteCartItem}
-          cartMenuTotalPrice={cartData?.cartMenuTotalPrice}
-          cartItems={cartData?.CartItems}
-        />
+        <CartMenus handleDeleteCartItem={handleDeleteCartItem} cartItems={cartData?.CartItems} />
         <AddBtn text={"메뉴 추가"} onClick={() => navigate(`/stores/all/${cartData?.storeId}`)} />
       </CommonBorder>
       <CartPayment
